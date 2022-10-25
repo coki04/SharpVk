@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -44,10 +44,28 @@ namespace SharpVk
         }
         
         /// <summary>
+        /// The number of viewports used by the pipeline.
+        /// </summary>
+        public uint? ViewportCount
+        {
+            get;
+            set;
+        }
+        
+        /// <summary>
         /// An array of Viewport structures, defining the viewport transforms.
         /// If the viewport state is dynamic, this member is ignored.
         /// </summary>
         public SharpVk.Viewport[] Viewports
+        {
+            get;
+            set;
+        }
+        
+        /// <summary>
+        /// The number of scissors and must match the number of viewports.
+        /// </summary>
+        public uint? ScissorCount
         {
             get;
             set;
@@ -81,7 +99,14 @@ namespace SharpVk
             {
                 pointer->Flags = default(SharpVk.PipelineViewportStateCreateFlags);
             }
-            pointer->ViewportCount = (uint)(Interop.HeapUtil.GetLength(this.Viewports));
+            if (this.ViewportCount != null)
+            {
+                pointer->ViewportCount = this.ViewportCount.Value;
+            }
+            else
+            {
+                pointer->ViewportCount = (uint)(Interop.HeapUtil.GetLength(this.Viewports));
+            }
             if (this.Viewports != null)
             {
                 var fieldPointer = (SharpVk.Viewport*)(Interop.HeapUtil.AllocateAndClear<SharpVk.Viewport>(this.Viewports.Length).ToPointer());
@@ -95,7 +120,14 @@ namespace SharpVk
             {
                 pointer->Viewports = null;
             }
-            pointer->ScissorCount = (uint)(Interop.HeapUtil.GetLength(this.Scissors));
+            if (this.ScissorCount != null)
+            {
+                pointer->ScissorCount = this.ScissorCount.Value;
+            }
+            else
+            {
+                pointer->ScissorCount = (uint)(Interop.HeapUtil.GetLength(this.Scissors));
+            }
             if (this.Scissors != null)
             {
                 var fieldPointer = (SharpVk.Rect2D*)(Interop.HeapUtil.AllocateAndClear<SharpVk.Rect2D>(this.Scissors.Length).ToPointer());

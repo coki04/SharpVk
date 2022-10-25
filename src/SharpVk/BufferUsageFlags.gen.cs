@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -107,22 +107,12 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        Reserved15 = 1 << 15, 
+        VideoDecodeSource = 1 << 13, 
         
         /// <summary>
         /// 
         /// </summary>
-        Reserved16 = 1 << 16, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        Reserved13 = 1 << 13, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        Reserved14 = 1 << 14, 
+        VideoDecodeDestination = 1 << 14, 
         
         /// <summary>
         /// 
@@ -140,14 +130,58 @@ namespace SharpVk
         ConditionalRendering = 1 << 9, 
         
         /// <summary>
-        /// Specifies that the buffer is suitable for use in vkCmdTraceRaysNV
-        /// and vkCmdBuildAccelerationStructureNV.
+        /// 
         /// </summary>
-        RayTracing = 1 << 10, 
+        Reserved25 = 1 << 25, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        AccelerationStructureBuildInputReadOnly = 1 << 19, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        AccelerationStructureStorage = 1 << 20, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ShaderBindingTable = 1 << 10, 
         
         /// <summary>
         /// 
         /// </summary>
         Reserved18 = 1 << 18, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        VideoEncodeDestination = 1 << 15, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        VideoEncodeSource = 1 << 16, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved21 = 1 << 21, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved22 = 1 << 22, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        MicromapBuildInputReadOnly = 1 << 23, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        MicromapStorage = 1 << 24, 
     }
 }

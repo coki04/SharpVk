@@ -10,13 +10,19 @@ namespace SharpVk.Generator.Specification
                                                            from tail in Parse.Lower.Many()
                                                            select new string(new[] { head }.Concat(tail).ToArray()).ToLower();
 
-        private static readonly Parser<string> namePart = from head in Parse.Upper
+        private static readonly Parser<string> namePart = from head in Parse.Upper.
+                                                            Or(Parse.Char('p')) // "plane" case.
                                                           from tail in Parse.Lower.Many()
                                                           select new string(new[] { head }.Concat(tail).ToArray()).ToLower();
 
         private static readonly Parser<string> numberPart = Parse.Digit
                                                         .AtLeastOnce()
                                                         .Text();
+
+        private static readonly Parser<string> dimensionPart = from first in Parse.Digit.Many()
+                                                               from split in Parse.Char('x')
+                                                               from second in Parse.Digit.Many()
+                                                               select new string(new char[] { }.Concat(first).Concat(split.ToString()).Concat(second).ToArray()).ToLower();
 
         private static readonly Parser<string> keywordPart = Parse.String("2D")
                                                                     .Or(Parse.String("3D"))
@@ -27,6 +33,7 @@ namespace SharpVk.Generator.Specification
                                                                     .Or(Parse.String("UUID"))
                                                                     .Or(Parse.String("RandR"))
                                                                     .Or(Parse.String("SMPTE2086"))
+                                                                    .Or(Parse.String("_id"))
                                                                     .Text();
 
         private static readonly Parser<string> alphanumericPair = from head in Parse.Letter
@@ -36,9 +43,10 @@ namespace SharpVk.Generator.Specification
         private static readonly Parser<IEnumerable<string>> alphanumericSequence = alphanumericPair.AtLeastOnce();
 
         private static readonly Parser<IEnumerable<string>> nameParts = from first in firstPart
-                                                                        from parts in keywordPart
-                                                                                        .Or(numberPart)
+                                                                        from parts in numberPart
+                                                                                        .Or(keywordPart)
                                                                                         .Or(namePart)
+                                                                                        .Or(dimensionPart)
                                                                                         .Many()
                                                                                         .End()
                                                                         select new[] { first }.Concat(parts);
@@ -54,7 +62,7 @@ namespace SharpVk.Generator.Specification
         {
             return GetNameParts(vkName.Substring(4), out extension);
         }
-
+        
         public string[] ParseParamName(string vkName, PointerType pointerType, out string extension)
         {
             int pointerCount = pointerType.GetPointerCount();
@@ -98,7 +106,8 @@ namespace SharpVk.Generator.Specification
 
             fieldNameParts = fieldNameParts.Skip(prefixSkipCount);
 
-            if (this.extensions.KnownExtensions.Contains(fieldNameParts.Last()))
+            if (this.extensions.KnownExtensions.Contains(fieldNameParts.Last()) &&
+                !(enumNameParts.Length == 2 && enumNameParts[0] == "vendor" && enumNameParts[1] == "id"))
             {
                 fieldNameParts = fieldNameParts.Take(fieldNameParts.Count() - 1);
             }

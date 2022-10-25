@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -65,11 +65,26 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        Reserved6 = 1 << 6, 
+        VideoDecode = 1 << 5, 
         
         /// <summary>
         /// 
         /// </summary>
-        Reserved5 = 1 << 5, 
+        Reserved9 = 1 << 9, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        VideoEncode = 1 << 6, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved7 = 1 << 7, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        OpticalFlow = 1 << 8, 
     }
 }

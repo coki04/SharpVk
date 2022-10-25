@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -38,6 +38,15 @@ namespace SharpVk
         /// will be generated, as described below.
         /// </summary>
         public SharpVk.PipelineCreateFlags? Flags
+        {
+            get;
+            set;
+        }
+        
+        /// <summary>
+        /// The number of entries in the pStages array.
+        /// </summary>
+        public uint? StageCount
         {
             get;
             set;
@@ -97,7 +106,7 @@ namespace SharpVk
         /// <summary>
         /// An instance of the PipelineRasterizationStateCreateInfo structure.
         /// </summary>
-        public SharpVk.PipelineRasterizationStateCreateInfo RasterizationState
+        public SharpVk.PipelineRasterizationStateCreateInfo? RasterizationState
         {
             get;
             set;
@@ -217,7 +226,14 @@ namespace SharpVk
             {
                 pointer->Flags = default(SharpVk.PipelineCreateFlags);
             }
-            pointer->StageCount = (uint)(Interop.HeapUtil.GetLength(this.Stages));
+            if (this.StageCount != null)
+            {
+                pointer->StageCount = this.StageCount.Value;
+            }
+            else
+            {
+                pointer->StageCount = (uint)(Interop.HeapUtil.GetLength(this.Stages));
+            }
             if (this.Stages != null)
             {
                 var fieldPointer = (SharpVk.Interop.PipelineShaderStageCreateInfo*)(Interop.HeapUtil.AllocateAndClear<SharpVk.Interop.PipelineShaderStageCreateInfo>(this.Stages.Length).ToPointer());
@@ -267,8 +283,15 @@ namespace SharpVk
             {
                 pointer->ViewportState = default(SharpVk.Interop.PipelineViewportStateCreateInfo*);
             }
-            pointer->RasterizationState = (SharpVk.Interop.PipelineRasterizationStateCreateInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.PipelineRasterizationStateCreateInfo>());
-            this.RasterizationState.MarshalTo(pointer->RasterizationState);
+            if (this.RasterizationState != null)
+            {
+                pointer->RasterizationState = (SharpVk.Interop.PipelineRasterizationStateCreateInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.PipelineRasterizationStateCreateInfo>());
+                this.RasterizationState.Value.MarshalTo(pointer->RasterizationState);
+            }
+            else
+            {
+                pointer->RasterizationState = default(SharpVk.Interop.PipelineRasterizationStateCreateInfo*);
+            }
             if (this.MultisampleState != null)
             {
                 pointer->MultisampleState = (SharpVk.Interop.PipelineMultisampleStateCreateInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.PipelineMultisampleStateCreateInfo>());

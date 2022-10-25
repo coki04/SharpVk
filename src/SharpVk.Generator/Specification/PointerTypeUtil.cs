@@ -29,6 +29,7 @@ namespace SharpVk.Generator.Specification
                 case "struct @**":
                     return PointerType.ConstPointer;
                 case "const @* const*":
+                case "const @* const *":
                     return PointerType.DoubleConstPointer;
                 default:
                     throw new NotSupportedException(string.Format("Unknown pointer type string '{0}'.", typeString));

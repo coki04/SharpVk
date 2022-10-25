@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -47,6 +47,21 @@ namespace SharpVk.Multivendor
         /// <summary>
         /// 
         /// </summary>
+        public const string VideoEncodeH264 = "VK_EXT_video_encode_h264"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string VideoEncodeH265 = "VK_EXT_video_encode_h265"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string VideoDecodeH264 = "VK_EXT_video_decode_h264"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public const string ValidationFlags = "VK_EXT_validation_flags"; 
         
         /// <summary>
@@ -62,12 +77,12 @@ namespace SharpVk.Multivendor
         /// <summary>
         /// 
         /// </summary>
-        public const string TextureCompressionAstcHdr = "VK_EXT_texture_compression_astc_hdr"; 
+        public const string AstcDecodeMode = "VK_EXT_astc_decode_mode"; 
         
         /// <summary>
         /// 
         /// </summary>
-        public const string AstcDecodeMode = "VK_EXT_astc_decode_mode"; 
+        public const string PipelineRobustness = "VK_EXT_pipeline_robustness"; 
         
         /// <summary>
         /// 
@@ -137,11 +152,6 @@ namespace SharpVk.Multivendor
         /// <summary>
         /// 
         /// </summary>
-        public const string InlineUniformBlock = "VK_EXT_inline_uniform_block"; 
-        
-        /// <summary>
-        /// 
-        /// </summary>
         public const string ShaderStencilExport = "VK_EXT_shader_stencil_export"; 
         
         /// <summary>
@@ -177,11 +187,6 @@ namespace SharpVk.Multivendor
         /// <summary>
         /// 
         /// </summary>
-        public const string GlobalPriority = "VK_EXT_global_priority"; 
-        
-        /// <summary>
-        /// 
-        /// </summary>
         public const string ExternalMemoryHost = "VK_EXT_external_memory_host"; 
         
         /// <summary>
@@ -192,12 +197,12 @@ namespace SharpVk.Multivendor
         /// <summary>
         /// 
         /// </summary>
-        public const string VertexAttributeDivisor = "VK_EXT_vertex_attribute_divisor"; 
+        public const string VideoDecodeH265 = "VK_EXT_video_decode_h265"; 
         
         /// <summary>
         /// 
         /// </summary>
-        public const string PipelineCreationFeedback = "VK_EXT_pipeline_creation_feedback"; 
+        public const string VertexAttributeDivisor = "VK_EXT_vertex_attribute_divisor"; 
         
         /// <summary>
         /// 
@@ -217,7 +222,7 @@ namespace SharpVk.Multivendor
         /// <summary>
         /// 
         /// </summary>
-        public const string SubgroupSizeControl = "VK_EXT_subgroup_size_control"; 
+        public const string ShaderImageAtomicInt64 = "VK_EXT_shader_image_atomic_int64"; 
         
         /// <summary>
         /// 
@@ -237,11 +242,6 @@ namespace SharpVk.Multivendor
         /// <summary>
         /// 
         /// </summary>
-        public const string ToolingInfo = "VK_EXT_tooling_info"; 
-        
-        /// <summary>
-        /// 
-        /// </summary>
         public const string ValidationFeatures = "VK_EXT_validation_features"; 
         
         /// <summary>
@@ -253,6 +253,11 @@ namespace SharpVk.Multivendor
         /// 
         /// </summary>
         public const string YcbcrImageArrays = "VK_EXT_ycbcr_image_arrays"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string ProvokingVertex = "VK_EXT_provoking_vertex"; 
         
         /// <summary>
         /// 
@@ -272,16 +277,211 @@ namespace SharpVk.Multivendor
         /// <summary>
         /// 
         /// </summary>
+        public const string ShaderAtomicFloat = "VK_EXT_shader_atomic_float"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public const string IndexTypeUint8 = "VK_EXT_index_type_uint8"; 
         
         /// <summary>
         /// 
         /// </summary>
-        public const string ShaderDemoteToHelperInvocation = "VK_EXT_shader_demote_to_helper_invocation"; 
+        public const string ShaderAtomicFloat2 = "VK_EXT_shader_atomic_float2"; 
         
         /// <summary>
         /// 
         /// </summary>
-        public const string TexelBufferAlignment = "VK_EXT_texel_buffer_alignment"; 
+        public const string DeviceMemoryReport = "VK_EXT_device_memory_report"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string AcquireDrmDisplay = "VK_EXT_acquire_drm_display"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string Robustness2 = "VK_EXT_robustness2"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string CustomBorderColor = "VK_EXT_custom_border_color"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string MetalObjects = "VK_EXT_metal_objects"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string GraphicsPipelineLibrary = "VK_EXT_graphics_pipeline_library"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string MeshShader = "VK_EXT_mesh_shader"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string FragmentDensityMap2 = "VK_EXT_fragment_density_map2"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string ImageCompressionControl = "VK_EXT_image_compression_control"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string AttachmentFeedbackLoopLayout = "VK_EXT_attachment_feedback_loop_layout"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string DeviceFault = "VK_EXT_device_fault"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string Rgba10x6Formats = "VK_EXT_rgba10x6_formats"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string DirectfbSurface = "VK_EXT_directfb_surface"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string VertexInputDynamicState = "VK_EXT_vertex_input_dynamic_state"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string PhysicalDeviceDrm = "VK_EXT_physical_device_drm"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string DeviceAddressBindingReport = "VK_EXT_device_address_binding_report"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string DepthClipControl = "VK_EXT_depth_clip_control"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string PrimitiveTopologyListRestart = "VK_EXT_primitive_topology_list_restart"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string PipelineProperties = "VK_EXT_pipeline_properties"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string MultisampledRenderToSingleSampled = "VK_EXT_multisampled_render_to_single_sampled"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string ColorWriteEnable = "VK_EXT_color_write_enable"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string PrimitivesGeneratedQuery = "VK_EXT_primitives_generated_query"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string ImageViewMinLod = "VK_EXT_image_view_min_lod"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string MultiDraw = "VK_EXT_multi_draw"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string Image2dViewOf3d = "VK_EXT_image_2d_view_of_3d"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string OpacityMicromap = "VK_EXT_opacity_micromap"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string LoadStoreOpNone = "VK_EXT_load_store_op_none"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string BorderColorSwizzle = "VK_EXT_border_color_swizzle"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string PageableDeviceLocalMemory = "VK_EXT_pageable_device_local_memory"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string DepthClampZeroOne = "VK_EXT_depth_clamp_zero_one"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string NonSeamlessCubeMap = "VK_EXT_non_seamless_cube_map"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string ImageCompressionControlSwapchain = "VK_EXT_image_compression_control_swapchain"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string ExtendedDynamicState3 = "VK_EXT_extended_dynamic_state3"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string SubpassMergeFeedback = "VK_EXT_subpass_merge_feedback"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string ShaderModuleIdentifier = "VK_EXT_shader_module_identifier"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string RasterizationOrderAttachmentAccess = "VK_EXT_rasterization_order_attachment_access"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string LegacyDithering = "VK_EXT_legacy_dithering"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string PipelineProtectedAccess = "VK_EXT_pipeline_protected_access"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string MutableDescriptorType = "VK_EXT_mutable_descriptor_type"; 
     }
 }

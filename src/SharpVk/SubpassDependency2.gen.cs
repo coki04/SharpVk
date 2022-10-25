@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -54,7 +54,7 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        public SharpVk.PipelineStageFlags SourceStageMask
+        public SharpVk.PipelineStageFlags? SourceStageMask
         {
             get;
             set;
@@ -63,7 +63,7 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        public SharpVk.PipelineStageFlags DestinationStageMask
+        public SharpVk.PipelineStageFlags? DestinationStageMask
         {
             get;
             set;
@@ -99,7 +99,7 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        public int? ViewOffset
+        public int ViewOffset
         {
             get;
             set;
@@ -116,8 +116,22 @@ namespace SharpVk
             pointer->Next = null;
             pointer->SourceSubpass = this.SourceSubpass;
             pointer->DestinationSubpass = this.DestinationSubpass;
-            pointer->SourceStageMask = this.SourceStageMask;
-            pointer->DestinationStageMask = this.DestinationStageMask;
+            if (this.SourceStageMask != null)
+            {
+                pointer->SourceStageMask = this.SourceStageMask.Value;
+            }
+            else
+            {
+                pointer->SourceStageMask = default(SharpVk.PipelineStageFlags);
+            }
+            if (this.DestinationStageMask != null)
+            {
+                pointer->DestinationStageMask = this.DestinationStageMask.Value;
+            }
+            else
+            {
+                pointer->DestinationStageMask = default(SharpVk.PipelineStageFlags);
+            }
             if (this.SourceAccessMask != null)
             {
                 pointer->SourceAccessMask = this.SourceAccessMask.Value;
@@ -142,14 +156,7 @@ namespace SharpVk
             {
                 pointer->DependencyFlags = default(SharpVk.DependencyFlags);
             }
-            if (this.ViewOffset != null)
-            {
-                pointer->ViewOffset = this.ViewOffset.Value;
-            }
-            else
-            {
-                pointer->ViewOffset = default(int);
-            }
+            pointer->ViewOffset = this.ViewOffset;
         }
         
         /// <summary>

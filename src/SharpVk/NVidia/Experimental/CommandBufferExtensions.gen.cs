@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -32,50 +32,24 @@ namespace SharpVk.NVidia.Experimental
     public static class CommandBufferExtensions
     {
         /// <summary>
-        /// Performs the generation of commands on the device.
+        /// 
         /// </summary>
         /// <param name="extendedHandle">
         /// The CommandBuffer handle to extend.
         /// </param>
-        /// <param name="processCommandsInfo">
+        /// <param name="launchInfo">
         /// </param>
-        public static unsafe void ProcessCommands(this SharpVk.CommandBuffer extendedHandle, SharpVk.NVidia.Experimental.CommandProcessCommandsInfo processCommandsInfo)
+        public static unsafe void CuLaunchKernel(this SharpVk.CommandBuffer extendedHandle, SharpVk.NVidia.Experimental.CuLaunchInfo launchInfo)
         {
             try
             {
                 CommandCache commandCache = default(CommandCache);
-                SharpVk.Interop.NVidia.Experimental.CommandProcessCommandsInfo* marshalledProcessCommandsInfo = default(SharpVk.Interop.NVidia.Experimental.CommandProcessCommandsInfo*);
+                SharpVk.Interop.NVidia.Experimental.CuLaunchInfo* marshalledLaunchInfo = default(SharpVk.Interop.NVidia.Experimental.CuLaunchInfo*);
                 commandCache = extendedHandle.commandCache;
-                marshalledProcessCommandsInfo = (SharpVk.Interop.NVidia.Experimental.CommandProcessCommandsInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.NVidia.Experimental.CommandProcessCommandsInfo>());
-                processCommandsInfo.MarshalTo(marshalledProcessCommandsInfo);
-                SharpVk.Interop.NVidia.Experimental.VkCommandBufferProcessCommandsDelegate commandDelegate = commandCache.Cache.vkCmdProcessCommandsNVX;
-                commandDelegate(extendedHandle.handle, marshalledProcessCommandsInfo);
-            }
-            finally
-            {
-                Interop.HeapUtil.FreeAll();
-            }
-        }
-        
-        /// <summary>
-        /// Perform a reservation of command buffer space.
-        /// </summary>
-        /// <param name="extendedHandle">
-        /// The CommandBuffer handle to extend.
-        /// </param>
-        /// <param name="reserveSpaceInfo">
-        /// </param>
-        public static unsafe void ReserveSpaceForCommands(this SharpVk.CommandBuffer extendedHandle, SharpVk.NVidia.Experimental.CommandReserveSpaceForCommandsInfo reserveSpaceInfo)
-        {
-            try
-            {
-                CommandCache commandCache = default(CommandCache);
-                SharpVk.Interop.NVidia.Experimental.CommandReserveSpaceForCommandsInfo* marshalledReserveSpaceInfo = default(SharpVk.Interop.NVidia.Experimental.CommandReserveSpaceForCommandsInfo*);
-                commandCache = extendedHandle.commandCache;
-                marshalledReserveSpaceInfo = (SharpVk.Interop.NVidia.Experimental.CommandReserveSpaceForCommandsInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.NVidia.Experimental.CommandReserveSpaceForCommandsInfo>());
-                reserveSpaceInfo.MarshalTo(marshalledReserveSpaceInfo);
-                SharpVk.Interop.NVidia.Experimental.VkCommandBufferReserveSpaceForCommandsDelegate commandDelegate = commandCache.Cache.vkCmdReserveSpaceForCommandsNVX;
-                commandDelegate(extendedHandle.handle, marshalledReserveSpaceInfo);
+                marshalledLaunchInfo = (SharpVk.Interop.NVidia.Experimental.CuLaunchInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.NVidia.Experimental.CuLaunchInfo>());
+                launchInfo.MarshalTo(marshalledLaunchInfo);
+                SharpVk.Interop.NVidia.Experimental.VkCommandBufferCuLaunchKernelDelegate commandDelegate = commandCache.Cache.vkCmdCuLaunchKernelNVX;
+                commandDelegate(extendedHandle.handle, marshalledLaunchInfo);
             }
             finally
             {

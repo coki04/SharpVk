@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -43,5 +43,20 @@ namespace SharpVk
         /// 
         /// </summary>
         Kazan = 0x10003, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Codeplay = 0x10004, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Mesa = 0x10005, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Pocl = 0x10006, 
     }
 }

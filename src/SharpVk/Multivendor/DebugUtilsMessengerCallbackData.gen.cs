@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -54,7 +54,7 @@ namespace SharpVk.Multivendor
         /// <summary>
         /// 
         /// </summary>
-        public int? MessageIdNumber
+        public int MessageIdNumber
         {
             get;
             set;
@@ -114,14 +114,7 @@ namespace SharpVk.Multivendor
                 pointer->Flags = default(SharpVk.Multivendor.DebugUtilsMessengerCallbackDataFlags);
             }
             pointer->MessageIdName = Interop.HeapUtil.MarshalTo(this.MessageIdName);
-            if (this.MessageIdNumber != null)
-            {
-                pointer->MessageIdNumber = this.MessageIdNumber.Value;
-            }
-            else
-            {
-                pointer->MessageIdNumber = default(int);
-            }
+            pointer->MessageIdNumber = this.MessageIdNumber;
             pointer->Message = Interop.HeapUtil.MarshalTo(this.Message);
             pointer->QueueLabelCount = (uint)(Interop.HeapUtil.GetLength(this.QueueLabels));
             if (this.QueueLabels != null)

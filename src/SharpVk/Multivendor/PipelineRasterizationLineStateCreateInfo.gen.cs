@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -54,7 +54,7 @@ namespace SharpVk.Multivendor
         /// <summary>
         /// 
         /// </summary>
-        public uint? LineStippleFactor
+        public uint LineStippleFactor
         {
             get;
             set;
@@ -63,7 +63,7 @@ namespace SharpVk.Multivendor
         /// <summary>
         /// 
         /// </summary>
-        public ushort? LineStipplePattern
+        public ushort LineStipplePattern
         {
             get;
             set;
@@ -80,22 +80,8 @@ namespace SharpVk.Multivendor
             pointer->Next = null;
             pointer->LineRasterizationMode = this.LineRasterizationMode;
             pointer->StippledLineEnable = this.StippledLineEnable;
-            if (this.LineStippleFactor != null)
-            {
-                pointer->LineStippleFactor = this.LineStippleFactor.Value;
-            }
-            else
-            {
-                pointer->LineStippleFactor = default(uint);
-            }
-            if (this.LineStipplePattern != null)
-            {
-                pointer->LineStipplePattern = this.LineStipplePattern.Value;
-            }
-            else
-            {
-                pointer->LineStipplePattern = default(ushort);
-            }
+            pointer->LineStippleFactor = this.LineStippleFactor;
+            pointer->LineStipplePattern = this.LineStipplePattern;
         }
     }
 }

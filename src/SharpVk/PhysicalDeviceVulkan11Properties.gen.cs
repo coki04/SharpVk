@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -166,32 +166,6 @@ namespace SharpVk
         {
             get;
             set;
-        }
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="pointer">
-        /// </param>
-        internal unsafe void MarshalTo(SharpVk.Interop.PhysicalDeviceVulkan11Properties* pointer)
-        {
-            pointer->SType = StructureType.PhysicalDeviceVulkan11Properties;
-            pointer->Next = null;
-            Interop.HeapUtil.MarshalTo(this.DeviceUUID, Constants.UuidSize, pointer->DeviceUUID);
-            Interop.HeapUtil.MarshalTo(this.DriverUUID, Constants.UuidSize, pointer->DriverUUID);
-            Interop.HeapUtil.MarshalTo(this.DeviceLUID, Constants.LuidSize, pointer->DeviceLUID);
-            pointer->DeviceNodeMask = this.DeviceNodeMask;
-            pointer->DeviceLUIDValid = this.DeviceLUIDValid;
-            pointer->SubgroupSize = this.SubgroupSize;
-            pointer->SubgroupSupportedStages = this.SubgroupSupportedStages;
-            pointer->SubgroupSupportedOperations = this.SubgroupSupportedOperations;
-            pointer->SubgroupQuadOperationsInAllStages = this.SubgroupQuadOperationsInAllStages;
-            pointer->PointClippingBehavior = this.PointClippingBehavior;
-            pointer->MaxMultiviewViewCount = this.MaxMultiviewViewCount;
-            pointer->MaxMultiviewInstanceIndex = this.MaxMultiviewInstanceIndex;
-            pointer->ProtectedNoFault = this.ProtectedNoFault;
-            pointer->MaxPerSetDescriptors = this.MaxPerSetDescriptors;
-            pointer->MaxMemoryAllocationSize = this.MaxMemoryAllocationSize;
         }
         
         /// <summary>

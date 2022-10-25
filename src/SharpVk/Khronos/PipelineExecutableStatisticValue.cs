@@ -28,7 +28,7 @@ namespace SharpVk.Khronos
     /// A union describing a pipeline executable statistic
     /// </summary>
     [StructLayout(LayoutKind.Explicit)]
-    public struct PipelineExecutableStatisticValue
+    public struct PipelineExecutableStatisticValueOri
     {
         /// <summary>
         /// The 32-bit boolean value if the PipelineExecutableStatisticFormat is Bool32.

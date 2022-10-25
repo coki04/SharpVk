@@ -24,5 +24,7 @@
         public TypeReference Type => this.wrappedDeclaration.Type;
 
         public MemberLen[] Dimensions { get; private set; }
+
+        public string SelectedBy => this.wrappedDeclaration.SelectedBy;
     }
 }

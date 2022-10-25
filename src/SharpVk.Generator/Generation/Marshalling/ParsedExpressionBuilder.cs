@@ -12,10 +12,12 @@ namespace SharpVk.Generator.Generation.Marshalling
        : ILenExpressionVisitor<ParsedExpressionBuilder.ExpressionBuildState>
     {
         private readonly Dictionary<string, TypeDeclaration> typeData;
+        private readonly IEnumerable<ConstantDeclaration> constants;
 
-        public ParsedExpressionBuilder(Dictionary<string, TypeDeclaration> typeData)
+        public ParsedExpressionBuilder(Dictionary<string, TypeDeclaration> typeData, IEnumerable<ConstantDeclaration> constants)
         {
             this.typeData = typeData;
+            this.constants = constants;
         }
 
         public void Visit(LenExpressionToken parsedExpressionToken, ExpressionBuildState state)
@@ -27,8 +29,19 @@ namespace SharpVk.Generator.Generation.Marshalling
             //    name = this.mapping[name] + ".Length";
             //}
 
-            state.Result = Variable(member.Name);
-            state.ExpressionType = member.Type.VkName;
+            if (member != null)
+            {
+                state.Result = Variable(member.Name);
+                state.ExpressionType = member.Type.VkName;
+            }
+            else
+            {
+                //Might be a constant
+                var constant = constants.SingleOrDefault(y => y.VkName == parsedExpressionToken.Value);
+
+                state.Result = EnumField("Constants", constant.Name);
+                state.ExpressionType = "int";
+            }
         }
 
         public void Visit(LenExpressionReference reference, ExpressionBuildState state)
@@ -123,6 +136,12 @@ namespace SharpVk.Generator.Generation.Marshalling
                     var value = Build(@operator.LeftOperand, state.Resolve);
 
                     state.Result = StaticCall("Math", "Ceiling", Cast("float", value));
+                    break;
+                case LenOperatorType.Multiply:
+                    left = Build(@operator.LeftOperand, state.Resolve);
+                    right = Build(@operator.RightOperand, state.Resolve);
+
+                    state.Result = Multiply(left, Cast("int", right));
                     break;
                 default:
                     throw new NotImplementedException();

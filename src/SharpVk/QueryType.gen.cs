@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -47,12 +47,7 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        Reserved8 = 1000023008, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        Reserved4 = 1000024004, 
+        ResultStatusOnly = 1000023000, 
         
         /// <summary>
         /// 
@@ -67,11 +62,56 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        AccelerationStructureCompactedSize = 1000165000, 
+        AccelerationStructureCompactedSizeKhr = 1000150000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        AccelerationStructureSerializationSize = 1000150001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        AccelerationStructureCompactedSizeNv = 1000165000, 
         
         /// <summary>
         /// 
         /// </summary>
         PerformanceQueryIntel = 1000210000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        VideoEncodeBitstreamBufferRange = 1000299000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        MeshPrimitivesGenerated = 1000328000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PrimitivesGenerated = 1000382000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        AccelerationStructureSerializationBottomLevelPointers = 1000386000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        AccelerationStructureSize = 1000386001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        MicromapSerializationSize = 1000396000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        MicromapCompactedSize = 1000396001, 
     }
 }

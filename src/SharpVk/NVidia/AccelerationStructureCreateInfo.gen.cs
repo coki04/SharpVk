@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -58,7 +58,7 @@ namespace SharpVk.NVidia
         /// </param>
         internal unsafe void MarshalTo(SharpVk.Interop.NVidia.AccelerationStructureCreateInfo* pointer)
         {
-            pointer->SType = StructureType.AccelerationStructureCreateInfo;
+            pointer->SType = StructureType.AccelerationStructureCreateInfoNv;
             pointer->Next = null;
             pointer->CompactedSize = this.CompactedSize;
             this.Info.MarshalTo(&pointer->Info);

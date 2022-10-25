@@ -34,11 +34,14 @@ namespace SharpVk.Generator.Generation.Marshalling
                     && context.IsBatchSingleMethod)
             {
                 var resultMember = others.Last();
-                var resultLen = resultMember.Dimensions[0].Value;
-
-                if (!this.expressionEqualityCheck.Check(resultLen, source.Dimensions[0].Value))
+                if (resultMember.Dimensions != null)
                 {
-                    return false;
+                    var resultLen = resultMember.Dimensions[0].Value;
+
+                    if (!this.expressionEqualityCheck.Check(resultLen, source.Dimensions[0].Value))
+                    {
+                        return false;
+                    }
                 }
 
                 var verbInfoPattern = this.provider.GetServices<IMemberPatternRule>().OfType<VerbInfoMemberPattern>().Single();

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -31,56 +31,6 @@ namespace SharpVk.NVidia
     /// </summary>
     public static class PipelineExtensions
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="extendedHandle">
-        /// The Pipeline handle to extend.
-        /// </param>
-        /// <param name="firstGroup">
-        /// </param>
-        /// <param name="groupCount">
-        /// </param>
-        /// <param name="dataSize">
-        /// </param>
-        public static unsafe byte[] GetRayTracingShaderGroupHandles(this SharpVk.Pipeline extendedHandle, uint firstGroup, uint groupCount, HostSize dataSize)
-        {
-            try
-            {
-                byte[] result = default(byte[]);
-                CommandCache commandCache = default(CommandCache);
-                HostSize marshalledDataSize = default(HostSize);
-                byte* marshalledData = default(byte*);
-                commandCache = extendedHandle.commandCache;
-                marshalledDataSize = dataSize;
-                marshalledData = (byte*)(Interop.HeapUtil.Allocate<byte>(marshalledDataSize));
-                SharpVk.Interop.NVidia.VkPipelineGetRayTracingShaderGroupHandlesDelegate commandDelegate = commandCache.Cache.vkGetRayTracingShaderGroupHandlesNV;
-                Result methodResult = commandDelegate(extendedHandle.parent.handle, extendedHandle.handle, firstGroup, groupCount, marshalledDataSize, marshalledData);
-                if (SharpVkException.IsError(methodResult))
-                {
-                    throw SharpVkException.Create(methodResult);
-                }
-                if (marshalledData != null)
-                {
-                    var fieldPointer = new byte[(uint)(marshalledDataSize)];
-                    for(int index = 0; index < (uint)(marshalledDataSize); index++)
-                    {
-                        fieldPointer[index] = marshalledData[index];
-                    }
-                    result = fieldPointer;
-                }
-                else
-                {
-                    result = null;
-                }
-                return result;
-            }
-            finally
-            {
-                Interop.HeapUtil.FreeAll();
-            }
-        }
-        
         /// <summary>
         /// 
         /// </summary>

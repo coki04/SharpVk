@@ -9,10 +9,10 @@ namespace SharpVk.Generator.Specification
 
         private static readonly Parser<LenExpression> lenExpressionParserRef = Parse.Ref(() => lenExpressionParser);
 
-        private static readonly Parser<LenExpressionToken> lenTokenParser = Parse.Letter.AtLeastOnce().Text().Select(x => new LenExpressionToken { Value = x });
+        private static readonly Parser<LenExpressionToken> lenTokenParser = Parse.LetterOrDigit.AtLeastOnce().Text().Select(x => new LenExpressionToken { Value = x });
 
         private static readonly Parser<LenExpressionReference> lenDereferenceParser = from left in lenTokenParser
-                                                                                         from op in Parse.String("::")
+                                                                                         from op in Parse.String("::").Or(Parse.String("->"))
                                                                                          from right in lenTokenParser
                                                                                          select new LenExpressionReference
                                                                                          {
@@ -26,11 +26,12 @@ namespace SharpVk.Generator.Specification
                                                                                  from digits in Parse.Digit.AtLeastOnce().Text().Token()
                                                                                  select new LenExpressionLiteral { Value = sign + digits };
 
-        private static readonly Parser<LenExpressionToken> latexToken = Parse.LetterOrDigit.AtLeastOnce()
+        private static readonly Parser<LenExpressionToken> latexToken = Parse.Or(Parse.String("VK\\_UUID\\_SIZE").Text().Select(x => new LenExpressionToken { Value = "VK_UUID_SIZE" }),
+                                                                              Parse.LetterOrDigit.AtLeastOnce()
                                                                                                  .Where(x => char.IsLetter(x.First()))
                                                                                                  .Text()
                                                                                                  .Token()
-                                                                                                 .Select(x => new LenExpressionToken { Value = x });
+                                                                                                 .Select(x => new LenExpressionToken { Value = x }));
 
         private static readonly Parser<LenExpression> latexSubexpressionRef = Parse.Ref(() => latexSubexpression);
 
@@ -39,14 +40,17 @@ namespace SharpVk.Generator.Specification
         private static readonly Parser<LenExpression> latexPrimaryExpression = ((Parser<LenExpression>)latexToken)
                                                                                                                                     .Or(latexToken.Contained(Parse.String("\\mathit{"), Parse.String("}")))
                                                                                                                                     .Or(latexToken.Contained(Parse.String("\\textrm{"), Parse.String("}")))
+                                                                                                                                    .Or(latexToken.Contained(Parse.String("\\mathtt{"), Parse.String("}")))
                                                                                                                                     .Or(integerLiteral)
                                                                                                                                     .Or(latexUnaryOperatorExpression);
 
-        private static readonly Parser<LenExpression> latexMultiplicativeExpression = Parse.ChainOperator(Parse.String("\\over").Token(),
-                                                                                                                            latexPrimaryExpression,
-                                                                                                                            (op, left, right) => new LenExpressionOperator { LeftOperand = left, RightOperand = right, Operator = LenOperatorType.Divide });
+        private static readonly Parser<LenExpression> latexOpExpression = Parse.ChainOperator(Parse.Or(
+                                                                                                    Parse.String("\\times").Token().Return(LenOperatorType.Multiply),
+                                                                                                    Parse.String("\\over").Token().Return(LenOperatorType.Divide)),
+                                                                                                latexPrimaryExpression,
+                                                                                                (op, left, right) => new LenExpressionOperator { LeftOperand = left, RightOperand = right, Operator = op });
 
-        private static readonly Parser<LenExpression> latexSubexpression = latexMultiplicativeExpression;
+        private static readonly Parser<LenExpression> latexSubexpression = latexOpExpression;
 
         private static readonly Parser<string> latexExpressionStart = from start in Parse.String("latexmath:[").Text()
                                                                       from dollar in Parse.Char('$').Optional()
@@ -71,6 +75,15 @@ namespace SharpVk.Generator.Specification
                                                                    from digits in Parse.Digit.AtLeastOnce().Text()
                                                                    from close in Parse.Char(']')
                                                                    select digits;
+
+        private static readonly Parser<string> bitfieldLengthParser = from open in Parse.Char(':')
+                                                                      from digits in Parse.Digit.AtLeastOnce().Text()
+                                                                      select digits;
+
+        public static string ParseBitfieldLength(string value)
+        {
+            return bitfieldLengthParser.Parse(value);
+        }
 
         public static string ParseFixedLength(string value)
         {

@@ -67,7 +67,7 @@ namespace SharpVk.Generator.Generation.Marshalling
 
                 info.InteropFullType = typeName;
 
-                if (context.IsBatchSingleMethod && isLenOfLastMember)
+                if (context.IsBatchSingleMethod && (isLenOfLastMember || context.VkName.StartsWith("VkSubmitInfo")))
                 {
                     info.MarshalTo.Add((getTarget, geValue) => new AssignAction
                     {

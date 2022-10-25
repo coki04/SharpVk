@@ -29,6 +29,7 @@ namespace SharpVk.Generator.Specification.Rules
                 var nameElement = vkMember.Element("name");
                 string vkName = nameElement.Value;
                 string memberType = vkMember.Element("type").Value;
+                string selectedBy = vkMember.Attribute("selection")?.Value;
                 bool.TryParse(vkMember.Attribute("optional")?.Value, out bool isOptional);
                 bool.TryParse(vkMember.Attribute("noautovalidity")?.Value, out bool noAutoValidity);
 
@@ -47,8 +48,16 @@ namespace SharpVk.Generator.Specification.Rules
                     }
                     else if(nameElement.NextNode.NodeType == System.Xml.XmlNodeType.Text)
                     {
-                        fixedLength.Value = SimpleParser.ParseFixedLength(nameElement.NextNode.ToString());
-                        fixedLength.Type = FixedLengthType.IntegerLiteral;
+                        if (nameElement.NextNode.ToString().Length > 0 && nameElement.NextNode.ToString()[0] == ':')
+                        {
+                            fixedLength.Value = SimpleParser.ParseBitfieldLength(nameElement.NextNode.ToString());
+                            fixedLength.Type = FixedLengthType.IntegerLiteral;
+                        }
+                        else
+                        {
+                            fixedLength.Value = SimpleParser.ParseFixedLength(nameElement.NextNode.ToString());
+                            fixedLength.Type = FixedLengthType.IntegerLiteral;
+                        }
                     }
                 }
                 else
@@ -85,7 +94,8 @@ namespace SharpVk.Generator.Specification.Rules
                     NameParts = memberNameParts,
                     ExtensionNamespace = memberExtension,
                     Dimensions = dimensions,
-                    Values = values
+                    Values = values,
+                    SelectedBy = selectedBy,
                 };
 
                 type.Members.Add(newMember);

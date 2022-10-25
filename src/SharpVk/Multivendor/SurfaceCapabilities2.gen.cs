@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -90,7 +90,7 @@ namespace SharpVk.Multivendor
         /// <summary>
         /// 
         /// </summary>
-        public SharpVk.Khronos.SurfaceTransformFlags? SupportedTransforms
+        public SharpVk.Khronos.SurfaceTransformFlags SupportedTransforms
         {
             get;
             set;
@@ -108,7 +108,7 @@ namespace SharpVk.Multivendor
         /// <summary>
         /// 
         /// </summary>
-        public SharpVk.Khronos.CompositeAlphaFlags? SupportedCompositeAlpha
+        public SharpVk.Khronos.CompositeAlphaFlags SupportedCompositeAlpha
         {
             get;
             set;
@@ -117,7 +117,7 @@ namespace SharpVk.Multivendor
         /// <summary>
         /// 
         /// </summary>
-        public SharpVk.ImageUsageFlags? SupportedUsageFlags
+        public SharpVk.ImageUsageFlags SupportedUsageFlags
         {
             get;
             set;

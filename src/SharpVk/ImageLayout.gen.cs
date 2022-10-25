@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -142,6 +142,16 @@ namespace SharpVk
         StencilReadOnlyOptimalVersion = 1000241003, 
         
         /// <summary>
+        /// 
+        /// </summary>
+        ReadOnlyOptimalVersion = 1000314000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        AttachmentOptimalVersion = 1000314001, 
+        
+        /// <summary>
         /// Must only be used for presenting a presentable image for display. A
         /// swapchain's image must be transitioned to this layout before
         /// calling flink:vkQueuePresentKHR, and must be transitioned away from
@@ -152,16 +162,51 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        VideoDecodeDestination = 1000024000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        VideoDecodeSource = 1000024001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        VideoDecodeDpb = 1000024002, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         SharedPresent = 1000111000, 
         
         /// <summary>
         /// 
         /// </summary>
-        ShadingRateOptimal = 1000164003, 
+        FragmentDensityMapOptimal = 1000218000, 
         
         /// <summary>
         /// 
         /// </summary>
-        FragmentDensityMapOptimal = 1000218000, 
+        FragmentShadingRateAttachmentOptimal = 1000164003, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        VideoEncodeDestination = 1000299000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        VideoEncodeSource = 1000299001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        VideoEncodeDpb = 1000299002, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        AttachmentFeedbackLoopOptimal = 1000339000, 
     }
 }

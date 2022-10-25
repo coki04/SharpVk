@@ -75,6 +75,7 @@
 
     public enum LenOperatorType
     {
+        Multiply,
         Divide,
         Ceiling,
         Remainder

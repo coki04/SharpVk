@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -72,7 +72,7 @@ namespace SharpVk.Khronos
         internal static unsafe DisplayPlaneInfo2 MarshalFrom(SharpVk.Interop.Khronos.DisplayPlaneInfo2* pointer)
         {
             DisplayPlaneInfo2 result = default(DisplayPlaneInfo2);
-            result.Mode = new SharpVk.Khronos.DisplayMode(default(SharpVk.PhysicalDevice), pointer->Mode);
+            result.Mode = new SharpVk.Khronos.DisplayMode(default(SharpVk.Khronos.Display), pointer->Mode);
             result.PlaneIndex = pointer->PlaneIndex;
             return result;
         }

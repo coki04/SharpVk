@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -88,5 +88,60 @@ namespace SharpVk
         /// 
         /// </summary>
         BroadcomProprietary = 12, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        MesaLlvmpipe = 13, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Moltenvk = 14, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        CoreaviProprietary = 15, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        JuiceProprietary = 16, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        VerisiliconProprietary = 17, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        MesaTurnip = 18, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        MesaV3 = 19, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        MesaPanvk = 20, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        SamsungProprietary = 21, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        MesaVenus = 22, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        MesaDozen = 23, 
     }
 }

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -36,7 +36,7 @@ namespace SharpVk.Multivendor
         /// <summary>
         /// 
         /// </summary>
-        public SharpVk.SampleCountFlags? SampleLocationsPerPixel
+        public SharpVk.SampleCountFlags SampleLocationsPerPixel
         {
             get;
             set;
@@ -69,14 +69,7 @@ namespace SharpVk.Multivendor
         {
             pointer->SType = StructureType.SampleLocationsInfo;
             pointer->Next = null;
-            if (this.SampleLocationsPerPixel != null)
-            {
-                pointer->SampleLocationsPerPixel = this.SampleLocationsPerPixel.Value;
-            }
-            else
-            {
-                pointer->SampleLocationsPerPixel = default(SharpVk.SampleCountFlags);
-            }
+            pointer->SampleLocationsPerPixel = this.SampleLocationsPerPixel;
             pointer->SampleLocationGridSize = this.SampleLocationGridSize;
             pointer->SampleLocationsCount = (uint)(Interop.HeapUtil.GetLength(this.SampleLocations));
             if (this.SampleLocations != null)

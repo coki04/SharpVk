@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -165,6 +165,86 @@ namespace SharpVk.NVidia
                     for(int index = 0; index < (uint)(marshalledCombinationCount); index++)
                     {
                         fieldPointer[index] = SharpVk.NVidia.FramebufferMixedSamplesCombination.MarshalFrom(&marshalledCombinations[index]);
+                    }
+                    result = fieldPointer;
+                }
+                else
+                {
+                    result = null;
+                }
+                return result;
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The PhysicalDevice handle to extend.
+        /// </param>
+        /// <param name="deviceRelativeId">
+        /// </param>
+        public static unsafe SharpVk.Khronos.Display GetWinrtDisplay(this SharpVk.PhysicalDevice extendedHandle, uint deviceRelativeId)
+        {
+            try
+            {
+                SharpVk.Khronos.Display result = default(SharpVk.Khronos.Display);
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.Khronos.Display marshalledDisplay = default(SharpVk.Interop.Khronos.Display);
+                commandCache = extendedHandle.commandCache;
+                SharpVk.Interop.NVidia.VkPhysicalDeviceGetWinrtDisplayDelegate commandDelegate = commandCache.Cache.vkGetWinrtDisplayNV;
+                Result methodResult = commandDelegate(extendedHandle.handle, deviceRelativeId, &marshalledDisplay);
+                if (SharpVkException.IsError(methodResult))
+                {
+                    throw SharpVkException.Create(methodResult);
+                }
+                result = new SharpVk.Khronos.Display(extendedHandle, marshalledDisplay);
+                return result;
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The PhysicalDevice handle to extend.
+        /// </param>
+        /// <param name="opticalFlowImageFormatInfo">
+        /// </param>
+        public static unsafe SharpVk.NVidia.OpticalFlowImageFormatProperties[] GetOpticalFlowImageFormats(this SharpVk.PhysicalDevice extendedHandle, SharpVk.NVidia.OpticalFlowImageFormatInfo opticalFlowImageFormatInfo)
+        {
+            try
+            {
+                SharpVk.NVidia.OpticalFlowImageFormatProperties[] result = default(SharpVk.NVidia.OpticalFlowImageFormatProperties[]);
+                uint marshalledFormatCount = default(uint);
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.NVidia.OpticalFlowImageFormatInfo* marshalledOpticalFlowImageFormatInfo = default(SharpVk.Interop.NVidia.OpticalFlowImageFormatInfo*);
+                SharpVk.Interop.NVidia.OpticalFlowImageFormatProperties* marshalledImageFormatProperties = default(SharpVk.Interop.NVidia.OpticalFlowImageFormatProperties*);
+                commandCache = extendedHandle.commandCache;
+                marshalledOpticalFlowImageFormatInfo = (SharpVk.Interop.NVidia.OpticalFlowImageFormatInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.NVidia.OpticalFlowImageFormatInfo>());
+                opticalFlowImageFormatInfo.MarshalTo(marshalledOpticalFlowImageFormatInfo);
+                SharpVk.Interop.NVidia.VkPhysicalDeviceGetOpticalFlowImageFormatsDelegate commandDelegate = commandCache.Cache.vkGetPhysicalDeviceOpticalFlowImageFormatsNV;
+                Result methodResult = commandDelegate(extendedHandle.handle, marshalledOpticalFlowImageFormatInfo, &marshalledFormatCount, marshalledImageFormatProperties);
+                if (SharpVkException.IsError(methodResult))
+                {
+                    throw SharpVkException.Create(methodResult);
+                }
+                marshalledImageFormatProperties = (SharpVk.Interop.NVidia.OpticalFlowImageFormatProperties*)(Interop.HeapUtil.Allocate<SharpVk.Interop.NVidia.OpticalFlowImageFormatProperties>((uint)(marshalledFormatCount)));
+                commandDelegate(extendedHandle.handle, marshalledOpticalFlowImageFormatInfo, &marshalledFormatCount, marshalledImageFormatProperties);
+                if (marshalledImageFormatProperties != null)
+                {
+                    var fieldPointer = new SharpVk.NVidia.OpticalFlowImageFormatProperties[(uint)(marshalledFormatCount)];
+                    for(int index = 0; index < (uint)(marshalledFormatCount); index++)
+                    {
+                        fieldPointer[index] = SharpVk.NVidia.OpticalFlowImageFormatProperties.MarshalFrom(&marshalledImageFormatProperties[index]);
                     }
                     result = fieldPointer;
                 }

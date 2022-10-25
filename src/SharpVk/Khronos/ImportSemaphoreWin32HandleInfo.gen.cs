@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -54,7 +54,7 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public SharpVk.ExternalSemaphoreHandleTypeFlags? HandleType
+        public SharpVk.ExternalSemaphoreHandleTypeFlags HandleType
         {
             get;
             set;
@@ -96,14 +96,7 @@ namespace SharpVk.Khronos
             {
                 pointer->Flags = default(SharpVk.SemaphoreImportFlags);
             }
-            if (this.HandleType != null)
-            {
-                pointer->HandleType = this.HandleType.Value;
-            }
-            else
-            {
-                pointer->HandleType = default(SharpVk.ExternalSemaphoreHandleTypeFlags);
-            }
+            pointer->HandleType = this.HandleType;
             if (this.Handle != null)
             {
                 pointer->Handle = this.Handle.Value;

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -499,74 +499,6 @@ namespace SharpVk
         {
             get;
             set;
-        }
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="pointer">
-        /// </param>
-        internal unsafe void MarshalTo(SharpVk.Interop.PhysicalDeviceVulkan12Properties* pointer)
-        {
-            pointer->SType = StructureType.PhysicalDeviceVulkan12Properties;
-            pointer->Next = null;
-            pointer->DriverID = this.DriverID;
-            pointer->ConformanceVersion = this.ConformanceVersion;
-            pointer->DenormBehaviorIndependence = this.DenormBehaviorIndependence;
-            pointer->RoundingModeIndependence = this.RoundingModeIndependence;
-            pointer->ShaderSignedZeroInfNanPreserveFloat16 = this.ShaderSignedZeroInfNanPreserveFloat16;
-            pointer->ShaderSignedZeroInfNanPreserveFloat32 = this.ShaderSignedZeroInfNanPreserveFloat32;
-            pointer->ShaderSignedZeroInfNanPreserveFloat64 = this.ShaderSignedZeroInfNanPreserveFloat64;
-            pointer->ShaderDenormPreserveFloat16 = this.ShaderDenormPreserveFloat16;
-            pointer->ShaderDenormPreserveFloat32 = this.ShaderDenormPreserveFloat32;
-            pointer->ShaderDenormPreserveFloat64 = this.ShaderDenormPreserveFloat64;
-            pointer->ShaderDenormFlushToZeroFloat16 = this.ShaderDenormFlushToZeroFloat16;
-            pointer->ShaderDenormFlushToZeroFloat32 = this.ShaderDenormFlushToZeroFloat32;
-            pointer->ShaderDenormFlushToZeroFloat64 = this.ShaderDenormFlushToZeroFloat64;
-            pointer->ShaderRoundingModeRTEFloat16 = this.ShaderRoundingModeRTEFloat16;
-            pointer->ShaderRoundingModeRTEFloat32 = this.ShaderRoundingModeRTEFloat32;
-            pointer->ShaderRoundingModeRTEFloat64 = this.ShaderRoundingModeRTEFloat64;
-            pointer->ShaderRoundingModeRTZFloat16 = this.ShaderRoundingModeRTZFloat16;
-            pointer->ShaderRoundingModeRTZFloat32 = this.ShaderRoundingModeRTZFloat32;
-            pointer->ShaderRoundingModeRTZFloat64 = this.ShaderRoundingModeRTZFloat64;
-            pointer->MaxUpdateAfterBindDescriptorsInAllPools = this.MaxUpdateAfterBindDescriptorsInAllPools;
-            pointer->ShaderUniformBufferArrayNonUniformIndexingNative = this.ShaderUniformBufferArrayNonUniformIndexingNative;
-            pointer->ShaderSampledImageArrayNonUniformIndexingNative = this.ShaderSampledImageArrayNonUniformIndexingNative;
-            pointer->ShaderStorageBufferArrayNonUniformIndexingNative = this.ShaderStorageBufferArrayNonUniformIndexingNative;
-            pointer->ShaderStorageImageArrayNonUniformIndexingNative = this.ShaderStorageImageArrayNonUniformIndexingNative;
-            pointer->ShaderInputAttachmentArrayNonUniformIndexingNative = this.ShaderInputAttachmentArrayNonUniformIndexingNative;
-            pointer->RobustBufferAccessUpdateAfterBind = this.RobustBufferAccessUpdateAfterBind;
-            pointer->QuadDivergentImplicitLod = this.QuadDivergentImplicitLod;
-            pointer->MaxPerStageDescriptorUpdateAfterBindSamplers = this.MaxPerStageDescriptorUpdateAfterBindSamplers;
-            pointer->MaxPerStageDescriptorUpdateAfterBindUniformBuffers = this.MaxPerStageDescriptorUpdateAfterBindUniformBuffers;
-            pointer->MaxPerStageDescriptorUpdateAfterBindStorageBuffers = this.MaxPerStageDescriptorUpdateAfterBindStorageBuffers;
-            pointer->MaxPerStageDescriptorUpdateAfterBindSampledImages = this.MaxPerStageDescriptorUpdateAfterBindSampledImages;
-            pointer->MaxPerStageDescriptorUpdateAfterBindStorageImages = this.MaxPerStageDescriptorUpdateAfterBindStorageImages;
-            pointer->MaxPerStageDescriptorUpdateAfterBindInputAttachments = this.MaxPerStageDescriptorUpdateAfterBindInputAttachments;
-            pointer->MaxPerStageUpdateAfterBindResources = this.MaxPerStageUpdateAfterBindResources;
-            pointer->MaxDescriptorSetUpdateAfterBindSamplers = this.MaxDescriptorSetUpdateAfterBindSamplers;
-            pointer->MaxDescriptorSetUpdateAfterBindUniformBuffers = this.MaxDescriptorSetUpdateAfterBindUniformBuffers;
-            pointer->MaxDescriptorSetUpdateAfterBindUniformBuffersDynamic = this.MaxDescriptorSetUpdateAfterBindUniformBuffersDynamic;
-            pointer->MaxDescriptorSetUpdateAfterBindStorageBuffers = this.MaxDescriptorSetUpdateAfterBindStorageBuffers;
-            pointer->MaxDescriptorSetUpdateAfterBindStorageBuffersDynamic = this.MaxDescriptorSetUpdateAfterBindStorageBuffersDynamic;
-            pointer->MaxDescriptorSetUpdateAfterBindSampledImages = this.MaxDescriptorSetUpdateAfterBindSampledImages;
-            pointer->MaxDescriptorSetUpdateAfterBindStorageImages = this.MaxDescriptorSetUpdateAfterBindStorageImages;
-            pointer->MaxDescriptorSetUpdateAfterBindInputAttachments = this.MaxDescriptorSetUpdateAfterBindInputAttachments;
-            pointer->SupportedDepthResolveModes = this.SupportedDepthResolveModes;
-            pointer->SupportedStencilResolveModes = this.SupportedStencilResolveModes;
-            pointer->IndependentResolveNone = this.IndependentResolveNone;
-            pointer->IndependentResolve = this.IndependentResolve;
-            pointer->FilterMinmaxSingleComponentFormats = this.FilterMinmaxSingleComponentFormats;
-            pointer->FilterMinmaxImageComponentMapping = this.FilterMinmaxImageComponentMapping;
-            pointer->MaxTimelineSemaphoreValueDifference = this.MaxTimelineSemaphoreValueDifference;
-            if (this.FramebufferIntegerColorSampleCounts != null)
-            {
-                pointer->FramebufferIntegerColorSampleCounts = this.FramebufferIntegerColorSampleCounts.Value;
-            }
-            else
-            {
-                pointer->FramebufferIntegerColorSampleCounts = default(SharpVk.SampleCountFlags);
-            }
         }
         
         /// <summary>

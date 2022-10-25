@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -51,14 +51,23 @@ namespace SharpVk.Amd
         /// <param name="marker">
         /// The 32-bit value of the marker.
         /// </param>
-        public static unsafe void WriteBufferMarker(this SharpVk.CommandBuffer extendedHandle, SharpVk.PipelineStageFlags pipelineStage, SharpVk.Buffer destinationBuffer, ulong destinationOffset, uint marker)
+        public static unsafe void WriteBufferMarker(this SharpVk.CommandBuffer extendedHandle, SharpVk.Buffer destinationBuffer, ulong destinationOffset, uint marker, SharpVk.PipelineStageFlags? pipelineStage = default(SharpVk.PipelineStageFlags?))
         {
             try
             {
                 CommandCache commandCache = default(CommandCache);
+                SharpVk.PipelineStageFlags marshalledPipelineStage = default(SharpVk.PipelineStageFlags);
                 commandCache = extendedHandle.commandCache;
+                if (pipelineStage != null)
+                {
+                    marshalledPipelineStage = pipelineStage.Value;
+                }
+                else
+                {
+                    marshalledPipelineStage = default(SharpVk.PipelineStageFlags);
+                }
                 SharpVk.Interop.Amd.VkCommandBufferWriteBufferMarkerDelegate commandDelegate = commandCache.Cache.vkCmdWriteBufferMarkerAMD;
-                commandDelegate(extendedHandle.handle, pipelineStage, destinationBuffer?.handle ?? default(SharpVk.Interop.Buffer), destinationOffset, marker);
+                commandDelegate(extendedHandle.handle, marshalledPipelineStage, destinationBuffer?.handle ?? default(SharpVk.Interop.Buffer), destinationOffset, marker);
             }
             finally
             {

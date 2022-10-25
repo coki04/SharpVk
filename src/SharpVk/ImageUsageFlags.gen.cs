@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -94,37 +94,17 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        Reserved13 = 1 << 13, 
+        VideoDecodeDestination = 1 << 10, 
         
         /// <summary>
         /// 
         /// </summary>
-        Reserved14 = 1 << 14, 
+        VideoDecodeSource = 1 << 11, 
         
         /// <summary>
         /// 
         /// </summary>
-        Reserved15 = 1 << 15, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        Reserved10 = 1 << 10, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        Reserved11 = 1 << 11, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        Reserved12 = 1 << 12, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        ShadingRateImage = 1 << 8, 
+        VideoDecodeDpb = 1 << 12, 
         
         /// <summary>
         /// 
@@ -140,5 +120,50 @@ namespace SharpVk
         /// 
         /// </summary>
         FragmentDensityMap = 1 << 9, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        FragmentShadingRateAttachment = 1 << 8, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved22 = 1 << 22, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        VideoEncodeDestination = 1 << 13, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        VideoEncodeSource = 1 << 14, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        VideoEncodeDpb = 1 << 15, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        AttachmentFeedbackLoop = 1 << 19, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        InvocationMask = 1 << 18, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        SampleWeight = 1 << 20, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        SampleBlockMatch = 1 << 21, 
     }
 }

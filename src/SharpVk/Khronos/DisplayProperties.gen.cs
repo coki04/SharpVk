@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -109,7 +109,7 @@ namespace SharpVk.Khronos
         internal static unsafe DisplayProperties MarshalFrom(SharpVk.Interop.Khronos.DisplayProperties* pointer)
         {
             DisplayProperties result = default(DisplayProperties);
-            result.Display = new SharpVk.Khronos.Display(pointer->Display);
+            result.Display = new SharpVk.Khronos.Display(default(SharpVk.PhysicalDevice), pointer->Display);
             result.DisplayName = Interop.HeapUtil.MarshalStringFrom(pointer->DisplayName);
             result.PhysicalDimensions = pointer->PhysicalDimensions;
             result.PhysicalResolution = pointer->PhysicalResolution;

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -137,11 +137,6 @@ namespace SharpVk.NVidia
         /// <summary>
         /// 
         /// </summary>
-        public const string FragmentShaderBarycentric = "VK_NV_fragment_shader_barycentric"; 
-        
-        /// <summary>
-        /// 
-        /// </summary>
         public const string ShaderImageFootprint = "VK_NV_shader_image_footprint"; 
         
         /// <summary>
@@ -168,5 +163,55 @@ namespace SharpVk.NVidia
         /// 
         /// </summary>
         public const string CoverageReductionMode = "VK_NV_coverage_reduction_mode"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string DeviceGeneratedCommands = "VK_NV_device_generated_commands"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string InheritedViewportScissor = "VK_NV_inherited_viewport_scissor"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string PresentBarrier = "VK_NV_present_barrier"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string DeviceDiagnosticsConfig = "VK_NV_device_diagnostics_config"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string FragmentShadingRateEnums = "VK_NV_fragment_shading_rate_enums"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string RayTracingMotionBlur = "VK_NV_ray_tracing_motion_blur"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string AcquireWinrtDisplay = "VK_NV_acquire_winrt_display"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string ExternalMemoryRdma = "VK_NV_external_memory_rdma"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string LinearColorAttachment = "VK_NV_linear_color_attachment"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string OpticalFlow = "VK_NV_optical_flow"; 
     }
 }

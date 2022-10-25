@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -35,9 +35,9 @@ namespace SharpVk.Khronos
         
         internal readonly CommandCache commandCache; 
         
-        internal readonly SharpVk.PhysicalDevice parent; 
+        internal readonly SharpVk.Khronos.Display parent; 
         
-        internal DisplayMode(SharpVk.PhysicalDevice parent, SharpVk.Interop.Khronos.DisplayMode handle)
+        internal DisplayMode(SharpVk.Khronos.Display parent, SharpVk.Interop.Khronos.DisplayMode handle)
         {
             this.handle = handle;
             this.parent = parent;
@@ -61,7 +61,7 @@ namespace SharpVk.Khronos
                 SharpVk.Khronos.DisplayPlaneCapabilities result = default(SharpVk.Khronos.DisplayPlaneCapabilities);
                 SharpVk.Khronos.DisplayPlaneCapabilities marshalledCapabilities = default(SharpVk.Khronos.DisplayPlaneCapabilities);
                 SharpVk.Interop.Khronos.VkDisplayModeKHRGetDisplayPlaneCapabilitiesDelegate commandDelegate = commandCache.Cache.vkGetDisplayPlaneCapabilitiesKHR;
-                Result methodResult = commandDelegate(this.parent.handle, this.handle, planeIndex, &marshalledCapabilities);
+                Result methodResult = commandDelegate(default(PhysicalDevice).handle, this.handle, planeIndex, &marshalledCapabilities);
                 if (SharpVkException.IsError(methodResult))
                 {
                     throw SharpVkException.Create(methodResult);

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -36,7 +36,7 @@ namespace SharpVk.NVidia
         /// <summary>
         /// 
         /// </summary>
-        public SharpVk.NVidia.RayTracingShaderGroupType Type
+        public SharpVk.Khronos.RayTracingShaderGroupType Type
         {
             get;
             set;
@@ -85,7 +85,7 @@ namespace SharpVk.NVidia
         /// </param>
         internal unsafe void MarshalTo(SharpVk.Interop.NVidia.RayTracingShaderGroupCreateInfo* pointer)
         {
-            pointer->SType = StructureType.RayTracingShaderGroupCreateInfo;
+            pointer->SType = StructureType.RayTracingShaderGroupCreateInfoNv;
             pointer->Next = null;
             pointer->Type = this.Type;
             pointer->GeneralShader = this.GeneralShader;

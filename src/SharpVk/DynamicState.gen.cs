@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -119,6 +119,81 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        CullModeVersion = 1000267000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        FrontFaceVersion = 1000267001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PrimitiveTopologyVersion = 1000267002, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ViewportWithCountVersion = 1000267003, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ScissorWithCountVersion = 1000267004, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        VertexInputBindingStrideVersion = 1000267005, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DepthTestEnableVersion = 1000267006, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DepthWriteEnableVersion = 1000267007, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DepthCompareOpVersion = 1000267008, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DepthBoundsTestEnableVersion = 1000267009, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        StencilTestEnableVersion = 1000267010, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        StencilOpVersion = 1000267011, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        RasterizerDiscardEnableVersion = 1000377001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DepthBiasEnableVersion = 1000377002, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PrimitiveRestartEnableVersion = 1000377004, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         ViewportWScaling = 1000087000, 
         
         /// <summary>
@@ -130,6 +205,11 @@ namespace SharpVk
         /// 
         /// </summary>
         SampleLocations = 1000143000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        RayTracingPipelineStackSize = 1000347000, 
         
         /// <summary>
         /// 
@@ -149,6 +229,186 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        FragmentShadingRate = 1000226000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         LineStipple = 1000259000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        VertexInput = 1000352000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PatchControlPoints = 1000377000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        LogicOp = 1000377003, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ColorWriteEnable = 1000381000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        TessellationDomainOrigin = 1000455002, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DepthClampEnable = 1000455003, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PolygonMode = 1000455004, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        RasterizationSamples = 1000455005, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        SampleMask = 1000455006, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        AlphaToCoverageEnable = 1000455007, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        AlphaToOneEnable = 1000455008, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        LogicOpEnable = 1000455009, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ColorBlendEnable = 1000455010, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ColorBlendEquation = 1000455011, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ColorWriteMask = 1000455012, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        RasterizationStream = 1000455013, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ConservativeRasterizationMode = 1000455014, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ExtraPrimitiveOverestimationSize = 1000455015, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DepthClipEnable = 1000455016, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        SampleLocationsEnable = 1000455017, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ColorBlendAdvanced = 1000455018, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ProvokingVertexMode = 1000455019, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        LineRasterizationMode = 1000455020, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        LineStippleEnable = 1000455021, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DepthClipNegativeOneToOne = 1000455022, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ViewportWScalingEnable = 1000455023, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ViewportSwizzle = 1000455024, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        CoverageToColorEnable = 1000455025, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        CoverageToColorLocation = 1000455026, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        CoverageModulationMode = 1000455027, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        CoverageModulationTableEnable = 1000455028, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        CoverageModulationTable = 1000455029, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ShadingRateImageEnable = 1000455030, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        RepresentativeFragmentTestEnable = 1000455031, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        CoverageReductionMode = 1000455032, 
     }
 }

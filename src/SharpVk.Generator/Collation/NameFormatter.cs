@@ -1,4 +1,5 @@
 ﻿using SharpVk.Generator.Specification.Elements;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +21,9 @@ namespace SharpVk.Generator.Collation
             {"VkDeviceAddress", "ulong"},
             {"int", "int"},
             {"DWORD", "uint"},
+            {"int8_t", "sbyte"},
             {"int32_t", "int"},
+            {"int64_t", "long"},
             {"size_t", "HostSize"},
             {"HINSTANCE", "IntPtr" },
             {"HMONITOR", "IntPtr" },
@@ -44,7 +47,41 @@ namespace SharpVk.Generator.Collation
             {"LPCWSTR", "IntPtr" },
             {"zx_handle_t", "uint" },
             {"GgpStreamDescriptor", "uint" },
-            {"GgpFrameToken", "uint" }
+            {"GgpFrameToken", "uint" },
+            {"_screen_context", "IntPtr" },
+            {"_screen_window", "IntPtr" },
+            {"MTLBuffer_id", "IntPtr" },
+            {"MTLCommandQueue_id", "IntPtr" },
+            {"MTLDevice_id", "IntPtr" },
+            {"MTLSharedEvent_id", "IntPtr" },
+            {"MTLTexture_id", "IntPtr" },
+            {"IOSurfaceRef", "IntPtr" },
+            {"StdVideoDecodeH264PictureInfo", "IntPtr" },
+            {"StdVideoDecodeH264ReferenceInfo", "IntPtr" },
+            {"StdVideoH264SequenceParameterSet", "IntPtr" },
+            {"StdVideoH264PictureParameterSet", "IntPtr" },
+            {"StdVideoH264ProfileIdc", "int" },
+            {"StdVideoH264LevelIdc", "int" },
+            {"StdVideoEncodeH264SliceHeader", "IntPtr" },
+            {"StdVideoEncodeH264RefMemMgmtCtrlOperations", "IntPtr" },
+            {"StdVideoEncodeH264ReferenceInfo", "IntPtr" },
+            {"StdVideoEncodeH264PictureInfo", "IntPtr" },
+            {"StdVideoH265VideoParameterSet", "IntPtr" },
+            {"StdVideoH265SequenceParameterSet", "IntPtr" },
+            {"StdVideoEncodeH265SliceSegmentHeader", "IntPtr" },
+            {"StdVideoEncodeH265ReferenceModifications", "IntPtr" },
+            {"StdVideoEncodeH265ReferenceInfo", "IntPtr" },
+            {"StdVideoEncodeH265PictureInfo", "IntPtr" },
+            {"StdVideoDecodeH265ReferenceInfo", "IntPtr" },
+            {"StdVideoDecodeH265PictureInfo", "IntPtr" },
+            {"StdVideoH265ProfileIdc", "int" },
+            {"StdVideoH265PictureParameterSet", "IntPtr" },
+            {"StdVideoH265LevelIdc", "int" },
+            {"IDirectFB", "IntPtr" },
+            {"IDirectFBSurface", "IntPtr" },
+            {"VkDeviceOrHostAddressKHR", "IntPtr" },
+            {"VkDeviceOrHostAddressConstKHR", "IntPtr" },
+            {"VkRemoteAddressNV", "IntPtr" },
         };
 
         private static readonly string[] digitsSuffix = new[] { "flags", "flag", "type", "bits", "bit" };
@@ -52,6 +89,11 @@ namespace SharpVk.Generator.Collation
         public string FormatName(EnumElement enumeration)
         {
             return JoinNameParts(enumeration.NameParts);
+        }
+
+        public bool IsPrimitive(TypeElement type)
+        {
+            return primitiveTypes.ContainsKey(type.VkName);
         }
 
         public string FormatName(TypeElement type)

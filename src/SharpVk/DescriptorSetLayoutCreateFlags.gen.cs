@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -44,5 +44,25 @@ namespace SharpVk
         /// 
         /// </summary>
         PushDescriptor = 1 << 0, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved4 = 1 << 4, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved5 = 1 << 5, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved3 = 1 << 3, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        HostOnlyPool = 1 << 2, 
     }
 }

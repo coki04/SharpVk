@@ -4,6 +4,7 @@ using SharpVk.Generator.Rules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using static SharpVk.Emit.ExpressionBuilder;
 
 namespace SharpVk.Generator.Generation.Marshalling
@@ -38,24 +39,31 @@ namespace SharpVk.Generator.Generation.Marshalling
 
                 if (source.Dimensions.Length == 2)
                 {
-                    info.Public.Add(new TypedDefinition
+                    if (source.Dimensions[1].Type == LenType.NullTerminated)
                     {
-                        Name = source.Name,
-                        Type = "ArrayProxy<string>" + (context.IsMethod ? "?" : ""),
-                        DefaultValue = source.IsOptional ? Null : null,
-                        Comment = this.commentGenerator.Lookup(context.VkName, source.VkName)
-                    });
-
-                    info.MarshalTo.Add((getTarget, getValue) =>
-                    {
-                        return new AssignAction
+                        info.Public.Add(new TypedDefinition
                         {
-                            ValueExpression = StaticCall("Interop.HeapUtil", "MarshalTo", getValue(source.Name)),
-                            TargetExpression = getTarget(source.Name),
-                            MemberType = this.nameLookup.Lookup(source.Type, false),
-                            Type = AssignActionType.Assign
-                        };
-                    });
+                            Name = source.Name,
+                            Type = "ArrayProxy<string>" + (context.IsMethod ? "?" : ""),
+                            DefaultValue = source.IsOptional ? Null : null,
+                            Comment = this.commentGenerator.Lookup(context.VkName, source.VkName)
+                        });
+
+                        info.MarshalTo.Add((getTarget, getValue) =>
+                        {
+                            return new AssignAction
+                            {
+                                ValueExpression = StaticCall("Interop.HeapUtil", "MarshalTo", getValue(source.Name)),
+                                TargetExpression = getTarget(source.Name),
+                                MemberType = this.nameLookup.Lookup(source.Type, false),
+                                Type = AssignActionType.Assign
+                            };
+                        });
+                    }
+                    else
+                    {
+                        //TODO: Coki04, Manage double pointer marshalling
+                    }
                 }
                 else if (source.Dimensions.Length == 1)
                 {
@@ -89,186 +97,200 @@ namespace SharpVk.Generator.Generation.Marshalling
 
                             break;
                         case LenType.Expression:
-                            var elementType = source.Type.Deref();
-                            bool isDoubleMarshalled = false;
-                            string semiMarshalledName = "semiMarshalled" + source.Name.FirstToUpper();
-                            string semiMarshalType = this.nameLookup.Lookup(elementType, true);
-
-                            if (elementType.PointerType.IsPointer())
+                            if (source.Type.PointerType == PointerType.DoublePointer || source.Type.PointerType == PointerType.DoubleConstPointer &&
+                                typeName == "void**")
                             {
-                                info.MarshalTo.Add((getTarget, getValue) => new DeclarationAction
-                                {
-                                    MemberType = semiMarshalType,
-                                    MemberName = semiMarshalledName
-                                });
-
-                                isDoubleMarshalled = true;
-                                elementType = elementType.Deref();
-                            }
-
-                            if (elementType.VkName == "void")
-                            {
-                                elementType.VkName = "uint8_t";
-                            }
-
-                            var marshalling = this.marshallingRules.ApplyFirst(elementType);
-
-                            info.Interop.Type = marshalling.InteropType + "*";
-                            info.InteropFullType = marshalling.InteropType;
-
-                            if (source.Type.PointerType.IsPointer())
-                            {
-                                info.InteropFullType += new string('*', source.Type.PointerType.GetPointerCount());
-                            }
-
-                            info.Interop = new TypedDefinition
-                            {
-                                Name = source.Name,
-                                Type = info.InteropFullType
-                            };
-
-                            string arrayType = $"{marshalling.MemberType}[]";
-
-                            if (context.IsMethod)
-                            {
+                                //TODO: Coki04, Manage void** marshalling
                                 info.Public.Add(new TypedDefinition
                                 {
                                     Name = source.Name,
-                                    Type = $"ArrayProxy<{marshalling.MemberType}>?",
-                                    Comment = new[] { "" }.ToList(),
-                                    DefaultValue = source.IsOptional ? Null : null
+                                    Comment = this.commentGenerator.Lookup(context.VkName, source.VkName),
+                                    Type = "IntPtr[]"
                                 });
+                            }
+                            else
+                            {
+                                var elementType = source.Type.Deref();
+                                bool isDoubleMarshalled = false;
+                                string semiMarshalledName = "semiMarshalled" + source.Name.FirstToUpper();
+                                string semiMarshalType = this.nameLookup.Lookup(elementType, true);
 
-                                info.ReturnType = arrayType;
-
-                                info.MarshalTo.Add((getTarget, getValue) =>
+                                if (elementType.PointerType.IsPointer())
                                 {
-                                    var proxyValue = Member(getValue(source.Name), "Value");
-
-                                    var isNullOptional = new OptionalAction
+                                    info.MarshalTo.Add((getTarget, getValue) => new DeclarationAction
                                     {
-                                        CheckExpression = Call(getValue(source.Name), "IsNull")
-                                    };
+                                        MemberType = semiMarshalType,
+                                        MemberName = semiMarshalledName
+                                    });
 
-                                    var isSingleOptional = new OptionalAction
+                                    isDoubleMarshalled = true;
+                                    elementType = elementType.Deref();
+                                }
+
+                                if (elementType.VkName == "void")
+                                {
+                                    elementType.VkName = "uint8_t";
+                                }
+
+                                var marshalling = this.marshallingRules.ApplyFirst(elementType);
+
+                                info.Interop.Type = marshalling.InteropType + "*";
+                                info.InteropFullType = marshalling.InteropType;
+
+                                if (source.Type.PointerType.IsPointer())
+                                {
+                                    info.InteropFullType += new string('*', source.Type.PointerType.GetPointerCount());
+                                }
+
+                                info.Interop = new TypedDefinition
+                                {
+                                    Name = source.Name,
+                                    Type = info.InteropFullType
+                                };
+
+                                string arrayType = $"{marshalling.MemberType}[]";
+
+                                if (context.IsMethod)
+                                {
+                                    info.Public.Add(new TypedDefinition
                                     {
-                                        CheckExpression = IsEqual(Member(proxyValue, "Contents"), EnumField("ProxyContents", "Single"))
-                                    };
+                                        Name = source.Name,
+                                        Type = $"ArrayProxy<{marshalling.MemberType}>?",
+                                        Comment = new[] { "" }.ToList(),
+                                        DefaultValue = source.IsOptional ? Null : null
+                                    });
 
-                                    var loopAssign = new AssignAction
+                                    info.ReturnType = arrayType;
+
+                                    info.MarshalTo.Add((getTarget, getValue) =>
+                                    {
+                                        var proxyValue = Member(getValue(source.Name), "Value");
+
+                                        var isNullOptional = new OptionalAction
+                                        {
+                                            CheckExpression = Call(getValue(source.Name), "IsNull")
+                                        };
+
+                                        var isSingleOptional = new OptionalAction
+                                        {
+                                            CheckExpression = IsEqual(Member(proxyValue, "Contents"), EnumField("ProxyContents", "Single"))
+                                        };
+
+                                        var loopAssign = new AssignAction
+                                        {
+                                            TargetExpression = isDoubleMarshalled ? Variable(semiMarshalledName) : getTarget(source.Name),
+                                            MemberType = marshalling.InteropType,
+                                            IsLoop = true,
+                                            IndexName = "index",
+                                            Type = marshalling.MarshalToActionType,
+                                            LengthExpression = StaticCall("Interop.HeapUtil", "GetLength", proxyValue),
+                                            ValueExpression = marshalling.BuildMarshalToValueExpression(Index(proxyValue, Variable("index")), context.GetHandle)
+                                        };
+
+                                        isSingleOptional.Actions.Add(new AssignAction
+                                        {
+                                            Type = AssignActionType.Alloc,
+                                            TargetExpression = isDoubleMarshalled ? Variable(semiMarshalledName) : getTarget(source.Name),
+                                            MemberType = marshalling.InteropType
+                                        });
+
+                                        isSingleOptional.Actions.Add(new AssignAction
+                                        {
+                                            Type = marshalling.MarshalToActionType,
+                                            MemberType = marshalling.InteropType,
+                                            ValueExpression = marshalling.BuildMarshalToValueExpression(Call(proxyValue, "GetSingleValue"), context.GetHandle),
+                                            TargetExpression = Deref(Cast(marshalling.InteropType + "*", isDoubleMarshalled ? Variable(semiMarshalledName) : getTarget(source.Name)))
+                                        });
+
+                                        isSingleOptional.ElseActions.Add(loopAssign);
+
+                                        if (isDoubleMarshalled)
+                                        {
+                                            isSingleOptional.ElseActions.Add(new AssignAction
+                                            {
+                                                TargetExpression = getTarget(source.Name),
+                                                MemberType = semiMarshalType,
+                                                IsLoop = true,
+                                                IndexName = "index",
+                                                Type = AssignActionType.Assign,
+                                                LengthExpression = StaticCall("Interop.HeapUtil", "GetLength", proxyValue),
+                                                ValueExpression = AddressOf(Index(Variable(semiMarshalledName), Variable("index"))),
+                                                FieldPointerName = "marshalledFieldPointer"
+                                            });
+                                        }
+
+                                        isNullOptional.Actions.Add(new AssignAction
+                                        {
+                                            TargetExpression = getTarget(source.Name),
+                                            ValueExpression = Null
+                                        });
+
+                                        isNullOptional.ElseActions.Add(isSingleOptional);
+
+                                        return isNullOptional;
+                                    });
+                                }
+                                else
+                                {
+                                    info.Public.Add(new TypedDefinition
+                                    {
+                                        Name = source.Name,
+                                        Comment = this.commentGenerator.Lookup(context.VkName, source.VkName),
+                                        Type = arrayType
+                                    });
+
+                                    info.MarshalTo.Add((getTarget, getValue) => new AssignAction
                                     {
                                         TargetExpression = isDoubleMarshalled ? Variable(semiMarshalledName) : getTarget(source.Name),
                                         MemberType = marshalling.InteropType,
                                         IsLoop = true,
                                         IndexName = "index",
                                         Type = marshalling.MarshalToActionType,
-                                        LengthExpression = StaticCall("Interop.HeapUtil", "GetLength", proxyValue),
-                                        ValueExpression = marshalling.BuildMarshalToValueExpression(Index(proxyValue, Variable("index")), context.GetHandle)
-                                    };
-
-                                    isSingleOptional.Actions.Add(new AssignAction
-                                    {
-                                        Type = AssignActionType.Alloc,
-                                        TargetExpression = isDoubleMarshalled ? Variable(semiMarshalledName) : getTarget(source.Name),
-                                        MemberType = marshalling.InteropType
+                                        NullCheckExpression = IsNotEqual(getValue(source.Name), Null),
+                                        LengthExpression = Member(getValue(source.Name), "Length"),
+                                        ValueExpression = marshalling.BuildMarshalToValueExpression(Index(getValue(source.Name), Variable("index")), context.GetHandle)
                                     });
-
-                                    isSingleOptional.Actions.Add(new AssignAction
-                                    {
-                                        Type = marshalling.MarshalToActionType,
-                                        MemberType = marshalling.InteropType,
-                                        ValueExpression = marshalling.BuildMarshalToValueExpression(Call(proxyValue, "GetSingleValue"), context.GetHandle),
-                                        TargetExpression = Deref(Cast(marshalling.InteropType + "*", isDoubleMarshalled ? Variable(semiMarshalledName) : getTarget(source.Name)))
-                                    });
-
-                                    isSingleOptional.ElseActions.Add(loopAssign);
 
                                     if (isDoubleMarshalled)
                                     {
-                                        isSingleOptional.ElseActions.Add(new AssignAction
+                                        info.MarshalTo.Add((getTarget, getValue) => new AssignAction
                                         {
                                             TargetExpression = getTarget(source.Name),
                                             MemberType = semiMarshalType,
                                             IsLoop = true,
                                             IndexName = "index",
                                             Type = AssignActionType.Assign,
-                                            LengthExpression = StaticCall("Interop.HeapUtil", "GetLength", proxyValue),
-                                            ValueExpression = AddressOf(Index(Variable(semiMarshalledName), Variable("index"))),
-                                            FieldPointerName = "marshalledFieldPointer"
+                                            NullCheckExpression = IsNotEqual(getValue(source.Name), Null),
+                                            LengthExpression = Member(getValue(source.Name), "Length"),
+                                            ValueExpression = AddressOf(Index(Variable(semiMarshalledName), Variable("index")))
                                         });
                                     }
-
-                                    isNullOptional.Actions.Add(new AssignAction
-                                    {
-                                        TargetExpression = getTarget(source.Name),
-                                        ValueExpression = Null
-                                    });
-
-                                    isNullOptional.ElseActions.Add(isSingleOptional);
-
-                                    return isNullOptional;
-                                });
-                            }
-                            else
-                            {
-                                info.Public.Add(new TypedDefinition
-                                {
-                                    Name = source.Name,
-                                    Comment = this.commentGenerator.Lookup(context.VkName, source.VkName),
-                                    Type = arrayType
-                                });
-
-                                info.MarshalTo.Add((getTarget, getValue) => new AssignAction
-                                {
-                                    TargetExpression = isDoubleMarshalled ? Variable(semiMarshalledName) : getTarget(source.Name),
-                                    MemberType = marshalling.InteropType,
-                                    IsLoop = true,
-                                    IndexName = "index",
-                                    Type = marshalling.MarshalToActionType,
-                                    NullCheckExpression = IsNotEqual(getValue(source.Name), Null),
-                                    LengthExpression = Member(getValue(source.Name), "Length"),
-                                    ValueExpression = marshalling.BuildMarshalToValueExpression(Index(getValue(source.Name), Variable("index")), context.GetHandle)
-                                });
-
-                                if (isDoubleMarshalled)
-                                {
-                                    info.MarshalTo.Add((getTarget, getValue) => new AssignAction
-                                    {
-                                        TargetExpression = getTarget(source.Name),
-                                        MemberType = semiMarshalType,
-                                        IsLoop = true,
-                                        IndexName = "index",
-                                        Type = AssignActionType.Assign,
-                                        NullCheckExpression = IsNotEqual(getValue(source.Name), Null),
-                                        LengthExpression = Member(getValue(source.Name), "Length"),
-                                        ValueExpression = AddressOf(Index(Variable(semiMarshalledName), Variable("index")))
-                                    });
                                 }
-                            }
 
-                            Func<Func<string, Action<ExpressionBuilder>>, Action<ExpressionBuilder>> lenValue = null;
+                                Func<Func<string, Action<ExpressionBuilder>>, Action<ExpressionBuilder>> lenValue = null;
 
-                            if (source.Dimensions[0].Value is LenExpressionToken lenToken)
-                            {
-                                lenValue = getValue => getValue(others.Single(x => x.VkName == lenToken.Value).Name);
-                            }
-                            else
-                            {
-                                lenValue = getValue => this.expressionBuilder.Build(source.Dimensions[0].Value, x => others.Single(y => y.VkName == x));
-                            }
+                                if (source.Dimensions[0].Value is LenExpressionToken lenToken)
+                                {
+                                    lenValue = getValue => getValue(others.Single(x => x.VkName == lenToken.Value).Name);
+                                }
+                                else
+                                {
+                                    lenValue = getValue => this.expressionBuilder.Build(source.Dimensions[0].Value, x => others.SingleOrDefault(y => y.VkName == x));
+                                }
 
-                            info.MarshalFrom.Add((getTarget, getValue) => new AssignAction
-                            {
-                                TargetExpression = getTarget(source.Name),
-                                MemberType = marshalling.MemberType,
-                                IsLoop = true,
-                                IsArray = true,
-                                IndexName = "index",
-                                Type = marshalling.MarshalFromActionType,
-                                NullCheckExpression = IsNotEqual(getValue(source.Name), Null),
-                                LengthExpression = lenValue(getValue),
-                                ValueExpression = marshalling.BuildMarshalFromValueExpression(Index(getValue(source.Name), Variable("index")), context.GetHandle)
-                            });
+                                info.MarshalFrom.Add((getTarget, getValue) => new AssignAction
+                                {
+                                    TargetExpression = getTarget(source.Name),
+                                    MemberType = marshalling.MemberType,
+                                    IsLoop = true,
+                                    IsArray = true,
+                                    IndexName = "index",
+                                    Type = marshalling.MarshalFromActionType,
+                                    NullCheckExpression = IsNotEqual(getValue(source.Name), Null),
+                                    LengthExpression = lenValue(getValue),
+                                    ValueExpression = marshalling.BuildMarshalFromValueExpression(Index(getValue(source.Name), Variable("index")), context.GetHandle)
+                                });
+                            }
 
                             break;
                     }

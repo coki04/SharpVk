@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -67,7 +67,7 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        public const float LodClampNone = 1000.0f; 
+        public const float LodClampNone = 1000.0F; 
         
         /// <summary>
         /// 
@@ -107,12 +107,12 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        public const uint QueueFamilyExternal = ~0U-1; 
+        public const uint QueueFamilyExternal = ~1U; 
         
         /// <summary>
         /// 
         /// </summary>
-        public const uint QueueFamilyForeign = ~0U-2; 
+        public const uint QueueFamilyForeign = ~2U; 
         
         /// <summary>
         /// 
@@ -138,5 +138,15 @@ namespace SharpVk
         /// 
         /// </summary>
         public const uint ShaderUnused = ~0U; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const int MaxGlobalPrioritySize = 16; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const int MaxShaderModuleIdentifierSize = 32; 
     }
 }

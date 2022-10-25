@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -172,6 +172,11 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        PrivateDataSlotVersion = 1000295000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         Surface = 1000000000, 
         
         /// <summary>
@@ -197,12 +202,22 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        ObjectTable = 1000086000, 
+        VideoSession = 1000023000, 
         
         /// <summary>
         /// 
         /// </summary>
-        IndirectCommandsLayout = 1000086001, 
+        VideoSessionParameters = 1000023001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        CuModule = 1000029000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        CuFunction = 1000029001, 
         
         /// <summary>
         /// 
@@ -212,16 +227,46 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        AccelerationStructureKhr = 1000150000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         ValidationCache = 1000160000, 
         
         /// <summary>
         /// 
         /// </summary>
-        AccelerationStructure = 1000165000, 
+        AccelerationStructureNv = 1000165000, 
         
         /// <summary>
         /// 
         /// </summary>
         PerformanceConfiguration = 1000210000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DeferredOperation = 1000268000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        IndirectCommandsLayout = 1000277000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        BufferCollection = 1000366000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Micromap = 1000396000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        OpticalFlowSession = 1000464000, 
     }
 }

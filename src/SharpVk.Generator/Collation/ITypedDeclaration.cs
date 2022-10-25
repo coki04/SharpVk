@@ -15,5 +15,6 @@
         TypeReference Type { get; }
 
         MemberLen[] Dimensions { get; }
+        string SelectedBy { get; }
     }
 }

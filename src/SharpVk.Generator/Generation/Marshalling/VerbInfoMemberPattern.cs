@@ -42,9 +42,21 @@ namespace SharpVk.Generator.Generation.Marshalling
                 verbInfoPattern += context.Extension;
             }
 
-            verbInfoPattern = verbInfoPattern.ToLower();
+            string verbInfoPattern2 = context.MethodVerb + "info2";
 
-            if (context.MethodVerb != null && source.Dimensions == null && source.Type.VkName.ToLower().EndsWith(verbInfoPattern))
+            if (context.Extension != null)
+            {
+                verbInfoPattern2 += context.Extension;
+            }
+
+            verbInfoPattern = verbInfoPattern.ToLower();
+            verbInfoPattern2 = verbInfoPattern2.ToLower();
+
+            bool unfoldArrays = context.IsBatchSingleMethod;
+            if (context.MethodVerb == "submit")
+                unfoldArrays = false;
+
+            if (context.MethodVerb != null && source.Dimensions == null && (source.Type.VkName.ToLower().EndsWith(verbInfoPattern) || source.Type.VkName.ToLower().EndsWith(verbInfoPattern2)))
             {
                 var infoTypeData = this.typeData[source.Type.VkName];
                 var interopType = this.nameLookup.Lookup(source.Type, true);
@@ -85,7 +97,7 @@ namespace SharpVk.Generator.Generation.Marshalling
                         return x;
                     });
 
-                    this.patternRules.ApplyFirst(infoTypeData.Members.Concat(relativeOthers), member, new MemberPatternContext(null, true, context.IsBatchSingleMethod, context.ReturnParamsCount, infoTypeData.Extension, context.GetHandle, source.Type.VkName), subPatternInfo);
+                    this.patternRules.ApplyFirst(infoTypeData.Members.Concat(relativeOthers), member, new MemberPatternContext(null, true, unfoldArrays, context.ReturnParamsCount, infoTypeData.Extension, context.GetHandle, source.Type.VkName), subPatternInfo);
 
                     foreach (var subAction in subPatternInfo.MarshalTo)
                     {

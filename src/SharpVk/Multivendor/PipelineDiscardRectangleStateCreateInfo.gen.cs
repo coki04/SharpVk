@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -54,15 +54,6 @@ namespace SharpVk.Multivendor
         /// <summary>
         /// 
         /// </summary>
-        public uint? DiscardRectangleCount
-        {
-            get;
-            set;
-        }
-        
-        /// <summary>
-        /// 
-        /// </summary>
         public SharpVk.Rect2D[] DiscardRectangles
         {
             get;
@@ -87,14 +78,7 @@ namespace SharpVk.Multivendor
                 pointer->Flags = default(SharpVk.Multivendor.PipelineDiscardRectangleStateCreateFlags);
             }
             pointer->DiscardRectangleMode = this.DiscardRectangleMode;
-            if (this.DiscardRectangleCount != null)
-            {
-                pointer->DiscardRectangleCount = this.DiscardRectangleCount.Value;
-            }
-            else
-            {
-                pointer->DiscardRectangleCount = (uint)(Interop.HeapUtil.GetLength(this.DiscardRectangles));
-            }
+            pointer->DiscardRectangleCount = (uint)(Interop.HeapUtil.GetLength(this.DiscardRectangles));
             if (this.DiscardRectangles != null)
             {
                 var fieldPointer = (SharpVk.Rect2D*)(Interop.HeapUtil.AllocateAndClear<SharpVk.Rect2D>(this.DiscardRectangles.Length).ToPointer());

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -153,36 +153,41 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        VideoDecodeOutput = 1 << 25, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        VideoDecodeDpb = 1 << 26, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        AccelerationStructureVertexBuffer = 1 << 29, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         SampledImageFilterCubic = 1 << 13, 
         
         /// <summary>
         /// 
         /// </summary>
-        Reserved27 = 1 << 27, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        Reserved28 = 1 << 28, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        Reserved25 = 1 << 25, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        Reserved26 = 1 << 26, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        Reserved29 = 1 << 29, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
         FragmentDensityMap = 1 << 24, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        FragmentShadingRateAttachment = 1 << 30, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        VideoEncodeInput = 1 << 27, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        VideoEncodeDpb = 1 << 28, 
     }
 }

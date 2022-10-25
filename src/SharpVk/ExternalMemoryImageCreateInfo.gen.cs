@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -36,7 +36,7 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        public SharpVk.ExternalMemoryHandleTypeFlags HandleTypes
+        public SharpVk.ExternalMemoryHandleTypeFlags? HandleTypes
         {
             get;
             set;
@@ -51,7 +51,14 @@ namespace SharpVk
         {
             pointer->SType = StructureType.ExternalMemoryImageCreateInfoVersion;
             pointer->Next = null;
-            pointer->HandleTypes = this.HandleTypes;
+            if (this.HandleTypes != null)
+            {
+                pointer->HandleTypes = this.HandleTypes.Value;
+            }
+            else
+            {
+                pointer->HandleTypes = default(SharpVk.ExternalMemoryHandleTypeFlags);
+            }
         }
     }
 }

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -61,7 +61,7 @@ namespace SharpVk.Khronos
         internal static unsafe DisplayModeProperties MarshalFrom(SharpVk.Interop.Khronos.DisplayModeProperties* pointer)
         {
             DisplayModeProperties result = default(DisplayModeProperties);
-            result.DisplayMode = new SharpVk.Khronos.DisplayMode(default(SharpVk.PhysicalDevice), pointer->DisplayMode);
+            result.DisplayMode = new SharpVk.Khronos.DisplayMode(default(SharpVk.Khronos.Display), pointer->DisplayMode);
             result.Parameters = pointer->Parameters;
             return result;
         }

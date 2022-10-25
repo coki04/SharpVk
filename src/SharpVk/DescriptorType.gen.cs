@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -87,11 +87,31 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        InlineUniformBlock = 1000138000, 
+        InlineUniformBlockVersion = 1000138000, 
         
         /// <summary>
         /// 
         /// </summary>
-        AccelerationStructure = 1000165000, 
+        AccelerationStructureKhr = 1000150000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        AccelerationStructureNv = 1000165000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        SampleWeightImage = 1000440000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        BlockMatchImage = 1000440001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        MutableExt = 1000351000, 
     }
 }

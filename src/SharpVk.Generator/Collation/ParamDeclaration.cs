@@ -25,5 +25,7 @@ namespace SharpVk.Generator.Collation
         string ITypedDeclaration.FixedValue => null;
 
         MemberLen[] ITypedDeclaration.Dimensions => this.Dimensions;
+
+        string ITypedDeclaration.SelectedBy => null;
     }
 }

@@ -35,6 +35,7 @@ namespace SharpVk.Generator.Generation
 
             services.AddSingleton<IWorker, PInvokeGenerator>();
             services.AddSingleton<IWorker, StructGenerator>();
+            services.AddSingleton<IWorker, UnionGenerator>();
             services.AddSingleton<IWorker, EnumGenerator>();
             services.AddSingleton<IWorker, PrimitiveGenerator>();
             services.AddSingleton<IWorker, DelegateGenerator>();

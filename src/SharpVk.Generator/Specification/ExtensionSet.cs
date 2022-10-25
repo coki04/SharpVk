@@ -60,7 +60,7 @@ namespace SharpVk.Generator.Specification
 
                     var enums = vkExtension.Elements("require").SelectMany(x => x.Elements("enum"));
 
-                    var specVersionElement = enums.Last(x => x.Attribute("name").Value.EndsWith("SPEC_VERSION"));
+                    var specVersionElement = enums.Last(x => x.Attribute("name").Value.EndsWith("SPEC_VERSION") && x.Attributes("value").Count() > 0);
 
                     int specVersion = int.Parse(specVersionElement.Attribute("value").Value);
 

@@ -191,7 +191,7 @@ namespace SharpVk.Generator.Generation.Marshalling
                             Type = memberType + "[]"
                         });
 
-                        string countMemberName = source.Name.TrimEnd('s') + "Count";
+                        string countMemberName = !source.Name.EndsWith("ies") ? source.Name.TrimEnd('s') + "Count" : source.Name.TrimEnd('s').TrimEnd('e').TrimEnd('i') + "y" + "Count";
 
                         info.MarshalFrom.Add((getTarget, getValue) => new AssignAction
                         {

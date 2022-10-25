@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -31,11 +31,6 @@ namespace SharpVk
     [System.Flags]
     public enum AccessFlags
     {
-        /// <summary>
-        /// No access type specified.
-        /// </summary>
-        None = 0, 
-        
         /// <summary>
         /// Read access to an indirect command structure read as part of an
         /// indirect drawing or dispatch command.
@@ -148,22 +143,7 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        Reserved30 = 1 << 30, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        Reserved31 = 1 << 31, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        Reserved28 = 1 << 28, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        Reserved29 = 1 << 29, 
+        NoneVersion = 0, 
         
         /// <summary>
         /// 
@@ -186,25 +166,9 @@ namespace SharpVk
         ConditionalRenderingRead = 1 << 20, 
         
         /// <summary>
-        /// Reads from Buffer inputs to CommandBuffer.ProcessCommands.
-        /// </summary>
-        CommandProcessRead = 1 << 17, 
-        
-        /// <summary>
-        /// Writes to the target command buffer in
-        /// CommandBuffer.ProcessCommands.
-        /// </summary>
-        CommandProcessWrite = 1 << 18, 
-        
-        /// <summary>
         /// 
         /// </summary>
         ColorAttachmentReadNoncoherent = 1 << 19, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        ShadingRateImageRead = 1 << 23, 
         
         /// <summary>
         /// 
@@ -221,5 +185,20 @@ namespace SharpVk
         /// dynamic fragment density map operations.
         /// </summary>
         FragmentDensityMapRead = 1 << 24, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        FragmentShadingRateAttachmentRead = 1 << 23, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        CommandPreprocessRead = 1 << 17, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        CommandPreprocessWrite = 1 << 18, 
     }
 }

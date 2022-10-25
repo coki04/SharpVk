@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -147,6 +147,11 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        PipelineCompileRequiredVersion = 1000297000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         ErrorSurfaceLost = -1000000000, 
         
         /// <summary>
@@ -182,12 +187,42 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        ErrorImageUsageNotSupported = -1000023000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ErrorVideoPictureLayoutNotSupported = -1000023001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ErrorVideoProfileOperationNotSupported = -1000023002, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ErrorVideoProfileFormatNotSupported = -1000023003, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ErrorVideoProfileCodecNotSupported = -1000023004, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ErrorVideoStdVersionNotSupported = -1000023005, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         ErrorInvalidDrmFormatModifierPlaneLayout = -1000158000, 
         
         /// <summary>
         /// 
         /// </summary>
-        ErrorNotPermitted = -1000174001, 
+        ErrorNotPermittedKhr = -1000174001, 
         
         /// <summary>
         /// 
@@ -197,6 +232,26 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        Ext298ReservedValue0 = 1000297000, 
+        ThreadIdle = 1000268000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ThreadDone = 1000268001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        OperationDeferred = 1000268002, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        OperationNotDeferred = 1000268003, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ErrorCompressionExhausted = -1000338000, 
     }
 }

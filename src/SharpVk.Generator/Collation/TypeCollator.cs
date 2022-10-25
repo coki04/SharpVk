@@ -3,6 +3,7 @@ using SharpVk.Generator.Pipeline;
 using SharpVk.Generator.Specification.Elements;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace SharpVk.Generator.Collation
 {
@@ -10,12 +11,14 @@ namespace SharpVk.Generator.Collation
         : IWorker
     {
         private readonly IEnumerable<TypeElement> types;
+        private readonly IEnumerable<EnumDeclaration> enums;
         private readonly NameFormatter nameFormatter;
         private readonly IEnumerable<string> handleTypes;
 
-        public TypeCollator(IEnumerable<TypeElement> types, NameFormatter nameFormatter)
+        public TypeCollator(IEnumerable<TypeElement> types, IEnumerable<EnumDeclaration> enums, NameFormatter nameFormatter)
         {
             this.types = types;
+            this.enums = enums;
             this.nameFormatter = nameFormatter;
 
             this.handleTypes = this.types.Where(x => x.Category == TypeCategory.handle)
@@ -35,11 +38,11 @@ namespace SharpVk.Generator.Collation
                                     {
                                         Name = this.nameFormatter.FormatName(x),
                                         Parent = x.Parent,
-                                        Extension = x.ExtensionNamespace?.FirstToUpper(),
-                                        Pattern = x.Category.MapToPattern(),
+                                        Extension =  !this.nameFormatter.IsPrimitive(x) ? x.ExtensionNamespace?.FirstToUpper() : null,
+                                        Pattern = !this.nameFormatter.IsPrimitive(x) ? x.Category.MapToPattern() : TypeCategory.None.MapToPattern(),
                                         Members = this.GetMembers(x, this.nameFormatter.FormatName(x)).ToList(),
-                                        ExtendTypes = extendTypes[x.VkName].ToList(),
-                                        Extends = x.Extends,
+                                        ExtendTypes = !this.nameFormatter.IsPrimitive(x) ? extendTypes[x.VkName].ToList() : null,
+                                        Extends = !this.nameFormatter.IsPrimitive(x) ? x.Extends : null,
                                         Type = x.Type,
                                         IsOutputOnly = x.IsReturnedOnly
                                     });
@@ -87,10 +90,17 @@ namespace SharpVk.Generator.Collation
         {
             foreach (var member in type.Members)
             {
+                string memberName = this.nameFormatter.FormatName(member, typeName, false);
+                if ((member.PointerType == PointerType.DoublePointer || member.PointerType == PointerType.DoubleConstPointer) &&
+                    type.Members.Count(x => this.nameFormatter.FormatName(x, typeName, false) == memberName) > 1)
+                {
+                    memberName += "2";
+                }
+
                 yield return new MemberDeclaration
                 {
                     VkName = member.VkName,
-                    Name = this.nameFormatter.FormatName(member, typeName, false),
+                    Name = memberName,
                     IsOptional = member.IsOptional,
                     NoAutoValidity = member.NoAutoValidity,
                     ParamName = this.nameFormatter.FormatName(member, typeName, true),
@@ -101,7 +111,8 @@ namespace SharpVk.Generator.Collation
                         VkName = member.Type,
                         PointerType = member.PointerType,
                         FixedLength = member.FixedLength
-                    }
+                    },
+                    SelectedBy = member.SelectedBy
                 };
             }
         }

@@ -95,12 +95,20 @@ namespace SharpVk.Generator.Generation
                     MemberActions = new List<MethodAction>()
                 };
 
-                if (!type.IsOutputOnly || (type.Extends?.Any(x => !this.typeData[x].IsOutputOnly) ?? false))
+                if (!type.IsOutputOnly || (type.Extends?.Any(x => !this.typeData[x].IsOutputOnly) ?? false) || 
+                        type.Name.EndsWith("ExtensionProperties") ||
+                        type.Name.EndsWith("RenderPassSubpassFeedbackInfo"))
                 {
                     publicStruct.Methods.Add(marshalToMethod);
                 }
 
-                if (type.IsOutputOnly || (!type.Name.EndsWith("Info") && type.Members.All(this.CanMarshalFrom)))
+                if (type.IsOutputOnly || ((!type.Name.EndsWith("Info") ||
+                                            type.Name.EndsWith("AccelerationStructureBuildSizesInfo") ||
+                                            type.Name.EndsWith("DescriptorSetLayoutHostMappingInfo") ||
+                                            type.Name.EndsWith("MicromapBuildSizesInfo") ||
+                                            type.Name.EndsWith("DeviceFaultVendorInfo")) && type.Members.All(this.CanMarshalFrom))
+
+                                            || type.Name.EndsWith("DeviceFaultInfo"))
                 {
                     publicStruct.Methods.Add(marshalFromMethod);
                 }

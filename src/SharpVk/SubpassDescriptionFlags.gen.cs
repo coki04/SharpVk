@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -48,11 +48,31 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        Reserved2 = 1 << 2, 
+        FragmentRegion = 1 << 2, 
         
         /// <summary>
         /// 
         /// </summary>
-        Reserved3 = 1 << 3, 
+        ShaderResolve = 1 << 3, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        RasterizationOrderAttachmentColorAccess = 1 << 4, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        RasterizationOrderAttachmentDepthAccess = 1 << 5, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        RasterizationOrderAttachmentStencilAccess = 1 << 6, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        EnableLegacyDithering = 1 << 7, 
     }
 }

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -1541,6 +1541,106 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        G8B8R82plane444UNormVersion = 1000330000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        G10X6B10X6R10X62plane444UNorm3Pack16Version = 1000330001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        G12X4B12X4R12X42plane444UNorm3Pack16Version = 1000330002, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        G16B16R162plane444UNormVersion = 1000330003, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        A4R4G4B4UNormPack16Version = 1000340000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        A4B4G4R4UNormPack16Version = 1000340001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Astc4x4SFloatBlockVersion = 1000066000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Astc5x4SFloatBlockVersion = 1000066001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Astc5x5SFloatBlockVersion = 1000066002, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Astc6x5SFloatBlockVersion = 1000066003, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Astc6x6SFloatBlockVersion = 1000066004, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Astc8x5SFloatBlockVersion = 1000066005, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Astc8x6SFloatBlockVersion = 1000066006, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Astc8x8SFloatBlockVersion = 1000066007, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Astc10x5SFloatBlockVersion = 1000066008, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Astc10x6SFloatBlockVersion = 1000066009, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Astc10x8SFloatBlockVersion = 1000066010, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Astc10x10SFloatBlockVersion = 1000066011, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Astc12x10SFloatBlockVersion = 1000066012, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Astc12x12SFloatBlockVersion = 1000066013, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         Pvrtc12bppUNormBlock = 1000054000, 
         
         /// <summary>
@@ -1581,71 +1681,156 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        Astc4x4SFloatBlock = 1000066000, 
+        Astc3x3x3UNormBlock = 1000288000, 
         
         /// <summary>
         /// 
         /// </summary>
-        Astc5x4SFloatBlock = 1000066001, 
+        Astc3x3x3SrgbBlock = 1000288001, 
         
         /// <summary>
         /// 
         /// </summary>
-        Astc5x5SFloatBlock = 1000066002, 
+        Astc3x3x3SFloatBlock = 1000288002, 
         
         /// <summary>
         /// 
         /// </summary>
-        Astc6x5SFloatBlock = 1000066003, 
+        Astc4x3x3UNormBlock = 1000288003, 
         
         /// <summary>
         /// 
         /// </summary>
-        Astc6x6SFloatBlock = 1000066004, 
+        Astc4x3x3SrgbBlock = 1000288004, 
         
         /// <summary>
         /// 
         /// </summary>
-        Astc8x5SFloatBlock = 1000066005, 
+        Astc4x3x3SFloatBlock = 1000288005, 
         
         /// <summary>
         /// 
         /// </summary>
-        Astc8x6SFloatBlock = 1000066006, 
+        Astc4x4x3UNormBlock = 1000288006, 
         
         /// <summary>
         /// 
         /// </summary>
-        Astc8x8SFloatBlock = 1000066007, 
+        Astc4x4x3SrgbBlock = 1000288007, 
         
         /// <summary>
         /// 
         /// </summary>
-        Astc10x5SFloatBlock = 1000066008, 
+        Astc4x4x3SFloatBlock = 1000288008, 
         
         /// <summary>
         /// 
         /// </summary>
-        Astc10x6SFloatBlock = 1000066009, 
+        Astc4x4x4UNormBlock = 1000288009, 
         
         /// <summary>
         /// 
         /// </summary>
-        Astc10x8SFloatBlock = 1000066010, 
+        Astc4x4x4SrgbBlock = 1000288010, 
         
         /// <summary>
         /// 
         /// </summary>
-        Astc10x10SFloatBlock = 1000066011, 
+        Astc4x4x4SFloatBlock = 1000288011, 
         
         /// <summary>
         /// 
         /// </summary>
-        Astc12x10SFloatBlock = 1000066012, 
+        Astc5x4x4UNormBlock = 1000288012, 
         
         /// <summary>
         /// 
         /// </summary>
-        Astc12x12SFloatBlock = 1000066013, 
+        Astc5x4x4SrgbBlock = 1000288013, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Astc5x4x4SFloatBlock = 1000288014, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Astc5x5x4UNormBlock = 1000288015, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Astc5x5x4SrgbBlock = 1000288016, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Astc5x5x4SFloatBlock = 1000288017, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Astc5x5x5UNormBlock = 1000288018, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Astc5x5x5SrgbBlock = 1000288019, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Astc5x5x5SFloatBlock = 1000288020, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Astc6x5x5UNormBlock = 1000288021, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Astc6x5x5SrgbBlock = 1000288022, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Astc6x5x5SFloatBlock = 1000288023, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Astc6x6x5UNormBlock = 1000288024, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Astc6x6x5SrgbBlock = 1000288025, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Astc6x6x5SFloatBlock = 1000288026, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Astc6x6x6UNormBlock = 1000288027, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Astc6x6x6SrgbBlock = 1000288028, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Astc6x6x6SFloatBlock = 1000288029, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        R16G16S105 = 1000464000, 
     }
 }

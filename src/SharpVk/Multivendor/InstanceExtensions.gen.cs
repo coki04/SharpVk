@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -354,6 +354,70 @@ namespace SharpVk.Multivendor
                     marshalledAllocator = default(SharpVk.Interop.AllocationCallbacks*);
                 }
                 SharpVk.Interop.Multivendor.VkInstanceCreateHeadlessSurfaceDelegate commandDelegate = commandCache.Cache.vkCreateHeadlessSurfaceEXT;
+                Result methodResult = commandDelegate(extendedHandle.handle, marshalledCreateInfo, marshalledAllocator, &marshalledSurface);
+                if (SharpVkException.IsError(methodResult))
+                {
+                    throw SharpVkException.Create(methodResult);
+                }
+                result = new SharpVk.Khronos.Surface(extendedHandle, marshalledSurface);
+                return result;
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The Instance handle to extend.
+        /// </param>
+        /// <param name="flags">
+        /// </param>
+        /// <param name="dfb">
+        /// </param>
+        /// <param name="surface">
+        /// </param>
+        /// <param name="allocator">
+        /// </param>
+        public static unsafe SharpVk.Khronos.Surface CreateDirectFBSurface(this SharpVk.Instance extendedHandle, IntPtr dfb, IntPtr surface, SharpVk.Multivendor.DirectFBSurfaceCreateFlags? flags = default(SharpVk.Multivendor.DirectFBSurfaceCreateFlags?), SharpVk.AllocationCallbacks? allocator = default(SharpVk.AllocationCallbacks?))
+        {
+            try
+            {
+                SharpVk.Khronos.Surface result = default(SharpVk.Khronos.Surface);
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.Multivendor.DirectFBSurfaceCreateInfo* marshalledCreateInfo = default(SharpVk.Interop.Multivendor.DirectFBSurfaceCreateInfo*);
+                void* vkDirectFBSurfaceCreateInfoEXTNextPointer = default(void*);
+                SharpVk.Interop.AllocationCallbacks* marshalledAllocator = default(SharpVk.Interop.AllocationCallbacks*);
+                SharpVk.Interop.Khronos.Surface marshalledSurface = default(SharpVk.Interop.Khronos.Surface);
+                commandCache = extendedHandle.commandCache;
+                marshalledCreateInfo = (SharpVk.Interop.Multivendor.DirectFBSurfaceCreateInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.DirectFBSurfaceCreateInfo>());
+                marshalledCreateInfo->SType = StructureType.DirectfbSurfaceCreateInfo;
+                marshalledCreateInfo->Next = vkDirectFBSurfaceCreateInfoEXTNextPointer;
+                if (flags != null)
+                {
+                    marshalledCreateInfo->Flags = flags.Value;
+                }
+                else
+                {
+                    marshalledCreateInfo->Flags = default(SharpVk.Multivendor.DirectFBSurfaceCreateFlags);
+                }
+                marshalledCreateInfo->Dfb = (IntPtr*)(Interop.HeapUtil.Allocate<IntPtr>());
+                *marshalledCreateInfo->Dfb = dfb;
+                marshalledCreateInfo->Surface = (IntPtr*)(Interop.HeapUtil.Allocate<IntPtr>());
+                *marshalledCreateInfo->Surface = surface;
+                if (allocator != null)
+                {
+                    marshalledAllocator = (SharpVk.Interop.AllocationCallbacks*)(Interop.HeapUtil.Allocate<SharpVk.Interop.AllocationCallbacks>());
+                    allocator.Value.MarshalTo(marshalledAllocator);
+                }
+                else
+                {
+                    marshalledAllocator = default(SharpVk.Interop.AllocationCallbacks*);
+                }
+                SharpVk.Interop.Multivendor.VkInstanceCreateDirectFBSurfaceDelegate commandDelegate = commandCache.Cache.vkCreateDirectFBSurfaceEXT;
                 Result methodResult = commandDelegate(extendedHandle.handle, marshalledCreateInfo, marshalledAllocator, &marshalledSurface);
                 if (SharpVkException.IsError(methodResult))
                 {

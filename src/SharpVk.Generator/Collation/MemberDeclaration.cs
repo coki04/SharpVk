@@ -11,6 +11,7 @@
         public TypeReference Type;
         public string FixedValue;
         public MemberLen[] Dimensions;
+        public string SelectedBy;
 
         public bool RequiresMarshalling => this.Type.PointerType.IsPointer() || this.Type.FixedLength.Type != FixedLengthType.None;
 
@@ -27,5 +28,7 @@
         string ITypedDeclaration.FixedValue => this.FixedValue;
 
         MemberLen[] ITypedDeclaration.Dimensions => this.Dimensions;
+
+        string ITypedDeclaration.SelectedBy => this.SelectedBy;
     }
 }

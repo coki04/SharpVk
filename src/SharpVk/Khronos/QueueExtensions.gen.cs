@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -54,13 +54,16 @@ namespace SharpVk.Khronos
         /// <param name="deviceGroupPresentInfoKhr">
         /// Extension struct
         /// </param>
+        /// <param name="presentIdKhr">
+        /// Extension struct
+        /// </param>
         /// <param name="presentTimesInfoGoogle">
         /// Extension struct
         /// </param>
         /// <param name="presentFrameTokenGgp">
         /// Extension struct
         /// </param>
-        public static unsafe Result Present(this SharpVk.Queue extendedHandle, ArrayProxy<SharpVk.Semaphore>? waitSemaphores, ArrayProxy<SharpVk.Khronos.Swapchain>? swapchains, ArrayProxy<uint>? imageIndices, ArrayProxy<SharpVk.Result>? results = null, SharpVk.Khronos.DisplayPresentInfo? displayPresentInfoKhr = null, SharpVk.Khronos.PresentRegions? presentRegionsKhr = null, SharpVk.Khronos.DeviceGroupPresentInfo? deviceGroupPresentInfoKhr = null, SharpVk.Google.PresentTimesInfo? presentTimesInfoGoogle = null, SharpVk.Ggp.PresentFrameToken? presentFrameTokenGgp = null)
+        public static unsafe Result Present(this SharpVk.Queue extendedHandle, ArrayProxy<SharpVk.Semaphore>? waitSemaphores, ArrayProxy<SharpVk.Khronos.Swapchain>? swapchains, ArrayProxy<uint>? imageIndices, ArrayProxy<SharpVk.Result>? results = null, SharpVk.Khronos.DisplayPresentInfo? displayPresentInfoKhr = null, SharpVk.Khronos.PresentRegions? presentRegionsKhr = null, SharpVk.Khronos.DeviceGroupPresentInfo? deviceGroupPresentInfoKhr = null, SharpVk.Khronos.PresentId? presentIdKhr = null, SharpVk.Google.PresentTimesInfo? presentTimesInfoGoogle = null, SharpVk.Ggp.PresentFrameToken? presentFrameTokenGgp = null)
         {
             try
             {
@@ -89,6 +92,14 @@ namespace SharpVk.Khronos
                     SharpVk.Interop.Khronos.DeviceGroupPresentInfo* extensionPointer = default(SharpVk.Interop.Khronos.DeviceGroupPresentInfo*);
                     extensionPointer = (SharpVk.Interop.Khronos.DeviceGroupPresentInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.DeviceGroupPresentInfo>());
                     deviceGroupPresentInfoKhr.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkPresentInfoKHRNextPointer;
+                    vkPresentInfoKHRNextPointer = extensionPointer;
+                }
+                if (presentIdKhr != null)
+                {
+                    SharpVk.Interop.Khronos.PresentId* extensionPointer = default(SharpVk.Interop.Khronos.PresentId*);
+                    extensionPointer = (SharpVk.Interop.Khronos.PresentId*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.PresentId>());
+                    presentIdKhr.Value.MarshalTo(extensionPointer);
                     extensionPointer->Next = vkPresentInfoKHRNextPointer;
                     vkPresentInfoKHRNextPointer = extensionPointer;
                 }

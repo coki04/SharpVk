@@ -50,7 +50,7 @@ namespace SharpVk.Generator.Emission
                                 typeBuilder.EmitProperty(@struct.Name, "Zero", ExpressionBuilder.New(@struct.Name), Public, MemberModifier.Static);
                             }
 
-                            if (@struct.Constructor != null)
+                            if (@struct.Constructor != null && !@struct.IsUnion)
                             {
                                 this.methodEmitter.EmitConstructor(typeBuilder, @struct.Constructor);
                             }
@@ -62,7 +62,8 @@ namespace SharpVk.Generator.Emission
                                     typeBuilder.EmitField(member.Type,
                                                             member.Name,
                                                             member.IsPrivate ? Private : Public,
-                                                            summary: member.Comment);
+                                                            summary: member.Comment,
+                                                            attributes: @struct.IsUnion ? new[] { "FieldOffset(0)" } : null);
                                 }
                             }
 
@@ -86,7 +87,9 @@ namespace SharpVk.Generator.Emission
                                     this.methodEmitter.Emit(typeBuilder, method);
                                 }
                             }
-                        }, Public, null, @struct.IsUnsafe ? Unsafe | Partial : Partial, attributes: new[] { "StructLayout(LayoutKind.Sequential)" }, summary: @struct.Comment?.ToArray());
+                        }, Public, null, @struct.IsUnsafe ? Unsafe | Partial : Partial, 
+                        attributes: !@struct.IsUnion ? new[] { "StructLayout(LayoutKind.Sequential)" } : new[] { "StructLayout(LayoutKind.Explicit)" }, 
+                        summary: @struct.Comment?.ToArray());
                     });
                 });
             }

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -163,6 +163,32 @@ namespace SharpVk.Khronos
                 Result result = default(Result);
                 SharpVk.Interop.Khronos.VkSwapchainKHRGetStatusDelegate commandDelegate = commandCache.Cache.vkGetSwapchainStatusKHR;
                 result = commandDelegate(this.parent.handle, this.handle);
+                if (SharpVkException.IsError(result))
+                {
+                    throw SharpVkException.Create(result);
+                }
+                return result;
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="presentId">
+        /// </param>
+        /// <param name="timeout">
+        /// </param>
+        public unsafe Result WaitForPresent(ulong presentId, ulong timeout)
+        {
+            try
+            {
+                Result result = default(Result);
+                SharpVk.Interop.Khronos.VkSwapchainKHRWaitForPresentDelegate commandDelegate = commandCache.Cache.vkWaitForPresentKHR;
+                result = commandDelegate(this.parent.handle, this.handle, presentId, timeout);
                 if (SharpVkException.IsError(result))
                 {
                     throw SharpVkException.Create(result);

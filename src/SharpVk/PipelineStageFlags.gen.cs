@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -30,11 +30,6 @@ namespace SharpVk
     [System.Flags]
     public enum PipelineStageFlags
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        None = 0, 
-        
         /// <summary>
         /// Stage of the pipeline where any commands are initially received by
         /// the queue.
@@ -141,12 +136,7 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        Reserved27 = 1 << 27, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        Reserved26 = 1 << 26, 
+        NoneVersion = 0, 
         
         /// <summary>
         /// 
@@ -159,15 +149,9 @@ namespace SharpVk
         ConditionalRendering = 1 << 18, 
         
         /// <summary>
-        /// Stage of the pipeline where device-side generation of commands via
-        /// flink:vkCmdProcessCommandsNVX is handled.
-        /// </summary>
-        CommandProcess = 1 << 17, 
-        
-        /// <summary>
         /// 
         /// </summary>
-        ShadingRateImage = 1 << 22, 
+        AccelerationStructureBuild = 1 << 25, 
         
         /// <summary>
         /// 
@@ -175,9 +159,20 @@ namespace SharpVk
         RayTracingShader = 1 << 21, 
         
         /// <summary>
+        /// Specifies the stage of the pipeline where the fragment density map
+        /// is read to generate the fragment areas.
+        /// </summary>
+        FragmentDensityProcess = 1 << 23, 
+        
+        /// <summary>
         /// 
         /// </summary>
-        AccelerationStructureBuild = 1 << 25, 
+        FragmentShadingRateAttachment = 1 << 22, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        CommandPreprocess = 1 << 17, 
         
         /// <summary>
         /// 
@@ -188,11 +183,5 @@ namespace SharpVk
         /// 
         /// </summary>
         MeshShader = 1 << 20, 
-        
-        /// <summary>
-        /// Specifies the stage of the pipeline where the fragment density map
-        /// is read to generate the fragment areas.
-        /// </summary>
-        FragmentDensityProcess = 1 << 23, 
     }
 }

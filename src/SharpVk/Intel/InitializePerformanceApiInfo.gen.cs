@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -36,7 +36,7 @@ namespace SharpVk.Intel
         /// <summary>
         /// The application data.
         /// </summary>
-        public IntPtr UserData
+        public IntPtr? UserData
         {
             get;
             set;
@@ -51,7 +51,14 @@ namespace SharpVk.Intel
         {
             pointer->SType = StructureType.InitializePerformanceApiInfo;
             pointer->Next = null;
-            pointer->UserData = this.UserData.ToPointer();
+            if (this.UserData != null)
+            {
+                pointer->UserData = this.UserData.Value.ToPointer();
+            }
+            else
+            {
+                pointer->UserData = default(void*);
+            }
         }
     }
 }

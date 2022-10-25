@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -111,12 +111,26 @@ namespace SharpVk
                     return new ValidationFailedException();
                 case Result.ErrorInvalidShader:
                     return new InvalidShaderException();
+                case Result.ErrorImageUsageNotSupported:
+                    return new ImageUsageNotSupportedException();
+                case Result.ErrorVideoPictureLayoutNotSupported:
+                    return new VideoPictureLayoutNotSupportedException();
+                case Result.ErrorVideoProfileOperationNotSupported:
+                    return new VideoProfileOperationNotSupportedException();
+                case Result.ErrorVideoProfileFormatNotSupported:
+                    return new VideoProfileFormatNotSupportedException();
+                case Result.ErrorVideoProfileCodecNotSupported:
+                    return new VideoProfileCodecNotSupportedException();
+                case Result.ErrorVideoStdVersionNotSupported:
+                    return new VideoStdVersionNotSupportedException();
                 case Result.ErrorInvalidDrmFormatModifierPlaneLayout:
                     return new InvalidDrmFormatModifierPlaneLayoutException();
-                case Result.ErrorNotPermitted:
-                    return new NotPermittedException();
+                case Result.ErrorNotPermittedKhr:
+                    return new NotPermittedKhrException();
                 case Result.ErrorFullScreenExclusiveModeLost:
                     return new FullScreenExclusiveModeLostException();
+                case Result.ErrorCompressionExhausted:
+                    return new CompressionExhaustedException();
             }
             return new UnknownSharpVkException(resultCode);
         }
@@ -545,6 +559,108 @@ namespace SharpVk
     /// <summary>
     /// 
     /// </summary>
+    public class ImageUsageNotSupportedException
+        : SharpVkException
+    {
+        internal ImageUsageNotSupportedException()
+            : base("")
+        {
+        }
+        
+        /// <summary>
+        /// The Vulkan result code represented by this exception.
+        /// </summary>
+        public override Result ResultCode => Result.ErrorImageUsageNotSupported;
+    }
+    
+    /// <summary>
+    /// 
+    /// </summary>
+    public class VideoPictureLayoutNotSupportedException
+        : SharpVkException
+    {
+        internal VideoPictureLayoutNotSupportedException()
+            : base("")
+        {
+        }
+        
+        /// <summary>
+        /// The Vulkan result code represented by this exception.
+        /// </summary>
+        public override Result ResultCode => Result.ErrorVideoPictureLayoutNotSupported;
+    }
+    
+    /// <summary>
+    /// 
+    /// </summary>
+    public class VideoProfileOperationNotSupportedException
+        : SharpVkException
+    {
+        internal VideoProfileOperationNotSupportedException()
+            : base("")
+        {
+        }
+        
+        /// <summary>
+        /// The Vulkan result code represented by this exception.
+        /// </summary>
+        public override Result ResultCode => Result.ErrorVideoProfileOperationNotSupported;
+    }
+    
+    /// <summary>
+    /// 
+    /// </summary>
+    public class VideoProfileFormatNotSupportedException
+        : SharpVkException
+    {
+        internal VideoProfileFormatNotSupportedException()
+            : base("")
+        {
+        }
+        
+        /// <summary>
+        /// The Vulkan result code represented by this exception.
+        /// </summary>
+        public override Result ResultCode => Result.ErrorVideoProfileFormatNotSupported;
+    }
+    
+    /// <summary>
+    /// 
+    /// </summary>
+    public class VideoProfileCodecNotSupportedException
+        : SharpVkException
+    {
+        internal VideoProfileCodecNotSupportedException()
+            : base("")
+        {
+        }
+        
+        /// <summary>
+        /// The Vulkan result code represented by this exception.
+        /// </summary>
+        public override Result ResultCode => Result.ErrorVideoProfileCodecNotSupported;
+    }
+    
+    /// <summary>
+    /// 
+    /// </summary>
+    public class VideoStdVersionNotSupportedException
+        : SharpVkException
+    {
+        internal VideoStdVersionNotSupportedException()
+            : base("")
+        {
+        }
+        
+        /// <summary>
+        /// The Vulkan result code represented by this exception.
+        /// </summary>
+        public override Result ResultCode => Result.ErrorVideoStdVersionNotSupported;
+    }
+    
+    /// <summary>
+    /// 
+    /// </summary>
     public class InvalidDrmFormatModifierPlaneLayoutException
         : SharpVkException
     {
@@ -562,10 +678,10 @@ namespace SharpVk
     /// <summary>
     /// 
     /// </summary>
-    public class NotPermittedException
+    public class NotPermittedKhrException
         : SharpVkException
     {
-        internal NotPermittedException()
+        internal NotPermittedKhrException()
             : base("")
         {
         }
@@ -573,7 +689,7 @@ namespace SharpVk
         /// <summary>
         /// The Vulkan result code represented by this exception.
         /// </summary>
-        public override Result ResultCode => Result.ErrorNotPermitted;
+        public override Result ResultCode => Result.ErrorNotPermittedKhr;
     }
     
     /// <summary>
@@ -591,5 +707,22 @@ namespace SharpVk
         /// The Vulkan result code represented by this exception.
         /// </summary>
         public override Result ResultCode => Result.ErrorFullScreenExclusiveModeLost;
+    }
+    
+    /// <summary>
+    /// 
+    /// </summary>
+    public class CompressionExhaustedException
+        : SharpVkException
+    {
+        internal CompressionExhaustedException()
+            : base("")
+        {
+        }
+        
+        /// <summary>
+        /// The Vulkan result code represented by this exception.
+        /// </summary>
+        public override Result ResultCode => Result.ErrorCompressionExhausted;
     }
 }

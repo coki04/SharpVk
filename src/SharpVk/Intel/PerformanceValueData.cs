@@ -6,7 +6,7 @@ namespace SharpVk.Intel
     /// 
     /// </summary>
     [StructLayout(LayoutKind.Explicit)]
-    public unsafe struct PerformanceValueData
+    public unsafe struct PerformanceValueDataOri
     {
         /// <summary>
         /// 
@@ -36,6 +36,6 @@ namespace SharpVk.Intel
         /// 
         /// </summary>
         [FieldOffset(0)]
-        public char* ValueString;
+        public byte* ValueString;
     }
 }

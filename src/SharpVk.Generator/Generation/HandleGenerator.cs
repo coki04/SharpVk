@@ -139,7 +139,8 @@ namespace SharpVk.Generator.Generation
             }
 
             bool enumeratePattern = (command.Verb == "enumerate" && lastParamIsArray) || (lastParamIsArray && lastParamLenFieldByRef);
-            bool isBatchMethod = lastParamIsArray && !enumeratePattern && lastParam.Type.VkName != "void";
+            bool isBatchMethod = (command.Verb == "submit" && handleTypeName.Contains("Queue")) || 
+                (lastParamIsArray && !enumeratePattern && lastParam.Type.VkName != "void");
 
             yield return this.GenerateCommandVariant(command, handleTypeName, handleType, isExtension, enumeratePattern, lastParamIsArray, returnParamsCount, false);
 
@@ -278,6 +279,16 @@ namespace SharpVk.Generator.Generation
             else if (this.typeData[command.ReturnType].Pattern == TypePattern.Delegate)
             {
                 newMethod.ReturnType = "IntPtr";
+                invokeReturnName = "result";
+            }
+            else if (command.ReturnType == "VkDeviceAddress")
+            {
+                newMethod.ReturnType = "SharpVk.DeviceAddress";
+                invokeReturnName = "result";
+            }
+            else if (command.ReturnType == "uint64_t")
+            {
+                newMethod.ReturnType = "ulong";
                 invokeReturnName = "result";
             }
 
@@ -492,7 +503,17 @@ namespace SharpVk.Generator.Generation
                         var lastParam = command.Params.Last();
                         bool isLenForLastParam = returnParamsCount > 0 && lastParam.Dimensions != null && lastParam.Dimensions.Any(dimension => dimension.Type == LenType.Expression && this.tokenCheck.Check(dimension.Value, parameter.VkName));
 
-                        if (!isLenForLastParam
+                        if (command.VkName.StartsWith("vkQueueSubmit") &&
+                            isBatchSingleMethod && 
+                            newMarshalToActions.Count() == 1 && 
+                            newMarshalToActions.First() is AssignAction newAssignAction2 &&
+                            newAssignAction2.Type == AssignActionType.Assign && 
+                            !newAssignAction2.IsLoop &&
+                            parameterIndex < command.Params.Count() - 1)
+                        {
+                            marshalledValues.Add(Literal(1));
+                        }
+                        else if (!isLenForLastParam
                                 && newMarshalToActions.Count() == 1
                                 && newMarshalToActions.First() is AssignAction newAssignAction
                                 && newAssignAction.Type == AssignActionType.Assign

@@ -4,5 +4,6 @@
         : ChildElement
     {
         public string Values;
+        public string SelectedBy;
     }
 }

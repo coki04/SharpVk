@@ -11,6 +11,7 @@ namespace SharpVk.Generator.Generation
         public bool IsClass;
         public bool IsStatic;
         public bool HasZero;
+        public bool IsUnion;
         public MethodDefinition Constructor;
         public List<MethodDefinition> Methods;
         public List<MemberDefinition> Fields;

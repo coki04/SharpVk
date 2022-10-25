@@ -1,0 +1,104 @@
+// The MIT License (MIT)
+// 
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// 
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+// 
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+
+// This file was automatically generated and should not be edited directly.
+
+using System;
+using System.Runtime.InteropServices;
+
+namespace SharpVk
+{
+    /// <summary>
+    /// 
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public partial struct ImageBlit2
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        public SharpVk.ImageSubresourceLayers SourceSubresource
+        {
+            get;
+            set;
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public (SharpVk.Offset3D, SharpVk.Offset3D) SourceOffsets
+        {
+            get;
+            set;
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public SharpVk.ImageSubresourceLayers DestinationSubresource
+        {
+            get;
+            set;
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public (SharpVk.Offset3D, SharpVk.Offset3D) DestinationOffsets
+        {
+            get;
+            set;
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pointer">
+        /// </param>
+        internal unsafe void MarshalTo(SharpVk.Interop.ImageBlit2* pointer)
+        {
+            pointer->SType = StructureType.ImageBlit2Version;
+            pointer->Next = null;
+            pointer->SourceSubresource = this.SourceSubresource;
+            pointer->SourceOffsets_0 = this.SourceOffsets.Item1;
+            pointer->SourceOffsets_1 = this.SourceOffsets.Item2;
+            pointer->DestinationSubresource = this.DestinationSubresource;
+            pointer->DestinationOffsets_0 = this.DestinationOffsets.Item1;
+            pointer->DestinationOffsets_1 = this.DestinationOffsets.Item2;
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pointer">
+        /// </param>
+        internal static unsafe ImageBlit2 MarshalFrom(SharpVk.Interop.ImageBlit2* pointer)
+        {
+            ImageBlit2 result = default(ImageBlit2);
+            result.SourceSubresource = pointer->SourceSubresource;
+            result.SourceOffsets = (pointer->SourceOffsets_0, pointer->SourceOffsets_1);
+            result.DestinationSubresource = pointer->DestinationSubresource;
+            result.DestinationOffsets = (pointer->DestinationOffsets_0, pointer->DestinationOffsets_1);
+            return result;
+        }
+    }
+}

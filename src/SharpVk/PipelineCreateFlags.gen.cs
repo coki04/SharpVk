@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -67,27 +67,57 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        Extension151Bit0 = 1 << 11, 
+        FailOnPipelineCompileRequired = 1 << 8, 
         
         /// <summary>
         /// 
         /// </summary>
-        Extension151Bit1 = 1 << 14, 
+        EarlyReturnOnFailure = 1 << 9, 
         
         /// <summary>
         /// 
         /// </summary>
-        Extension151Bit2 = 1 << 15, 
+        RenderingFragmentShadingRateAttachment = 1 << 21, 
         
         /// <summary>
         /// 
         /// </summary>
-        Extension151Bit3 = 1 << 16, 
+        RenderingFragmentDensityMapAttachment = 1 << 22, 
         
         /// <summary>
         /// 
         /// </summary>
-        Extension151Bit4 = 1 << 17, 
+        RayTracingNoNullAnyHitShaders = 1 << 14, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        RayTracingNoNullClosestHitShaders = 1 << 15, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        RayTracingNoNullMissShaders = 1 << 16, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        RayTracingNoNullIntersectionShaders = 1 << 17, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        RayTracingSkipTriangles = 1 << 12, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        RayTracingSkipAabbs = 1 << 13, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        RayTracingShaderGroupHandleCaptureReplay = 1 << 19, 
         
         /// <summary>
         /// 
@@ -107,26 +137,61 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        Extension291Bit0 = 1 << 12, 
+        IndirectBindable = 1 << 18, 
         
         /// <summary>
         /// 
         /// </summary>
-        Extension291Bit1 = 1 << 13, 
+        Library = 1 << 11, 
         
         /// <summary>
         /// 
         /// </summary>
-        Reserved8 = 1 << 8, 
+        Reserved29 = 1 << 29, 
         
         /// <summary>
         /// 
         /// </summary>
-        Reserved9 = 1 << 9, 
+        RetainLinkTimeOptimizationInfo = 1 << 23, 
         
         /// <summary>
         /// 
         /// </summary>
-        Reserved10 = 1 << 10, 
+        LinkTimeOptimization = 1 << 10, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        RayTracingAllowMotion = 1 << 20, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ColorAttachmentFeedbackLoop = 1 << 25, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DepthStencilAttachmentFeedbackLoop = 1 << 26, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        RayTracingOpacityMicromap = 1 << 24, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ReservedBit28 = 1 << 28, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        NoProtectedAccess = 1 << 27, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ProtectedAccessOnly = 1 << 30, 
     }
 }

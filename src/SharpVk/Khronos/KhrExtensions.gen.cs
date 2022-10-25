@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2020
+// Copyright (c) Andrew Armstrong/FacticiusVir 2022
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -77,6 +77,16 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
+        public const string VideoQueue = "VK_KHR_video_queue"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string VideoDecodeQueue = "VK_KHR_video_decode_queue"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public const string ExternalMemoryWin32 = "VK_KHR_external_memory_win32"; 
         
         /// <summary>
@@ -142,7 +152,32 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
+        public const string AccelerationStructure = "VK_KHR_acceleration_structure"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string RayTracingPipeline = "VK_KHR_ray_tracing_pipeline"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string RayQuery = "VK_KHR_ray_query"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string PortabilitySubset = "VK_KHR_portability_subset"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public const string ShaderClock = "VK_KHR_shader_clock"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string GlobalPriority = "VK_KHR_global_priority"; 
         
         /// <summary>
         /// 
@@ -152,11 +187,66 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
+        public const string FragmentShadingRate = "VK_KHR_fragment_shading_rate"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public const string SurfaceProtectedCapabilities = "VK_KHR_surface_protected_capabilities"; 
         
         /// <summary>
         /// 
         /// </summary>
+        public const string PresentWait = "VK_KHR_present_wait"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string DeferredHostOperations = "VK_KHR_deferred_host_operations"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public const string PipelineExecutableProperties = "VK_KHR_pipeline_executable_properties"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string PipelineLibrary = "VK_KHR_pipeline_library"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string PresentId = "VK_KHR_present_id"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string VideoEncodeQueue = "VK_KHR_video_encode_queue"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string FragmentShaderBarycentric = "VK_KHR_fragment_shader_barycentric"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string ShaderSubgroupUniformControlFlow = "VK_KHR_shader_subgroup_uniform_control_flow"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string WorkgroupMemoryExplicitLayout = "VK_KHR_workgroup_memory_explicit_layout"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string RayTracingMaintenance1 = "VK_KHR_ray_tracing_maintenance1"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string PortabilityEnumeration = "VK_KHR_portability_enumeration"; 
     }
 }
