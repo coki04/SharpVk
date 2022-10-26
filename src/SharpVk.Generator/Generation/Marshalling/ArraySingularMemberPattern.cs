@@ -34,7 +34,8 @@ namespace SharpVk.Generator.Generation.Marshalling
                     && context.IsBatchSingleMethod)
             {
                 var resultMember = others.Last();
-                if (resultMember.Dimensions != null)
+                if (resultMember.Dimensions != null && 
+                    context.VkName != "vkUpdateDescriptorSets")
                 {
                     var resultLen = resultMember.Dimensions[0].Value;
 

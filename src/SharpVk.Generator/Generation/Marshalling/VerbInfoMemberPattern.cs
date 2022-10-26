@@ -56,7 +56,9 @@ namespace SharpVk.Generator.Generation.Marshalling
             if (context.MethodVerb == "submit")
                 unfoldArrays = false;
 
-            if (context.MethodVerb != null && source.Dimensions == null && (source.Type.VkName.ToLower().EndsWith(verbInfoPattern) || source.Type.VkName.ToLower().EndsWith(verbInfoPattern2)))
+            if (context.MethodVerb != null && source.Dimensions == null && (source.Type.VkName.ToLower().EndsWith(verbInfoPattern) || 
+                                                                            source.Type.VkName.ToLower().EndsWith(verbInfoPattern2) ||
+                                                                            source.Type.VkName.ToLower().EndsWith("writedescriptorset")))
             {
                 var infoTypeData = this.typeData[source.Type.VkName];
                 var interopType = this.nameLookup.Lookup(source.Type, true);

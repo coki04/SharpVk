@@ -3188,6 +3188,160 @@ namespace SharpVk
         }
         
         /// <summary>
+        /// Update the contents of a descriptor set object.
+        /// </summary>
+        /// <param name="destinationSet">
+        /// The destination descriptor set to update.
+        /// </param>
+        /// <param name="destinationBinding">
+        /// The descriptor binding within that set.
+        /// </param>
+        /// <param name="destinationArrayElement">
+        /// The starting element in that array.
+        /// </param>
+        /// <param name="descriptorCount">
+        /// The number of descriptors to update (the number of elements in
+        /// pImageInfo, pBufferInfo, or pTexelBufferView).
+        /// </param>
+        /// <param name="descriptorType">
+        /// A DescriptorType specifying the type of each descriptor in
+        /// pImageInfo, pBufferInfo, or pTexelBufferView, as described below.
+        /// It must be the same type as that specified in
+        /// DescriptorSetLayoutBinding for dstSet at dstBinding. The type of
+        /// the descriptor also controls which array the descriptors are taken
+        /// from.
+        /// </param>
+        /// <param name="imageInfo">
+        /// </param>
+        /// <param name="bufferInfo">
+        /// </param>
+        /// <param name="texelBufferView">
+        /// </param>
+        /// <param name="writeDescriptorSetInlineUniformBlock">
+        /// Extension struct
+        /// </param>
+        /// <param name="writeDescriptorSetAccelerationStructureKhr">
+        /// Extension struct
+        /// </param>
+        /// <param name="writeDescriptorSetAccelerationStructureNv">
+        /// Extension struct
+        /// </param>
+        /// <param name="descriptorCopies">
+        /// </param>
+        public unsafe void UpdateDescriptorSet(SharpVk.DescriptorSet destinationSet, uint destinationBinding, uint destinationArrayElement, uint descriptorCount, SharpVk.DescriptorType descriptorType, ArrayProxy<SharpVk.DescriptorImageInfo>? imageInfo, ArrayProxy<SharpVk.DescriptorBufferInfo>? bufferInfo, ArrayProxy<SharpVk.BufferView>? texelBufferView, SharpVk.CopyDescriptorSet descriptorCopies, SharpVk.WriteDescriptorSetInlineUniformBlock? writeDescriptorSetInlineUniformBlock = null, SharpVk.Khronos.WriteDescriptorSetAccelerationStructure? writeDescriptorSetAccelerationStructureKhr = null, SharpVk.NVidia.WriteDescriptorSetAccelerationStructure? writeDescriptorSetAccelerationStructureNv = null)
+        {
+            try
+            {
+                SharpVk.Interop.WriteDescriptorSet* marshalledDescriptorWrites = default(SharpVk.Interop.WriteDescriptorSet*);
+                void* vkWriteDescriptorSetNextPointer = default(void*);
+                SharpVk.Interop.CopyDescriptorSet* marshalledDescriptorCopies = default(SharpVk.Interop.CopyDescriptorSet*);
+                if (writeDescriptorSetInlineUniformBlock != null)
+                {
+                    SharpVk.Interop.WriteDescriptorSetInlineUniformBlock* extensionPointer = default(SharpVk.Interop.WriteDescriptorSetInlineUniformBlock*);
+                    extensionPointer = (SharpVk.Interop.WriteDescriptorSetInlineUniformBlock*)(Interop.HeapUtil.Allocate<SharpVk.Interop.WriteDescriptorSetInlineUniformBlock>());
+                    writeDescriptorSetInlineUniformBlock.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkWriteDescriptorSetNextPointer;
+                    vkWriteDescriptorSetNextPointer = extensionPointer;
+                }
+                if (writeDescriptorSetAccelerationStructureKhr != null)
+                {
+                    SharpVk.Interop.Khronos.WriteDescriptorSetAccelerationStructure* extensionPointer = default(SharpVk.Interop.Khronos.WriteDescriptorSetAccelerationStructure*);
+                    extensionPointer = (SharpVk.Interop.Khronos.WriteDescriptorSetAccelerationStructure*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.WriteDescriptorSetAccelerationStructure>());
+                    writeDescriptorSetAccelerationStructureKhr.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkWriteDescriptorSetNextPointer;
+                    vkWriteDescriptorSetNextPointer = extensionPointer;
+                }
+                if (writeDescriptorSetAccelerationStructureNv != null)
+                {
+                    SharpVk.Interop.NVidia.WriteDescriptorSetAccelerationStructure* extensionPointer = default(SharpVk.Interop.NVidia.WriteDescriptorSetAccelerationStructure*);
+                    extensionPointer = (SharpVk.Interop.NVidia.WriteDescriptorSetAccelerationStructure*)(Interop.HeapUtil.Allocate<SharpVk.Interop.NVidia.WriteDescriptorSetAccelerationStructure>());
+                    writeDescriptorSetAccelerationStructureNv.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkWriteDescriptorSetNextPointer;
+                    vkWriteDescriptorSetNextPointer = extensionPointer;
+                }
+                marshalledDescriptorWrites = (SharpVk.Interop.WriteDescriptorSet*)(Interop.HeapUtil.Allocate<SharpVk.Interop.WriteDescriptorSet>());
+                marshalledDescriptorWrites->SType = StructureType.WriteDescriptorSet;
+                marshalledDescriptorWrites->Next = vkWriteDescriptorSetNextPointer;
+                marshalledDescriptorWrites->DestinationSet = destinationSet?.handle ?? default(SharpVk.Interop.DescriptorSet);
+                marshalledDescriptorWrites->DestinationBinding = destinationBinding;
+                marshalledDescriptorWrites->DestinationArrayElement = destinationArrayElement;
+                marshalledDescriptorWrites->DescriptorCount = descriptorCount;
+                marshalledDescriptorWrites->DescriptorType = descriptorType;
+                if (imageInfo.IsNull())
+                {
+                    marshalledDescriptorWrites->ImageInfo = null;
+                }
+                else
+                {
+                    if (imageInfo.Value.Contents == ProxyContents.Single)
+                    {
+                        marshalledDescriptorWrites->ImageInfo = (SharpVk.Interop.DescriptorImageInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.DescriptorImageInfo>());
+                        imageInfo.Value.GetSingleValue().MarshalTo(&*(SharpVk.Interop.DescriptorImageInfo*)(marshalledDescriptorWrites->ImageInfo));
+                    }
+                    else
+                    {
+                        var fieldPointer = (SharpVk.Interop.DescriptorImageInfo*)(Interop.HeapUtil.AllocateAndClear<SharpVk.Interop.DescriptorImageInfo>(Interop.HeapUtil.GetLength(imageInfo.Value)).ToPointer());
+                        for(int index = 0; index < (uint)(Interop.HeapUtil.GetLength(imageInfo.Value)); index++)
+                        {
+                            imageInfo.Value[index].MarshalTo(&fieldPointer[index]);
+                        }
+                        marshalledDescriptorWrites->ImageInfo = fieldPointer;
+                    }
+                }
+                if (bufferInfo.IsNull())
+                {
+                    marshalledDescriptorWrites->BufferInfo = null;
+                }
+                else
+                {
+                    if (bufferInfo.Value.Contents == ProxyContents.Single)
+                    {
+                        marshalledDescriptorWrites->BufferInfo = (SharpVk.Interop.DescriptorBufferInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.DescriptorBufferInfo>());
+                        bufferInfo.Value.GetSingleValue().MarshalTo(&*(SharpVk.Interop.DescriptorBufferInfo*)(marshalledDescriptorWrites->BufferInfo));
+                    }
+                    else
+                    {
+                        var fieldPointer = (SharpVk.Interop.DescriptorBufferInfo*)(Interop.HeapUtil.AllocateAndClear<SharpVk.Interop.DescriptorBufferInfo>(Interop.HeapUtil.GetLength(bufferInfo.Value)).ToPointer());
+                        for(int index = 0; index < (uint)(Interop.HeapUtil.GetLength(bufferInfo.Value)); index++)
+                        {
+                            bufferInfo.Value[index].MarshalTo(&fieldPointer[index]);
+                        }
+                        marshalledDescriptorWrites->BufferInfo = fieldPointer;
+                    }
+                }
+                if (texelBufferView.IsNull())
+                {
+                    marshalledDescriptorWrites->TexelBufferView = null;
+                }
+                else
+                {
+                    if (texelBufferView.Value.Contents == ProxyContents.Single)
+                    {
+                        marshalledDescriptorWrites->TexelBufferView = (SharpVk.Interop.BufferView*)(Interop.HeapUtil.Allocate<SharpVk.Interop.BufferView>());
+                        *(SharpVk.Interop.BufferView*)(marshalledDescriptorWrites->TexelBufferView) = texelBufferView.Value.GetSingleValue()?.handle ?? default(SharpVk.Interop.BufferView);
+                    }
+                    else
+                    {
+                        var fieldPointer = (SharpVk.Interop.BufferView*)(Interop.HeapUtil.AllocateAndClear<SharpVk.Interop.BufferView>(Interop.HeapUtil.GetLength(texelBufferView.Value)).ToPointer());
+                        for(int index = 0; index < (uint)(Interop.HeapUtil.GetLength(texelBufferView.Value)); index++)
+                        {
+                            fieldPointer[index] = texelBufferView.Value[index]?.handle ?? default(SharpVk.Interop.BufferView);
+                        }
+                        marshalledDescriptorWrites->TexelBufferView = fieldPointer;
+                    }
+                }
+                marshalledDescriptorCopies = (SharpVk.Interop.CopyDescriptorSet*)(Interop.HeapUtil.Allocate<SharpVk.Interop.CopyDescriptorSet>());
+                descriptorCopies.MarshalTo(marshalledDescriptorCopies);
+                SharpVk.Interop.VkDeviceUpdateDescriptorSetsDelegate commandDelegate = commandCache.Cache.vkUpdateDescriptorSets;
+                commandDelegate(this.handle, 1, marshalledDescriptorWrites, 1, marshalledDescriptorCopies);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
         /// Create a new framebuffer object.
         /// </summary>
         /// <param name="flags">

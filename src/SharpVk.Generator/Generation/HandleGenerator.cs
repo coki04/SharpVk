@@ -139,7 +139,8 @@ namespace SharpVk.Generator.Generation
             }
 
             bool enumeratePattern = (command.Verb == "enumerate" && lastParamIsArray) || (lastParamIsArray && lastParamLenFieldByRef);
-            bool isBatchMethod = (command.Verb == "submit" && handleTypeName.Contains("Queue")) || 
+            bool isBatchMethod = (command.Verb == "update" && handleTypeName.Contains("Device") && command.VkName.EndsWith("DescriptorSets")) ||
+                (command.Verb == "submit" && handleTypeName.Contains("Queue")) || 
                 (lastParamIsArray && !enumeratePattern && lastParam.Type.VkName != "void");
 
             yield return this.GenerateCommandVariant(command, handleTypeName, handleType, isExtension, enumeratePattern, lastParamIsArray, returnParamsCount, false);
