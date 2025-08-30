@@ -3333,7 +3333,7 @@ namespace SharpVk
                 marshalledDescriptorCopies = (SharpVk.Interop.CopyDescriptorSet*)(Interop.HeapUtil.Allocate<SharpVk.Interop.CopyDescriptorSet>());
                 descriptorCopies.MarshalTo(marshalledDescriptorCopies);
                 SharpVk.Interop.VkDeviceUpdateDescriptorSetsDelegate commandDelegate = commandCache.Cache.vkUpdateDescriptorSets;
-                commandDelegate(this.handle, 1, marshalledDescriptorWrites, 1, marshalledDescriptorCopies);
+                commandDelegate(this.handle, 1, marshalledDescriptorWrites, 0, null);
             }
             finally
             {
