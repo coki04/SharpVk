@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -30,37 +30,32 @@ namespace SharpVk.Interop.Khronos
     /// <summary>
     /// 
     /// </summary>
-    [StructLayout(LayoutKind.Explicit, Pack = 0)]
+    [StructLayout(LayoutKind.Sequential)]
     public unsafe partial struct AccelerationStructureGeometry
     {
         /// <summary>
         /// 
         /// </summary>
-        [FieldOffset(0)]
-        public SharpVk.StructureType SType;
-
+        public SharpVk.StructureType SType; 
+        
         /// <summary>
         /// 
         /// </summary>
-        [FieldOffset(8)]
-        public void* Next;
-
+        public void* Next; 
+        
         /// <summary>
         /// 
         /// </summary>
-        [FieldOffset(16)]
-        public SharpVk.Khronos.GeometryType GeometryType;
-
+        public SharpVk.Khronos.GeometryType GeometryType; 
+        
         /// <summary>
         /// 
         /// </summary>
-        [FieldOffset(24)]
-        public SharpVk.Interop.Khronos.AccelerationStructureGeometryData Geometry;
-
+        public SharpVk.Khronos.AccelerationStructureGeometryData Geometry; 
+        
         /// <summary>
         /// 
         /// </summary>
-        [FieldOffset(88)]
         public SharpVk.Khronos.GeometryFlags Flags; 
     }
 }

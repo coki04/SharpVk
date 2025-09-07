@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,7 @@ namespace SharpVk
     /// <summary>
     /// 
     /// </summary>
-    public enum ObjectType
+    public enum ObjectType 
     {
         /// <summary>
         /// 
@@ -252,7 +252,17 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        IndirectCommandsLayout = 1000277000, 
+        IndirectCommandsLayoutNv = 1000277000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        CudaModule = 1000307000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        CudaFunction = 1000307001, 
         
         /// <summary>
         /// 
@@ -267,6 +277,51 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        Tensor = 1000460000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        TensorView = 1000460001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         OpticalFlowSession = 1000464000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Shader = 1000482000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PipelineBinary = 1000483000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        SemaphoreSciSyncPool = 1000489000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DataGraphPipelineSession = 1000507000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ExternalComputeQueue = 1000556000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        IndirectCommandsLayoutExt = 1000572000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        IndirectExecutionSet = 1000572001, 
     }
 }

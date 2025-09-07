@@ -43,6 +43,7 @@ namespace SharpVk.Generator.Collation
             {"xcb_connection_t", "IntPtr" },
             {"xcb_visualid_t", "IntPtr" },
             {"xcb_window_t", "IntPtr" },
+            {"OHNativeWindow", "IntPtr" },
             {"RROutput", "IntPtr" },
             {"LPCWSTR", "IntPtr" },
             {"zx_handle_t", "uint" },
@@ -50,12 +51,14 @@ namespace SharpVk.Generator.Collation
             {"GgpFrameToken", "uint" },
             {"_screen_context", "IntPtr" },
             {"_screen_window", "IntPtr" },
+            {"_screen_buffer", "IntPtr" },
             {"MTLBuffer_id", "IntPtr" },
             {"MTLCommandQueue_id", "IntPtr" },
             {"MTLDevice_id", "IntPtr" },
             {"MTLSharedEvent_id", "IntPtr" },
             {"MTLTexture_id", "IntPtr" },
             {"IOSurfaceRef", "IntPtr" },
+
             {"StdVideoDecodeH264PictureInfo", "IntPtr" },
             {"StdVideoDecodeH264ReferenceInfo", "IntPtr" },
             {"StdVideoH264SequenceParameterSet", "IntPtr" },
@@ -66,6 +69,7 @@ namespace SharpVk.Generator.Collation
             {"StdVideoEncodeH264RefMemMgmtCtrlOperations", "IntPtr" },
             {"StdVideoEncodeH264ReferenceInfo", "IntPtr" },
             {"StdVideoEncodeH264PictureInfo", "IntPtr" },
+
             {"StdVideoH265VideoParameterSet", "IntPtr" },
             {"StdVideoH265SequenceParameterSet", "IntPtr" },
             {"StdVideoEncodeH265SliceSegmentHeader", "IntPtr" },
@@ -77,11 +81,33 @@ namespace SharpVk.Generator.Collation
             {"StdVideoH265ProfileIdc", "int" },
             {"StdVideoH265PictureParameterSet", "IntPtr" },
             {"StdVideoH265LevelIdc", "int" },
+
+            {"StdVideoVP9Profile", "int" },
+            {"StdVideoVP9Level", "int" },
+            {"StdVideoDecodeVP9PictureInfo", "IntPtr" },
+
+            {"StdVideoAV1Profile", "int" },
+            {"StdVideoAV1Level", "int" },
+            {"StdVideoDecodeAV1ReferenceInfo", "IntPtr" },
+            {"StdVideoDecodeAV1PictureInfo", "IntPtr" },
+            {"StdVideoEncodeAV1ReferenceInfo", "IntPtr" },
+            {"StdVideoEncodeAV1PictureInfo", "IntPtr" },
+            {"StdVideoEncodeAV1OperatingPointInfo", "IntPtr" },
+            {"StdVideoEncodeAV1DecoderModelInfo", "IntPtr" },
+            {"StdVideoAV1SequenceHeader", "IntPtr" },
+
             {"IDirectFB", "IntPtr" },
             {"IDirectFBSurface", "IntPtr" },
             {"VkDeviceOrHostAddressKHR", "IntPtr" },
             {"VkDeviceOrHostAddressConstKHR", "IntPtr" },
+            {"VkDeviceOrHostAddressConstAMDX", "IntPtr" },
             {"VkRemoteAddressNV", "IntPtr" },
+
+            {"NvSciSyncAttrList", "IntPtr" },
+            {"NvSciSyncObj", "IntPtr" },
+            {"NvSciSyncFence", "IntPtr" },
+            {"NvSciBufAttrList", "IntPtr" },
+            {"NvSciBufObj", "IntPtr" },
         };
 
         private static readonly string[] digitsSuffix = new[] { "flags", "flag", "type", "bits", "bit" };
@@ -148,6 +174,10 @@ namespace SharpVk.Generator.Collation
         {
             var methodNameParts = command.NameParts;
 
+            //Do not format TensorMemoryRequirementsARM since the extension provides GetTensorMemoryRequirements and DeviceGetTensorMemoryRequirements
+            if (command.VkName.Contains("TensorMemoryRequirements"))
+                return JoinNameParts(methodNameParts);
+
             int verbPrefixLength = 1;
 
             if (methodNameParts.First() != command.Verb)
@@ -175,14 +205,35 @@ namespace SharpVk.Generator.Collation
 
         public string FormatName(EnumElement enumeration, EnumField value, bool isBitmask)
         {
-            string digitsPrefix = JoinNameParts(enumeration.NameParts.TakeWhile(x => !digitsSuffix.Contains(x)));
+            string digitsPrefix;
+            int skipAtBeginning;
+            int skipAtEnd;
 
-            int skipAtEnd = isBitmask && digitsSuffix.Contains(value.NameParts.Last())
+            // Access2, Flags2, etc variants.
+            if (enumeration.NameParts.Length >= 2 &&
+                digitsSuffix.Contains(enumeration.NameParts[enumeration.NameParts.Length - 2]) &&
+                int.TryParse(enumeration.NameParts.Last(), out _))
+            {
+                digitsPrefix = JoinNameParts(enumeration.NameParts.TakeWhile(x => !digitsSuffix.Contains(x)));
+
+                skipAtEnd = isBitmask && digitsSuffix.Contains(value.NameParts.Last())
+                                ? 2
+                                : 0;
+                skipAtBeginning = 1;
+            }
+            //Access, Flags, etc
+            else
+            {
+                digitsPrefix = JoinNameParts(enumeration.NameParts.TakeWhile(x => !digitsSuffix.Contains(x)));
+
+                skipAtEnd = isBitmask && digitsSuffix.Contains(value.NameParts.Last())
                                 ? 1
                                 : 0;
+                skipAtBeginning = 0;
+            }
 
-            string result = JoinNameParts(value.NameParts.Take(value.NameParts.Length - skipAtEnd));
-
+            string result = JoinNameParts(value.NameParts.Skip(skipAtBeginning).Take(value.NameParts.Length - skipAtEnd));
+            
             if (!char.IsLetter(result[0]))
             {
                 result = digitsPrefix + result;

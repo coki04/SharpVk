@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,7 @@ namespace SharpVk
     /// <summary>
     /// Allocation type.
     /// </summary>
-    public enum InternalAllocationType
+    public enum InternalAllocationType 
     {
         /// <summary>
         /// The allocation is intended for execution by the host.

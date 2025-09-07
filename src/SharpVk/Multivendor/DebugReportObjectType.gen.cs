@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,7 @@ namespace SharpVk.Multivendor
     /// <summary>
     /// Specify the type of an object handle.
     /// </summary>
-    public enum DebugReportObjectType
+    public enum DebugReportObjectType 
     {
         /// <summary>
         /// An unknown object.
@@ -218,6 +218,16 @@ namespace SharpVk.Multivendor
         /// 
         /// </summary>
         AccelerationStructureNv = 1000165000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        CudaModuleNv = 1000307000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        CudaFunctionNv = 1000307001, 
         
         /// <summary>
         /// 

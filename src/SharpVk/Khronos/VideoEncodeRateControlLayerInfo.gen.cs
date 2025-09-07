@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -36,7 +36,7 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public uint AverageBitrate
+        public ulong AverageBitrate
         {
             get;
             set;
@@ -45,7 +45,7 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public uint MaxBitrate
+        public ulong MaxBitrate
         {
             get;
             set;
@@ -72,24 +72,6 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public uint VirtualBufferSizeInMs
-        {
-            get;
-            set;
-        }
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        public uint InitialVirtualBufferSizeInMs
-        {
-            get;
-            set;
-        }
-        
-        /// <summary>
-        /// 
-        /// </summary>
         /// <param name="pointer">
         /// </param>
         internal unsafe void MarshalTo(SharpVk.Interop.Khronos.VideoEncodeRateControlLayerInfo* pointer)
@@ -100,8 +82,6 @@ namespace SharpVk.Khronos
             pointer->MaxBitrate = this.MaxBitrate;
             pointer->FrameRateNumerator = this.FrameRateNumerator;
             pointer->FrameRateDenominator = this.FrameRateDenominator;
-            pointer->VirtualBufferSizeInMs = this.VirtualBufferSizeInMs;
-            pointer->InitialVirtualBufferSizeInMs = this.InitialVirtualBufferSizeInMs;
         }
     }
 }

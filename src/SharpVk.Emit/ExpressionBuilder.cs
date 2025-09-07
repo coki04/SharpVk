@@ -184,6 +184,12 @@ namespace SharpVk.Emit
 
             this.writer.Write($"?.{member}");
         }
+        public void EmitCoalesceMemberNonNull(Action<ExpressionBuilder> target, string member)
+        {
+            target(this.GetSubBuilder());
+
+            this.writer.Write($".{member}");
+        }
 
         public void EmitIndex(Action<ExpressionBuilder> target, Action<ExpressionBuilder> index)
         {
@@ -490,6 +496,11 @@ namespace SharpVk.Emit
         public static Action<ExpressionBuilder> CoalesceMember(Action<ExpressionBuilder> target, string member)
         {
             return builder => builder.EmitCoalesceMember(target, member);
+        }
+
+        public static Action<ExpressionBuilder> CoalesceMemberNonNull(Action<ExpressionBuilder> target, string member)
+        {
+            return builder => builder.EmitCoalesceMemberNonNull(target, member);
         }
 
         public static Action<ExpressionBuilder> Deref(Action<ExpressionBuilder> target)

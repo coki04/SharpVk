@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,7 @@ namespace SharpVk
     /// Bitmask specifying allowed usage of a buffer.
     /// </summary>
     [System.Flags]
-    public enum BufferUsageFlags
+    public enum BufferUsageFlags 
     {
         /// <summary>
         /// 
@@ -132,7 +132,12 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        Reserved25 = 1 << 25, 
+        ExecutionGraphScratch = 1 << 25, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved28 = 1 << 28, 
         
         /// <summary>
         /// 
@@ -152,11 +157,6 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        Reserved18 = 1 << 18, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
         VideoEncodeDestination = 1 << 15, 
         
         /// <summary>
@@ -167,12 +167,17 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        Reserved21 = 1 << 21, 
+        SamplerDescriptorBuffer = 1 << 21, 
         
         /// <summary>
         /// 
         /// </summary>
-        Reserved22 = 1 << 22, 
+        ResourceDescriptorBuffer = 1 << 22, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PushDescriptorsDescriptorBuffer = 1 << 26, 
         
         /// <summary>
         /// 
@@ -183,5 +188,10 @@ namespace SharpVk
         /// 
         /// </summary>
         MicromapStorage = 1 << 24, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        TileMemory = 1 << 27, 
     }
 }

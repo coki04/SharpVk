@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,7 @@ namespace SharpVk
     /// <summary>
     /// Vulkan command return codes.
     /// </summary>
-    public enum Result
+    public enum Result 
     {
         /// <summary>
         /// 
@@ -127,6 +127,11 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        ErrorValidationFailedVersion = -1000011001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         ErrorOutOfPoolMemoryVersion = -1000069000, 
         
         /// <summary>
@@ -152,6 +157,21 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        ErrorNotPermittedVersion = -1000174001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ErrorInvalidPipelineCacheData = -1000298000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ErrorNoPipelineMatch = -1000298001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         ErrorSurfaceLost = -1000000000, 
         
         /// <summary>
@@ -173,11 +193,6 @@ namespace SharpVk
         /// 
         /// </summary>
         ErrorIncompatibleDisplay = -1000003001, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        ErrorValidationFailed = -1000011001, 
         
         /// <summary>
         /// 
@@ -222,11 +237,6 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        ErrorNotPermittedKhr = -1000174001, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
         ErrorFullScreenExclusiveModeLost = -1000255000, 
         
         /// <summary>
@@ -252,6 +262,26 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        ErrorInvalidVideoStdParameters = -1000299000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         ErrorCompressionExhausted = -1000338000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        IncompatibleShaderBinary = 1000482000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PipelineBinaryMissing = 1000483000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ErrorNotEnoughSpace = -1000483000, 
     }
 }

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -47,12 +47,12 @@ namespace SharpVk.Qcom
         /// <summary>
         /// 
         /// </summary>
-        public const string RotatedCopyCommands = "VK_QCOM_rotated_copy_commands"; 
+        public const string TileShading = "VK_QCOM_tile_shading"; 
         
         /// <summary>
         /// 
         /// </summary>
-        public const string FragmentDensityMapOffset = "VK_QCOM_fragment_density_map_offset"; 
+        public const string RotatedCopyCommands = "VK_QCOM_rotated_copy_commands"; 
         
         /// <summary>
         /// 
@@ -63,5 +63,40 @@ namespace SharpVk.Qcom
         /// 
         /// </summary>
         public const string TileProperties = "VK_QCOM_tile_properties"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string MultiviewPerViewViewports = "VK_QCOM_multiview_per_view_viewports"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string MultiviewPerViewRenderAreas = "VK_QCOM_multiview_per_view_render_areas"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string ImageProcessing2 = "VK_QCOM_image_processing2"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string FilterCubicWeights = "VK_QCOM_filter_cubic_weights"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string YcbcrDegamma = "VK_QCOM_ycbcr_degamma"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string FilterCubicClamp = "VK_QCOM_filter_cubic_clamp"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string TileMemoryHeap = "VK_QCOM_tile_memory_heap"; 
     }
 }

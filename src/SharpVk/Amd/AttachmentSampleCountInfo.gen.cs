@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -58,7 +58,7 @@ namespace SharpVk.Amd
         /// </param>
         internal unsafe void MarshalTo(SharpVk.Interop.Amd.AttachmentSampleCountInfo* pointer)
         {
-            pointer->SType = StructureType.AttachmentSampleCountInfoKhr;
+            pointer->SType = StructureType.AttachmentSampleCountInfoAmd;
             pointer->Next = null;
             pointer->ColorAttachmentCount = (uint)(Interop.HeapUtil.GetLength(this.ColorAttachmentSamples));
             if (this.ColorAttachmentSamples != null)

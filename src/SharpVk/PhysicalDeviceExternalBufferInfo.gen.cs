@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -45,7 +45,7 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        public SharpVk.BufferUsageFlags Usage
+        public SharpVk.BufferUsageFlags? Usage
         {
             get;
             set;
@@ -77,7 +77,14 @@ namespace SharpVk
             {
                 pointer->Flags = default(SharpVk.BufferCreateFlags);
             }
-            pointer->Usage = this.Usage;
+            if (this.Usage != null)
+            {
+                pointer->Usage = this.Usage.Value;
+            }
+            else
+            {
+                pointer->Usage = default(SharpVk.BufferUsageFlags);
+            }
             pointer->HandleType = this.HandleType;
         }
     }

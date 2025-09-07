@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -34,36 +34,32 @@ namespace SharpVk.Interop
     public unsafe partial struct FramebufferAttachmentImageInfo
     {
         /// <summary>
-        /// The type of this structure.
+        /// 
         /// </summary>
         public SharpVk.StructureType SType; 
         
         /// <summary>
-        /// Null or an extension-specific structure.
+        /// 
         /// </summary>
         public void* Next; 
         
         /// <summary>
-        /// A bitmask of ImageCreateFlags, matching the value of
-        /// VkImageCreateInfo::flags used to create an image that will be used
-        /// with this framebuffer.
+        /// 
         /// </summary>
         public SharpVk.ImageCreateFlags Flags; 
         
         /// <summary>
-        /// A bitmask of ImageCreateFlags, matching the value of
-        /// VkImageCreateInfo::usage used to create an image used with this
-        /// framebuffer.
+        /// 
         /// </summary>
         public SharpVk.ImageUsageFlags Usage; 
         
         /// <summary>
-        /// The width of the image view used for rendering.
+        /// 
         /// </summary>
         public uint Width; 
         
         /// <summary>
-        /// The height of the image view used for rendering.
+        /// 
         /// </summary>
         public uint Height; 
         
@@ -73,17 +69,12 @@ namespace SharpVk.Interop
         public uint LayerCount; 
         
         /// <summary>
-        /// The number of entries in the pViewFormats array, matching the value
-        /// of VkImageFormatListCreateInfoKHR::viewFormatCount used to create
-        /// an image used with this framebuffer.
+        /// 
         /// </summary>
         public uint ViewFormatCount; 
         
         /// <summary>
-        /// An array which lists of all formats which can be used when creating
-        /// views of the image, matching the value of
-        /// VkImageFormatListCreateInfoKHR::pViewFormats used to create an
-        /// image used with this framebuffer.
+        /// 
         /// </summary>
         public SharpVk.Format* ViewFormats; 
     }

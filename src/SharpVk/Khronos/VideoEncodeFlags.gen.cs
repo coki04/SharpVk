@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,11 +28,26 @@ namespace SharpVk.Khronos
     /// 
     /// </summary>
     [System.Flags]
-    public enum VideoEncodeFlags
+    public enum VideoEncodeFlags 
     {
         /// <summary>
         /// 
         /// </summary>
         None = 0, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        IntraRefresh = 1 << 2, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        WithQuantizationDeltaMap = 1 << 0, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        WithEmphasisMap = 1 << 1, 
     }
 }

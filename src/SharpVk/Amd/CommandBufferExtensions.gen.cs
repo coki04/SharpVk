@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -68,6 +68,44 @@ namespace SharpVk.Amd
                 }
                 SharpVk.Interop.Amd.VkCommandBufferWriteBufferMarkerDelegate commandDelegate = commandCache.Cache.vkCmdWriteBufferMarkerAMD;
                 commandDelegate(extendedHandle.handle, marshalledPipelineStage, destinationBuffer?.handle ?? default(SharpVk.Interop.Buffer), destinationOffset, marker);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The CommandBuffer handle to extend.
+        /// </param>
+        /// <param name="stage">
+        /// </param>
+        /// <param name="destinationBuffer">
+        /// </param>
+        /// <param name="destinationOffset">
+        /// </param>
+        /// <param name="marker">
+        /// </param>
+        public static unsafe void WriteBufferMarker2(this SharpVk.CommandBuffer extendedHandle, SharpVk.Buffer destinationBuffer, ulong destinationOffset, uint marker, SharpVk.PipelineStageFlags2? stage = default(SharpVk.PipelineStageFlags2?))
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.PipelineStageFlags2 marshalledStage = default(SharpVk.PipelineStageFlags2);
+                commandCache = extendedHandle.commandCache;
+                if (stage != null)
+                {
+                    marshalledStage = stage.Value;
+                }
+                else
+                {
+                    marshalledStage = default(SharpVk.PipelineStageFlags2);
+                }
+                SharpVk.Interop.Amd.VkCommandBufferWriteBufferMarker2Delegate commandDelegate = commandCache.Cache.vkCmdWriteBufferMarker2AMD;
+                commandDelegate(extendedHandle.handle, marshalledStage, destinationBuffer?.handle ?? default(SharpVk.Interop.Buffer), destinationOffset, marker);
             }
             finally
             {

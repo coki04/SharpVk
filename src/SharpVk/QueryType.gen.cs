@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,7 @@ namespace SharpVk
     /// <summary>
     /// Specify the type of queries managed by a query pool.
     /// </summary>
-    public enum QueryType
+    public enum QueryType 
     {
         /// <summary>
         /// 
@@ -82,7 +82,7 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        VideoEncodeBitstreamBufferRange = 1000299000, 
+        VideoEncodeFeedback = 1000299000, 
         
         /// <summary>
         /// 

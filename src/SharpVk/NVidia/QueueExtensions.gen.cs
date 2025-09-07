@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -64,6 +64,72 @@ namespace SharpVk.NVidia
                     result = null;
                 }
                 return result;
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The Queue handle to extend.
+        /// </param>
+        public static unsafe SharpVk.NVidia.CheckpointData2[] GetCheckpointData2(this SharpVk.Queue extendedHandle)
+        {
+            try
+            {
+                SharpVk.NVidia.CheckpointData2[] result = default(SharpVk.NVidia.CheckpointData2[]);
+                uint marshalledCheckpointDataCount = default(uint);
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.NVidia.CheckpointData2* marshalledCheckpointData = default(SharpVk.Interop.NVidia.CheckpointData2*);
+                commandCache = extendedHandle.commandCache;
+                SharpVk.Interop.NVidia.VkQueueGetCheckpointData2Delegate commandDelegate = commandCache.Cache.vkGetQueueCheckpointData2NV;
+                commandDelegate(extendedHandle.handle, &marshalledCheckpointDataCount, marshalledCheckpointData);
+                marshalledCheckpointData = (SharpVk.Interop.NVidia.CheckpointData2*)(Interop.HeapUtil.Allocate<SharpVk.Interop.NVidia.CheckpointData2>((uint)(marshalledCheckpointDataCount)));
+                commandDelegate(extendedHandle.handle, &marshalledCheckpointDataCount, marshalledCheckpointData);
+                if (marshalledCheckpointData != null)
+                {
+                    var fieldPointer = new SharpVk.NVidia.CheckpointData2[(uint)(marshalledCheckpointDataCount)];
+                    for(int index = 0; index < (uint)(marshalledCheckpointDataCount); index++)
+                    {
+                        fieldPointer[index] = SharpVk.NVidia.CheckpointData2.MarshalFrom(&marshalledCheckpointData[index]);
+                    }
+                    result = fieldPointer;
+                }
+                else
+                {
+                    result = null;
+                }
+                return result;
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The Queue handle to extend.
+        /// </param>
+        /// <param name="queueTypeInfo">
+        /// </param>
+        public static unsafe void NotifyOutOfBand(this SharpVk.Queue extendedHandle, SharpVk.NVidia.OutOfBandQueueTypeInfo queueTypeInfo)
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.NVidia.OutOfBandQueueTypeInfo* marshalledQueueTypeInfo = default(SharpVk.Interop.NVidia.OutOfBandQueueTypeInfo*);
+                commandCache = extendedHandle.commandCache;
+                marshalledQueueTypeInfo = (SharpVk.Interop.NVidia.OutOfBandQueueTypeInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.NVidia.OutOfBandQueueTypeInfo>());
+                queueTypeInfo.MarshalTo(marshalledQueueTypeInfo);
+                SharpVk.Interop.NVidia.VkQueueNotifyOutOfBandDelegate commandDelegate = commandCache.Cache.vkQueueNotifyOutOfBandNV;
+                commandDelegate(extendedHandle.handle, marshalledQueueTypeInfo);
             }
             finally
             {

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -38,7 +38,10 @@ namespace SharpVk.Khronos
         
         internal readonly SharpVk.Khronos.VideoSession parent; 
         
-        internal VideoSessionParameters(SharpVk.Khronos.VideoSession parent, SharpVk.Interop.Khronos.VideoSessionParameters handle)
+        /// <summary>
+        /// 
+        /// </summary>
+        public VideoSessionParameters(SharpVk.Khronos.VideoSession parent, SharpVk.Interop.Khronos.VideoSessionParameters handle)
         {
             this.handle = handle;
             this.parent = parent;
@@ -55,53 +58,53 @@ namespace SharpVk.Khronos
         /// </summary>
         /// <param name="updateSequenceCount">
         /// </param>
-        /// <param name="videoDecodeH264SessionParametersAddInfoExt">
+        /// <param name="videoDecodeH264SessionParametersAddInfoKhr">
         /// Extension struct
         /// </param>
-        /// <param name="videoDecodeH265SessionParametersAddInfoExt">
+        /// <param name="videoDecodeH265SessionParametersAddInfoKhr">
         /// Extension struct
         /// </param>
-        /// <param name="videoEncodeH264SessionParametersAddInfoExt">
+        /// <param name="videoEncodeH264SessionParametersAddInfoKhr">
         /// Extension struct
         /// </param>
-        /// <param name="videoEncodeH265SessionParametersAddInfoExt">
+        /// <param name="videoEncodeH265SessionParametersAddInfoKhr">
         /// Extension struct
         /// </param>
-        public unsafe void Update(uint updateSequenceCount, SharpVk.Multivendor.VideoDecodeH264SessionParametersAddInfo? videoDecodeH264SessionParametersAddInfoExt = null, SharpVk.Multivendor.VideoDecodeH265SessionParametersAddInfo? videoDecodeH265SessionParametersAddInfoExt = null, SharpVk.Multivendor.VideoEncodeH264SessionParametersAddInfo? videoEncodeH264SessionParametersAddInfoExt = null, SharpVk.Multivendor.VideoEncodeH265SessionParametersAddInfo? videoEncodeH265SessionParametersAddInfoExt = null)
+        public unsafe void Update(uint updateSequenceCount, SharpVk.Khronos.VideoDecodeH264SessionParametersAddInfo? videoDecodeH264SessionParametersAddInfoKhr = null, SharpVk.Khronos.VideoDecodeH265SessionParametersAddInfo? videoDecodeH265SessionParametersAddInfoKhr = null, SharpVk.Khronos.VideoEncodeH264SessionParametersAddInfo? videoEncodeH264SessionParametersAddInfoKhr = null, SharpVk.Khronos.VideoEncodeH265SessionParametersAddInfo? videoEncodeH265SessionParametersAddInfoKhr = null)
         {
             try
             {
                 SharpVk.Interop.Khronos.VideoSessionParametersUpdateInfo* marshalledUpdateInfo = default(SharpVk.Interop.Khronos.VideoSessionParametersUpdateInfo*);
                 void* vkVideoSessionParametersUpdateInfoKHRNextPointer = default(void*);
-                if (videoDecodeH264SessionParametersAddInfoExt != null)
+                if (videoDecodeH264SessionParametersAddInfoKhr != null)
                 {
-                    SharpVk.Interop.Multivendor.VideoDecodeH264SessionParametersAddInfo* extensionPointer = default(SharpVk.Interop.Multivendor.VideoDecodeH264SessionParametersAddInfo*);
-                    extensionPointer = (SharpVk.Interop.Multivendor.VideoDecodeH264SessionParametersAddInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.VideoDecodeH264SessionParametersAddInfo>());
-                    videoDecodeH264SessionParametersAddInfoExt.Value.MarshalTo(extensionPointer);
+                    SharpVk.Interop.Khronos.VideoDecodeH264SessionParametersAddInfo* extensionPointer = default(SharpVk.Interop.Khronos.VideoDecodeH264SessionParametersAddInfo*);
+                    extensionPointer = (SharpVk.Interop.Khronos.VideoDecodeH264SessionParametersAddInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.VideoDecodeH264SessionParametersAddInfo>());
+                    videoDecodeH264SessionParametersAddInfoKhr.Value.MarshalTo(extensionPointer);
                     extensionPointer->Next = vkVideoSessionParametersUpdateInfoKHRNextPointer;
                     vkVideoSessionParametersUpdateInfoKHRNextPointer = extensionPointer;
                 }
-                if (videoDecodeH265SessionParametersAddInfoExt != null)
+                if (videoDecodeH265SessionParametersAddInfoKhr != null)
                 {
-                    SharpVk.Interop.Multivendor.VideoDecodeH265SessionParametersAddInfo* extensionPointer = default(SharpVk.Interop.Multivendor.VideoDecodeH265SessionParametersAddInfo*);
-                    extensionPointer = (SharpVk.Interop.Multivendor.VideoDecodeH265SessionParametersAddInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.VideoDecodeH265SessionParametersAddInfo>());
-                    videoDecodeH265SessionParametersAddInfoExt.Value.MarshalTo(extensionPointer);
+                    SharpVk.Interop.Khronos.VideoDecodeH265SessionParametersAddInfo* extensionPointer = default(SharpVk.Interop.Khronos.VideoDecodeH265SessionParametersAddInfo*);
+                    extensionPointer = (SharpVk.Interop.Khronos.VideoDecodeH265SessionParametersAddInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.VideoDecodeH265SessionParametersAddInfo>());
+                    videoDecodeH265SessionParametersAddInfoKhr.Value.MarshalTo(extensionPointer);
                     extensionPointer->Next = vkVideoSessionParametersUpdateInfoKHRNextPointer;
                     vkVideoSessionParametersUpdateInfoKHRNextPointer = extensionPointer;
                 }
-                if (videoEncodeH264SessionParametersAddInfoExt != null)
+                if (videoEncodeH264SessionParametersAddInfoKhr != null)
                 {
-                    SharpVk.Interop.Multivendor.VideoEncodeH264SessionParametersAddInfo* extensionPointer = default(SharpVk.Interop.Multivendor.VideoEncodeH264SessionParametersAddInfo*);
-                    extensionPointer = (SharpVk.Interop.Multivendor.VideoEncodeH264SessionParametersAddInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.VideoEncodeH264SessionParametersAddInfo>());
-                    videoEncodeH264SessionParametersAddInfoExt.Value.MarshalTo(extensionPointer);
+                    SharpVk.Interop.Khronos.VideoEncodeH264SessionParametersAddInfo* extensionPointer = default(SharpVk.Interop.Khronos.VideoEncodeH264SessionParametersAddInfo*);
+                    extensionPointer = (SharpVk.Interop.Khronos.VideoEncodeH264SessionParametersAddInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.VideoEncodeH264SessionParametersAddInfo>());
+                    videoEncodeH264SessionParametersAddInfoKhr.Value.MarshalTo(extensionPointer);
                     extensionPointer->Next = vkVideoSessionParametersUpdateInfoKHRNextPointer;
                     vkVideoSessionParametersUpdateInfoKHRNextPointer = extensionPointer;
                 }
-                if (videoEncodeH265SessionParametersAddInfoExt != null)
+                if (videoEncodeH265SessionParametersAddInfoKhr != null)
                 {
-                    SharpVk.Interop.Multivendor.VideoEncodeH265SessionParametersAddInfo* extensionPointer = default(SharpVk.Interop.Multivendor.VideoEncodeH265SessionParametersAddInfo*);
-                    extensionPointer = (SharpVk.Interop.Multivendor.VideoEncodeH265SessionParametersAddInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.VideoEncodeH265SessionParametersAddInfo>());
-                    videoEncodeH265SessionParametersAddInfoExt.Value.MarshalTo(extensionPointer);
+                    SharpVk.Interop.Khronos.VideoEncodeH265SessionParametersAddInfo* extensionPointer = default(SharpVk.Interop.Khronos.VideoEncodeH265SessionParametersAddInfo*);
+                    extensionPointer = (SharpVk.Interop.Khronos.VideoEncodeH265SessionParametersAddInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.VideoEncodeH265SessionParametersAddInfo>());
+                    videoEncodeH265SessionParametersAddInfoKhr.Value.MarshalTo(extensionPointer);
                     extensionPointer->Next = vkVideoSessionParametersUpdateInfoKHRNextPointer;
                     vkVideoSessionParametersUpdateInfoKHRNextPointer = extensionPointer;
                 }

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,7 @@ namespace SharpVk
     /// Specify how contents of an attachment are treated at the beginning of a
     /// subpass.
     /// </summary>
-    public enum AttachmentLoadOp
+    public enum AttachmentLoadOp 
     {
         /// <summary>
         /// 
@@ -48,6 +48,6 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        None = 1000400000, 
+        NoneVersion = 1000400000, 
     }
 }

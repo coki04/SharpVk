@@ -97,6 +97,9 @@ namespace SharpVk.Generator.Collation
                     memberName += "2";
                 }
 
+                if (member.VkName == "accelerationStructureNV")
+                    memberName = "accelerationStructureNV";
+
                 yield return new MemberDeclaration
                 {
                     VkName = member.VkName,

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,21 +28,26 @@ namespace SharpVk.Khronos
     /// 
     /// </summary>
     [System.Flags]
-    public enum VideoEncodeRateControlModeFlags
+    public enum VideoEncodeRateControlModeFlags 
     {
         /// <summary>
         /// 
         /// </summary>
-        NoneBit = 0, 
+        Default = 0, 
         
         /// <summary>
         /// 
         /// </summary>
-        CbrBit = 1, 
+        Disabled = 1 << 0, 
         
         /// <summary>
         /// 
         /// </summary>
-        VbrBit = 2, 
+        Cbr = 1 << 1, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Vbr = 1 << 2, 
     }
 }

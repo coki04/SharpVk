@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,7 @@ namespace SharpVk
     /// <summary>
     /// Available image formats.
     /// </summary>
-    public enum Format
+    public enum Format 
     {
         /// <summary>
         /// The format is not specified.
@@ -1641,6 +1641,16 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        A1B5G5R5UNormPack16Version = 1000470000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        A8UNormVersion = 1000470001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         Pvrtc12bppUNormBlock = 1000054000, 
         
         /// <summary>
@@ -1831,6 +1841,81 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        R16G16S105 = 1000464000, 
+        R8Bool = 1000460000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        R16G16Sfixed5 = 1000464000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        R10X6UIntPack16 = 1000609000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        R10X6G10X6UInt2Pack16 = 1000609001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        R10X6G10X6B10X6A10X6UInt4Pack16 = 1000609002, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        R12X4UIntPack16 = 1000609003, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        R12X4G12X4UInt2Pack16 = 1000609004, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        R12X4G12X4B12X4A12X4UInt4Pack16 = 1000609005, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        R14X2UIntPack16 = 1000609006, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        R14X2G14X2UInt2Pack16 = 1000609007, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        R14X2G14X2B14X2A14X2UInt4Pack16 = 1000609008, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        R14X2UNormPack16 = 1000609009, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        R14X2G14X2UNorm2Pack16 = 1000609010, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        R14X2G14X2B14X2A14X2UNorm4Pack16 = 1000609011, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        G14X2B14X2R14X22plane420UNorm3Pack16 = 1000609012, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        G14X2B14X2R14X22plane422UNorm3Pack16 = 1000609013, 
     }
 }

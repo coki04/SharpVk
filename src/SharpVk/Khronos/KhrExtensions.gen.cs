@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -87,6 +87,21 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
+        public const string VideoEncodeH264 = "VK_KHR_video_encode_h264"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string VideoEncodeH265 = "VK_KHR_video_encode_h265"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string VideoDecodeH264 = "VK_KHR_video_decode_h264"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public const string ExternalMemoryWin32 = "VK_KHR_external_memory_win32"; 
         
         /// <summary>
@@ -108,11 +123,6 @@ namespace SharpVk.Khronos
         /// 
         /// </summary>
         public const string ExternalSemaphoreFd = "VK_KHR_external_semaphore_fd"; 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        public const string PushDescriptor = "VK_KHR_push_descriptor"; 
         
         /// <summary>
         /// 
@@ -152,6 +162,11 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
+        public const string ShaderBfloat16 = "VK_KHR_shader_bfloat16"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public const string AccelerationStructure = "VK_KHR_acceleration_structure"; 
         
         /// <summary>
@@ -177,7 +192,7 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public const string GlobalPriority = "VK_KHR_global_priority"; 
+        public const string VideoDecodeH265 = "VK_KHR_video_decode_h265"; 
         
         /// <summary>
         /// 
@@ -188,6 +203,11 @@ namespace SharpVk.Khronos
         /// 
         /// </summary>
         public const string FragmentShadingRate = "VK_KHR_fragment_shading_rate"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string ShaderQuadControl = "VK_KHR_shader_quad_control"; 
         
         /// <summary>
         /// 
@@ -247,6 +267,136 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
+        public const string ShaderUntypedPointers = "VK_KHR_shader_untyped_pointers"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public const string PortabilityEnumeration = "VK_KHR_portability_enumeration"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string ShaderMaximalReconvergence = "VK_KHR_shader_maximal_reconvergence"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string PresentId2 = "VK_KHR_present_id2"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string PresentWait2 = "VK_KHR_present_wait2"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string RayTracingPositionFetch = "VK_KHR_ray_tracing_position_fetch"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string PipelineBinary = "VK_KHR_pipeline_binary"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string SurfaceMaintenance1 = "VK_KHR_surface_maintenance1"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string SwapchainMaintenance1 = "VK_KHR_swapchain_maintenance1"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string CooperativeMatrix = "VK_KHR_cooperative_matrix"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string ComputeShaderDerivatives = "VK_KHR_compute_shader_derivatives"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string VideoDecodeAv1 = "VK_KHR_video_decode_av1"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string VideoEncodeAv1 = "VK_KHR_video_encode_av1"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string VideoDecodeVp9 = "VK_KHR_video_decode_vp9"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string VideoMaintenance1 = "VK_KHR_video_maintenance1"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string UnifiedImageLayouts = "VK_KHR_unified_image_layouts"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string CalibratedTimestamps = "VK_KHR_calibrated_timestamps"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string VideoEncodeIntraRefresh = "VK_KHR_video_encode_intra_refresh"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string VideoEncodeQuantizationMap = "VK_KHR_video_encode_quantization_map"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string ShaderRelaxedExtendedInstruction = "VK_KHR_shader_relaxed_extended_instruction"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string Maintenance7 = "VK_KHR_maintenance7"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string Maintenance8 = "VK_KHR_maintenance8"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string Maintenance9 = "VK_KHR_maintenance9"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string VideoMaintenance2 = "VK_KHR_video_maintenance2"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string DepthClampZeroOne = "VK_KHR_depth_clamp_zero_one"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string Robustness2 = "VK_KHR_robustness2"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string PresentModeFifoLatestReady = "VK_KHR_present_mode_fifo_latest_ready"; 
     }
 }

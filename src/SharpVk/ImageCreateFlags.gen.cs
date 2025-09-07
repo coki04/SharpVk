@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,7 @@ namespace SharpVk
     /// Bitmask specifying additional parameters of an image.
     /// </summary>
     [System.Flags]
-    public enum ImageCreateFlags
+    public enum ImageCreateFlags 
     {
         /// <summary>
         /// 
@@ -112,6 +112,11 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        Reserved21 = 1 << 21, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         SampleLocationsCompatibleDepth = 1 << 12, 
         
         /// <summary>
@@ -122,12 +127,7 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        Reserved19 = 1 << 19, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        Reserved16 = 1 << 16, 
+        DescriptorBufferCaptureReplay = 1 << 16, 
         
         /// <summary>
         /// 
@@ -138,6 +138,11 @@ namespace SharpVk
         /// 
         /// </summary>
         ImageCreate2dViewCompatible = 1 << 17, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        VideoProfileIndependent = 1 << 20, 
         
         /// <summary>
         /// 

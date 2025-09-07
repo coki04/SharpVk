@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -61,26 +61,26 @@ namespace SharpVk.Interop.NVidia
         /// <summary>
         /// The component type of matrix A, of type VkComponentTypeNV.
         /// </summary>
-        public SharpVk.NVidia.ComponentType AType; 
+        public SharpVk.Khronos.ComponentType AType; 
         
         /// <summary>
         /// The component type of matrix B, of type VkComponentTypeNV.
         /// </summary>
-        public SharpVk.NVidia.ComponentType BType; 
+        public SharpVk.Khronos.ComponentType BType; 
         
         /// <summary>
         /// The component type of matrix C, of type VkComponentTypeNV.
         /// </summary>
-        public SharpVk.NVidia.ComponentType CType; 
+        public SharpVk.Khronos.ComponentType CType; 
         
         /// <summary>
         /// The component type of matrix D, of type VkComponentTypeNV.
         /// </summary>
-        public SharpVk.NVidia.ComponentType DType; 
+        public SharpVk.Khronos.ComponentType DType; 
         
         /// <summary>
         /// The scope of all the matrix types, of type VkScopeNV.
         /// </summary>
-        public SharpVk.NVidia.Scope Scope; 
+        public SharpVk.Khronos.Scope Scope; 
     }
 }

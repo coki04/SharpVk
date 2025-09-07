@@ -38,7 +38,7 @@
             var cache = new CommandCache(new SharpVk.Interop.NativeLibrary());
             cache.Initialise();
 
-            return Instance.Create(cache, enabledLayerNames, enabledExtensionNames, flags, applicationInfo, debugReportCallbackCreateInfoExt, validationFlagsExt, validationFeaturesExt, debugUtilsMessengerCreateInfoExt, allocator: allocator);
+            return Instance.Create(cache, enabledLayerNames, enabledExtensionNames, flags, applicationInfo, debugReportCallbackCreateInfoExt, validationFlagsExt, validationFeaturesExt, null, allocator: allocator);
         }
 
         /// <summary>

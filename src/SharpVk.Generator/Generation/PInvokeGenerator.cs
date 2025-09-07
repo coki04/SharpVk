@@ -40,6 +40,13 @@ namespace SharpVk.Generator.Generation
                     });
                 }
 
+                List<string> lookupScopes = new List<string>();
+                if (command.Extensions != null)
+                    foreach (var extension in command.Extensions)
+                        lookupScopes.Add(this.extensions[extension].Scope);
+                else
+                    lookupScopes.Add("");
+
                 services.AddSingleton(new DelegateDefinition
                 {
                     Name = $"{command.HandleTypeName}{command.Name}Delegate",
@@ -52,7 +59,7 @@ namespace SharpVk.Generator.Generation
                         Type = this.nameLookup.Lookup(x.Type, true)
                     }).ToList(),
                     VkName = command.VkName,
-                    LookupScope = command.Extension != null ? this.extensions[command.Extension].Scope : ""
+                    LookupScopes = lookupScopes,
                 });
             }
         }

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,7 @@ namespace SharpVk
     /// 
     /// </summary>
     [System.Flags]
-    public enum SubgroupFeatureFlags
+    public enum SubgroupFeatureFlags 
     {
         /// <summary>
         /// 
@@ -74,6 +74,16 @@ namespace SharpVk
         /// 
         /// </summary>
         Quad = 1 << 7, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Rotate = 1 << 9, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        RotateClustered = 1 << 10, 
         
         /// <summary>
         /// 

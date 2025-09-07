@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -32,7 +32,7 @@ namespace SharpVk.Khronos
     public static class PhysicalDeviceExtensions
     {
         /// <summary>
-        /// Query if presentation is supported.
+        /// 
         /// </summary>
         /// <param name="extendedHandle">
         /// The PhysicalDevice handle to extend.
@@ -65,7 +65,7 @@ namespace SharpVk.Khronos
         }
         
         /// <summary>
-        /// Query surface capabilities.
+        /// 
         /// </summary>
         /// <param name="extendedHandle">
         /// The PhysicalDevice handle to extend.
@@ -96,7 +96,7 @@ namespace SharpVk.Khronos
         }
         
         /// <summary>
-        /// Query color formats supported by surface.
+        /// 
         /// </summary>
         /// <param name="extendedHandle">
         /// The PhysicalDevice handle to extend.
@@ -142,7 +142,7 @@ namespace SharpVk.Khronos
         }
         
         /// <summary>
-        /// Query supported presentation modes.
+        /// 
         /// </summary>
         /// <param name="extendedHandle">
         /// The PhysicalDevice handle to extend.
@@ -234,7 +234,7 @@ namespace SharpVk.Khronos
         }
         
         /// <summary>
-        /// Query information about the available displays.
+        /// 
         /// </summary>
         /// <param name="extendedHandle">
         /// The PhysicalDevice handle to extend.
@@ -278,7 +278,7 @@ namespace SharpVk.Khronos
         }
         
         /// <summary>
-        /// Query the plane properties.
+        /// 
         /// </summary>
         /// <param name="extendedHandle">
         /// The PhysicalDevice handle to extend.
@@ -322,7 +322,7 @@ namespace SharpVk.Khronos
         }
         
         /// <summary>
-        /// Query the list of displays a plane supports.
+        /// 
         /// </summary>
         /// <param name="extendedHandle">
         /// The PhysicalDevice handle to extend.
@@ -890,6 +890,128 @@ namespace SharpVk.Khronos
                     for(int index = 0; index < (uint)(marshalledFragmentShadingRateCount); index++)
                     {
                         fieldPointer[index] = SharpVk.Khronos.PhysicalDeviceFragmentShadingRate.MarshalFrom(&marshalledFragmentShadingRates[index]);
+                    }
+                    result = fieldPointer;
+                }
+                else
+                {
+                    result = null;
+                }
+                return result;
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The PhysicalDevice handle to extend.
+        /// </param>
+        /// <param name="qualityLevelInfo">
+        /// </param>
+        public static unsafe SharpVk.Khronos.VideoEncodeQualityLevelProperties GetVideoEncodeQualityLevelProperties(this SharpVk.PhysicalDevice extendedHandle, SharpVk.Khronos.PhysicalDeviceVideoEncodeQualityLevelInfo qualityLevelInfo)
+        {
+            try
+            {
+                SharpVk.Khronos.VideoEncodeQualityLevelProperties result = default(SharpVk.Khronos.VideoEncodeQualityLevelProperties);
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.Khronos.PhysicalDeviceVideoEncodeQualityLevelInfo* marshalledQualityLevelInfo = default(SharpVk.Interop.Khronos.PhysicalDeviceVideoEncodeQualityLevelInfo*);
+                SharpVk.Interop.Khronos.VideoEncodeQualityLevelProperties marshalledQualityLevelProperties = default(SharpVk.Interop.Khronos.VideoEncodeQualityLevelProperties);
+                commandCache = extendedHandle.commandCache;
+                marshalledQualityLevelInfo = (SharpVk.Interop.Khronos.PhysicalDeviceVideoEncodeQualityLevelInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.PhysicalDeviceVideoEncodeQualityLevelInfo>());
+                qualityLevelInfo.MarshalTo(marshalledQualityLevelInfo);
+                SharpVk.Interop.Khronos.VkPhysicalDeviceGetVideoEncodeQualityLevelPropertiesDelegate commandDelegate = commandCache.Cache.vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR;
+                Result methodResult = commandDelegate(extendedHandle.handle, marshalledQualityLevelInfo, &marshalledQualityLevelProperties);
+                if (SharpVkException.IsError(methodResult))
+                {
+                    throw SharpVkException.Create(methodResult);
+                }
+                result = SharpVk.Khronos.VideoEncodeQualityLevelProperties.MarshalFrom(&marshalledQualityLevelProperties);
+                return result;
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The PhysicalDevice handle to extend.
+        /// </param>
+        public static unsafe SharpVk.Khronos.CooperativeMatrixProperties[] GetCooperativeMatrixProperties(this SharpVk.PhysicalDevice extendedHandle)
+        {
+            try
+            {
+                SharpVk.Khronos.CooperativeMatrixProperties[] result = default(SharpVk.Khronos.CooperativeMatrixProperties[]);
+                uint marshalledPropertyCount = default(uint);
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.Khronos.CooperativeMatrixProperties* marshalledProperties = default(SharpVk.Interop.Khronos.CooperativeMatrixProperties*);
+                commandCache = extendedHandle.commandCache;
+                SharpVk.Interop.Khronos.VkPhysicalDeviceGetCooperativeMatrixPropertiesDelegate commandDelegate = commandCache.Cache.vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR;
+                Result methodResult = commandDelegate(extendedHandle.handle, &marshalledPropertyCount, marshalledProperties);
+                if (SharpVkException.IsError(methodResult))
+                {
+                    throw SharpVkException.Create(methodResult);
+                }
+                marshalledProperties = (SharpVk.Interop.Khronos.CooperativeMatrixProperties*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.CooperativeMatrixProperties>((uint)(marshalledPropertyCount)));
+                commandDelegate(extendedHandle.handle, &marshalledPropertyCount, marshalledProperties);
+                if (marshalledProperties != null)
+                {
+                    var fieldPointer = new SharpVk.Khronos.CooperativeMatrixProperties[(uint)(marshalledPropertyCount)];
+                    for(int index = 0; index < (uint)(marshalledPropertyCount); index++)
+                    {
+                        fieldPointer[index] = SharpVk.Khronos.CooperativeMatrixProperties.MarshalFrom(&marshalledProperties[index]);
+                    }
+                    result = fieldPointer;
+                }
+                else
+                {
+                    result = null;
+                }
+                return result;
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The PhysicalDevice handle to extend.
+        /// </param>
+        public static unsafe SharpVk.Khronos.TimeDomain[] GetCalibrateableTimeDomains(this SharpVk.PhysicalDevice extendedHandle)
+        {
+            try
+            {
+                SharpVk.Khronos.TimeDomain[] result = default(SharpVk.Khronos.TimeDomain[]);
+                uint marshalledTimeDomainCount = default(uint);
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Khronos.TimeDomain* marshalledTimeDomains = default(SharpVk.Khronos.TimeDomain*);
+                commandCache = extendedHandle.commandCache;
+                SharpVk.Interop.Khronos.VkPhysicalDeviceGetCalibrateableTimeDomainsDelegate commandDelegate = commandCache.Cache.vkGetPhysicalDeviceCalibrateableTimeDomainsKHR;
+                Result methodResult = commandDelegate(extendedHandle.handle, &marshalledTimeDomainCount, marshalledTimeDomains);
+                if (SharpVkException.IsError(methodResult))
+                {
+                    throw SharpVkException.Create(methodResult);
+                }
+                marshalledTimeDomains = (SharpVk.Khronos.TimeDomain*)(Interop.HeapUtil.Allocate<SharpVk.Khronos.TimeDomain>((uint)(marshalledTimeDomainCount)));
+                commandDelegate(extendedHandle.handle, &marshalledTimeDomainCount, marshalledTimeDomains);
+                if (marshalledTimeDomains != null)
+                {
+                    var fieldPointer = new SharpVk.Khronos.TimeDomain[(uint)(marshalledTimeDomainCount)];
+                    for(int index = 0; index < (uint)(marshalledTimeDomainCount); index++)
+                    {
+                        fieldPointer[index] = marshalledTimeDomains[index];
                     }
                     result = fieldPointer;
                 }

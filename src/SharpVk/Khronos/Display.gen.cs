@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -37,7 +37,10 @@ namespace SharpVk.Khronos
         
         internal readonly SharpVk.PhysicalDevice parent; 
         
-        internal Display(SharpVk.PhysicalDevice parent, SharpVk.Interop.Khronos.Display handle)
+        /// <summary>
+        /// 
+        /// </summary>
+        public Display(SharpVk.PhysicalDevice parent, SharpVk.Interop.Khronos.Display handle)
         {
             this.handle = handle;
             this.parent = parent;
@@ -50,7 +53,7 @@ namespace SharpVk.Khronos
         public SharpVk.Interop.Khronos.Display RawHandle => this.handle;
         
         /// <summary>
-        /// Query the set of mode properties supported by the display.
+        /// 
         /// </summary>
         public unsafe SharpVk.Khronos.DisplayModeProperties[] GetModeProperties()
         {
@@ -89,7 +92,7 @@ namespace SharpVk.Khronos
         }
         
         /// <summary>
-        /// Create a display mode.
+        /// 
         /// </summary>
         /// <param name="flags">
         /// Reserved for future use, and must be zero.
@@ -101,8 +104,6 @@ namespace SharpVk.Khronos
         /// return Result.ErrorINITIALIZATION_FAILED.
         /// </param>
         /// <param name="allocator">
-        /// An optional AllocationCallbacks instance that controls host memory
-        /// allocation.
         /// </param>
         public unsafe SharpVk.Khronos.DisplayMode CreateMode(SharpVk.Khronos.DisplayModeParameters parameters, SharpVk.Khronos.DisplayModeCreateFlags? flags = default(SharpVk.Khronos.DisplayModeCreateFlags?), SharpVk.AllocationCallbacks? allocator = default(SharpVk.AllocationCallbacks?))
         {

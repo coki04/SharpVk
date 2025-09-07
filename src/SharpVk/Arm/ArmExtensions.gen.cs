@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -32,6 +32,41 @@ namespace SharpVk.Arm
         /// <summary>
         /// 
         /// </summary>
+        public const string ShaderCoreProperties = "VK_ARM_shader_core_properties"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string SchedulingControls = "VK_ARM_scheduling_controls"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string RenderPassStriped = "VK_ARM_render_pass_striped"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string Tensors = "VK_ARM_tensors"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public const string ShaderCoreBuiltins = "VK_ARM_shader_core_builtins"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string DataGraph = "VK_ARM_data_graph"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string PipelineOpacityMicromap = "VK_ARM_pipeline_opacity_micromap"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string FormatPack = "VK_ARM_format_pack"; 
     }
 }

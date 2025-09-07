@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -245,6 +245,94 @@ namespace SharpVk.NVidia
                     for(int index = 0; index < (uint)(marshalledFormatCount); index++)
                     {
                         fieldPointer[index] = SharpVk.NVidia.OpticalFlowImageFormatProperties.MarshalFrom(&marshalledImageFormatProperties[index]);
+                    }
+                    result = fieldPointer;
+                }
+                else
+                {
+                    result = null;
+                }
+                return result;
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The PhysicalDevice handle to extend.
+        /// </param>
+        public static unsafe SharpVk.NVidia.CooperativeVectorProperties[] GetCooperativeVectorProperties(this SharpVk.PhysicalDevice extendedHandle)
+        {
+            try
+            {
+                SharpVk.NVidia.CooperativeVectorProperties[] result = default(SharpVk.NVidia.CooperativeVectorProperties[]);
+                uint marshalledPropertyCount = default(uint);
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.NVidia.CooperativeVectorProperties* marshalledProperties = default(SharpVk.Interop.NVidia.CooperativeVectorProperties*);
+                commandCache = extendedHandle.commandCache;
+                SharpVk.Interop.NVidia.VkPhysicalDeviceGetCooperativeVectorPropertiesDelegate commandDelegate = commandCache.Cache.vkGetPhysicalDeviceCooperativeVectorPropertiesNV;
+                Result methodResult = commandDelegate(extendedHandle.handle, &marshalledPropertyCount, marshalledProperties);
+                if (SharpVkException.IsError(methodResult))
+                {
+                    throw SharpVkException.Create(methodResult);
+                }
+                marshalledProperties = (SharpVk.Interop.NVidia.CooperativeVectorProperties*)(Interop.HeapUtil.Allocate<SharpVk.Interop.NVidia.CooperativeVectorProperties>((uint)(marshalledPropertyCount)));
+                commandDelegate(extendedHandle.handle, &marshalledPropertyCount, marshalledProperties);
+                if (marshalledProperties != null)
+                {
+                    var fieldPointer = new SharpVk.NVidia.CooperativeVectorProperties[(uint)(marshalledPropertyCount)];
+                    for(int index = 0; index < (uint)(marshalledPropertyCount); index++)
+                    {
+                        fieldPointer[index] = SharpVk.NVidia.CooperativeVectorProperties.MarshalFrom(&marshalledProperties[index]);
+                    }
+                    result = fieldPointer;
+                }
+                else
+                {
+                    result = null;
+                }
+                return result;
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The PhysicalDevice handle to extend.
+        /// </param>
+        public static unsafe SharpVk.NVidia.CooperativeMatrixFlexibleDimensionsProperties[] GetCooperativeMatrixFlexibleDimensionsProperties(this SharpVk.PhysicalDevice extendedHandle)
+        {
+            try
+            {
+                SharpVk.NVidia.CooperativeMatrixFlexibleDimensionsProperties[] result = default(SharpVk.NVidia.CooperativeMatrixFlexibleDimensionsProperties[]);
+                uint marshalledPropertyCount = default(uint);
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.NVidia.CooperativeMatrixFlexibleDimensionsProperties* marshalledProperties = default(SharpVk.Interop.NVidia.CooperativeMatrixFlexibleDimensionsProperties*);
+                commandCache = extendedHandle.commandCache;
+                SharpVk.Interop.NVidia.VkPhysicalDeviceGetCooperativeMatrixFlexibleDimensionsPropertiesDelegate commandDelegate = commandCache.Cache.vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV;
+                Result methodResult = commandDelegate(extendedHandle.handle, &marshalledPropertyCount, marshalledProperties);
+                if (SharpVkException.IsError(methodResult))
+                {
+                    throw SharpVkException.Create(methodResult);
+                }
+                marshalledProperties = (SharpVk.Interop.NVidia.CooperativeMatrixFlexibleDimensionsProperties*)(Interop.HeapUtil.Allocate<SharpVk.Interop.NVidia.CooperativeMatrixFlexibleDimensionsProperties>((uint)(marshalledPropertyCount)));
+                commandDelegate(extendedHandle.handle, &marshalledPropertyCount, marshalledProperties);
+                if (marshalledProperties != null)
+                {
+                    var fieldPointer = new SharpVk.NVidia.CooperativeMatrixFlexibleDimensionsProperties[(uint)(marshalledPropertyCount)];
+                    for(int index = 0; index < (uint)(marshalledPropertyCount); index++)
+                    {
+                        fieldPointer[index] = SharpVk.NVidia.CooperativeMatrixFlexibleDimensionsProperties.MarshalFrom(&marshalledProperties[index]);
                     }
                     result = fieldPointer;
                 }

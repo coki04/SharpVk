@@ -11,14 +11,21 @@ namespace SharpVk.Generator.Collation
         : IWorker
     {
         private readonly IEnumerable<CommandElement> commands;
-        private readonly Dictionary<string, CommandRequirement> requirements;
+        private readonly Dictionary<string, List<CommandRequirement>> requirements;
         private readonly NameFormatter nameFormatter;
         private readonly Dictionary<string, TypeElement> typeData;
 
         public CommandCollator(IEnumerable<CommandElement> commands, IEnumerable<CommandRequirement> requirements, NameFormatter nameFormatter, IEnumerable<TypeElement> types)
         {
             this.commands = commands;
-            this.requirements = requirements.Distinct().ToDictionary(x => x.CommandName);
+            this.requirements = new Dictionary<string, List<CommandRequirement>>();
+            foreach (string cmd in requirements.Select(x => x.CommandName))
+            {
+                if (!this.requirements.ContainsKey(cmd))
+                    this.requirements.Add(cmd, new List<CommandRequirement>());
+
+                this.requirements[cmd].AddRange(requirements.Where(x => x.CommandName == cmd));
+            }
             this.nameFormatter = nameFormatter;
             this.typeData = types.ToDictionary(x => x.VkName);
         }
@@ -88,7 +95,7 @@ namespace SharpVk.Generator.Collation
                     Name = this.nameFormatter.FormatName(command, typeData[handleTypeName]),
                     Verb = command.Verb,
                     ExtensionNamespace = command.ExtensionNamespace,
-                    Extension = commandRequirement?.ExtensionName,
+                    Extensions = commandRequirement?.Select(x => x.ExtensionName).ToList(),
                     HandleTypeName = handleTypeName,
                     HandleParamsCount = handleParams.Length,
                     ReturnType = command.Type,

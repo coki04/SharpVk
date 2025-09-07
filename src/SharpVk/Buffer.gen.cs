@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -41,7 +41,10 @@ namespace SharpVk
         
         internal readonly SharpVk.Device parent; 
         
-        internal Buffer(SharpVk.Device parent, SharpVk.Interop.Buffer handle)
+        /// <summary>
+        /// 
+        /// </summary>
+        public Buffer(SharpVk.Device parent, SharpVk.Interop.Buffer handle)
         {
             this.handle = handle;
             this.parent = parent;

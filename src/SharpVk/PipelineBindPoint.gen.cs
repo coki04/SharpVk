@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,7 @@ namespace SharpVk
     /// <summary>
     /// Specify the bind point of a pipeline object to a command buffer.
     /// </summary>
-    public enum PipelineBindPoint
+    public enum PipelineBindPoint 
     {
         /// <summary>
         /// 
@@ -42,11 +42,21 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        ExecutionGraph = 1000134000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         RayTracingKhr = 1000165000, 
         
         /// <summary>
         /// 
         /// </summary>
         SubpassShading = 1000369003, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DataGraph = 1000507000, 
     }
 }

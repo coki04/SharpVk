@@ -11,6 +11,6 @@ namespace SharpVk.Generator.Generation
         public List<string> Comment;
         public List<ParamDefinition> Parameters;
         public string VkName;
-        public string LookupScope;
+        public List<string> LookupScopes;
     }
 }

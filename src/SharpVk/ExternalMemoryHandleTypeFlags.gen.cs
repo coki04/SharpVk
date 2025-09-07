@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,7 @@ namespace SharpVk
     /// 
     /// </summary>
     [System.Flags]
-    public enum ExternalMemoryHandleTypeFlags
+    public enum ExternalMemoryHandleTypeFlags 
     {
         /// <summary>
         /// 
@@ -103,6 +103,31 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        Reserved13 = 1 << 13, 
+        SciBuf = 1 << 13, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ScreenBuffer = 1 << 14, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ExternalMemoryHandle590 = 1 << 15, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Mtlbuffer = 1 << 16, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Mtltexture = 1 << 17, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Mtlheap = 1 << 18, 
     }
 }

@@ -39,7 +39,17 @@ namespace SharpVk.Generator.Emission
                         {
                             foreach (var @delegate in this.delegates)
                             {
-                                constructor.EmitAssignment(Member(This, @delegate.VkName), Call(Variable("cache"), $"GetCommandDelegate<{string.Join('.', @delegate.Namespace) + '.' + @delegate.Name}>", Literal(@delegate.VkName), Literal(@delegate.LookupScope)));
+                                if (@delegate.LookupScopes != null)
+                                {
+                                    foreach (var lookupScope in @delegate.LookupScopes)
+                                    {
+                                        constructor.EmitAssignment(Member(This, @delegate.VkName), Call(Variable("cache"), $"GetCommandDelegate<{string.Join('.', @delegate.Namespace) + '.' + @delegate.Name}>", Literal(@delegate.VkName), Literal(lookupScope)));
+                                    }
+                                }
+                                else
+                                {
+                                    constructor.EmitAssignment(Member(This, @delegate.VkName), Call(Variable("cache"), $"GetCommandDelegate<{string.Join('.', @delegate.Namespace) + '.' + @delegate.Name}>", Literal(@delegate.VkName), Literal("")));
+                                }
                             }
                         }, param => param.EmitParam("CommandCache", "cache"), AccessModifier.Public);
                     }, accessModifier: AccessModifier.Internal, modifiers: TypeModifier.Partial);

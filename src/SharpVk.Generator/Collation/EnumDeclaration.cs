@@ -7,6 +7,7 @@ namespace SharpVk.Generator.Collation
         public string VkName;
         public string Name;
         public string Extension;
+        public int Bitwidth;
         public bool IsFlags;
         public List<FieldDeclaration> Fields;
     }

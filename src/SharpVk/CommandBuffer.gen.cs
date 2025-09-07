@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -37,7 +37,10 @@ namespace SharpVk
         
         internal readonly SharpVk.CommandPool parent; 
         
-        internal CommandBuffer(SharpVk.CommandPool parent, SharpVk.Interop.CommandBuffer handle)
+        /// <summary>
+        /// 
+        /// </summary>
+        public CommandBuffer(SharpVk.CommandPool parent, SharpVk.Interop.CommandBuffer handle)
         {
             this.handle = handle;
             this.parent = parent;
@@ -1733,9 +1736,15 @@ namespace SharpVk
         /// <param name="renderPassTransformBeginInfoQcom">
         /// Extension struct
         /// </param>
+        /// <param name="multiviewPerViewRenderAreasRenderPassBeginInfoQcom">
+        /// Extension struct
+        /// </param>
+        /// <param name="renderPassStripeBeginInfoArm">
+        /// Extension struct
+        /// </param>
         /// <param name="contents">
         /// </param>
-        public unsafe void BeginRenderPass(SharpVk.RenderPass renderPass, SharpVk.Framebuffer framebuffer, SharpVk.Rect2D renderArea, ArrayProxy<SharpVk.ClearValue>? clearValues, SharpVk.SubpassContents contents, SharpVk.DeviceGroupRenderPassBeginInfo? deviceGroupRenderPassBeginInfo = null, SharpVk.Multivendor.RenderPassSampleLocationsBeginInfo? renderPassSampleLocationsBeginInfoExt = null, SharpVk.RenderPassAttachmentBeginInfo? renderPassAttachmentBeginInfo = null, SharpVk.Qcom.RenderPassTransformBeginInfo? renderPassTransformBeginInfoQcom = null)
+        public unsafe void BeginRenderPass(SharpVk.RenderPass renderPass, SharpVk.Framebuffer framebuffer, SharpVk.Rect2D renderArea, ArrayProxy<SharpVk.ClearValue>? clearValues, SharpVk.SubpassContents contents, SharpVk.DeviceGroupRenderPassBeginInfo? deviceGroupRenderPassBeginInfo = null, SharpVk.Multivendor.RenderPassSampleLocationsBeginInfo? renderPassSampleLocationsBeginInfoExt = null, SharpVk.RenderPassAttachmentBeginInfo? renderPassAttachmentBeginInfo = null, SharpVk.Qcom.RenderPassTransformBeginInfo? renderPassTransformBeginInfoQcom = null, SharpVk.Qcom.MultiviewPerViewRenderAreasRenderPassBeginInfo? multiviewPerViewRenderAreasRenderPassBeginInfoQcom = null, SharpVk.Arm.RenderPassStripeBeginInfo? renderPassStripeBeginInfoArm = null)
         {
             try
             {
@@ -1770,6 +1779,22 @@ namespace SharpVk
                     SharpVk.Interop.Qcom.RenderPassTransformBeginInfo* extensionPointer = default(SharpVk.Interop.Qcom.RenderPassTransformBeginInfo*);
                     extensionPointer = (SharpVk.Interop.Qcom.RenderPassTransformBeginInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Qcom.RenderPassTransformBeginInfo>());
                     renderPassTransformBeginInfoQcom.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkRenderPassBeginInfoNextPointer;
+                    vkRenderPassBeginInfoNextPointer = extensionPointer;
+                }
+                if (multiviewPerViewRenderAreasRenderPassBeginInfoQcom != null)
+                {
+                    SharpVk.Interop.Qcom.MultiviewPerViewRenderAreasRenderPassBeginInfo* extensionPointer = default(SharpVk.Interop.Qcom.MultiviewPerViewRenderAreasRenderPassBeginInfo*);
+                    extensionPointer = (SharpVk.Interop.Qcom.MultiviewPerViewRenderAreasRenderPassBeginInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Qcom.MultiviewPerViewRenderAreasRenderPassBeginInfo>());
+                    multiviewPerViewRenderAreasRenderPassBeginInfoQcom.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkRenderPassBeginInfoNextPointer;
+                    vkRenderPassBeginInfoNextPointer = extensionPointer;
+                }
+                if (renderPassStripeBeginInfoArm != null)
+                {
+                    SharpVk.Interop.Arm.RenderPassStripeBeginInfo* extensionPointer = default(SharpVk.Interop.Arm.RenderPassStripeBeginInfo*);
+                    extensionPointer = (SharpVk.Interop.Arm.RenderPassStripeBeginInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Arm.RenderPassStripeBeginInfo>());
+                    renderPassStripeBeginInfoArm.Value.MarshalTo(extensionPointer);
                     extensionPointer->Next = vkRenderPassBeginInfoNextPointer;
                     vkRenderPassBeginInfoNextPointer = extensionPointer;
                 }
@@ -2014,9 +2039,15 @@ namespace SharpVk
         /// <param name="renderPassTransformBeginInfoQcom">
         /// Extension struct
         /// </param>
+        /// <param name="multiviewPerViewRenderAreasRenderPassBeginInfoQcom">
+        /// Extension struct
+        /// </param>
+        /// <param name="renderPassStripeBeginInfoArm">
+        /// Extension struct
+        /// </param>
         /// <param name="contents">
         /// </param>
-        public unsafe void BeginRenderPass2(SharpVk.RenderPass renderPass, SharpVk.Framebuffer framebuffer, SharpVk.Rect2D renderArea, ArrayProxy<SharpVk.ClearValue>? clearValues, SharpVk.SubpassContents contents, SharpVk.DeviceGroupRenderPassBeginInfo? deviceGroupRenderPassBeginInfo = null, SharpVk.Multivendor.RenderPassSampleLocationsBeginInfo? renderPassSampleLocationsBeginInfoExt = null, SharpVk.RenderPassAttachmentBeginInfo? renderPassAttachmentBeginInfo = null, SharpVk.Qcom.RenderPassTransformBeginInfo? renderPassTransformBeginInfoQcom = null)
+        public unsafe void BeginRenderPass2(SharpVk.RenderPass renderPass, SharpVk.Framebuffer framebuffer, SharpVk.Rect2D renderArea, ArrayProxy<SharpVk.ClearValue>? clearValues, SharpVk.SubpassContents contents, SharpVk.DeviceGroupRenderPassBeginInfo? deviceGroupRenderPassBeginInfo = null, SharpVk.Multivendor.RenderPassSampleLocationsBeginInfo? renderPassSampleLocationsBeginInfoExt = null, SharpVk.RenderPassAttachmentBeginInfo? renderPassAttachmentBeginInfo = null, SharpVk.Qcom.RenderPassTransformBeginInfo? renderPassTransformBeginInfoQcom = null, SharpVk.Qcom.MultiviewPerViewRenderAreasRenderPassBeginInfo? multiviewPerViewRenderAreasRenderPassBeginInfoQcom = null, SharpVk.Arm.RenderPassStripeBeginInfo? renderPassStripeBeginInfoArm = null)
         {
             try
             {
@@ -2053,6 +2084,22 @@ namespace SharpVk
                     SharpVk.Interop.Qcom.RenderPassTransformBeginInfo* extensionPointer = default(SharpVk.Interop.Qcom.RenderPassTransformBeginInfo*);
                     extensionPointer = (SharpVk.Interop.Qcom.RenderPassTransformBeginInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Qcom.RenderPassTransformBeginInfo>());
                     renderPassTransformBeginInfoQcom.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkRenderPassBeginInfoNextPointer;
+                    vkRenderPassBeginInfoNextPointer = extensionPointer;
+                }
+                if (multiviewPerViewRenderAreasRenderPassBeginInfoQcom != null)
+                {
+                    SharpVk.Interop.Qcom.MultiviewPerViewRenderAreasRenderPassBeginInfo* extensionPointer = default(SharpVk.Interop.Qcom.MultiviewPerViewRenderAreasRenderPassBeginInfo*);
+                    extensionPointer = (SharpVk.Interop.Qcom.MultiviewPerViewRenderAreasRenderPassBeginInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Qcom.MultiviewPerViewRenderAreasRenderPassBeginInfo>());
+                    multiviewPerViewRenderAreasRenderPassBeginInfoQcom.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkRenderPassBeginInfoNextPointer;
+                    vkRenderPassBeginInfoNextPointer = extensionPointer;
+                }
+                if (renderPassStripeBeginInfoArm != null)
+                {
+                    SharpVk.Interop.Arm.RenderPassStripeBeginInfo* extensionPointer = default(SharpVk.Interop.Arm.RenderPassStripeBeginInfo*);
+                    extensionPointer = (SharpVk.Interop.Arm.RenderPassStripeBeginInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Arm.RenderPassStripeBeginInfo>());
+                    renderPassStripeBeginInfoArm.Value.MarshalTo(extensionPointer);
                     extensionPointer->Next = vkRenderPassBeginInfoNextPointer;
                     vkRenderPassBeginInfoNextPointer = extensionPointer;
                 }
@@ -2126,20 +2173,20 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="subpassFragmentDensityMapOffsetEndInfoQcom">
+        /// <param name="renderPassFragmentDensityMapOffsetEndInfoExt">
         /// Extension struct
         /// </param>
-        public unsafe void EndRenderPass2(SharpVk.Qcom.SubpassFragmentDensityMapOffsetEndInfo? subpassFragmentDensityMapOffsetEndInfoQcom = null)
+        public unsafe void EndRenderPass2(SharpVk.Multivendor.RenderPassFragmentDensityMapOffsetEndInfo? renderPassFragmentDensityMapOffsetEndInfoExt = null)
         {
             try
             {
                 SharpVk.Interop.SubpassEndInfo* marshalledSubpassEndInfo = default(SharpVk.Interop.SubpassEndInfo*);
                 void* vkSubpassEndInfoNextPointer = default(void*);
-                if (subpassFragmentDensityMapOffsetEndInfoQcom != null)
+                if (renderPassFragmentDensityMapOffsetEndInfoExt != null)
                 {
-                    SharpVk.Interop.Qcom.SubpassFragmentDensityMapOffsetEndInfo* extensionPointer = default(SharpVk.Interop.Qcom.SubpassFragmentDensityMapOffsetEndInfo*);
-                    extensionPointer = (SharpVk.Interop.Qcom.SubpassFragmentDensityMapOffsetEndInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Qcom.SubpassFragmentDensityMapOffsetEndInfo>());
-                    subpassFragmentDensityMapOffsetEndInfoQcom.Value.MarshalTo(extensionPointer);
+                    SharpVk.Interop.Multivendor.RenderPassFragmentDensityMapOffsetEndInfo* extensionPointer = default(SharpVk.Interop.Multivendor.RenderPassFragmentDensityMapOffsetEndInfo*);
+                    extensionPointer = (SharpVk.Interop.Multivendor.RenderPassFragmentDensityMapOffsetEndInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.RenderPassFragmentDensityMapOffsetEndInfo>());
+                    renderPassFragmentDensityMapOffsetEndInfoExt.Value.MarshalTo(extensionPointer);
                     extensionPointer->Next = vkSubpassEndInfoNextPointer;
                     vkSubpassEndInfoNextPointer = extensionPointer;
                 }
@@ -2906,6 +2953,266 @@ namespace SharpVk
             {
                 SharpVk.Interop.VkCommandBufferSetPrimitiveRestartEnableDelegate commandDelegate = commandCache.Cache.vkCmdSetPrimitiveRestartEnable;
                 commandDelegate(this.handle, primitiveRestartEnable);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="lineStippleFactor">
+        /// </param>
+        /// <param name="lineStipplePattern">
+        /// </param>
+        public unsafe void SetLineStipple(uint lineStippleFactor, ushort lineStipplePattern)
+        {
+            try
+            {
+                SharpVk.Interop.VkCommandBufferSetLineStippleDelegate commandDelegate = commandCache.Cache.vkCmdSetLineStipple;
+                commandDelegate(this.handle, lineStippleFactor, lineStipplePattern);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="buffer">
+        /// </param>
+        /// <param name="offset">
+        /// </param>
+        /// <param name="size">
+        /// </param>
+        /// <param name="indexType">
+        /// </param>
+        public unsafe void BindIndexBuffer2(SharpVk.Buffer buffer, ulong offset, ulong size, SharpVk.IndexType indexType)
+        {
+            try
+            {
+                SharpVk.Interop.VkCommandBufferBindIndexBuffer2Delegate commandDelegate = commandCache.Cache.vkCmdBindIndexBuffer2;
+                commandDelegate(this.handle, buffer?.handle ?? default(SharpVk.Interop.Buffer), offset, size, indexType);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pipelineBindPoint">
+        /// </param>
+        /// <param name="layout">
+        /// </param>
+        /// <param name="set">
+        /// </param>
+        /// <param name="descriptorWrites">
+        /// </param>
+        public unsafe void PushDescriptorSet(SharpVk.PipelineBindPoint pipelineBindPoint, SharpVk.PipelineLayout layout, uint set, ArrayProxy<SharpVk.WriteDescriptorSet>? descriptorWrites)
+        {
+            try
+            {
+                SharpVk.Interop.WriteDescriptorSet* marshalledDescriptorWrites = default(SharpVk.Interop.WriteDescriptorSet*);
+                if (descriptorWrites.IsNull())
+                {
+                    marshalledDescriptorWrites = null;
+                }
+                else
+                {
+                    if (descriptorWrites.Value.Contents == ProxyContents.Single)
+                    {
+                        marshalledDescriptorWrites = (SharpVk.Interop.WriteDescriptorSet*)(Interop.HeapUtil.Allocate<SharpVk.Interop.WriteDescriptorSet>());
+                        descriptorWrites.Value.GetSingleValue().MarshalTo(&*(SharpVk.Interop.WriteDescriptorSet*)(marshalledDescriptorWrites));
+                    }
+                    else
+                    {
+                        var fieldPointer = (SharpVk.Interop.WriteDescriptorSet*)(Interop.HeapUtil.AllocateAndClear<SharpVk.Interop.WriteDescriptorSet>(Interop.HeapUtil.GetLength(descriptorWrites.Value)).ToPointer());
+                        for(int index = 0; index < (uint)(Interop.HeapUtil.GetLength(descriptorWrites.Value)); index++)
+                        {
+                            descriptorWrites.Value[index].MarshalTo(&fieldPointer[index]);
+                        }
+                        marshalledDescriptorWrites = fieldPointer;
+                    }
+                }
+                SharpVk.Interop.VkCommandBufferPushDescriptorSetDelegate commandDelegate = commandCache.Cache.vkCmdPushDescriptorSet;
+                commandDelegate(this.handle, pipelineBindPoint, layout?.handle ?? default(SharpVk.Interop.PipelineLayout), set, (uint)(Interop.HeapUtil.GetLength(descriptorWrites)), marshalledDescriptorWrites);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="descriptorUpdateTemplate">
+        /// </param>
+        /// <param name="layout">
+        /// </param>
+        /// <param name="set">
+        /// </param>
+        /// <param name="data">
+        /// </param>
+        public unsafe void PushDescriptorSetWithTemplate(SharpVk.DescriptorUpdateTemplate descriptorUpdateTemplate, SharpVk.PipelineLayout layout, uint set, IntPtr data)
+        {
+            try
+            {
+                SharpVk.Interop.VkCommandBufferPushDescriptorSetWithTemplateDelegate commandDelegate = commandCache.Cache.vkCmdPushDescriptorSetWithTemplate;
+                commandDelegate(this.handle, descriptorUpdateTemplate?.handle ?? default(SharpVk.Interop.DescriptorUpdateTemplate), layout?.handle ?? default(SharpVk.Interop.PipelineLayout), set, data.ToPointer());
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="locationInfo">
+        /// </param>
+        public unsafe void SetRenderingAttachmentLocations(SharpVk.RenderingAttachmentLocationInfo locationInfo)
+        {
+            try
+            {
+                SharpVk.Interop.RenderingAttachmentLocationInfo* marshalledLocationInfo = default(SharpVk.Interop.RenderingAttachmentLocationInfo*);
+                marshalledLocationInfo = (SharpVk.Interop.RenderingAttachmentLocationInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.RenderingAttachmentLocationInfo>());
+                locationInfo.MarshalTo(marshalledLocationInfo);
+                SharpVk.Interop.VkCommandBufferSetRenderingAttachmentLocationsDelegate commandDelegate = commandCache.Cache.vkCmdSetRenderingAttachmentLocations;
+                commandDelegate(this.handle, marshalledLocationInfo);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="inputAttachmentIndexInfo">
+        /// </param>
+        public unsafe void SetRenderingInputAttachmentIndices(SharpVk.RenderingInputAttachmentIndexInfo inputAttachmentIndexInfo)
+        {
+            try
+            {
+                SharpVk.Interop.RenderingInputAttachmentIndexInfo* marshalledInputAttachmentIndexInfo = default(SharpVk.Interop.RenderingInputAttachmentIndexInfo*);
+                marshalledInputAttachmentIndexInfo = (SharpVk.Interop.RenderingInputAttachmentIndexInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.RenderingInputAttachmentIndexInfo>());
+                inputAttachmentIndexInfo.MarshalTo(marshalledInputAttachmentIndexInfo);
+                SharpVk.Interop.VkCommandBufferSetRenderingInputAttachmentIndicesDelegate commandDelegate = commandCache.Cache.vkCmdSetRenderingInputAttachmentIndices;
+                commandDelegate(this.handle, marshalledInputAttachmentIndexInfo);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="bindDescriptorSetsInfo">
+        /// </param>
+        public unsafe void BindDescriptorSets2(SharpVk.BindDescriptorSetsInfo bindDescriptorSetsInfo)
+        {
+            try
+            {
+                SharpVk.Interop.BindDescriptorSetsInfo* marshalledBindDescriptorSetsInfo = default(SharpVk.Interop.BindDescriptorSetsInfo*);
+                marshalledBindDescriptorSetsInfo = (SharpVk.Interop.BindDescriptorSetsInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.BindDescriptorSetsInfo>());
+                bindDescriptorSetsInfo.MarshalTo(marshalledBindDescriptorSetsInfo);
+                SharpVk.Interop.VkCommandBufferBindDescriptorSets2Delegate commandDelegate = commandCache.Cache.vkCmdBindDescriptorSets2;
+                commandDelegate(this.handle, marshalledBindDescriptorSetsInfo);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pushConstantsInfo">
+        /// </param>
+        public unsafe void PushConstants2(SharpVk.PushConstantsInfo pushConstantsInfo)
+        {
+            try
+            {
+                SharpVk.Interop.PushConstantsInfo* marshalledPushConstantsInfo = default(SharpVk.Interop.PushConstantsInfo*);
+                marshalledPushConstantsInfo = (SharpVk.Interop.PushConstantsInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.PushConstantsInfo>());
+                pushConstantsInfo.MarshalTo(marshalledPushConstantsInfo);
+                SharpVk.Interop.VkCommandBufferPushConstants2Delegate commandDelegate = commandCache.Cache.vkCmdPushConstants2;
+                commandDelegate(this.handle, marshalledPushConstantsInfo);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pushDescriptorSetInfo">
+        /// </param>
+        public unsafe void PushDescriptorSet2(SharpVk.PushDescriptorSetInfo pushDescriptorSetInfo)
+        {
+            try
+            {
+                SharpVk.Interop.PushDescriptorSetInfo* marshalledPushDescriptorSetInfo = default(SharpVk.Interop.PushDescriptorSetInfo*);
+                marshalledPushDescriptorSetInfo = (SharpVk.Interop.PushDescriptorSetInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.PushDescriptorSetInfo>());
+                pushDescriptorSetInfo.MarshalTo(marshalledPushDescriptorSetInfo);
+                SharpVk.Interop.VkCommandBufferPushDescriptorSet2Delegate commandDelegate = commandCache.Cache.vkCmdPushDescriptorSet2;
+                commandDelegate(this.handle, marshalledPushDescriptorSetInfo);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pushDescriptorSetWithTemplateInfo">
+        /// </param>
+        public unsafe void PushDescriptorSetWithTemplate2(SharpVk.PushDescriptorSetWithTemplateInfo pushDescriptorSetWithTemplateInfo)
+        {
+            try
+            {
+                SharpVk.Interop.PushDescriptorSetWithTemplateInfo* marshalledPushDescriptorSetWithTemplateInfo = default(SharpVk.Interop.PushDescriptorSetWithTemplateInfo*);
+                marshalledPushDescriptorSetWithTemplateInfo = (SharpVk.Interop.PushDescriptorSetWithTemplateInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.PushDescriptorSetWithTemplateInfo>());
+                pushDescriptorSetWithTemplateInfo.MarshalTo(marshalledPushDescriptorSetWithTemplateInfo);
+                SharpVk.Interop.VkCommandBufferPushDescriptorSetWithTemplate2Delegate commandDelegate = commandCache.Cache.vkCmdPushDescriptorSetWithTemplate2;
+                commandDelegate(this.handle, marshalledPushDescriptorSetWithTemplateInfo);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public unsafe SharpVk.CommandPoolMemoryConsumption GetCommandPoolMemoryConsumption()
+        {
+            try
+            {
+                SharpVk.CommandPoolMemoryConsumption result = default(SharpVk.CommandPoolMemoryConsumption);
+                SharpVk.Interop.CommandPoolMemoryConsumption marshalledConsumption = default(SharpVk.Interop.CommandPoolMemoryConsumption);
+                SharpVk.Interop.VkCommandBufferGetCommandPoolMemoryConsumptionDelegate commandDelegate = commandCache.Cache.vkGetCommandPoolMemoryConsumption;
+                commandDelegate(default(Device).handle, this.parent.handle, this.handle, &marshalledConsumption);
+                result = SharpVk.CommandPoolMemoryConsumption.MarshalFrom(&marshalledConsumption);
+                return result;
             }
             finally
             {

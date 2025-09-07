@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,7 @@ namespace SharpVk
     /// <summary>
     /// Layout of image and image subresources.
     /// </summary>
-    public enum ImageLayout
+    public enum ImageLayout 
     {
         /// <summary>
         /// Supports no device access. This layout must only be used as the
@@ -152,6 +152,11 @@ namespace SharpVk
         AttachmentOptimalVersion = 1000314001, 
         
         /// <summary>
+        /// 
+        /// </summary>
+        RenderingLocalReadVersion = 1000232000, 
+        
+        /// <summary>
         /// Must only be used for presenting a presentable image for display. A
         /// swapchain's image must be transitioned to this layout before
         /// calling flink:vkQueuePresentKHR, and must be transitioned away from
@@ -208,5 +213,20 @@ namespace SharpVk
         /// 
         /// </summary>
         AttachmentFeedbackLoopOptimal = 1000339000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        TensorAliasing = 1000460000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        VideoEncodeQuantizationMap = 1000553000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ZeroInitialized = 1000620000, 
     }
 }

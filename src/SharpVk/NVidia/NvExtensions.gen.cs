@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -127,11 +127,6 @@ namespace SharpVk.NVidia
         /// <summary>
         /// 
         /// </summary>
-        public const string ComputeShaderDerivatives = "VK_NV_compute_shader_derivatives"; 
-        
-        /// <summary>
-        /// 
-        /// </summary>
         public const string MeshShader = "VK_NV_mesh_shader"; 
         
         /// <summary>
@@ -187,6 +182,16 @@ namespace SharpVk.NVidia
         /// <summary>
         /// 
         /// </summary>
+        public const string CudaKernelLaunch = "VK_NV_cuda_kernel_launch"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string LowLatency = "VK_NV_low_latency"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public const string FragmentShadingRateEnums = "VK_NV_fragment_shading_rate_enums"; 
         
         /// <summary>
@@ -207,11 +212,116 @@ namespace SharpVk.NVidia
         /// <summary>
         /// 
         /// </summary>
+        public const string DisplacementMicromap = "VK_NV_displacement_micromap"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string CopyMemoryIndirect = "VK_NV_copy_memory_indirect"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string MemoryDecompression = "VK_NV_memory_decompression"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string DeviceGeneratedCommandsCompute = "VK_NV_device_generated_commands_compute"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string RayTracingLinearSweptSpheres = "VK_NV_ray_tracing_linear_swept_spheres"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public const string LinearColorAttachment = "VK_NV_linear_color_attachment"; 
         
         /// <summary>
         /// 
         /// </summary>
         public const string OpticalFlow = "VK_NV_optical_flow"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string RayTracingInvocationReorder = "VK_NV_ray_tracing_invocation_reorder"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string CooperativeVector = "VK_NV_cooperative_vector"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string ExtendedSparseAddressSpace = "VK_NV_extended_sparse_address_space"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string LowLatency2 = "VK_NV_low_latency2"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string PerStageDescriptorSet = "VK_NV_per_stage_descriptor_set"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string DescriptorPoolOverallocation = "VK_NV_descriptor_pool_overallocation"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string DisplayStereo = "VK_NV_display_stereo"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string RawAccessChains = "VK_NV_raw_access_chains"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string ExternalComputeQueue = "VK_NV_external_compute_queue"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string CommandBufferInheritance = "VK_NV_command_buffer_inheritance"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string ShaderAtomicFloat16Vector = "VK_NV_shader_atomic_float16_vector"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string RayTracingValidation = "VK_NV_ray_tracing_validation"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string ClusterAccelerationStructure = "VK_NV_cluster_acceleration_structure"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string PartitionedAccelerationStructure = "VK_NV_partitioned_acceleration_structure"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string CooperativeMatrix2 = "VK_NV_cooperative_matrix2"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string PresentMetering = "VK_NV_present_metering"; 
     }
 }

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,7 @@ namespace SharpVk
     /// Bitmask specifying a pipeline stage.
     /// </summary>
     [System.Flags]
-    public enum ShaderStageFlags
+    public enum ShaderStageFlags 
     {
         /// <summary>
         /// 
@@ -123,16 +123,11 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        Ext483Reserve15 = 1 << 15, 
+        ClusterCulling = 1 << 19, 
         
         /// <summary>
         /// 
         /// </summary>
-        Ext483Reserve16 = 1 << 16, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        Ext483Reserve17 = 1 << 17, 
+        Reserved15 = 1 << 15, 
     }
 }

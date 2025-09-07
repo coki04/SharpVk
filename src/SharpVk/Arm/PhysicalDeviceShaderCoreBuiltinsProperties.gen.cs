@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -36,6 +36,15 @@ namespace SharpVk.Arm
         /// <summary>
         /// 
         /// </summary>
+        public ulong ShaderCoreMask
+        {
+            get;
+            set;
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public uint ShaderCoreCount
         {
             get;
@@ -59,6 +68,7 @@ namespace SharpVk.Arm
         internal static unsafe PhysicalDeviceShaderCoreBuiltinsProperties MarshalFrom(SharpVk.Interop.Arm.PhysicalDeviceShaderCoreBuiltinsProperties* pointer)
         {
             PhysicalDeviceShaderCoreBuiltinsProperties result = default(PhysicalDeviceShaderCoreBuiltinsProperties);
+            result.ShaderCoreMask = pointer->ShaderCoreMask;
             result.ShaderCoreCount = pointer->ShaderCoreCount;
             result.ShaderWarpsPerCore = pointer->ShaderWarpsPerCore;
             return result;

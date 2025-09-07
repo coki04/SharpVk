@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -38,5 +38,15 @@ namespace SharpVk.Huawei
         /// 
         /// </summary>
         public const string InvocationMask = "VK_HUAWEI_invocation_mask"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string ClusterCullingShader = "VK_HUAWEI_cluster_culling_shader"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string HdrVivid = "VK_HUAWEI_hdr_vivid"; 
     }
 }

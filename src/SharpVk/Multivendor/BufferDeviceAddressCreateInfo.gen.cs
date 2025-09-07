@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -36,7 +36,7 @@ namespace SharpVk.Multivendor
         /// <summary>
         /// The device address requested for the buffer.
         /// </summary>
-        public ulong DeviceAddress
+        public ulong? DeviceAddress
         {
             get;
             set;
@@ -51,7 +51,14 @@ namespace SharpVk.Multivendor
         {
             pointer->SType = StructureType.BufferDeviceAddressCreateInfo;
             pointer->Next = null;
-            pointer->DeviceAddress = this.DeviceAddress;
+            if (this.DeviceAddress != null)
+            {
+                pointer->DeviceAddress = this.DeviceAddress.Value;
+            }
+            else
+            {
+                pointer->DeviceAddress = default(ulong);
+            }
         }
     }
 }

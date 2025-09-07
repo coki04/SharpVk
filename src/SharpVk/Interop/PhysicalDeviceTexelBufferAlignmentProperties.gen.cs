@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -34,36 +34,32 @@ namespace SharpVk.Interop
     public unsafe partial struct PhysicalDeviceTexelBufferAlignmentProperties
     {
         /// <summary>
-        /// The type of this structure.
+        /// 
         /// </summary>
         public SharpVk.StructureType SType; 
         
         /// <summary>
-        /// Null or an extension-specific structure.
+        /// 
         /// </summary>
         public void* Next; 
         
         /// <summary>
-        /// A byte alignment that is sufficient for a storage texel buffer of
-        /// any format.
+        /// 
         /// </summary>
         public ulong StorageTexelBufferOffsetAlignmentBytes; 
         
         /// <summary>
-        /// Indicates whether single texel alignment is sufficient for a
-        /// storage texel buffer of any format.
+        /// 
         /// </summary>
         public Bool32 StorageTexelBufferOffsetSingleTexelAlignment; 
         
         /// <summary>
-        /// A byte alignment that is sufficient for a uniform texel buffer of
-        /// any format.
+        /// 
         /// </summary>
         public ulong UniformTexelBufferOffsetAlignmentBytes; 
         
         /// <summary>
-        /// Indicates whether single texel alignment is sufficient for a
-        /// uniform texel buffer of any format.
+        /// 
         /// </summary>
         public Bool32 UniformTexelBufferOffsetSingleTexelAlignment; 
     }

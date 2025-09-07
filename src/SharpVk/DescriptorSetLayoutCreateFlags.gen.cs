@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,7 @@ namespace SharpVk
     /// Bitmask specifying descriptor set layout properties.
     /// </summary>
     [System.Flags]
-    public enum DescriptorSetLayoutCreateFlags
+    public enum DescriptorSetLayoutCreateFlags 
     {
         /// <summary>
         /// 
@@ -48,12 +48,12 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        Reserved4 = 1 << 4, 
+        DescriptorBuffer = 1 << 4, 
         
         /// <summary>
         /// 
         /// </summary>
-        Reserved5 = 1 << 5, 
+        EmbeddedImmutableSamplers = 1 << 5, 
         
         /// <summary>
         /// 
@@ -63,6 +63,16 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        IndirectBindable = 1 << 7, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         HostOnlyPool = 1 << 2, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PerStage = 1 << 6, 
     }
 }

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -38,7 +38,10 @@ namespace SharpVk.Khronos
         
         internal readonly SharpVk.Instance parent; 
         
-        internal Surface(SharpVk.Instance parent, SharpVk.Interop.Khronos.Surface handle)
+        /// <summary>
+        /// 
+        /// </summary>
+        public Surface(SharpVk.Instance parent, SharpVk.Interop.Khronos.Surface handle)
         {
             this.handle = handle;
             this.parent = parent;
@@ -51,11 +54,9 @@ namespace SharpVk.Khronos
         public SharpVk.Interop.Khronos.Surface RawHandle => this.handle;
         
         /// <summary>
-        /// Destroy a SurfaceKHR object.
+        /// 
         /// </summary>
         /// <param name="allocator">
-        /// An optional AllocationCallbacks instance that controls host memory
-        /// allocation.
         /// </param>
         public unsafe void Destroy(SharpVk.AllocationCallbacks? allocator = default(SharpVk.AllocationCallbacks?))
         {

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -34,24 +34,22 @@ namespace SharpVk.Interop
     public unsafe partial struct FramebufferAttachmentsCreateInfo
     {
         /// <summary>
-        /// The type of this structure.
+        /// 
         /// </summary>
         public SharpVk.StructureType SType; 
         
         /// <summary>
-        /// Null or an extension-specific structure.
+        /// 
         /// </summary>
         public void* Next; 
         
         /// <summary>
-        /// The number of attachments being described.
+        /// 
         /// </summary>
         public uint AttachmentImageInfoCount; 
         
         /// <summary>
-        /// An array of FramebufferAttachmentImageInfo instances, each of which
-        /// describes a number of parameters of the corresponding attachment in
-        /// a render pass instance.
+        /// 
         /// </summary>
         public SharpVk.Interop.FramebufferAttachmentImageInfo* AttachmentImageInfos; 
     }

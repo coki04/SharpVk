@@ -128,8 +128,15 @@ namespace SharpVk.Generator.Generation
                                             || lastParam.Type.PointerType.GetPointerCount() == 2
                                             || (typeData[lastParam.Type.VkName].Pattern != TypePattern.MarshalledStruct && typeData[lastParam.Type.VkName].Pattern != TypePattern.NonMarshalledStruct)
                                             || lastParamLenFieldByRef
-                                            || command.Verb == "get")
+                                            || (command.Verb == "get"))
                                         && (command.ReturnType == "VkResult" || command.ReturnType == "void");
+
+            if ((command.VkName.Contains("Opaque") ||
+                 command.VkName.Contains("ExternalComputeQueueData"))
+                && lastParam.Type.PointerType.GetPointerCount() == 1 && lastParam.Type.VkName == "void")
+            {
+                lastParamReturns = false;
+            }
 
             int returnParamsCount = 0;
 
@@ -296,7 +303,6 @@ namespace SharpVk.Generator.Generation
             newMethod.MemberActions.AddRange(marshalToActions);
 
             string delegateName = string.Join(".", new[] { "SharpVk", "Interop" }.Concat(this.namespaceMap.Map(command.ExtensionNamespace))) + $".{command.HandleTypeName}{command.Name}Delegate";
-            string lookupScope = command.Extension != null ? this.extensions[command.Extension].Scope : "";
 
             newMethod.MemberActions.Add(new InvokeAction
             {
@@ -306,7 +312,7 @@ namespace SharpVk.Generator.Generation
                 ReturnType = invokeReturnType,
                 LookupDelegate = true,
                 DelegateName = delegateName,
-                LookupScope = lookupScope,
+                LookupScopes = command.Extensions,
                 Parameters = marshalledValues.ToArray()
             });
 

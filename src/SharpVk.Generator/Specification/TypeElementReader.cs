@@ -30,6 +30,8 @@ namespace SharpVk.Generator.Specification
                 string name = vkType.Attribute("name")?.Value ?? vkType.Element("name").Value;
                 Enum.TryParse(vkType.Attribute("category")?.Value, out TypeCategory category);
                 string requires = vkType.Attribute("requires")?.Value;
+                if (requires == null)
+                    requires = vkType.Attribute("bitvalues")?.Value;
                 string parent = vkType.Attribute("parent")?.Value;
                 var extends = vkType.Attribute("structextends")?.Value?.Split(',')?.Select(x => x.Trim())?.ToList();
                 string alias = vkType.Attribute("alias")?.Value;
@@ -42,6 +44,10 @@ namespace SharpVk.Generator.Specification
                 }
 
                 string type = vkType.Element("type")?.Value;
+
+                string[] apis = vkType.Attribute("api")?.Value?.Split(',');
+                if (apis != null && !apis.Contains("vulkan"))
+                    continue;
 
                 if (type == "VK_MAKE_VERSION")
                 {

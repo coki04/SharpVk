@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,13 +28,13 @@ using System.Runtime.InteropServices;
 namespace SharpVk
 {
     /// <summary>
-    /// Structure specifying the buffer to query an address for
+    /// 
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public partial struct BufferDeviceAddressInfo
     {
         /// <summary>
-        /// The buffer whose address is being queried.
+        /// 
         /// </summary>
         public SharpVk.Buffer Buffer
         {

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -33,5 +33,10 @@ namespace SharpVk.Valve
         /// 
         /// </summary>
         public const string DescriptorSetHostMapping = "VK_VALVE_descriptor_set_host_mapping"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string FragmentDensityMapLayered = "VK_VALVE_fragment_density_map_layered"; 
     }
 }

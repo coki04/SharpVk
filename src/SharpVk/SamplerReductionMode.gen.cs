@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,7 @@ namespace SharpVk
     /// <summary>
     /// 
     /// </summary>
-    public enum SamplerReductionMode
+    public enum SamplerReductionMode 
     {
         /// <summary>
         /// 
@@ -43,5 +43,10 @@ namespace SharpVk
         /// 
         /// </summary>
         Max = 2, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        WeightedAverageRangeclamp = 1000521000, 
     }
 }

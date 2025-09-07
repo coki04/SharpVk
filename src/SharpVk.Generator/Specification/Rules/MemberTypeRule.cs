@@ -33,6 +33,10 @@ namespace SharpVk.Generator.Specification.Rules
                 bool.TryParse(vkMember.Attribute("optional")?.Value, out bool isOptional);
                 bool.TryParse(vkMember.Attribute("noautovalidity")?.Value, out bool noAutoValidity);
 
+                string[] apis = vkMember.Attribute("api")?.Value?.Split(',');
+                if (apis != null && !apis.Contains("vulkan"))
+                    continue;
+
                 PointerType pointerType = PointerTypeUtil.GetFrom(nameElement.NodesBeforeSelf());
 
                 var fixedLength = new FixedLengthDeclaration();

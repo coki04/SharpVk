@@ -54,7 +54,7 @@ namespace SharpVk.Generator.Specification
 
                 var nameParts = name.Split('_');
 
-                if (vkExtension.Attribute("supported").Value == "vulkan" && vkExtension.Attribute("promotedto") == null)
+                if (vkExtension.Attribute("supported").Value.Split(',').Contains("vulkan") && vkExtension.Attribute("promotedto") == null)
                 {
                     string extensionSuffix = nameParts[1].ToLower();
 

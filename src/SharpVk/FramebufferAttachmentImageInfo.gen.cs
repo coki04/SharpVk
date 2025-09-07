@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,16 +28,13 @@ using System.Runtime.InteropServices;
 namespace SharpVk
 {
     /// <summary>
-    /// Structure specifying parameters of an image that will be used with a
-    /// framebuffer.
+    /// 
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public partial struct FramebufferAttachmentImageInfo
     {
         /// <summary>
-        /// A bitmask of ImageCreateFlags, matching the value of
-        /// VkImageCreateInfo::flags used to create an image that will be used
-        /// with this framebuffer.
+        /// 
         /// </summary>
         public SharpVk.ImageCreateFlags? Flags
         {
@@ -46,9 +43,7 @@ namespace SharpVk
         }
         
         /// <summary>
-        /// A bitmask of ImageCreateFlags, matching the value of
-        /// VkImageCreateInfo::usage used to create an image used with this
-        /// framebuffer.
+        /// 
         /// </summary>
         public SharpVk.ImageUsageFlags Usage
         {
@@ -57,7 +52,7 @@ namespace SharpVk
         }
         
         /// <summary>
-        /// The width of the image view used for rendering.
+        /// 
         /// </summary>
         public uint Width
         {
@@ -66,7 +61,7 @@ namespace SharpVk
         }
         
         /// <summary>
-        /// The height of the image view used for rendering.
+        /// 
         /// </summary>
         public uint Height
         {
@@ -84,10 +79,7 @@ namespace SharpVk
         }
         
         /// <summary>
-        /// An array which lists of all formats which can be used when creating
-        /// views of the image, matching the value of
-        /// VkImageFormatListCreateInfoKHR::pViewFormats used to create an
-        /// image used with this framebuffer.
+        /// 
         /// </summary>
         public SharpVk.Format[] ViewFormats
         {

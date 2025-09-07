@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -32,7 +32,7 @@ namespace SharpVk.Khronos
     public static class QueueExtensions
     {
         /// <summary>
-        /// Queue an image for presentation.
+        /// 
         /// </summary>
         /// <param name="extendedHandle">
         /// The Queue handle to extend.
@@ -57,13 +57,31 @@ namespace SharpVk.Khronos
         /// <param name="presentIdKhr">
         /// Extension struct
         /// </param>
+        /// <param name="presentId2Khr">
+        /// Extension struct
+        /// </param>
         /// <param name="presentTimesInfoGoogle">
         /// Extension struct
         /// </param>
         /// <param name="presentFrameTokenGgp">
         /// Extension struct
         /// </param>
-        public static unsafe Result Present(this SharpVk.Queue extendedHandle, ArrayProxy<SharpVk.Semaphore>? waitSemaphores, ArrayProxy<SharpVk.Khronos.Swapchain>? swapchains, ArrayProxy<uint>? imageIndices, ArrayProxy<SharpVk.Result>? results = null, SharpVk.Khronos.DisplayPresentInfo? displayPresentInfoKhr = null, SharpVk.Khronos.PresentRegions? presentRegionsKhr = null, SharpVk.Khronos.DeviceGroupPresentInfo? deviceGroupPresentInfoKhr = null, SharpVk.Khronos.PresentId? presentIdKhr = null, SharpVk.Google.PresentTimesInfo? presentTimesInfoGoogle = null, SharpVk.Ggp.PresentFrameToken? presentFrameTokenGgp = null)
+        /// <param name="frameBoundaryExt">
+        /// Extension struct
+        /// </param>
+        /// <param name="swapchainPresentFenceInfoKhr">
+        /// Extension struct
+        /// </param>
+        /// <param name="swapchainPresentModeInfoKhr">
+        /// Extension struct
+        /// </param>
+        /// <param name="setPresentConfigNv">
+        /// Extension struct
+        /// </param>
+        /// <param name="frameBoundaryTensorsArm">
+        /// Extension struct
+        /// </param>
+        public static unsafe Result Present(this SharpVk.Queue extendedHandle, ArrayProxy<SharpVk.Semaphore>? waitSemaphores, ArrayProxy<SharpVk.Khronos.Swapchain>? swapchains, ArrayProxy<uint>? imageIndices, ArrayProxy<SharpVk.Result>? results = null, SharpVk.Khronos.DisplayPresentInfo? displayPresentInfoKhr = null, SharpVk.Khronos.PresentRegions? presentRegionsKhr = null, SharpVk.Khronos.DeviceGroupPresentInfo? deviceGroupPresentInfoKhr = null, SharpVk.Khronos.PresentId? presentIdKhr = null, SharpVk.Khronos.PresentId2? presentId2Khr = null, SharpVk.Google.PresentTimesInfo? presentTimesInfoGoogle = null, SharpVk.Ggp.PresentFrameToken? presentFrameTokenGgp = null, SharpVk.Multivendor.FrameBoundary? frameBoundaryExt = null, SharpVk.Khronos.SwapchainPresentFenceInfo? swapchainPresentFenceInfoKhr = null, SharpVk.Khronos.SwapchainPresentModeInfo? swapchainPresentModeInfoKhr = null, SharpVk.NVidia.SetPresentConfig? setPresentConfigNv = null, SharpVk.Arm.FrameBoundaryTensors? frameBoundaryTensorsArm = null)
         {
             try
             {
@@ -103,6 +121,14 @@ namespace SharpVk.Khronos
                     extensionPointer->Next = vkPresentInfoKHRNextPointer;
                     vkPresentInfoKHRNextPointer = extensionPointer;
                 }
+                if (presentId2Khr != null)
+                {
+                    SharpVk.Interop.Khronos.PresentId2* extensionPointer = default(SharpVk.Interop.Khronos.PresentId2*);
+                    extensionPointer = (SharpVk.Interop.Khronos.PresentId2*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.PresentId2>());
+                    presentId2Khr.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkPresentInfoKHRNextPointer;
+                    vkPresentInfoKHRNextPointer = extensionPointer;
+                }
                 if (presentTimesInfoGoogle != null)
                 {
                     SharpVk.Interop.Google.PresentTimesInfo* extensionPointer = default(SharpVk.Interop.Google.PresentTimesInfo*);
@@ -116,6 +142,46 @@ namespace SharpVk.Khronos
                     SharpVk.Interop.Ggp.PresentFrameToken* extensionPointer = default(SharpVk.Interop.Ggp.PresentFrameToken*);
                     extensionPointer = (SharpVk.Interop.Ggp.PresentFrameToken*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Ggp.PresentFrameToken>());
                     presentFrameTokenGgp.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkPresentInfoKHRNextPointer;
+                    vkPresentInfoKHRNextPointer = extensionPointer;
+                }
+                if (frameBoundaryExt != null)
+                {
+                    SharpVk.Interop.Multivendor.FrameBoundary* extensionPointer = default(SharpVk.Interop.Multivendor.FrameBoundary*);
+                    extensionPointer = (SharpVk.Interop.Multivendor.FrameBoundary*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.FrameBoundary>());
+                    frameBoundaryExt.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkPresentInfoKHRNextPointer;
+                    vkPresentInfoKHRNextPointer = extensionPointer;
+                }
+                if (swapchainPresentFenceInfoKhr != null)
+                {
+                    SharpVk.Interop.Khronos.SwapchainPresentFenceInfo* extensionPointer = default(SharpVk.Interop.Khronos.SwapchainPresentFenceInfo*);
+                    extensionPointer = (SharpVk.Interop.Khronos.SwapchainPresentFenceInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.SwapchainPresentFenceInfo>());
+                    swapchainPresentFenceInfoKhr.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkPresentInfoKHRNextPointer;
+                    vkPresentInfoKHRNextPointer = extensionPointer;
+                }
+                if (swapchainPresentModeInfoKhr != null)
+                {
+                    SharpVk.Interop.Khronos.SwapchainPresentModeInfo* extensionPointer = default(SharpVk.Interop.Khronos.SwapchainPresentModeInfo*);
+                    extensionPointer = (SharpVk.Interop.Khronos.SwapchainPresentModeInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.SwapchainPresentModeInfo>());
+                    swapchainPresentModeInfoKhr.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkPresentInfoKHRNextPointer;
+                    vkPresentInfoKHRNextPointer = extensionPointer;
+                }
+                if (setPresentConfigNv != null)
+                {
+                    SharpVk.Interop.NVidia.SetPresentConfig* extensionPointer = default(SharpVk.Interop.NVidia.SetPresentConfig*);
+                    extensionPointer = (SharpVk.Interop.NVidia.SetPresentConfig*)(Interop.HeapUtil.Allocate<SharpVk.Interop.NVidia.SetPresentConfig>());
+                    setPresentConfigNv.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkPresentInfoKHRNextPointer;
+                    vkPresentInfoKHRNextPointer = extensionPointer;
+                }
+                if (frameBoundaryTensorsArm != null)
+                {
+                    SharpVk.Interop.Arm.FrameBoundaryTensors* extensionPointer = default(SharpVk.Interop.Arm.FrameBoundaryTensors*);
+                    extensionPointer = (SharpVk.Interop.Arm.FrameBoundaryTensors*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Arm.FrameBoundaryTensors>());
+                    frameBoundaryTensorsArm.Value.MarshalTo(extensionPointer);
                     extensionPointer->Next = vkPresentInfoKHRNextPointer;
                     vkPresentInfoKHRNextPointer = extensionPointer;
                 }

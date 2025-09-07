@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -32,8 +32,7 @@ namespace SharpVk.Khronos
     public static class InstanceExtensions
     {
         /// <summary>
-        /// Create a SurfaceKHR structure representing a display plane and
-        /// mode.
+        /// 
         /// </summary>
         /// <param name="extendedHandle">
         /// The Instance handle to extend.
@@ -63,11 +62,12 @@ namespace SharpVk.Khronos
         /// </param>
         /// <param name="imageExtent">
         /// </param>
-        /// <param name="allocator">
-        /// An optional AllocationCallbacks instance that controls host memory
-        /// allocation.
+        /// <param name="displaySurfaceStereoCreateInfoNv">
+        /// Extension struct
         /// </param>
-        public static unsafe SharpVk.Khronos.Surface CreateDisplayPlaneSurface(this SharpVk.Instance extendedHandle, SharpVk.Khronos.DisplayMode displayMode, uint planeIndex, uint planeStackIndex, SharpVk.Khronos.SurfaceTransformFlags transform, float globalAlpha, SharpVk.Khronos.DisplayPlaneAlphaFlags alphaMode, SharpVk.Extent2D imageExtent, SharpVk.Khronos.DisplaySurfaceCreateFlags? flags = default(SharpVk.Khronos.DisplaySurfaceCreateFlags?), SharpVk.AllocationCallbacks? allocator = default(SharpVk.AllocationCallbacks?))
+        /// <param name="allocator">
+        /// </param>
+        public static unsafe SharpVk.Khronos.Surface CreateDisplayPlaneSurface(this SharpVk.Instance extendedHandle, SharpVk.Khronos.DisplayMode displayMode, uint planeIndex, uint planeStackIndex, SharpVk.Khronos.SurfaceTransformFlags transform, float globalAlpha, SharpVk.Khronos.DisplayPlaneAlphaFlags alphaMode, SharpVk.Extent2D imageExtent, SharpVk.Khronos.DisplaySurfaceCreateFlags? flags = default(SharpVk.Khronos.DisplaySurfaceCreateFlags?), SharpVk.NVidia.DisplaySurfaceStereoCreateInfo? displaySurfaceStereoCreateInfoNv = null, SharpVk.AllocationCallbacks? allocator = default(SharpVk.AllocationCallbacks?))
         {
             try
             {
@@ -77,6 +77,14 @@ namespace SharpVk.Khronos
                 void* vkDisplaySurfaceCreateInfoKHRNextPointer = default(void*);
                 SharpVk.Interop.AllocationCallbacks* marshalledAllocator = default(SharpVk.Interop.AllocationCallbacks*);
                 SharpVk.Interop.Khronos.Surface marshalledSurface = default(SharpVk.Interop.Khronos.Surface);
+                if (displaySurfaceStereoCreateInfoNv != null)
+                {
+                    SharpVk.Interop.NVidia.DisplaySurfaceStereoCreateInfo* extensionPointer = default(SharpVk.Interop.NVidia.DisplaySurfaceStereoCreateInfo*);
+                    extensionPointer = (SharpVk.Interop.NVidia.DisplaySurfaceStereoCreateInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.NVidia.DisplaySurfaceStereoCreateInfo>());
+                    displaySurfaceStereoCreateInfoNv.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkDisplaySurfaceCreateInfoKHRNextPointer;
+                    vkDisplaySurfaceCreateInfoKHRNextPointer = extensionPointer;
+                }
                 commandCache = extendedHandle.commandCache;
                 marshalledCreateInfo = (SharpVk.Interop.Khronos.DisplaySurfaceCreateInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.DisplaySurfaceCreateInfo>());
                 marshalledCreateInfo->SType = StructureType.DisplaySurfaceCreateInfo;

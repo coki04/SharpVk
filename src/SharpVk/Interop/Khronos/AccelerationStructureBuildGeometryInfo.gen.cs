@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -30,73 +30,62 @@ namespace SharpVk.Interop.Khronos
     /// <summary>
     /// 
     /// </summary>
-    [StructLayout(LayoutKind.Explicit, Pack = 0)]
+    [StructLayout(LayoutKind.Sequential)]
     public unsafe partial struct AccelerationStructureBuildGeometryInfo
     {
         /// <summary>
         /// 
         /// </summary>
-        [FieldOffset(0)]
-        public SharpVk.StructureType SType;
-
+        public SharpVk.StructureType SType; 
+        
         /// <summary>
         /// 
         /// </summary>
-        [FieldOffset(8)]
-        public void* Next;
-
+        public void* Next; 
+        
         /// <summary>
         /// 
         /// </summary>
-        [FieldOffset(16)]
-        public SharpVk.Khronos.AccelerationStructureType Type;
-
+        public SharpVk.Khronos.AccelerationStructureType Type; 
+        
         /// <summary>
         /// 
         /// </summary>
-        [FieldOffset(20)]
-        public SharpVk.Khronos.BuildAccelerationStructureFlags Flags;
-
+        public SharpVk.Khronos.BuildAccelerationStructureFlags Flags; 
+        
         /// <summary>
         /// 
         /// </summary>
-        [FieldOffset(24)]
-        public SharpVk.Khronos.BuildAccelerationStructureMode Mode;
-
+        public SharpVk.Khronos.BuildAccelerationStructureMode Mode; 
+        
         /// <summary>
         /// 
         /// </summary>
-        [FieldOffset(32)]
-        public SharpVk.Interop.Khronos.AccelerationStructure SourceAccelerationStructure;
-
+        public SharpVk.Interop.Khronos.AccelerationStructure SourceAccelerationStructure; 
+        
         /// <summary>
         /// 
         /// </summary>
-        [FieldOffset(40)]
-        public SharpVk.Interop.Khronos.AccelerationStructure DestinationAccelerationStructure;
-
+        public SharpVk.Interop.Khronos.AccelerationStructure DestinationAccelerationStructure; 
+        
         /// <summary>
         /// 
         /// </summary>
-        [FieldOffset(48)]
-        public uint GeometryCount;
-
+        public uint GeometryCount; 
+        
         /// <summary>
         /// 
         /// </summary>
-        [FieldOffset(56)]
-        public SharpVk.Interop.Khronos.AccelerationStructureGeometry* Geometries;
-
+        public SharpVk.Interop.Khronos.AccelerationStructureGeometry* Geometries; 
+        
         /// <summary>
         /// 
         /// </summary>
-        [FieldOffset(64)]
-        public SharpVk.Interop.Khronos.AccelerationStructureGeometry** Geometries2;
-
+        public SharpVk.Interop.Khronos.AccelerationStructureGeometry** Geometries2; 
+        
         /// <summary>
         /// 
         /// </summary>
-        [FieldOffset(72)]
         public IntPtr ScratchData; 
     }
 }

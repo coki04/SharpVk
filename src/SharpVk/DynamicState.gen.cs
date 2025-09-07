@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,7 @@ namespace SharpVk
     /// <summary>
     /// Indicate which dynamic state is taken from dynamic state commands.
     /// </summary>
-    public enum DynamicState
+    public enum DynamicState 
     {
         /// <summary>
         /// Indicates that the pViewports state in
@@ -194,12 +194,27 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        LineStippleVersion = 1000259000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         ViewportWScaling = 1000087000, 
         
         /// <summary>
         /// 
         /// </summary>
         DiscardRectangle = 1000099000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DiscardRectangleEnable = 1000099001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DiscardRectangleMode = 1000099002, 
         
         /// <summary>
         /// 
@@ -224,17 +239,17 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        ExclusiveScissorEnable = 1000205000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         ExclusiveScissor = 1000205001, 
         
         /// <summary>
         /// 
         /// </summary>
         FragmentShadingRate = 1000226000, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        LineStipple = 1000259000, 
         
         /// <summary>
         /// 
@@ -255,11 +270,6 @@ namespace SharpVk
         /// 
         /// </summary>
         ColorWriteEnable = 1000381000, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        TessellationDomainOrigin = 1000455002, 
         
         /// <summary>
         /// 
@@ -310,6 +320,11 @@ namespace SharpVk
         /// 
         /// </summary>
         ColorWriteMask = 1000455012, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        TessellationDomainOrigin = 1000455002, 
         
         /// <summary>
         /// 
@@ -410,5 +425,15 @@ namespace SharpVk
         /// 
         /// </summary>
         CoverageReductionMode = 1000455032, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        AttachmentFeedbackLoopEnable = 1000524000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DepthClampRange = 1000582000, 
     }
 }

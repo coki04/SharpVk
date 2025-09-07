@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -67,43 +67,6 @@ namespace SharpVk.Multivendor
         {
             get;
             set;
-        }
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="pointer">
-        /// </param>
-        internal unsafe void MarshalTo(SharpVk.Interop.Multivendor.DeviceFaultInfo* pointer)
-        {
-            pointer->SType = StructureType.DeviceFaultInfo;
-            pointer->Next = null;
-            if (this.AddressInfos != null)
-            {
-                pointer->AddressInfos = (SharpVk.Multivendor.DeviceFaultAddressInfo*)(Interop.HeapUtil.Allocate<SharpVk.Multivendor.DeviceFaultAddressInfo>());
-                *pointer->AddressInfos = this.AddressInfos.Value;
-            }
-            else
-            {
-                pointer->AddressInfos = default(SharpVk.Multivendor.DeviceFaultAddressInfo*);
-            }
-            if (this.VendorInfos != null)
-            {
-                pointer->VendorInfos = (SharpVk.Interop.Multivendor.DeviceFaultVendorInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.DeviceFaultVendorInfo>());
-                this.VendorInfos.Value.MarshalTo(pointer->VendorInfos);
-            }
-            else
-            {
-                pointer->VendorInfos = default(SharpVk.Interop.Multivendor.DeviceFaultVendorInfo*);
-            }
-            if (this.VendorBinaryData != null)
-            {
-                pointer->VendorBinaryData = this.VendorBinaryData.Value.ToPointer();
-            }
-            else
-            {
-                pointer->VendorBinaryData = default(void*);
-            }
         }
         
         /// <summary>

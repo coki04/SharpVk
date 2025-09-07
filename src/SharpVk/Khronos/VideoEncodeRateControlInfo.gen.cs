@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -45,7 +45,7 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public SharpVk.Khronos.VideoEncodeRateControlModeFlags RateControlMode
+        public SharpVk.Khronos.VideoEncodeRateControlModeFlags? RateControlMode
         {
             get;
             set;
@@ -54,7 +54,25 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public SharpVk.Khronos.VideoEncodeRateControlLayerInfo[] LayerConfigs
+        public SharpVk.Khronos.VideoEncodeRateControlLayerInfo[] Layers
+        {
+            get;
+            set;
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public uint VirtualBufferSizeInMs
+        {
+            get;
+            set;
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public uint InitialVirtualBufferSizeInMs
         {
             get;
             set;
@@ -77,21 +95,30 @@ namespace SharpVk.Khronos
             {
                 pointer->Flags = default(SharpVk.Khronos.VideoEncodeRateControlFlags);
             }
-            pointer->RateControlMode = this.RateControlMode;
-            pointer->LayerCount = (byte)(Interop.HeapUtil.GetLength(this.LayerConfigs));
-            if (this.LayerConfigs != null)
+            if (this.RateControlMode != null)
             {
-                var fieldPointer = (SharpVk.Interop.Khronos.VideoEncodeRateControlLayerInfo*)(Interop.HeapUtil.AllocateAndClear<SharpVk.Interop.Khronos.VideoEncodeRateControlLayerInfo>(this.LayerConfigs.Length).ToPointer());
-                for(int index = 0; index < (uint)(this.LayerConfigs.Length); index++)
-                {
-                    this.LayerConfigs[index].MarshalTo(&fieldPointer[index]);
-                }
-                pointer->LayerConfigs = fieldPointer;
+                pointer->RateControlMode = this.RateControlMode.Value;
             }
             else
             {
-                pointer->LayerConfigs = null;
+                pointer->RateControlMode = default(SharpVk.Khronos.VideoEncodeRateControlModeFlags);
             }
+            pointer->LayerCount = (uint)(Interop.HeapUtil.GetLength(this.Layers));
+            if (this.Layers != null)
+            {
+                var fieldPointer = (SharpVk.Interop.Khronos.VideoEncodeRateControlLayerInfo*)(Interop.HeapUtil.AllocateAndClear<SharpVk.Interop.Khronos.VideoEncodeRateControlLayerInfo>(this.Layers.Length).ToPointer());
+                for(int index = 0; index < (uint)(this.Layers.Length); index++)
+                {
+                    this.Layers[index].MarshalTo(&fieldPointer[index]);
+                }
+                pointer->Layers = fieldPointer;
+            }
+            else
+            {
+                pointer->Layers = null;
+            }
+            pointer->VirtualBufferSizeInMs = this.VirtualBufferSizeInMs;
+            pointer->InitialVirtualBufferSizeInMs = this.InitialVirtualBufferSizeInMs;
         }
     }
 }

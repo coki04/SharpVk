@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,7 @@ namespace SharpVk.NVidia
     /// <summary>
     /// Specify the coverage reduction mode
     /// </summary>
-    public enum CoverageReductionMode
+    public enum CoverageReductionMode 
     {
         /// <summary>
         /// In this mode, there is an implementation-dependent association of

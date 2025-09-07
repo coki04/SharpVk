@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,7 @@ namespace SharpVk
     /// Bitmask controlling how a pipeline is generated.
     /// </summary>
     [System.Flags]
-    public enum PipelineCreateFlags
+    public enum PipelineCreateFlags 
     {
         /// <summary>
         /// 
@@ -77,12 +77,12 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        RenderingFragmentShadingRateAttachment = 1 << 21, 
+        NoProtectedAccess = 1 << 27, 
         
         /// <summary>
         /// 
         /// </summary>
-        RenderingFragmentDensityMapAttachment = 1 << 22, 
+        ProtectedAccessOnly = 1 << 30, 
         
         /// <summary>
         /// 
@@ -127,6 +127,16 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        RenderingFragmentDensityMapAttachment = 1 << 22, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        RenderingFragmentShadingRateAttachment = 1 << 21, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         CaptureStatistics = 1 << 6, 
         
         /// <summary>
@@ -147,7 +157,7 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        Reserved29 = 1 << 29, 
+        DescriptorBuffer = 1 << 29, 
         
         /// <summary>
         /// 
@@ -182,16 +192,6 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        ReservedBit28 = 1 << 28, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        NoProtectedAccess = 1 << 27, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        ProtectedAccessOnly = 1 << 30, 
+        RayTracingDisplacementMicromap = 1 << 28, 
     }
 }

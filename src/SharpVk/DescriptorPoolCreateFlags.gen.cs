@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,7 @@ namespace SharpVk
     /// Bitmask specifying certain supported operations on a descriptor pool.
     /// </summary>
     [System.Flags]
-    public enum DescriptorPoolCreateFlags
+    public enum DescriptorPoolCreateFlags 
     {
         /// <summary>
         /// 
@@ -49,5 +49,15 @@ namespace SharpVk
         /// 
         /// </summary>
         HostOnly = 1 << 2, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        AllowOverallocationSets = 1 << 3, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        AllowOverallocationPools = 1 << 4, 
     }
 }

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,7 @@ namespace SharpVk
     /// 
     /// </summary>
     [System.Flags]
-    public enum ImageViewCreateFlags
+    public enum ImageViewCreateFlags 
     {
         /// <summary>
         /// 
@@ -43,16 +43,11 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        Reserved2 = 1 << 2, 
+        DescriptorBufferCaptureReplay = 1 << 2, 
         
         /// <summary>
         /// 
         /// </summary>
         FragmentDensityMapDeferred = 1 << 1, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        Reserved3 = 1 << 3, 
     }
 }

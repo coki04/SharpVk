@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -82,6 +82,11 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        public const uint Remaining3dSlices = ~0U; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public const ulong WholeSize = ~0UL; 
         
         /// <summary>
@@ -148,5 +153,45 @@ namespace SharpVk
         /// 
         /// </summary>
         public const int MaxShaderModuleIdentifierSize = 32; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const int MaxPipelineBinaryKeySize = 32; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const int MaxVideoAv1ReferencesPerFrame = 7; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const int MaxVideoVp9ReferencesPerFrame = 3; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint ShaderIndexUnused = ~0U; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint PartitionedAccelerationStructurePartitionIndexGlobal = ~0U; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint CompressedTriangleFormatDgf1ByteAlignment = 128; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint CompressedTriangleFormatDgf1ByteStride = 128; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const int MaxPhysicalDeviceDataGraphOperationSetNameSize = 128; 
     }
 }

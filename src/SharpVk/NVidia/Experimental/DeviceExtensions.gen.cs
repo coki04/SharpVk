@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -39,9 +39,12 @@ namespace SharpVk.NVidia.Experimental
         /// </param>
         /// <param name="data">
         /// </param>
+        /// <param name="cuModuleTexturingModeCreateInfoNvx">
+        /// Extension struct
+        /// </param>
         /// <param name="allocator">
         /// </param>
-        public static unsafe SharpVk.NVidia.Experimental.CuModule CreateCuModule(this SharpVk.Device extendedHandle, ArrayProxy<byte>? data, SharpVk.AllocationCallbacks? allocator = default(SharpVk.AllocationCallbacks?))
+        public static unsafe SharpVk.NVidia.Experimental.CuModule CreateCuModule(this SharpVk.Device extendedHandle, ArrayProxy<byte>? data, SharpVk.NVidia.Experimental.CuModuleTexturingModeCreateInfo? cuModuleTexturingModeCreateInfoNvx = null, SharpVk.AllocationCallbacks? allocator = default(SharpVk.AllocationCallbacks?))
         {
             try
             {
@@ -51,6 +54,14 @@ namespace SharpVk.NVidia.Experimental
                 void* vkCuModuleCreateInfoNVXNextPointer = default(void*);
                 SharpVk.Interop.AllocationCallbacks* marshalledAllocator = default(SharpVk.Interop.AllocationCallbacks*);
                 SharpVk.Interop.NVidia.Experimental.CuModule marshalledModule = default(SharpVk.Interop.NVidia.Experimental.CuModule);
+                if (cuModuleTexturingModeCreateInfoNvx != null)
+                {
+                    SharpVk.Interop.NVidia.Experimental.CuModuleTexturingModeCreateInfo* extensionPointer = default(SharpVk.Interop.NVidia.Experimental.CuModuleTexturingModeCreateInfo*);
+                    extensionPointer = (SharpVk.Interop.NVidia.Experimental.CuModuleTexturingModeCreateInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.NVidia.Experimental.CuModuleTexturingModeCreateInfo>());
+                    cuModuleTexturingModeCreateInfoNvx.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkCuModuleCreateInfoNVXNextPointer;
+                    vkCuModuleCreateInfoNVXNextPointer = extensionPointer;
+                }
                 commandCache = extendedHandle.commandCache;
                 marshalledCreateInfo = (SharpVk.Interop.NVidia.Experimental.CuModuleCreateInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.NVidia.Experimental.CuModuleCreateInfo>());
                 marshalledCreateInfo->SType = StructureType.CuModuleCreateInfo;
@@ -173,6 +184,34 @@ namespace SharpVk.NVidia.Experimental
                 info.MarshalTo(marshalledInfo);
                 SharpVk.Interop.NVidia.Experimental.VkDeviceGetImageViewHandleDelegate commandDelegate = commandCache.Cache.vkGetImageViewHandleNVX;
                 commandDelegate(extendedHandle.handle, marshalledInfo);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The Device handle to extend.
+        /// </param>
+        /// <param name="info">
+        /// </param>
+        public static unsafe ulong GetImageViewHandle64(this SharpVk.Device extendedHandle, SharpVk.NVidia.Experimental.ImageViewHandleInfo info)
+        {
+            try
+            {
+                ulong result = default(ulong);
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.NVidia.Experimental.ImageViewHandleInfo* marshalledInfo = default(SharpVk.Interop.NVidia.Experimental.ImageViewHandleInfo*);
+                commandCache = extendedHandle.commandCache;
+                marshalledInfo = (SharpVk.Interop.NVidia.Experimental.ImageViewHandleInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.NVidia.Experimental.ImageViewHandleInfo>());
+                info.MarshalTo(marshalledInfo);
+                SharpVk.Interop.NVidia.Experimental.VkDeviceGetImageViewHandle64Delegate commandDelegate = commandCache.Cache.vkGetImageViewHandle64NVX;
+                result = commandDelegate(extendedHandle.handle, marshalledInfo);
+                return result;
             }
             finally
             {

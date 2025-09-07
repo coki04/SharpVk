@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -41,9 +41,12 @@ namespace SharpVk.NVidia
         /// </param>
         /// <param name="info">
         /// </param>
+        /// <param name="opaqueCaptureDescriptorDataCreateInfoExt">
+        /// Extension struct
+        /// </param>
         /// <param name="allocator">
         /// </param>
-        public static unsafe SharpVk.NVidia.AccelerationStructure CreateAccelerationStructure(this SharpVk.Device extendedHandle, ulong compactedSize, SharpVk.NVidia.AccelerationStructureInfo info, SharpVk.AllocationCallbacks? allocator = default(SharpVk.AllocationCallbacks?))
+        public static unsafe SharpVk.NVidia.AccelerationStructure CreateAccelerationStructure(this SharpVk.Device extendedHandle, ulong compactedSize, SharpVk.NVidia.AccelerationStructureInfo info, SharpVk.Multivendor.OpaqueCaptureDescriptorDataCreateInfo? opaqueCaptureDescriptorDataCreateInfoExt = null, SharpVk.AllocationCallbacks? allocator = default(SharpVk.AllocationCallbacks?))
         {
             try
             {
@@ -53,6 +56,14 @@ namespace SharpVk.NVidia
                 void* vkAccelerationStructureCreateInfoNVNextPointer = default(void*);
                 SharpVk.Interop.AllocationCallbacks* marshalledAllocator = default(SharpVk.Interop.AllocationCallbacks*);
                 SharpVk.Interop.NVidia.AccelerationStructure marshalledAccelerationStructure = default(SharpVk.Interop.NVidia.AccelerationStructure);
+                if (opaqueCaptureDescriptorDataCreateInfoExt != null)
+                {
+                    SharpVk.Interop.Multivendor.OpaqueCaptureDescriptorDataCreateInfo* extensionPointer = default(SharpVk.Interop.Multivendor.OpaqueCaptureDescriptorDataCreateInfo*);
+                    extensionPointer = (SharpVk.Interop.Multivendor.OpaqueCaptureDescriptorDataCreateInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.OpaqueCaptureDescriptorDataCreateInfo>());
+                    opaqueCaptureDescriptorDataCreateInfoExt.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkAccelerationStructureCreateInfoNVNextPointer;
+                    vkAccelerationStructureCreateInfoNVNextPointer = extensionPointer;
+                }
                 commandCache = extendedHandle.commandCache;
                 marshalledCreateInfo = (SharpVk.Interop.NVidia.AccelerationStructureCreateInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.NVidia.AccelerationStructureCreateInfo>());
                 marshalledCreateInfo->SType = StructureType.AccelerationStructureCreateInfoNv;
@@ -266,12 +277,18 @@ namespace SharpVk.NVidia
         /// </param>
         /// <param name="basePipelineIndex">
         /// </param>
+        /// <param name="pipelineCreateFlags2CreateInfo">
+        /// Extension struct
+        /// </param>
         /// <param name="pipelineCreationFeedbackCreateInfo">
+        /// Extension struct
+        /// </param>
+        /// <param name="pipelineOfflineCreateInfo">
         /// Extension struct
         /// </param>
         /// <param name="allocator">
         /// </param>
-        public static unsafe SharpVk.Pipeline CreateRayTracingPipeline(this SharpVk.Device extendedHandle, SharpVk.PipelineCache pipelineCache, ArrayProxy<SharpVk.PipelineShaderStageCreateInfo>? stages, ArrayProxy<SharpVk.NVidia.RayTracingShaderGroupCreateInfo>? groups, uint maxRecursionDepth, SharpVk.PipelineLayout layout, SharpVk.Pipeline basePipelineHandle, int basePipelineIndex, SharpVk.PipelineCreateFlags? flags = default(SharpVk.PipelineCreateFlags?), SharpVk.PipelineCreationFeedbackCreateInfo? pipelineCreationFeedbackCreateInfo = null, SharpVk.AllocationCallbacks? allocator = default(SharpVk.AllocationCallbacks?))
+        public static unsafe SharpVk.Pipeline CreateRayTracingPipeline(this SharpVk.Device extendedHandle, SharpVk.PipelineCache pipelineCache, ArrayProxy<SharpVk.PipelineShaderStageCreateInfo>? stages, ArrayProxy<SharpVk.NVidia.RayTracingShaderGroupCreateInfo>? groups, uint maxRecursionDepth, SharpVk.PipelineLayout layout, SharpVk.Pipeline basePipelineHandle, int basePipelineIndex, SharpVk.PipelineCreateFlags? flags = default(SharpVk.PipelineCreateFlags?), SharpVk.PipelineCreateFlags2CreateInfo? pipelineCreateFlags2CreateInfo = null, SharpVk.PipelineCreationFeedbackCreateInfo? pipelineCreationFeedbackCreateInfo = null, SharpVk.PipelineOfflineCreateInfo? pipelineOfflineCreateInfo = null, SharpVk.AllocationCallbacks? allocator = default(SharpVk.AllocationCallbacks?))
         {
             try
             {
@@ -282,11 +299,27 @@ namespace SharpVk.NVidia
                 void* vkRayTracingPipelineCreateInfoNVNextPointer = default(void*);
                 SharpVk.Interop.AllocationCallbacks* marshalledAllocator = default(SharpVk.Interop.AllocationCallbacks*);
                 SharpVk.Interop.Pipeline* marshalledPipelines = default(SharpVk.Interop.Pipeline*);
+                if (pipelineCreateFlags2CreateInfo != null)
+                {
+                    SharpVk.Interop.PipelineCreateFlags2CreateInfo* extensionPointer = default(SharpVk.Interop.PipelineCreateFlags2CreateInfo*);
+                    extensionPointer = (SharpVk.Interop.PipelineCreateFlags2CreateInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.PipelineCreateFlags2CreateInfo>());
+                    pipelineCreateFlags2CreateInfo.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkRayTracingPipelineCreateInfoNVNextPointer;
+                    vkRayTracingPipelineCreateInfoNVNextPointer = extensionPointer;
+                }
                 if (pipelineCreationFeedbackCreateInfo != null)
                 {
                     SharpVk.Interop.PipelineCreationFeedbackCreateInfo* extensionPointer = default(SharpVk.Interop.PipelineCreationFeedbackCreateInfo*);
                     extensionPointer = (SharpVk.Interop.PipelineCreationFeedbackCreateInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.PipelineCreationFeedbackCreateInfo>());
                     pipelineCreationFeedbackCreateInfo.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkRayTracingPipelineCreateInfoNVNextPointer;
+                    vkRayTracingPipelineCreateInfoNVNextPointer = extensionPointer;
+                }
+                if (pipelineOfflineCreateInfo != null)
+                {
+                    SharpVk.Interop.PipelineOfflineCreateInfo* extensionPointer = default(SharpVk.Interop.PipelineOfflineCreateInfo*);
+                    extensionPointer = (SharpVk.Interop.PipelineOfflineCreateInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.PipelineOfflineCreateInfo>());
+                    pipelineOfflineCreateInfo.Value.MarshalTo(extensionPointer);
                     extensionPointer->Next = vkRayTracingPipelineCreateInfoNVNextPointer;
                     vkRayTracingPipelineCreateInfoNVNextPointer = extensionPointer;
                 }
@@ -434,7 +467,7 @@ namespace SharpVk.NVidia
                 SharpVk.Interop.NVidia.IndirectCommandsLayout marshalledIndirectCommandsLayout = default(SharpVk.Interop.NVidia.IndirectCommandsLayout);
                 commandCache = extendedHandle.commandCache;
                 marshalledCreateInfo = (SharpVk.Interop.NVidia.IndirectCommandsLayoutCreateInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.NVidia.IndirectCommandsLayoutCreateInfo>());
-                marshalledCreateInfo->SType = StructureType.IndirectCommandsLayoutCreateInfo;
+                marshalledCreateInfo->SType = StructureType.IndirectCommandsLayoutCreateInfoNv;
                 marshalledCreateInfo->Next = vkIndirectCommandsLayoutCreateInfoNVNextPointer;
                 if (flags != null)
                 {
@@ -519,6 +552,128 @@ namespace SharpVk.NVidia
         /// <param name="extendedHandle">
         /// The Device handle to extend.
         /// </param>
+        /// <param name="data">
+        /// </param>
+        /// <param name="allocator">
+        /// </param>
+        public static unsafe SharpVk.NVidia.CudaModule CreateCudaModule(this SharpVk.Device extendedHandle, ArrayProxy<byte>? data, SharpVk.AllocationCallbacks? allocator = default(SharpVk.AllocationCallbacks?))
+        {
+            try
+            {
+                SharpVk.NVidia.CudaModule result = default(SharpVk.NVidia.CudaModule);
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.NVidia.CudaModuleCreateInfo* marshalledCreateInfo = default(SharpVk.Interop.NVidia.CudaModuleCreateInfo*);
+                void* vkCudaModuleCreateInfoNVNextPointer = default(void*);
+                SharpVk.Interop.AllocationCallbacks* marshalledAllocator = default(SharpVk.Interop.AllocationCallbacks*);
+                SharpVk.Interop.NVidia.CudaModule marshalledModule = default(SharpVk.Interop.NVidia.CudaModule);
+                commandCache = extendedHandle.commandCache;
+                marshalledCreateInfo = (SharpVk.Interop.NVidia.CudaModuleCreateInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.NVidia.CudaModuleCreateInfo>());
+                marshalledCreateInfo->SType = StructureType.CudaModuleCreateInfo;
+                marshalledCreateInfo->Next = vkCudaModuleCreateInfoNVNextPointer;
+                marshalledCreateInfo->DataSize = (HostSize)(Interop.HeapUtil.GetLength(data));
+                if (data.IsNull())
+                {
+                    marshalledCreateInfo->Data = null;
+                }
+                else
+                {
+                    if (data.Value.Contents == ProxyContents.Single)
+                    {
+                        marshalledCreateInfo->Data = (byte*)(Interop.HeapUtil.Allocate<byte>());
+                        *(byte*)(marshalledCreateInfo->Data) = data.Value.GetSingleValue();
+                    }
+                    else
+                    {
+                        var fieldPointer = (byte*)(Interop.HeapUtil.AllocateAndClear<byte>(Interop.HeapUtil.GetLength(data.Value)).ToPointer());
+                        for(int index = 0; index < (uint)(Interop.HeapUtil.GetLength(data.Value)); index++)
+                        {
+                            fieldPointer[index] = data.Value[index];
+                        }
+                        marshalledCreateInfo->Data = fieldPointer;
+                    }
+                }
+                if (allocator != null)
+                {
+                    marshalledAllocator = (SharpVk.Interop.AllocationCallbacks*)(Interop.HeapUtil.Allocate<SharpVk.Interop.AllocationCallbacks>());
+                    allocator.Value.MarshalTo(marshalledAllocator);
+                }
+                else
+                {
+                    marshalledAllocator = default(SharpVk.Interop.AllocationCallbacks*);
+                }
+                SharpVk.Interop.NVidia.VkDeviceCreateCudaModuleDelegate commandDelegate = commandCache.Cache.vkCreateCudaModuleNV;
+                Result methodResult = commandDelegate(extendedHandle.handle, marshalledCreateInfo, marshalledAllocator, &marshalledModule);
+                if (SharpVkException.IsError(methodResult))
+                {
+                    throw SharpVkException.Create(methodResult);
+                }
+                result = new SharpVk.NVidia.CudaModule(extendedHandle, marshalledModule);
+                return result;
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The Device handle to extend.
+        /// </param>
+        /// <param name="module">
+        /// </param>
+        /// <param name="name">
+        /// </param>
+        /// <param name="allocator">
+        /// </param>
+        public static unsafe SharpVk.NVidia.CudaFunction CreateCudaFunction(this SharpVk.Device extendedHandle, SharpVk.NVidia.CudaModule module, string name, SharpVk.AllocationCallbacks? allocator = default(SharpVk.AllocationCallbacks?))
+        {
+            try
+            {
+                SharpVk.NVidia.CudaFunction result = default(SharpVk.NVidia.CudaFunction);
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.NVidia.CudaFunctionCreateInfo* marshalledCreateInfo = default(SharpVk.Interop.NVidia.CudaFunctionCreateInfo*);
+                void* vkCudaFunctionCreateInfoNVNextPointer = default(void*);
+                SharpVk.Interop.AllocationCallbacks* marshalledAllocator = default(SharpVk.Interop.AllocationCallbacks*);
+                SharpVk.Interop.NVidia.CudaFunction marshalledFunction = default(SharpVk.Interop.NVidia.CudaFunction);
+                commandCache = extendedHandle.commandCache;
+                marshalledCreateInfo = (SharpVk.Interop.NVidia.CudaFunctionCreateInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.NVidia.CudaFunctionCreateInfo>());
+                marshalledCreateInfo->SType = StructureType.CudaFunctionCreateInfo;
+                marshalledCreateInfo->Next = vkCudaFunctionCreateInfoNVNextPointer;
+                marshalledCreateInfo->Module = module?.handle ?? default(SharpVk.Interop.NVidia.CudaModule);
+                marshalledCreateInfo->Name = Interop.HeapUtil.MarshalTo(name);
+                if (allocator != null)
+                {
+                    marshalledAllocator = (SharpVk.Interop.AllocationCallbacks*)(Interop.HeapUtil.Allocate<SharpVk.Interop.AllocationCallbacks>());
+                    allocator.Value.MarshalTo(marshalledAllocator);
+                }
+                else
+                {
+                    marshalledAllocator = default(SharpVk.Interop.AllocationCallbacks*);
+                }
+                SharpVk.Interop.NVidia.VkDeviceCreateCudaFunctionDelegate commandDelegate = commandCache.Cache.vkCreateCudaFunctionNV;
+                Result methodResult = commandDelegate(extendedHandle.handle, marshalledCreateInfo, marshalledAllocator, &marshalledFunction);
+                if (SharpVkException.IsError(methodResult))
+                {
+                    throw SharpVkException.Create(methodResult);
+                }
+                result = new SharpVk.NVidia.CudaFunction(extendedHandle, marshalledFunction);
+                return result;
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The Device handle to extend.
+        /// </param>
         /// <param name="memoryGetRemoteAddressInfo">
         /// </param>
         public static unsafe IntPtr GetMemoryRemoteAddress(this SharpVk.Device extendedHandle, SharpVk.NVidia.MemoryGetRemoteAddressInfo memoryGetRemoteAddressInfo)
@@ -539,6 +694,64 @@ namespace SharpVk.NVidia
                     throw SharpVkException.Create(methodResult);
                 }
                 result = marshalledAddress;
+                return result;
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The Device handle to extend.
+        /// </param>
+        /// <param name="createInfo">
+        /// </param>
+        public static unsafe SharpVk.MemoryRequirements2 GetPipelineIndirectMemoryRequirements(this SharpVk.Device extendedHandle, SharpVk.ComputePipelineCreateInfo createInfo)
+        {
+            try
+            {
+                SharpVk.MemoryRequirements2 result = default(SharpVk.MemoryRequirements2);
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.ComputePipelineCreateInfo* marshalledCreateInfo = default(SharpVk.Interop.ComputePipelineCreateInfo*);
+                SharpVk.Interop.MemoryRequirements2 marshalledMemoryRequirements = default(SharpVk.Interop.MemoryRequirements2);
+                commandCache = extendedHandle.commandCache;
+                marshalledCreateInfo = (SharpVk.Interop.ComputePipelineCreateInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.ComputePipelineCreateInfo>());
+                createInfo.MarshalTo(marshalledCreateInfo);
+                SharpVk.Interop.NVidia.VkDeviceGetPipelineIndirectMemoryRequirementsDelegate commandDelegate = commandCache.Cache.vkGetPipelineIndirectMemoryRequirementsNV;
+                commandDelegate(extendedHandle.handle, marshalledCreateInfo, &marshalledMemoryRequirements);
+                result = SharpVk.MemoryRequirements2.MarshalFrom(&marshalledMemoryRequirements);
+                return result;
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The Device handle to extend.
+        /// </param>
+        /// <param name="info">
+        /// </param>
+        public static unsafe SharpVk.DeviceAddress GetPipelineIndirectDeviceAddress(this SharpVk.Device extendedHandle, SharpVk.NVidia.PipelineIndirectDeviceAddressInfo info)
+        {
+            try
+            {
+                SharpVk.DeviceAddress result = default(SharpVk.DeviceAddress);
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.NVidia.PipelineIndirectDeviceAddressInfo* marshalledInfo = default(SharpVk.Interop.NVidia.PipelineIndirectDeviceAddressInfo*);
+                commandCache = extendedHandle.commandCache;
+                marshalledInfo = (SharpVk.Interop.NVidia.PipelineIndirectDeviceAddressInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.NVidia.PipelineIndirectDeviceAddressInfo>());
+                info.MarshalTo(marshalledInfo);
+                SharpVk.Interop.NVidia.VkDeviceGetPipelineIndirectDeviceAddressDelegate commandDelegate = commandCache.Cache.vkGetPipelineIndirectDeviceAddressNV;
+                result = commandDelegate(extendedHandle.handle, marshalledInfo);
                 return result;
             }
             finally
@@ -651,6 +864,147 @@ namespace SharpVk.NVidia
                     throw SharpVkException.Create(methodResult);
                 }
                 result = new SharpVk.NVidia.OpticalFlowSession(extendedHandle, marshalledSession);
+                return result;
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The Device handle to extend.
+        /// </param>
+        /// <param name="info">
+        /// </param>
+        public static unsafe Result ConvertCooperativeVectorMatrix(this SharpVk.Device extendedHandle, SharpVk.NVidia.ConvertCooperativeVectorMatrixInfo info)
+        {
+            try
+            {
+                Result result = default(Result);
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.NVidia.ConvertCooperativeVectorMatrixInfo* marshalledInfo = default(SharpVk.Interop.NVidia.ConvertCooperativeVectorMatrixInfo*);
+                commandCache = extendedHandle.commandCache;
+                marshalledInfo = (SharpVk.Interop.NVidia.ConvertCooperativeVectorMatrixInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.NVidia.ConvertCooperativeVectorMatrixInfo>());
+                info.MarshalTo(marshalledInfo);
+                SharpVk.Interop.NVidia.VkDeviceConvertCooperativeVectorMatrixDelegate commandDelegate = commandCache.Cache.vkConvertCooperativeVectorMatrixNV;
+                result = commandDelegate(extendedHandle.handle, marshalledInfo);
+                if (SharpVkException.IsError(result))
+                {
+                    throw SharpVkException.Create(result);
+                }
+                return result;
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The Device handle to extend.
+        /// </param>
+        /// <param name="preferredQueue">
+        /// </param>
+        /// <param name="allocator">
+        /// </param>
+        public static unsafe SharpVk.NVidia.ExternalComputeQueue CreateExternalComputeQueue(this SharpVk.Device extendedHandle, SharpVk.Queue preferredQueue, SharpVk.AllocationCallbacks? allocator = default(SharpVk.AllocationCallbacks?))
+        {
+            try
+            {
+                SharpVk.NVidia.ExternalComputeQueue result = default(SharpVk.NVidia.ExternalComputeQueue);
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.NVidia.ExternalComputeQueueCreateInfo* marshalledCreateInfo = default(SharpVk.Interop.NVidia.ExternalComputeQueueCreateInfo*);
+                void* vkExternalComputeQueueCreateInfoNVNextPointer = default(void*);
+                SharpVk.Interop.AllocationCallbacks* marshalledAllocator = default(SharpVk.Interop.AllocationCallbacks*);
+                SharpVk.Interop.NVidia.ExternalComputeQueue marshalledExternalQueue = default(SharpVk.Interop.NVidia.ExternalComputeQueue);
+                commandCache = extendedHandle.commandCache;
+                marshalledCreateInfo = (SharpVk.Interop.NVidia.ExternalComputeQueueCreateInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.NVidia.ExternalComputeQueueCreateInfo>());
+                marshalledCreateInfo->SType = StructureType.ExternalComputeQueueCreateInfo;
+                marshalledCreateInfo->Next = vkExternalComputeQueueCreateInfoNVNextPointer;
+                marshalledCreateInfo->PreferredQueue = preferredQueue?.handle ?? default(SharpVk.Interop.Queue);
+                if (allocator != null)
+                {
+                    marshalledAllocator = (SharpVk.Interop.AllocationCallbacks*)(Interop.HeapUtil.Allocate<SharpVk.Interop.AllocationCallbacks>());
+                    allocator.Value.MarshalTo(marshalledAllocator);
+                }
+                else
+                {
+                    marshalledAllocator = default(SharpVk.Interop.AllocationCallbacks*);
+                }
+                SharpVk.Interop.NVidia.VkDeviceCreateExternalComputeQueueDelegate commandDelegate = commandCache.Cache.vkCreateExternalComputeQueueNV;
+                Result methodResult = commandDelegate(extendedHandle.handle, marshalledCreateInfo, marshalledAllocator, &marshalledExternalQueue);
+                if (SharpVkException.IsError(methodResult))
+                {
+                    throw SharpVkException.Create(methodResult);
+                }
+                result = new SharpVk.NVidia.ExternalComputeQueue(extendedHandle, marshalledExternalQueue);
+                return result;
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The Device handle to extend.
+        /// </param>
+        /// <param name="info">
+        /// </param>
+        public static unsafe SharpVk.Khronos.AccelerationStructureBuildSizesInfo GetClusterAccelerationStructureBuildSizes(this SharpVk.Device extendedHandle, SharpVk.NVidia.ClusterAccelerationStructureInputInfo info)
+        {
+            try
+            {
+                SharpVk.Khronos.AccelerationStructureBuildSizesInfo result = default(SharpVk.Khronos.AccelerationStructureBuildSizesInfo);
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.NVidia.ClusterAccelerationStructureInputInfo* marshalledInfo = default(SharpVk.Interop.NVidia.ClusterAccelerationStructureInputInfo*);
+                SharpVk.Interop.Khronos.AccelerationStructureBuildSizesInfo marshalledSizeInfo = default(SharpVk.Interop.Khronos.AccelerationStructureBuildSizesInfo);
+                commandCache = extendedHandle.commandCache;
+                marshalledInfo = (SharpVk.Interop.NVidia.ClusterAccelerationStructureInputInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.NVidia.ClusterAccelerationStructureInputInfo>());
+                info.MarshalTo(marshalledInfo);
+                SharpVk.Interop.NVidia.VkDeviceGetClusterAccelerationStructureBuildSizesDelegate commandDelegate = commandCache.Cache.vkGetClusterAccelerationStructureBuildSizesNV;
+                commandDelegate(extendedHandle.handle, marshalledInfo, &marshalledSizeInfo);
+                result = SharpVk.Khronos.AccelerationStructureBuildSizesInfo.MarshalFrom(&marshalledSizeInfo);
+                return result;
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The Device handle to extend.
+        /// </param>
+        /// <param name="info">
+        /// </param>
+        public static unsafe SharpVk.Khronos.AccelerationStructureBuildSizesInfo GetPartitionedAccelerationStructuresBuildSizes(this SharpVk.Device extendedHandle, SharpVk.NVidia.PartitionedAccelerationStructureInstancesInput info)
+        {
+            try
+            {
+                SharpVk.Khronos.AccelerationStructureBuildSizesInfo result = default(SharpVk.Khronos.AccelerationStructureBuildSizesInfo);
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.NVidia.PartitionedAccelerationStructureInstancesInput* marshalledInfo = default(SharpVk.Interop.NVidia.PartitionedAccelerationStructureInstancesInput*);
+                SharpVk.Interop.Khronos.AccelerationStructureBuildSizesInfo marshalledSizeInfo = default(SharpVk.Interop.Khronos.AccelerationStructureBuildSizesInfo);
+                commandCache = extendedHandle.commandCache;
+                marshalledInfo = (SharpVk.Interop.NVidia.PartitionedAccelerationStructureInstancesInput*)(Interop.HeapUtil.Allocate<SharpVk.Interop.NVidia.PartitionedAccelerationStructureInstancesInput>());
+                info.MarshalTo(marshalledInfo);
+                SharpVk.Interop.NVidia.VkDeviceGetPartitionedAccelerationStructuresBuildSizesDelegate commandDelegate = commandCache.Cache.vkGetPartitionedAccelerationStructuresBuildSizesNV;
+                commandDelegate(extendedHandle.handle, marshalledInfo, &marshalledSizeInfo);
+                result = SharpVk.Khronos.AccelerationStructureBuildSizesInfo.MarshalFrom(&marshalledSizeInfo);
                 return result;
             }
             finally

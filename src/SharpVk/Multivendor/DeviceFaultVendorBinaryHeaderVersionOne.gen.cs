@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -117,6 +117,24 @@ namespace SharpVk.Multivendor
         /// <summary>
         /// 
         /// </summary>
+        public Version EngineVersion
+        {
+            get;
+            set;
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public Version ApiVersion
+        {
+            get;
+            set;
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="pointer">
         /// </param>
         internal unsafe void MarshalTo(SharpVk.Interop.Multivendor.DeviceFaultVendorBinaryHeaderVersionOne* pointer)
@@ -130,6 +148,8 @@ namespace SharpVk.Multivendor
             pointer->ApplicationNameOffset = this.ApplicationNameOffset;
             pointer->ApplicationVersion = (uint)(this.ApplicationVersion);
             pointer->EngineNameOffset = this.EngineNameOffset;
+            pointer->EngineVersion = (uint)(this.EngineVersion);
+            pointer->ApiVersion = (uint)(this.ApiVersion);
         }
         
         /// <summary>
@@ -149,6 +169,8 @@ namespace SharpVk.Multivendor
             result.ApplicationNameOffset = pointer->ApplicationNameOffset;
             result.ApplicationVersion = (Version)(pointer->ApplicationVersion);
             result.EngineNameOffset = pointer->EngineNameOffset;
+            result.EngineVersion = (Version)(pointer->EngineVersion);
+            result.ApiVersion = (Version)(pointer->ApiVersion);
             return result;
         }
     }

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -38,7 +38,10 @@ namespace SharpVk.Khronos
         
         internal readonly SharpVk.Device parent; 
         
-        internal Swapchain(SharpVk.Device parent, SharpVk.Interop.Khronos.Swapchain handle)
+        /// <summary>
+        /// 
+        /// </summary>
+        public Swapchain(SharpVk.Device parent, SharpVk.Interop.Khronos.Swapchain handle)
         {
             this.handle = handle;
             this.parent = parent;
@@ -51,11 +54,9 @@ namespace SharpVk.Khronos
         public SharpVk.Interop.Khronos.Swapchain RawHandle => this.handle;
         
         /// <summary>
-        /// Destroy a swapchain object.
+        /// 
         /// </summary>
         /// <param name="allocator">
-        /// An optional AllocationCallbacks instance that controls host memory
-        /// allocation.
         /// </param>
         public unsafe void Destroy(SharpVk.AllocationCallbacks? allocator = default(SharpVk.AllocationCallbacks?))
         {
@@ -81,7 +82,7 @@ namespace SharpVk.Khronos
         }
         
         /// <summary>
-        /// Obtain the array of presentable images associated with a swapchain.
+        /// 
         /// </summary>
         public unsafe SharpVk.Image[] GetImages()
         {
@@ -120,17 +121,13 @@ namespace SharpVk.Khronos
         }
         
         /// <summary>
-        /// Retrieve the index of the next available presentable image.
+        /// 
         /// </summary>
         /// <param name="timeout">
-        /// Indicates how long the function waits, in nanoseconds, if no image
-        /// is available.
         /// </param>
         /// <param name="semaphore">
-        /// Null or a semaphore to signal.
         /// </param>
         /// <param name="fence">
-        /// Null or a fence to signal.
         /// </param>
         public unsafe uint AcquireNextImage(ulong timeout, SharpVk.Semaphore semaphore, SharpVk.Fence fence)
         {
@@ -189,6 +186,33 @@ namespace SharpVk.Khronos
                 Result result = default(Result);
                 SharpVk.Interop.Khronos.VkSwapchainKHRWaitForPresentDelegate commandDelegate = commandCache.Cache.vkWaitForPresentKHR;
                 result = commandDelegate(this.parent.handle, this.handle, presentId, timeout);
+                if (SharpVkException.IsError(result))
+                {
+                    throw SharpVkException.Create(result);
+                }
+                return result;
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="presentWait2Info">
+        /// </param>
+        public unsafe Result WaitForPresent2(SharpVk.Khronos.PresentWait2Info presentWait2Info)
+        {
+            try
+            {
+                Result result = default(Result);
+                SharpVk.Interop.Khronos.PresentWait2Info* marshalledPresentWait2Info = default(SharpVk.Interop.Khronos.PresentWait2Info*);
+                marshalledPresentWait2Info = (SharpVk.Interop.Khronos.PresentWait2Info*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.PresentWait2Info>());
+                presentWait2Info.MarshalTo(marshalledPresentWait2Info);
+                SharpVk.Interop.Khronos.VkSwapchainKHRWaitForPresent2Delegate commandDelegate = commandCache.Cache.vkWaitForPresent2KHR;
+                result = commandDelegate(this.parent.handle, this.handle, marshalledPresentWait2Info);
                 if (SharpVkException.IsError(result))
                 {
                     throw SharpVkException.Create(result);

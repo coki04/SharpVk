@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -52,36 +52,6 @@ namespace SharpVk.Multivendor
                     throw SharpVkException.Create(methodResult);
                 }
                 result = SharpVk.Multivendor.ImageDrmFormatModifierProperties.MarshalFrom(&marshalledProperties);
-                return result;
-            }
-            finally
-            {
-                Interop.HeapUtil.FreeAll();
-            }
-        }
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="extendedHandle">
-        /// The Image handle to extend.
-        /// </param>
-        /// <param name="subresource">
-        /// </param>
-        public static unsafe SharpVk.Multivendor.SubresourceLayout2 GetSubresourceLayout2(this SharpVk.Image extendedHandle, SharpVk.Multivendor.ImageSubresource2 subresource)
-        {
-            try
-            {
-                SharpVk.Multivendor.SubresourceLayout2 result = default(SharpVk.Multivendor.SubresourceLayout2);
-                CommandCache commandCache = default(CommandCache);
-                SharpVk.Interop.Multivendor.ImageSubresource2* marshalledSubresource = default(SharpVk.Interop.Multivendor.ImageSubresource2*);
-                SharpVk.Interop.Multivendor.SubresourceLayout2 marshalledLayout = default(SharpVk.Interop.Multivendor.SubresourceLayout2);
-                commandCache = extendedHandle.commandCache;
-                marshalledSubresource = (SharpVk.Interop.Multivendor.ImageSubresource2*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.ImageSubresource2>());
-                subresource.MarshalTo(marshalledSubresource);
-                SharpVk.Interop.Multivendor.VkImageGetSubresourceLayout2Delegate commandDelegate = commandCache.Cache.vkGetImageSubresourceLayout2EXT;
-                commandDelegate(extendedHandle.parent.handle, extendedHandle.handle, marshalledSubresource, &marshalledLayout);
-                result = SharpVk.Multivendor.SubresourceLayout2.MarshalFrom(&marshalledLayout);
                 return result;
             }
             finally

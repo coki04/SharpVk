@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,7 @@ namespace SharpVk
     /// <summary>
     /// Specifies the type of a descriptor in a descriptor set.
     /// </summary>
-    public enum DescriptorType
+    public enum DescriptorType 
     {
         /// <summary>
         /// 
@@ -112,6 +112,16 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        Tensor = 1000460000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         MutableExt = 1000351000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PartitionedAccelerationStructure = 1000570000, 
     }
 }

@@ -62,6 +62,7 @@ namespace SharpVk.Emit
 
         public void EmitEnum(string name,
                                 Action<EnumBuilder> @enum,
+                                int bitwidth,
                                 AccessModifier accessModifier = AccessModifier.Internal,
                                 IEnumerable<string> summary = null,
                                 Action<DocBuilder> docs = null,
@@ -69,7 +70,20 @@ namespace SharpVk.Emit
         {
             this.EmitTypePreamble(summary, docs, attributes);
 
-            this.writer.WriteLine($"{accessModifier.Emit()} enum {name}");
+            string enumType = "";
+            switch (bitwidth)
+            {
+                case 32:
+                    enumType = "";
+                    break;
+                case 64:
+                    enumType = ": long";
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
+
+            this.writer.WriteLine($"{accessModifier.Emit()} enum {name} {enumType}");
             using (var builder = new EnumBuilder(this.writer.GetSubWriter()))
             {
                 @enum(builder);

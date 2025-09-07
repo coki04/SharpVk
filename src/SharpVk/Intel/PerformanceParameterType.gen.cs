@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,7 @@ namespace SharpVk.Intel
     /// <summary>
     /// Parameters that can be queried
     /// </summary>
-    public enum PerformanceParameterType
+    public enum PerformanceParameterType 
     {
         /// <summary>
         /// Has a boolean result which tells whether hardware counters can be

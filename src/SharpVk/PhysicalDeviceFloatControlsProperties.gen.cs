@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,7 @@ using System.Runtime.InteropServices;
 namespace SharpVk
 {
     /// <summary>
-    /// Describes properties supported by VK_KHR_shader_float_controls
+    /// 
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public partial struct PhysicalDeviceFloatControlsProperties
@@ -52,11 +52,7 @@ namespace SharpVk
         }
         
         /// <summary>
-        /// A boolean value indicating whether an implementation supports the
-        /// round-towards-zero rounding mode for 16-bit floating-point
-        /// arithmetic and conversion instructions. It also indicates whether
-        /// the RoundingModeRTZ execution mode can be used for 16-bit
-        /// floating-point types.
+        /// 
         /// </summary>
         public bool ShaderSignedZeroInfNanPreserveFloat16
         {
@@ -65,11 +61,7 @@ namespace SharpVk
         }
         
         /// <summary>
-        /// A boolean value indicating whether an implementation supports the
-        /// round-towards-zero rounding mode for 32-bit floating-point
-        /// arithmetic and conversion instructions. It also indicates whether
-        /// the RoundingModeRTZ execution mode can be used for 32-bit
-        /// floating-point types.
+        /// 
         /// </summary>
         public bool ShaderSignedZeroInfNanPreserveFloat32
         {
@@ -78,11 +70,7 @@ namespace SharpVk
         }
         
         /// <summary>
-        /// A boolean value indicating whether an implementation supports the
-        /// round-towards-zero rounding mode for 64-bit floating-point
-        /// arithmetic and conversion instructions. It also indicates whether
-        /// the RoundingModeRTZ execution mode can be used for 64-bit
-        /// floating-point types.
+        /// 
         /// </summary>
         public bool ShaderSignedZeroInfNanPreserveFloat64
         {
@@ -91,10 +79,7 @@ namespace SharpVk
         }
         
         /// <summary>
-        /// A boolean value indicating whether denormals can be preserved in
-        /// 16-bit floating-point computations. It also indicates whether the
-        /// DenormPreserve execution mode can be used for 16-bit floating-point
-        /// types.
+        /// 
         /// </summary>
         public bool ShaderDenormPreserveFloat16
         {
@@ -103,10 +88,7 @@ namespace SharpVk
         }
         
         /// <summary>
-        /// A boolean value indicating whether denormals can be preserved in
-        /// 32-bit floating-point computations. It also indicates whether the
-        /// DenormPreserve execution mode can be used for 32-bit floating-point
-        /// types.
+        /// 
         /// </summary>
         public bool ShaderDenormPreserveFloat32
         {
@@ -115,10 +97,7 @@ namespace SharpVk
         }
         
         /// <summary>
-        /// A boolean value indicating whether denormals can be preserved in
-        /// 64-bit floating-point computations. It also indicates whether the
-        /// DenormPreserve execution mode can be used for 64-bit floating-point
-        /// types.
+        /// 
         /// </summary>
         public bool ShaderDenormPreserveFloat64
         {
@@ -127,10 +106,7 @@ namespace SharpVk
         }
         
         /// <summary>
-        /// A boolean value indicating whether sign of a zero, Nans and ±∞ can
-        /// be preserved in 16-bit floating-point computations. It also
-        /// indicates whether the SignedZeroInfNanPreserve execution mode can
-        /// be used for 16-bit floating-point types.
+        /// 
         /// </summary>
         public bool ShaderDenormFlushToZeroFloat16
         {
@@ -139,10 +115,7 @@ namespace SharpVk
         }
         
         /// <summary>
-        /// A boolean value indicating whether sign of a zero, Nans and ±∞ can
-        /// be preserved in 32-bit floating-point computations. It also
-        /// indicates whether the SignedZeroInfNanPreserve execution mode can
-        /// be used for 32-bit floating-point types.
+        /// 
         /// </summary>
         public bool ShaderDenormFlushToZeroFloat32
         {
@@ -151,10 +124,7 @@ namespace SharpVk
         }
         
         /// <summary>
-        /// A boolean value indicating whether sign of a zero, Nans and ±∞ can
-        /// be preserved in 64-bit floating-point computations. It also
-        /// indicates whether the SignedZeroInfNanPreserve execution mode can
-        /// be used for 64-bit floating-point types.
+        /// 
         /// </summary>
         public bool ShaderDenormFlushToZeroFloat64
         {
@@ -163,10 +133,7 @@ namespace SharpVk
         }
         
         /// <summary>
-        /// A boolean value indicating whether denormals can be flushed to zero
-        /// in 16-bit floating-point computations. It also indicates whether
-        /// the DenormFlushToZero execution mode can be used for 16-bit
-        /// floating-point types.
+        /// 
         /// </summary>
         public bool ShaderRoundingModeRTEFloat16
         {
@@ -175,10 +142,7 @@ namespace SharpVk
         }
         
         /// <summary>
-        /// A boolean value indicating whether denormals can be flushed to zero
-        /// in 32-bit floating-point computations. It also indicates whether
-        /// the DenormFlushToZero execution mode can be used for 32-bit
-        /// floating-point types.
+        /// 
         /// </summary>
         public bool ShaderRoundingModeRTEFloat32
         {
@@ -187,10 +151,7 @@ namespace SharpVk
         }
         
         /// <summary>
-        /// A boolean value indicating whether denormals can be flushed to zero
-        /// in 64-bit floating-point computations. It also indicates whether
-        /// the DenormFlushToZero execution mode can be used for 164-bit
-        /// floating-point types.
+        /// 
         /// </summary>
         public bool ShaderRoundingModeRTEFloat64
         {
@@ -199,11 +160,7 @@ namespace SharpVk
         }
         
         /// <summary>
-        /// A boolean value indicating whether an implementation supports the
-        /// round-to-nearest-even rounding mode for 16-bit floating-point
-        /// arithmetic and conversion instructions. It also indicates whether
-        /// the RoundingModeRTE execution mode can be used for 16-bit
-        /// floating-point types.
+        /// 
         /// </summary>
         public bool ShaderRoundingModeRTZFloat16
         {
@@ -212,11 +169,7 @@ namespace SharpVk
         }
         
         /// <summary>
-        /// A boolean value indicating whether an implementation supports the
-        /// round-to-nearest-even rounding mode for 32-bit floating-point
-        /// arithmetic and conversion instructions. It also indicates whether
-        /// the RoundingModeRTE execution mode can be used for 32-bit
-        /// floating-point types.
+        /// 
         /// </summary>
         public bool ShaderRoundingModeRTZFloat32
         {
@@ -225,11 +178,7 @@ namespace SharpVk
         }
         
         /// <summary>
-        /// A boolean value indicating whether an implementation supports the
-        /// round-to-nearest-even rounding mode for 64-bit floating-point
-        /// arithmetic and conversion instructions. It also indicates whether
-        /// the RoundingModeRTE execution mode can be used for 64-bit
-        /// floating-point types.
+        /// 
         /// </summary>
         public bool ShaderRoundingModeRTZFloat64
         {

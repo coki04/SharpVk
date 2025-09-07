@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,7 @@ namespace SharpVk
     /// Bitmask specifying framebuffer properties
     /// </summary>
     [System.Flags]
-    public enum FramebufferCreateFlags
+    public enum FramebufferCreateFlags 
     {
         /// <summary>
         /// Specifies that image views are not specified, and only attachment

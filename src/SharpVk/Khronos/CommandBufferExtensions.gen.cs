@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -91,31 +91,36 @@ namespace SharpVk.Khronos
         /// </param>
         /// <param name="flags">
         /// </param>
+        /// <param name="videoEncodeQualityLevelInfoKhr">
+        /// Extension struct
+        /// </param>
         /// <param name="videoEncodeRateControlInfoKhr">
         /// Extension struct
         /// </param>
-        /// <param name="videoEncodeRateControlLayerInfoKhr">
+        /// <param name="videoEncodeH264RateControlInfoKhr">
         /// Extension struct
         /// </param>
-        /// <param name="videoEncodeH264RateControlInfoExt">
+        /// <param name="videoEncodeH265RateControlInfoKhr">
         /// Extension struct
         /// </param>
-        /// <param name="videoEncodeH264RateControlLayerInfoExt">
+        /// <param name="videoEncodeAV1RateControlInfoKhr">
         /// Extension struct
         /// </param>
-        /// <param name="videoEncodeH265RateControlInfoExt">
-        /// Extension struct
-        /// </param>
-        /// <param name="videoEncodeH265RateControlLayerInfoExt">
-        /// Extension struct
-        /// </param>
-        public static unsafe void ControlVideoCoding(this SharpVk.CommandBuffer extendedHandle, SharpVk.Khronos.VideoCodingControlFlags flags, SharpVk.Khronos.VideoEncodeRateControlInfo? videoEncodeRateControlInfoKhr = null, SharpVk.Khronos.VideoEncodeRateControlLayerInfo? videoEncodeRateControlLayerInfoKhr = null, SharpVk.Multivendor.VideoEncodeH264RateControlInfo? videoEncodeH264RateControlInfoExt = null, SharpVk.Multivendor.VideoEncodeH264RateControlLayerInfo? videoEncodeH264RateControlLayerInfoExt = null, SharpVk.Multivendor.VideoEncodeH265RateControlInfo? videoEncodeH265RateControlInfoExt = null, SharpVk.Multivendor.VideoEncodeH265RateControlLayerInfo? videoEncodeH265RateControlLayerInfoExt = null)
+        public static unsafe void ControlVideoCoding(this SharpVk.CommandBuffer extendedHandle, SharpVk.Khronos.VideoCodingControlFlags flags, SharpVk.Khronos.VideoEncodeQualityLevelInfo? videoEncodeQualityLevelInfoKhr = null, SharpVk.Khronos.VideoEncodeRateControlInfo? videoEncodeRateControlInfoKhr = null, SharpVk.Khronos.VideoEncodeH264RateControlInfo? videoEncodeH264RateControlInfoKhr = null, SharpVk.Khronos.VideoEncodeH265RateControlInfo? videoEncodeH265RateControlInfoKhr = null, SharpVk.Khronos.VideoEncodeAV1RateControlInfo? videoEncodeAV1RateControlInfoKhr = null)
         {
             try
             {
                 CommandCache commandCache = default(CommandCache);
                 SharpVk.Interop.Khronos.VideoCodingControlInfo* marshalledCodingControlInfo = default(SharpVk.Interop.Khronos.VideoCodingControlInfo*);
                 void* vkVideoCodingControlInfoKHRNextPointer = default(void*);
+                if (videoEncodeQualityLevelInfoKhr != null)
+                {
+                    SharpVk.Interop.Khronos.VideoEncodeQualityLevelInfo* extensionPointer = default(SharpVk.Interop.Khronos.VideoEncodeQualityLevelInfo*);
+                    extensionPointer = (SharpVk.Interop.Khronos.VideoEncodeQualityLevelInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.VideoEncodeQualityLevelInfo>());
+                    videoEncodeQualityLevelInfoKhr.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkVideoCodingControlInfoKHRNextPointer;
+                    vkVideoCodingControlInfoKHRNextPointer = extensionPointer;
+                }
                 if (videoEncodeRateControlInfoKhr != null)
                 {
                     SharpVk.Interop.Khronos.VideoEncodeRateControlInfo* extensionPointer = default(SharpVk.Interop.Khronos.VideoEncodeRateControlInfo*);
@@ -124,43 +129,27 @@ namespace SharpVk.Khronos
                     extensionPointer->Next = vkVideoCodingControlInfoKHRNextPointer;
                     vkVideoCodingControlInfoKHRNextPointer = extensionPointer;
                 }
-                if (videoEncodeRateControlLayerInfoKhr != null)
+                if (videoEncodeH264RateControlInfoKhr != null)
                 {
-                    SharpVk.Interop.Khronos.VideoEncodeRateControlLayerInfo* extensionPointer = default(SharpVk.Interop.Khronos.VideoEncodeRateControlLayerInfo*);
-                    extensionPointer = (SharpVk.Interop.Khronos.VideoEncodeRateControlLayerInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.VideoEncodeRateControlLayerInfo>());
-                    videoEncodeRateControlLayerInfoKhr.Value.MarshalTo(extensionPointer);
+                    SharpVk.Interop.Khronos.VideoEncodeH264RateControlInfo* extensionPointer = default(SharpVk.Interop.Khronos.VideoEncodeH264RateControlInfo*);
+                    extensionPointer = (SharpVk.Interop.Khronos.VideoEncodeH264RateControlInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.VideoEncodeH264RateControlInfo>());
+                    videoEncodeH264RateControlInfoKhr.Value.MarshalTo(extensionPointer);
                     extensionPointer->Next = vkVideoCodingControlInfoKHRNextPointer;
                     vkVideoCodingControlInfoKHRNextPointer = extensionPointer;
                 }
-                if (videoEncodeH264RateControlInfoExt != null)
+                if (videoEncodeH265RateControlInfoKhr != null)
                 {
-                    SharpVk.Interop.Multivendor.VideoEncodeH264RateControlInfo* extensionPointer = default(SharpVk.Interop.Multivendor.VideoEncodeH264RateControlInfo*);
-                    extensionPointer = (SharpVk.Interop.Multivendor.VideoEncodeH264RateControlInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.VideoEncodeH264RateControlInfo>());
-                    videoEncodeH264RateControlInfoExt.Value.MarshalTo(extensionPointer);
+                    SharpVk.Interop.Khronos.VideoEncodeH265RateControlInfo* extensionPointer = default(SharpVk.Interop.Khronos.VideoEncodeH265RateControlInfo*);
+                    extensionPointer = (SharpVk.Interop.Khronos.VideoEncodeH265RateControlInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.VideoEncodeH265RateControlInfo>());
+                    videoEncodeH265RateControlInfoKhr.Value.MarshalTo(extensionPointer);
                     extensionPointer->Next = vkVideoCodingControlInfoKHRNextPointer;
                     vkVideoCodingControlInfoKHRNextPointer = extensionPointer;
                 }
-                if (videoEncodeH264RateControlLayerInfoExt != null)
+                if (videoEncodeAV1RateControlInfoKhr != null)
                 {
-                    SharpVk.Interop.Multivendor.VideoEncodeH264RateControlLayerInfo* extensionPointer = default(SharpVk.Interop.Multivendor.VideoEncodeH264RateControlLayerInfo*);
-                    extensionPointer = (SharpVk.Interop.Multivendor.VideoEncodeH264RateControlLayerInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.VideoEncodeH264RateControlLayerInfo>());
-                    videoEncodeH264RateControlLayerInfoExt.Value.MarshalTo(extensionPointer);
-                    extensionPointer->Next = vkVideoCodingControlInfoKHRNextPointer;
-                    vkVideoCodingControlInfoKHRNextPointer = extensionPointer;
-                }
-                if (videoEncodeH265RateControlInfoExt != null)
-                {
-                    SharpVk.Interop.Multivendor.VideoEncodeH265RateControlInfo* extensionPointer = default(SharpVk.Interop.Multivendor.VideoEncodeH265RateControlInfo*);
-                    extensionPointer = (SharpVk.Interop.Multivendor.VideoEncodeH265RateControlInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.VideoEncodeH265RateControlInfo>());
-                    videoEncodeH265RateControlInfoExt.Value.MarshalTo(extensionPointer);
-                    extensionPointer->Next = vkVideoCodingControlInfoKHRNextPointer;
-                    vkVideoCodingControlInfoKHRNextPointer = extensionPointer;
-                }
-                if (videoEncodeH265RateControlLayerInfoExt != null)
-                {
-                    SharpVk.Interop.Multivendor.VideoEncodeH265RateControlLayerInfo* extensionPointer = default(SharpVk.Interop.Multivendor.VideoEncodeH265RateControlLayerInfo*);
-                    extensionPointer = (SharpVk.Interop.Multivendor.VideoEncodeH265RateControlLayerInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.VideoEncodeH265RateControlLayerInfo>());
-                    videoEncodeH265RateControlLayerInfoExt.Value.MarshalTo(extensionPointer);
+                    SharpVk.Interop.Khronos.VideoEncodeAV1RateControlInfo* extensionPointer = default(SharpVk.Interop.Khronos.VideoEncodeAV1RateControlInfo*);
+                    extensionPointer = (SharpVk.Interop.Khronos.VideoEncodeAV1RateControlInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.VideoEncodeAV1RateControlInfo>());
+                    videoEncodeAV1RateControlInfoKhr.Value.MarshalTo(extensionPointer);
                     extensionPointer->Next = vkVideoCodingControlInfoKHRNextPointer;
                     vkVideoCodingControlInfoKHRNextPointer = extensionPointer;
                 }
@@ -198,32 +187,98 @@ namespace SharpVk.Khronos
         /// </param>
         /// <param name="referenceSlots">
         /// </param>
-        /// <param name="videoDecodeH264PictureInfoExt">
+        /// <param name="videoInlineQueryInfoKhr">
         /// Extension struct
         /// </param>
-        /// <param name="videoDecodeH265PictureInfoExt">
+        /// <param name="videoDecodeH264InlineSessionParametersInfoKhr">
         /// Extension struct
         /// </param>
-        public static unsafe void DecodeVideo(this SharpVk.CommandBuffer extendedHandle, SharpVk.Buffer sourceBuffer, ulong sourceBufferOffset, ulong sourceBufferRange, SharpVk.Khronos.VideoPictureResourceInfo destinationPictureResource, ArrayProxy<SharpVk.Khronos.VideoReferenceSlotInfo>? referenceSlots, SharpVk.Khronos.VideoDecodeFlags? flags = default(SharpVk.Khronos.VideoDecodeFlags?), SharpVk.Khronos.VideoReferenceSlotInfo? setupReferenceSlot = default(SharpVk.Khronos.VideoReferenceSlotInfo?), SharpVk.Multivendor.VideoDecodeH264PictureInfo? videoDecodeH264PictureInfoExt = null, SharpVk.Multivendor.VideoDecodeH265PictureInfo? videoDecodeH265PictureInfoExt = null)
+        /// <param name="videoDecodeH264PictureInfoKhr">
+        /// Extension struct
+        /// </param>
+        /// <param name="videoDecodeH265InlineSessionParametersInfoKhr">
+        /// Extension struct
+        /// </param>
+        /// <param name="videoDecodeH265PictureInfoKhr">
+        /// Extension struct
+        /// </param>
+        /// <param name="videoDecodeVP9PictureInfoKhr">
+        /// Extension struct
+        /// </param>
+        /// <param name="videoDecodeAV1InlineSessionParametersInfoKhr">
+        /// Extension struct
+        /// </param>
+        /// <param name="videoDecodeAV1PictureInfoKhr">
+        /// Extension struct
+        /// </param>
+        public static unsafe void DecodeVideo(this SharpVk.CommandBuffer extendedHandle, SharpVk.Buffer sourceBuffer, ulong sourceBufferOffset, ulong sourceBufferRange, SharpVk.Khronos.VideoPictureResourceInfo destinationPictureResource, ArrayProxy<SharpVk.Khronos.VideoReferenceSlotInfo>? referenceSlots, SharpVk.Khronos.VideoDecodeFlags? flags = default(SharpVk.Khronos.VideoDecodeFlags?), SharpVk.Khronos.VideoReferenceSlotInfo? setupReferenceSlot = default(SharpVk.Khronos.VideoReferenceSlotInfo?), SharpVk.Khronos.VideoInlineQueryInfo? videoInlineQueryInfoKhr = null, SharpVk.Khronos.VideoDecodeH264InlineSessionParametersInfo? videoDecodeH264InlineSessionParametersInfoKhr = null, SharpVk.Khronos.VideoDecodeH264PictureInfo? videoDecodeH264PictureInfoKhr = null, SharpVk.Khronos.VideoDecodeH265InlineSessionParametersInfo? videoDecodeH265InlineSessionParametersInfoKhr = null, SharpVk.Khronos.VideoDecodeH265PictureInfo? videoDecodeH265PictureInfoKhr = null, SharpVk.Khronos.VideoDecodeVP9PictureInfo? videoDecodeVP9PictureInfoKhr = null, SharpVk.Khronos.VideoDecodeAV1InlineSessionParametersInfo? videoDecodeAV1InlineSessionParametersInfoKhr = null, SharpVk.Khronos.VideoDecodeAV1PictureInfo? videoDecodeAV1PictureInfoKhr = null)
         {
             try
             {
                 CommandCache commandCache = default(CommandCache);
                 SharpVk.Interop.Khronos.VideoDecodeInfo* marshalledDecodeInfo = default(SharpVk.Interop.Khronos.VideoDecodeInfo*);
                 void* vkVideoDecodeInfoKHRNextPointer = default(void*);
-                if (videoDecodeH264PictureInfoExt != null)
+                if (videoInlineQueryInfoKhr != null)
                 {
-                    SharpVk.Interop.Multivendor.VideoDecodeH264PictureInfo* extensionPointer = default(SharpVk.Interop.Multivendor.VideoDecodeH264PictureInfo*);
-                    extensionPointer = (SharpVk.Interop.Multivendor.VideoDecodeH264PictureInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.VideoDecodeH264PictureInfo>());
-                    videoDecodeH264PictureInfoExt.Value.MarshalTo(extensionPointer);
+                    SharpVk.Interop.Khronos.VideoInlineQueryInfo* extensionPointer = default(SharpVk.Interop.Khronos.VideoInlineQueryInfo*);
+                    extensionPointer = (SharpVk.Interop.Khronos.VideoInlineQueryInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.VideoInlineQueryInfo>());
+                    videoInlineQueryInfoKhr.Value.MarshalTo(extensionPointer);
                     extensionPointer->Next = vkVideoDecodeInfoKHRNextPointer;
                     vkVideoDecodeInfoKHRNextPointer = extensionPointer;
                 }
-                if (videoDecodeH265PictureInfoExt != null)
+                if (videoDecodeH264InlineSessionParametersInfoKhr != null)
                 {
-                    SharpVk.Interop.Multivendor.VideoDecodeH265PictureInfo* extensionPointer = default(SharpVk.Interop.Multivendor.VideoDecodeH265PictureInfo*);
-                    extensionPointer = (SharpVk.Interop.Multivendor.VideoDecodeH265PictureInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.VideoDecodeH265PictureInfo>());
-                    videoDecodeH265PictureInfoExt.Value.MarshalTo(extensionPointer);
+                    SharpVk.Interop.Khronos.VideoDecodeH264InlineSessionParametersInfo* extensionPointer = default(SharpVk.Interop.Khronos.VideoDecodeH264InlineSessionParametersInfo*);
+                    extensionPointer = (SharpVk.Interop.Khronos.VideoDecodeH264InlineSessionParametersInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.VideoDecodeH264InlineSessionParametersInfo>());
+                    videoDecodeH264InlineSessionParametersInfoKhr.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkVideoDecodeInfoKHRNextPointer;
+                    vkVideoDecodeInfoKHRNextPointer = extensionPointer;
+                }
+                if (videoDecodeH264PictureInfoKhr != null)
+                {
+                    SharpVk.Interop.Khronos.VideoDecodeH264PictureInfo* extensionPointer = default(SharpVk.Interop.Khronos.VideoDecodeH264PictureInfo*);
+                    extensionPointer = (SharpVk.Interop.Khronos.VideoDecodeH264PictureInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.VideoDecodeH264PictureInfo>());
+                    videoDecodeH264PictureInfoKhr.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkVideoDecodeInfoKHRNextPointer;
+                    vkVideoDecodeInfoKHRNextPointer = extensionPointer;
+                }
+                if (videoDecodeH265InlineSessionParametersInfoKhr != null)
+                {
+                    SharpVk.Interop.Khronos.VideoDecodeH265InlineSessionParametersInfo* extensionPointer = default(SharpVk.Interop.Khronos.VideoDecodeH265InlineSessionParametersInfo*);
+                    extensionPointer = (SharpVk.Interop.Khronos.VideoDecodeH265InlineSessionParametersInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.VideoDecodeH265InlineSessionParametersInfo>());
+                    videoDecodeH265InlineSessionParametersInfoKhr.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkVideoDecodeInfoKHRNextPointer;
+                    vkVideoDecodeInfoKHRNextPointer = extensionPointer;
+                }
+                if (videoDecodeH265PictureInfoKhr != null)
+                {
+                    SharpVk.Interop.Khronos.VideoDecodeH265PictureInfo* extensionPointer = default(SharpVk.Interop.Khronos.VideoDecodeH265PictureInfo*);
+                    extensionPointer = (SharpVk.Interop.Khronos.VideoDecodeH265PictureInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.VideoDecodeH265PictureInfo>());
+                    videoDecodeH265PictureInfoKhr.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkVideoDecodeInfoKHRNextPointer;
+                    vkVideoDecodeInfoKHRNextPointer = extensionPointer;
+                }
+                if (videoDecodeVP9PictureInfoKhr != null)
+                {
+                    SharpVk.Interop.Khronos.VideoDecodeVP9PictureInfo* extensionPointer = default(SharpVk.Interop.Khronos.VideoDecodeVP9PictureInfo*);
+                    extensionPointer = (SharpVk.Interop.Khronos.VideoDecodeVP9PictureInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.VideoDecodeVP9PictureInfo>());
+                    videoDecodeVP9PictureInfoKhr.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkVideoDecodeInfoKHRNextPointer;
+                    vkVideoDecodeInfoKHRNextPointer = extensionPointer;
+                }
+                if (videoDecodeAV1InlineSessionParametersInfoKhr != null)
+                {
+                    SharpVk.Interop.Khronos.VideoDecodeAV1InlineSessionParametersInfo* extensionPointer = default(SharpVk.Interop.Khronos.VideoDecodeAV1InlineSessionParametersInfo*);
+                    extensionPointer = (SharpVk.Interop.Khronos.VideoDecodeAV1InlineSessionParametersInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.VideoDecodeAV1InlineSessionParametersInfo>());
+                    videoDecodeAV1InlineSessionParametersInfoKhr.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkVideoDecodeInfoKHRNextPointer;
+                    vkVideoDecodeInfoKHRNextPointer = extensionPointer;
+                }
+                if (videoDecodeAV1PictureInfoKhr != null)
+                {
+                    SharpVk.Interop.Khronos.VideoDecodeAV1PictureInfo* extensionPointer = default(SharpVk.Interop.Khronos.VideoDecodeAV1PictureInfo*);
+                    extensionPointer = (SharpVk.Interop.Khronos.VideoDecodeAV1PictureInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.VideoDecodeAV1PictureInfo>());
+                    videoDecodeAV1PictureInfoKhr.Value.MarshalTo(extensionPointer);
                     extensionPointer->Next = vkVideoDecodeInfoKHRNextPointer;
                     vkVideoDecodeInfoKHRNextPointer = extensionPointer;
                 }
@@ -284,87 +339,6 @@ namespace SharpVk.Khronos
         }
         
         /// <summary>
-        /// Pushes descriptor updates into a command buffer.
-        /// </summary>
-        /// <param name="extendedHandle">
-        /// The CommandBuffer handle to extend.
-        /// </param>
-        /// <param name="pipelineBindPoint">
-        /// </param>
-        /// <param name="layout">
-        /// </param>
-        /// <param name="set">
-        /// </param>
-        /// <param name="descriptorWrites">
-        /// </param>
-        public static unsafe void PushDescriptorSet(this SharpVk.CommandBuffer extendedHandle, SharpVk.PipelineBindPoint pipelineBindPoint, SharpVk.PipelineLayout layout, uint set, ArrayProxy<SharpVk.WriteDescriptorSet>? descriptorWrites)
-        {
-            try
-            {
-                CommandCache commandCache = default(CommandCache);
-                SharpVk.Interop.WriteDescriptorSet* marshalledDescriptorWrites = default(SharpVk.Interop.WriteDescriptorSet*);
-                commandCache = extendedHandle.commandCache;
-                if (descriptorWrites.IsNull())
-                {
-                    marshalledDescriptorWrites = null;
-                }
-                else
-                {
-                    if (descriptorWrites.Value.Contents == ProxyContents.Single)
-                    {
-                        marshalledDescriptorWrites = (SharpVk.Interop.WriteDescriptorSet*)(Interop.HeapUtil.Allocate<SharpVk.Interop.WriteDescriptorSet>());
-                        descriptorWrites.Value.GetSingleValue().MarshalTo(&*(SharpVk.Interop.WriteDescriptorSet*)(marshalledDescriptorWrites));
-                    }
-                    else
-                    {
-                        var fieldPointer = (SharpVk.Interop.WriteDescriptorSet*)(Interop.HeapUtil.AllocateAndClear<SharpVk.Interop.WriteDescriptorSet>(Interop.HeapUtil.GetLength(descriptorWrites.Value)).ToPointer());
-                        for(int index = 0; index < (uint)(Interop.HeapUtil.GetLength(descriptorWrites.Value)); index++)
-                        {
-                            descriptorWrites.Value[index].MarshalTo(&fieldPointer[index]);
-                        }
-                        marshalledDescriptorWrites = fieldPointer;
-                    }
-                }
-                SharpVk.Interop.Khronos.VkCommandBufferPushDescriptorSetDelegate commandDelegate = commandCache.Cache.vkCmdPushDescriptorSetKHR;
-                commandDelegate(extendedHandle.handle, pipelineBindPoint, layout?.handle ?? default(SharpVk.Interop.PipelineLayout), set, (uint)(Interop.HeapUtil.GetLength(descriptorWrites)), marshalledDescriptorWrites);
-            }
-            finally
-            {
-                Interop.HeapUtil.FreeAll();
-            }
-        }
-        
-        /// <summary>
-        /// Pushes descriptor updates into a command buffer using a descriptor
-        /// update template.
-        /// </summary>
-        /// <param name="extendedHandle">
-        /// The CommandBuffer handle to extend.
-        /// </param>
-        /// <param name="descriptorUpdateTemplate">
-        /// </param>
-        /// <param name="layout">
-        /// </param>
-        /// <param name="set">
-        /// </param>
-        /// <param name="data">
-        /// </param>
-        public static unsafe void PushDescriptorSetWithTemplate(this SharpVk.CommandBuffer extendedHandle, SharpVk.DescriptorUpdateTemplate descriptorUpdateTemplate, SharpVk.PipelineLayout layout, uint set, IntPtr data)
-        {
-            try
-            {
-                CommandCache commandCache = default(CommandCache);
-                commandCache = extendedHandle.commandCache;
-                SharpVk.Interop.Khronos.VkCommandBufferPushDescriptorSetWithTemplateDelegate commandDelegate = commandCache.Cache.vkCmdPushDescriptorSetWithTemplateKHR;
-                commandDelegate(extendedHandle.handle, descriptorUpdateTemplate?.handle ?? default(SharpVk.Interop.DescriptorUpdateTemplate), layout?.handle ?? default(SharpVk.Interop.PipelineLayout), set, data.ToPointer());
-            }
-            finally
-            {
-                Interop.HeapUtil.FreeAll();
-            }
-        }
-        
-        /// <summary>
         /// 
         /// </summary>
         /// <param name="extendedHandle">
@@ -414,7 +388,6 @@ namespace SharpVk.Khronos
                     {
                         semiMarshalledBuildRangeInfos = (SharpVk.Khronos.AccelerationStructureBuildRangeInfo*)(Interop.HeapUtil.Allocate<SharpVk.Khronos.AccelerationStructureBuildRangeInfo>());
                         *(SharpVk.Khronos.AccelerationStructureBuildRangeInfo*)(semiMarshalledBuildRangeInfos) = buildRangeInfos.Value.GetSingleValue();
-                        marshalledBuildRangeInfos = &semiMarshalledBuildRangeInfos;
                     }
                     else
                     {
@@ -843,13 +816,11 @@ namespace SharpVk.Khronos
         /// </param>
         /// <param name="flags">
         /// </param>
-        /// <param name="qualityLevel">
+        /// <param name="destinationBuffer">
         /// </param>
-        /// <param name="destinationBitstreamBuffer">
+        /// <param name="destinationBufferOffset">
         /// </param>
-        /// <param name="destinationBitstreamBufferOffset">
-        /// </param>
-        /// <param name="destinationBitstreamBufferMaxRange">
+        /// <param name="destinationBufferRange">
         /// </param>
         /// <param name="sourcePictureResource">
         /// </param>
@@ -859,54 +830,76 @@ namespace SharpVk.Khronos
         /// </param>
         /// <param name="precedingExternallyEncodedBytes">
         /// </param>
-        /// <param name="videoEncodeH264VclFrameInfoExt">
+        /// <param name="videoInlineQueryInfoKhr">
         /// Extension struct
         /// </param>
-        /// <param name="videoEncodeH264EmitPictureParametersInfoExt">
+        /// <param name="videoEncodeQuantizationMapInfoKhr">
         /// Extension struct
         /// </param>
-        /// <param name="videoEncodeH265VclFrameInfoExt">
+        /// <param name="videoEncodeH264PictureInfoKhr">
         /// Extension struct
         /// </param>
-        /// <param name="videoEncodeH265EmitPictureParametersInfoExt">
+        /// <param name="videoEncodeH265PictureInfoKhr">
         /// Extension struct
         /// </param>
-        public static unsafe void EncodeVideo(this SharpVk.CommandBuffer extendedHandle, uint qualityLevel, SharpVk.Buffer destinationBitstreamBuffer, ulong destinationBitstreamBufferOffset, ulong destinationBitstreamBufferMaxRange, SharpVk.Khronos.VideoPictureResourceInfo sourcePictureResource, ArrayProxy<SharpVk.Khronos.VideoReferenceSlotInfo>? referenceSlots, uint precedingExternallyEncodedBytes, SharpVk.Khronos.VideoEncodeFlags? flags = default(SharpVk.Khronos.VideoEncodeFlags?), SharpVk.Khronos.VideoReferenceSlotInfo? setupReferenceSlot = default(SharpVk.Khronos.VideoReferenceSlotInfo?), SharpVk.Multivendor.VideoEncodeH264VclFrameInfo? videoEncodeH264VclFrameInfoExt = null, SharpVk.Multivendor.VideoEncodeH264EmitPictureParametersInfo? videoEncodeH264EmitPictureParametersInfoExt = null, SharpVk.Multivendor.VideoEncodeH265VclFrameInfo? videoEncodeH265VclFrameInfoExt = null, SharpVk.Multivendor.VideoEncodeH265EmitPictureParametersInfo? videoEncodeH265EmitPictureParametersInfoExt = null)
+        /// <param name="videoEncodeAV1PictureInfoKhr">
+        /// Extension struct
+        /// </param>
+        /// <param name="videoEncodeIntraRefreshInfoKhr">
+        /// Extension struct
+        /// </param>
+        public static unsafe void EncodeVideo(this SharpVk.CommandBuffer extendedHandle, SharpVk.Buffer destinationBuffer, ulong destinationBufferOffset, ulong destinationBufferRange, SharpVk.Khronos.VideoPictureResourceInfo sourcePictureResource, ArrayProxy<SharpVk.Khronos.VideoReferenceSlotInfo>? referenceSlots, uint precedingExternallyEncodedBytes, SharpVk.Khronos.VideoEncodeFlags? flags = default(SharpVk.Khronos.VideoEncodeFlags?), SharpVk.Khronos.VideoReferenceSlotInfo? setupReferenceSlot = default(SharpVk.Khronos.VideoReferenceSlotInfo?), SharpVk.Khronos.VideoInlineQueryInfo? videoInlineQueryInfoKhr = null, SharpVk.Khronos.VideoEncodeQuantizationMapInfo? videoEncodeQuantizationMapInfoKhr = null, SharpVk.Khronos.VideoEncodeH264PictureInfo? videoEncodeH264PictureInfoKhr = null, SharpVk.Khronos.VideoEncodeH265PictureInfo? videoEncodeH265PictureInfoKhr = null, SharpVk.Khronos.VideoEncodeAV1PictureInfo? videoEncodeAV1PictureInfoKhr = null, SharpVk.Khronos.VideoEncodeIntraRefreshInfo? videoEncodeIntraRefreshInfoKhr = null)
         {
             try
             {
                 CommandCache commandCache = default(CommandCache);
                 SharpVk.Interop.Khronos.VideoEncodeInfo* marshalledEncodeInfo = default(SharpVk.Interop.Khronos.VideoEncodeInfo*);
                 void* vkVideoEncodeInfoKHRNextPointer = default(void*);
-                if (videoEncodeH264VclFrameInfoExt != null)
+                if (videoInlineQueryInfoKhr != null)
                 {
-                    SharpVk.Interop.Multivendor.VideoEncodeH264VclFrameInfo* extensionPointer = default(SharpVk.Interop.Multivendor.VideoEncodeH264VclFrameInfo*);
-                    extensionPointer = (SharpVk.Interop.Multivendor.VideoEncodeH264VclFrameInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.VideoEncodeH264VclFrameInfo>());
-                    videoEncodeH264VclFrameInfoExt.Value.MarshalTo(extensionPointer);
+                    SharpVk.Interop.Khronos.VideoInlineQueryInfo* extensionPointer = default(SharpVk.Interop.Khronos.VideoInlineQueryInfo*);
+                    extensionPointer = (SharpVk.Interop.Khronos.VideoInlineQueryInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.VideoInlineQueryInfo>());
+                    videoInlineQueryInfoKhr.Value.MarshalTo(extensionPointer);
                     extensionPointer->Next = vkVideoEncodeInfoKHRNextPointer;
                     vkVideoEncodeInfoKHRNextPointer = extensionPointer;
                 }
-                if (videoEncodeH264EmitPictureParametersInfoExt != null)
+                if (videoEncodeQuantizationMapInfoKhr != null)
                 {
-                    SharpVk.Interop.Multivendor.VideoEncodeH264EmitPictureParametersInfo* extensionPointer = default(SharpVk.Interop.Multivendor.VideoEncodeH264EmitPictureParametersInfo*);
-                    extensionPointer = (SharpVk.Interop.Multivendor.VideoEncodeH264EmitPictureParametersInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.VideoEncodeH264EmitPictureParametersInfo>());
-                    videoEncodeH264EmitPictureParametersInfoExt.Value.MarshalTo(extensionPointer);
+                    SharpVk.Interop.Khronos.VideoEncodeQuantizationMapInfo* extensionPointer = default(SharpVk.Interop.Khronos.VideoEncodeQuantizationMapInfo*);
+                    extensionPointer = (SharpVk.Interop.Khronos.VideoEncodeQuantizationMapInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.VideoEncodeQuantizationMapInfo>());
+                    videoEncodeQuantizationMapInfoKhr.Value.MarshalTo(extensionPointer);
                     extensionPointer->Next = vkVideoEncodeInfoKHRNextPointer;
                     vkVideoEncodeInfoKHRNextPointer = extensionPointer;
                 }
-                if (videoEncodeH265VclFrameInfoExt != null)
+                if (videoEncodeH264PictureInfoKhr != null)
                 {
-                    SharpVk.Interop.Multivendor.VideoEncodeH265VclFrameInfo* extensionPointer = default(SharpVk.Interop.Multivendor.VideoEncodeH265VclFrameInfo*);
-                    extensionPointer = (SharpVk.Interop.Multivendor.VideoEncodeH265VclFrameInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.VideoEncodeH265VclFrameInfo>());
-                    videoEncodeH265VclFrameInfoExt.Value.MarshalTo(extensionPointer);
+                    SharpVk.Interop.Khronos.VideoEncodeH264PictureInfo* extensionPointer = default(SharpVk.Interop.Khronos.VideoEncodeH264PictureInfo*);
+                    extensionPointer = (SharpVk.Interop.Khronos.VideoEncodeH264PictureInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.VideoEncodeH264PictureInfo>());
+                    videoEncodeH264PictureInfoKhr.Value.MarshalTo(extensionPointer);
                     extensionPointer->Next = vkVideoEncodeInfoKHRNextPointer;
                     vkVideoEncodeInfoKHRNextPointer = extensionPointer;
                 }
-                if (videoEncodeH265EmitPictureParametersInfoExt != null)
+                if (videoEncodeH265PictureInfoKhr != null)
                 {
-                    SharpVk.Interop.Multivendor.VideoEncodeH265EmitPictureParametersInfo* extensionPointer = default(SharpVk.Interop.Multivendor.VideoEncodeH265EmitPictureParametersInfo*);
-                    extensionPointer = (SharpVk.Interop.Multivendor.VideoEncodeH265EmitPictureParametersInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.VideoEncodeH265EmitPictureParametersInfo>());
-                    videoEncodeH265EmitPictureParametersInfoExt.Value.MarshalTo(extensionPointer);
+                    SharpVk.Interop.Khronos.VideoEncodeH265PictureInfo* extensionPointer = default(SharpVk.Interop.Khronos.VideoEncodeH265PictureInfo*);
+                    extensionPointer = (SharpVk.Interop.Khronos.VideoEncodeH265PictureInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.VideoEncodeH265PictureInfo>());
+                    videoEncodeH265PictureInfoKhr.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkVideoEncodeInfoKHRNextPointer;
+                    vkVideoEncodeInfoKHRNextPointer = extensionPointer;
+                }
+                if (videoEncodeAV1PictureInfoKhr != null)
+                {
+                    SharpVk.Interop.Khronos.VideoEncodeAV1PictureInfo* extensionPointer = default(SharpVk.Interop.Khronos.VideoEncodeAV1PictureInfo*);
+                    extensionPointer = (SharpVk.Interop.Khronos.VideoEncodeAV1PictureInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.VideoEncodeAV1PictureInfo>());
+                    videoEncodeAV1PictureInfoKhr.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkVideoEncodeInfoKHRNextPointer;
+                    vkVideoEncodeInfoKHRNextPointer = extensionPointer;
+                }
+                if (videoEncodeIntraRefreshInfoKhr != null)
+                {
+                    SharpVk.Interop.Khronos.VideoEncodeIntraRefreshInfo* extensionPointer = default(SharpVk.Interop.Khronos.VideoEncodeIntraRefreshInfo*);
+                    extensionPointer = (SharpVk.Interop.Khronos.VideoEncodeIntraRefreshInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.VideoEncodeIntraRefreshInfo>());
+                    videoEncodeIntraRefreshInfoKhr.Value.MarshalTo(extensionPointer);
                     extensionPointer->Next = vkVideoEncodeInfoKHRNextPointer;
                     vkVideoEncodeInfoKHRNextPointer = extensionPointer;
                 }
@@ -922,10 +915,9 @@ namespace SharpVk.Khronos
                 {
                     marshalledEncodeInfo->Flags = default(SharpVk.Khronos.VideoEncodeFlags);
                 }
-                marshalledEncodeInfo->QualityLevel = qualityLevel;
-                marshalledEncodeInfo->DestinationBitstreamBuffer = destinationBitstreamBuffer?.handle ?? default(SharpVk.Interop.Buffer);
-                marshalledEncodeInfo->DestinationBitstreamBufferOffset = destinationBitstreamBufferOffset;
-                marshalledEncodeInfo->DestinationBitstreamBufferMaxRange = destinationBitstreamBufferMaxRange;
+                marshalledEncodeInfo->DestinationBuffer = destinationBuffer?.handle ?? default(SharpVk.Interop.Buffer);
+                marshalledEncodeInfo->DestinationBufferOffset = destinationBufferOffset;
+                marshalledEncodeInfo->DestinationBufferRange = destinationBufferRange;
                 sourcePictureResource.MarshalTo(&marshalledEncodeInfo->SourcePictureResource);
                 if (setupReferenceSlot != null)
                 {

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -130,28 +130,6 @@ namespace SharpVk.Fuchsia
         {
             get;
             set;
-        }
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="pointer">
-        /// </param>
-        internal unsafe void MarshalTo(SharpVk.Interop.Fuchsia.BufferCollectionProperties* pointer)
-        {
-            pointer->SType = StructureType.BufferCollectionProperties;
-            pointer->Next = null;
-            pointer->MemoryTypeBits = this.MemoryTypeBits;
-            pointer->BufferCount = this.BufferCount;
-            pointer->CreateInfoIndex = this.CreateInfoIndex;
-            pointer->SysmemPixelFormat = this.SysmemPixelFormat;
-            pointer->FormatFeatures = this.FormatFeatures;
-            this.SysmemColorSpaceIndex.MarshalTo(&pointer->SysmemColorSpaceIndex);
-            pointer->SamplerYcbcrConversionComponents = this.SamplerYcbcrConversionComponents;
-            pointer->SuggestedYcbcrModel = this.SuggestedYcbcrModel;
-            pointer->SuggestedYcbcrRange = this.SuggestedYcbcrRange;
-            pointer->SuggestedXChromaOffset = this.SuggestedXChromaOffset;
-            pointer->SuggestedYChromaOffset = this.SuggestedYChromaOffset;
         }
         
         /// <summary>

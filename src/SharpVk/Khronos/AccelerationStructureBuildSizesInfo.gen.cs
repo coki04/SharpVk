@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -58,20 +58,6 @@ namespace SharpVk.Khronos
         {
             get;
             set;
-        }
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="pointer">
-        /// </param>
-        internal unsafe void MarshalTo(SharpVk.Interop.Khronos.AccelerationStructureBuildSizesInfo* pointer)
-        {
-            pointer->SType = StructureType.AccelerationStructureBuildSizesInfo;
-            pointer->Next = null;
-            pointer->AccelerationStructureSize = this.AccelerationStructureSize;
-            pointer->UpdateScratchSize = this.UpdateScratchSize;
-            pointer->BuildScratchSize = this.BuildScratchSize;
         }
         
         /// <summary>

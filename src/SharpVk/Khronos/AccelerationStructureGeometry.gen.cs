@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -70,7 +70,7 @@ namespace SharpVk.Khronos
             pointer->SType = StructureType.AccelerationStructureGeometry;
             pointer->Next = null;
             pointer->GeometryType = this.GeometryType;
-            this.Geometry.MarshalTo(&pointer->Geometry, GeometryType);
+            pointer->Geometry = this.Geometry;
             if (this.Flags != null)
             {
                 pointer->Flags = this.Flags.Value;
@@ -90,7 +90,7 @@ namespace SharpVk.Khronos
         {
             AccelerationStructureGeometry result = default(AccelerationStructureGeometry);
             result.GeometryType = pointer->GeometryType;
-            result.Geometry = AccelerationStructureGeometryData.MarshalFrom(&pointer->Geometry, pointer->GeometryType);
+            result.Geometry = pointer->Geometry;
             result.Flags = pointer->Flags;
             return result;
         }

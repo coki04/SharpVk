@@ -105,7 +105,10 @@ namespace SharpVk.Generator.Generation.Marshalling
                     {
                         info.MarshalTo.Add((getTarget, getValue) =>
                         {
-                            return subAction(target => DerefMember(getTarget(source.Name), target), value => getValue(value.FirstToLower()));
+                            if (isPointer)
+                                return subAction(target => DerefMember(getTarget(source.Name), target), value => getValue(value.FirstToLower()));
+                            else
+                                return subAction(target => CoalesceMemberNonNull(getTarget(source.Name), target), value => getValue(value.FirstToLower()));
                         });
                     }
 

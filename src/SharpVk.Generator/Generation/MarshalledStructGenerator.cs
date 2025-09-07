@@ -1,10 +1,14 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using SharpVk.Emit;
 using SharpVk.Generator.Collation;
 using SharpVk.Generator.Generation.Marshalling;
 using SharpVk.Generator.Pipeline;
 using SharpVk.Generator.Rules;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
+using System.Runtime.InteropServices;
 using static SharpVk.Emit.ExpressionBuilder;
 
 namespace SharpVk.Generator.Generation
@@ -17,14 +21,20 @@ namespace SharpVk.Generator.Generation
         private readonly IEnumerable<IMemberPatternRule> patternRules;
         private readonly NamespaceMap namespaceMap;
         private readonly CommentGenerator commentGenerator;
+        private readonly IEnumerable<IMemberPatternRule> memberPatternRules;
+        private readonly ParsedExpressionTokenCheck tokenCheck;
 
-        public MarshalledStructGenerator(Dictionary<string, TypeDeclaration> typeData, NameLookup nameLookup, IEnumerable<IMemberPatternRule> patternRules, NamespaceMap namespaceMap, CommentGenerator commentGenerator)
+        public MarshalledStructGenerator(Dictionary<string, TypeDeclaration> typeData, NameLookup nameLookup, IEnumerable<IMemberPatternRule> patternRules, 
+                                         NamespaceMap namespaceMap, CommentGenerator commentGenerator, IEnumerable<IMemberPatternRule> memberPatternRules,
+                                         ParsedExpressionTokenCheck tokenCheck)
         {
             this.typeData = typeData;
             this.nameLookup = nameLookup;
             this.patternRules = patternRules;
             this.namespaceMap = namespaceMap;
             this.commentGenerator = commentGenerator;
+            this.memberPatternRules = memberPatternRules;
+            this.tokenCheck = tokenCheck;
         }
 
         public void Execute(IServiceCollection services)
@@ -97,7 +107,11 @@ namespace SharpVk.Generator.Generation
 
                 if (!type.IsOutputOnly || (type.Extends?.Any(x => !this.typeData[x].IsOutputOnly) ?? false) || 
                         type.Name.EndsWith("ExtensionProperties") ||
-                        type.Name.EndsWith("RenderPassSubpassFeedbackInfo"))
+                        type.Name.EndsWith("RenderPassSubpassFeedbackInfo") ||
+                        type.Name.EndsWith("FaultData") ||
+                        type.Name.EndsWith("VideoEncodeSessionParametersFeedbackInfo") ||
+                        type.Name.EndsWith("PhysicalDeviceLayeredApiProperties") ||
+                        type.Name.EndsWith("LatencyTimingsFrameReport"))
                 {
                     publicStruct.Methods.Add(marshalToMethod);
                 }
@@ -108,7 +122,8 @@ namespace SharpVk.Generator.Generation
                                             type.Name.EndsWith("MicromapBuildSizesInfo") ||
                                             type.Name.EndsWith("DeviceFaultVendorInfo")) && type.Members.All(this.CanMarshalFrom))
 
-                                            || type.Name.EndsWith("DeviceFaultInfo"))
+                                            || type.Name.EndsWith("DeviceFaultInfo") ||
+                                               type.Name.EndsWith("GetLatencyMarkerInfo"))
                 {
                     publicStruct.Methods.Add(marshalFromMethod);
                 }
@@ -122,6 +137,43 @@ namespace SharpVk.Generator.Generation
                     IsUnsafe = true,
                     Fields = new List<MemberDefinition>()
                 };
+
+                if (type.ExtendTypes.Count > 0 && 
+                    (type.Name.Contains("InstanceCreateInfo") ||
+                     type.Name.Contains("DeviceCreateInfo")))
+                {
+                    interopStruct.Constructor = new MethodDefinition
+                    {
+                        ParamActions = new List<ParamActionDefinition>(),
+                        MemberActions = new List<MethodAction>(),
+                    };
+
+                    var paramDeclarations = new List<ParamDeclaration>();
+                    string typeVkName = typeItem.Key;
+                    paramDeclarations.Add(new ParamDeclaration()
+                    {
+                        Name = type.Name,
+                        IsOptional = true,
+                        Dimensions = null,
+                        NoAutoValidity = true,
+                        VkName = typeVkName,
+                        Type = new TypeReference { VkName = typeVkName },
+                    });
+
+                    var marshalToActions = new List<MethodAction>();
+
+                    foreach (var parameter in paramDeclarations)
+                    {
+                        var newParams = this.GenerateParameter(paramDeclarations, parameter, marshalToActions, null);
+
+                        if (newParams != null)
+                        {
+                            interopStruct.Constructor.ParamActions.AddRange(newParams);
+                        }
+                    }
+
+                    interopStruct.Constructor.MemberActions.AddRange(marshalToActions);
+                }
 
                 foreach (var member in type.Members)
                 {
@@ -179,6 +231,45 @@ namespace SharpVk.Generator.Generation
 
             return typeData.Pattern != TypePattern.Delegate
                     && !typeData.Name.EndsWith("Info");
+        }
+
+        private IEnumerable<ParamActionDefinition> GenerateParameter(List<ParamDeclaration> parameters, ParamDeclaration parameter, List<MethodAction> marshalToActions, string extension)
+        {
+            var result = new List<ParamActionDefinition>();
+           
+            var patternInfo = new MemberPatternInfo();
+
+            this.memberPatternRules.ApplyFirst(parameters, parameter, new MemberPatternContext("", true, false, 0, extension, null, "CreateInfo"), patternInfo);
+
+            var actionList = marshalToActions;
+
+            Func<string, Action<ExpressionBuilder>> getValue = valueName => Variable(valueName);
+
+            foreach (var publicMember in patternInfo.Public)
+            {
+                result.Add(new ParamActionDefinition
+                {
+                    Param = new ParamDefinition
+                    {
+                        Name = publicMember.Name,
+                        Comment = publicMember.Comment,
+                        Type = publicMember.Type,
+                        DefaultValue = publicMember.DefaultValue
+                    }
+                });
+            }
+
+            if (patternInfo.MarshalTo.Any())
+            {
+                string marshalledName = "this";
+
+                var newMarshalToActions = patternInfo.MarshalTo.Select(action => action(targetName => Variable(marshalledName), getValue));
+
+                actionList.AddRange(newMarshalToActions);
+            }
+            
+
+            return result;
         }
     }
 }

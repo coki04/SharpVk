@@ -42,6 +42,10 @@ namespace SharpVk.Generator.Specification
 
                     string[] successCodes = vkCommand.Attribute("successcodes")?.Value?.Split(',');
 
+                    string[] apis = vkCommand.Attribute("api")?.Value?.Split(',');
+                    if (apis != null && !apis.Contains("vulkan"))
+                        continue;
+
                     var newCommand = new CommandElement
                     {
                         VkName = name,
@@ -56,6 +60,10 @@ namespace SharpVk.Generator.Specification
 
                     foreach (var vkParam in vkCommand.Elements("param"))
                     {
+                        string[] apisParam = vkParam.Attribute("api")?.Value?.Split(',');
+                        if (apisParam != null && !apisParam.Contains("vulkan"))
+                            continue;
+
                         var nameElement = vkParam.Element("name");
 
                         string paramName = nameElement.Value;
@@ -67,6 +75,14 @@ namespace SharpVk.Generator.Specification
                         var pointerType = PointerTypeUtil.GetFrom(typeNodes);
 
                         var lenField = vkParam.Attribute("len");
+
+                        //Spec is wrong to declare this param as an array.
+                        if (newCommand.VkName == "vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI" &&
+                            paramName == "pMaxWorkgroupSize")
+                        {
+                            lenField = null;
+                        }
+
                         var dimensions = lenField != null
                                             ? SimpleParser.ParsedLenField(lenField.Value)
                                             : null;
@@ -97,7 +113,7 @@ namespace SharpVk.Generator.Specification
 
             foreach (var extension in this.xmlCache.GetVkXml().Element("registry").Element("extensions").Elements("extension"))
             {
-                if (extension.Attribute("supported").Value == "vulkan" && extension.Attribute("promotedto") == null)
+                if (extension.Attribute("supported").Value.Split(',').Contains("vulkan") && extension.Attribute("promotedto") == null)
                 {
                     foreach (string commandRequirement in extension.Elements("require")
                                                                 .SelectMany(x => x.Elements("command"))

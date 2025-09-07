@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,7 @@ namespace SharpVk.Khronos
     /// Bitmask controlling swapchain creation.
     /// </summary>
     [System.Flags]
-    public enum SwapchainCreateFlags
+    public enum SwapchainCreateFlags 
     {
         /// <summary>
         /// 
@@ -60,6 +60,31 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
-        Reserved3 = 1 << 3, 
+        Reserved5 = 1 << 5, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved4 = 1 << 4, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PresentId2 = 1 << 6, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PresentWait2 = 1 << 7, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DeferredMemoryAllocation = 1 << 3, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved8 = 1 << 8, 
     }
 }

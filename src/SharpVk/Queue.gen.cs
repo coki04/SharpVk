@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -37,7 +37,10 @@ namespace SharpVk
         
         internal readonly SharpVk.Device parent; 
         
-        internal Queue(SharpVk.Device parent, SharpVk.Interop.Queue handle)
+        /// <summary>
+        /// 
+        /// </summary>
+        public Queue(SharpVk.Device parent, SharpVk.Interop.Queue handle)
         {
             this.handle = handle;
             this.parent = parent;
@@ -130,9 +133,18 @@ namespace SharpVk
         /// <param name="amigoProfilingSubmitInfoSec">
         /// Extension struct
         /// </param>
+        /// <param name="frameBoundaryExt">
+        /// Extension struct
+        /// </param>
+        /// <param name="latencySubmissionPresentIdNv">
+        /// Extension struct
+        /// </param>
+        /// <param name="frameBoundaryTensorsArm">
+        /// Extension struct
+        /// </param>
         /// <param name="fence">
         /// </param>
-        public unsafe void Submit(ArrayProxy<SharpVk.Semaphore>? waitSemaphores, ArrayProxy<SharpVk.PipelineStageFlags>? waitDestinationStageMask, ArrayProxy<SharpVk.CommandBuffer>? commandBuffers, ArrayProxy<SharpVk.Semaphore>? signalSemaphores, SharpVk.Fence fence, SharpVk.NVidia.Win32KeyedMutexAcquireReleaseInfo? win32KeyedMutexAcquireReleaseInfoNv = null, SharpVk.Khronos.Win32KeyedMutexAcquireReleaseInfo? win32KeyedMutexAcquireReleaseInfoKhr = null, SharpVk.Khronos.D3D12FenceSubmitInfo? d3D12FenceSubmitInfoKhr = null, SharpVk.DeviceGroupSubmitInfo? deviceGroupSubmitInfo = null, SharpVk.ProtectedSubmitInfo? protectedSubmitInfo = null, SharpVk.TimelineSemaphoreSubmitInfo? timelineSemaphoreSubmitInfo = null, SharpVk.Khronos.PerformanceQuerySubmitInfo? performanceQuerySubmitInfoKhr = null, SharpVk.Sec.AmigoProfilingSubmitInfo? amigoProfilingSubmitInfoSec = null)
+        public unsafe void Submit(ArrayProxy<SharpVk.Semaphore>? waitSemaphores, ArrayProxy<SharpVk.PipelineStageFlags>? waitDestinationStageMask, ArrayProxy<SharpVk.CommandBuffer>? commandBuffers, ArrayProxy<SharpVk.Semaphore>? signalSemaphores, SharpVk.Fence fence, SharpVk.NVidia.Win32KeyedMutexAcquireReleaseInfo? win32KeyedMutexAcquireReleaseInfoNv = null, SharpVk.Khronos.Win32KeyedMutexAcquireReleaseInfo? win32KeyedMutexAcquireReleaseInfoKhr = null, SharpVk.Khronos.D3D12FenceSubmitInfo? d3D12FenceSubmitInfoKhr = null, SharpVk.DeviceGroupSubmitInfo? deviceGroupSubmitInfo = null, SharpVk.ProtectedSubmitInfo? protectedSubmitInfo = null, SharpVk.TimelineSemaphoreSubmitInfo? timelineSemaphoreSubmitInfo = null, SharpVk.Khronos.PerformanceQuerySubmitInfo? performanceQuerySubmitInfoKhr = null, SharpVk.Sec.AmigoProfilingSubmitInfo? amigoProfilingSubmitInfoSec = null, SharpVk.Multivendor.FrameBoundary? frameBoundaryExt = null, SharpVk.NVidia.LatencySubmissionPresentId? latencySubmissionPresentIdNv = null, SharpVk.Arm.FrameBoundaryTensors? frameBoundaryTensorsArm = null)
         {
             try
             {
@@ -199,6 +211,30 @@ namespace SharpVk
                     SharpVk.Interop.Sec.AmigoProfilingSubmitInfo* extensionPointer = default(SharpVk.Interop.Sec.AmigoProfilingSubmitInfo*);
                     extensionPointer = (SharpVk.Interop.Sec.AmigoProfilingSubmitInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Sec.AmigoProfilingSubmitInfo>());
                     amigoProfilingSubmitInfoSec.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkSubmitInfoNextPointer;
+                    vkSubmitInfoNextPointer = extensionPointer;
+                }
+                if (frameBoundaryExt != null)
+                {
+                    SharpVk.Interop.Multivendor.FrameBoundary* extensionPointer = default(SharpVk.Interop.Multivendor.FrameBoundary*);
+                    extensionPointer = (SharpVk.Interop.Multivendor.FrameBoundary*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.FrameBoundary>());
+                    frameBoundaryExt.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkSubmitInfoNextPointer;
+                    vkSubmitInfoNextPointer = extensionPointer;
+                }
+                if (latencySubmissionPresentIdNv != null)
+                {
+                    SharpVk.Interop.NVidia.LatencySubmissionPresentId* extensionPointer = default(SharpVk.Interop.NVidia.LatencySubmissionPresentId*);
+                    extensionPointer = (SharpVk.Interop.NVidia.LatencySubmissionPresentId*)(Interop.HeapUtil.Allocate<SharpVk.Interop.NVidia.LatencySubmissionPresentId>());
+                    latencySubmissionPresentIdNv.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkSubmitInfoNextPointer;
+                    vkSubmitInfoNextPointer = extensionPointer;
+                }
+                if (frameBoundaryTensorsArm != null)
+                {
+                    SharpVk.Interop.Arm.FrameBoundaryTensors* extensionPointer = default(SharpVk.Interop.Arm.FrameBoundaryTensors*);
+                    extensionPointer = (SharpVk.Interop.Arm.FrameBoundaryTensors*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Arm.FrameBoundaryTensors>());
+                    frameBoundaryTensorsArm.Value.MarshalTo(extensionPointer);
                     extensionPointer->Next = vkSubmitInfoNextPointer;
                     vkSubmitInfoNextPointer = extensionPointer;
                 }
@@ -437,9 +473,18 @@ namespace SharpVk
         /// <param name="performanceQuerySubmitInfoKhr">
         /// Extension struct
         /// </param>
+        /// <param name="frameBoundaryExt">
+        /// Extension struct
+        /// </param>
+        /// <param name="latencySubmissionPresentIdNv">
+        /// Extension struct
+        /// </param>
+        /// <param name="frameBoundaryTensorsArm">
+        /// Extension struct
+        /// </param>
         /// <param name="fence">
         /// </param>
-        public unsafe void Submit2(ArrayProxy<SharpVk.SemaphoreSubmitInfo>? waitSemaphoreInfos, ArrayProxy<SharpVk.CommandBufferSubmitInfo>? commandBufferInfos, ArrayProxy<SharpVk.SemaphoreSubmitInfo>? signalSemaphoreInfos, SharpVk.Fence fence, SharpVk.SubmitFlags? flags = default(SharpVk.SubmitFlags?), SharpVk.NVidia.Win32KeyedMutexAcquireReleaseInfo? win32KeyedMutexAcquireReleaseInfoNv = null, SharpVk.Khronos.Win32KeyedMutexAcquireReleaseInfo? win32KeyedMutexAcquireReleaseInfoKhr = null, SharpVk.Khronos.PerformanceQuerySubmitInfo? performanceQuerySubmitInfoKhr = null)
+        public unsafe void Submit2(ArrayProxy<SharpVk.SemaphoreSubmitInfo>? waitSemaphoreInfos, ArrayProxy<SharpVk.CommandBufferSubmitInfo>? commandBufferInfos, ArrayProxy<SharpVk.SemaphoreSubmitInfo>? signalSemaphoreInfos, SharpVk.Fence fence, SharpVk.SubmitFlags? flags = default(SharpVk.SubmitFlags?), SharpVk.NVidia.Win32KeyedMutexAcquireReleaseInfo? win32KeyedMutexAcquireReleaseInfoNv = null, SharpVk.Khronos.Win32KeyedMutexAcquireReleaseInfo? win32KeyedMutexAcquireReleaseInfoKhr = null, SharpVk.Khronos.PerformanceQuerySubmitInfo? performanceQuerySubmitInfoKhr = null, SharpVk.Multivendor.FrameBoundary? frameBoundaryExt = null, SharpVk.NVidia.LatencySubmissionPresentId? latencySubmissionPresentIdNv = null, SharpVk.Arm.FrameBoundaryTensors? frameBoundaryTensorsArm = null)
         {
             try
             {
@@ -466,6 +511,30 @@ namespace SharpVk
                     SharpVk.Interop.Khronos.PerformanceQuerySubmitInfo* extensionPointer = default(SharpVk.Interop.Khronos.PerformanceQuerySubmitInfo*);
                     extensionPointer = (SharpVk.Interop.Khronos.PerformanceQuerySubmitInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.PerformanceQuerySubmitInfo>());
                     performanceQuerySubmitInfoKhr.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkSubmitInfo2NextPointer;
+                    vkSubmitInfo2NextPointer = extensionPointer;
+                }
+                if (frameBoundaryExt != null)
+                {
+                    SharpVk.Interop.Multivendor.FrameBoundary* extensionPointer = default(SharpVk.Interop.Multivendor.FrameBoundary*);
+                    extensionPointer = (SharpVk.Interop.Multivendor.FrameBoundary*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.FrameBoundary>());
+                    frameBoundaryExt.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkSubmitInfo2NextPointer;
+                    vkSubmitInfo2NextPointer = extensionPointer;
+                }
+                if (latencySubmissionPresentIdNv != null)
+                {
+                    SharpVk.Interop.NVidia.LatencySubmissionPresentId* extensionPointer = default(SharpVk.Interop.NVidia.LatencySubmissionPresentId*);
+                    extensionPointer = (SharpVk.Interop.NVidia.LatencySubmissionPresentId*)(Interop.HeapUtil.Allocate<SharpVk.Interop.NVidia.LatencySubmissionPresentId>());
+                    latencySubmissionPresentIdNv.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkSubmitInfo2NextPointer;
+                    vkSubmitInfo2NextPointer = extensionPointer;
+                }
+                if (frameBoundaryTensorsArm != null)
+                {
+                    SharpVk.Interop.Arm.FrameBoundaryTensors* extensionPointer = default(SharpVk.Interop.Arm.FrameBoundaryTensors*);
+                    extensionPointer = (SharpVk.Interop.Arm.FrameBoundaryTensors*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Arm.FrameBoundaryTensors>());
+                    frameBoundaryTensorsArm.Value.MarshalTo(extensionPointer);
                     extensionPointer->Next = vkSubmitInfo2NextPointer;
                     vkSubmitInfo2NextPointer = extensionPointer;
                 }

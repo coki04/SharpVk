@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -45,7 +45,7 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public uint QualityLevel
+        public SharpVk.Buffer DestinationBuffer
         {
             get;
             set;
@@ -54,7 +54,7 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public SharpVk.Buffer DestinationBitstreamBuffer
+        public ulong DestinationBufferOffset
         {
             get;
             set;
@@ -63,16 +63,7 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public ulong DestinationBitstreamBufferOffset
-        {
-            get;
-            set;
-        }
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        public ulong DestinationBitstreamBufferMaxRange
+        public ulong DestinationBufferRange
         {
             get;
             set;
@@ -131,10 +122,9 @@ namespace SharpVk.Khronos
             {
                 pointer->Flags = default(SharpVk.Khronos.VideoEncodeFlags);
             }
-            pointer->QualityLevel = this.QualityLevel;
-            pointer->DestinationBitstreamBuffer = this.DestinationBitstreamBuffer?.handle ?? default(SharpVk.Interop.Buffer);
-            pointer->DestinationBitstreamBufferOffset = this.DestinationBitstreamBufferOffset;
-            pointer->DestinationBitstreamBufferMaxRange = this.DestinationBitstreamBufferMaxRange;
+            pointer->DestinationBuffer = this.DestinationBuffer?.handle ?? default(SharpVk.Interop.Buffer);
+            pointer->DestinationBufferOffset = this.DestinationBufferOffset;
+            pointer->DestinationBufferRange = this.DestinationBufferRange;
             this.SourcePictureResource.MarshalTo(&pointer->SourcePictureResource);
             if (this.SetupReferenceSlot != null)
             {

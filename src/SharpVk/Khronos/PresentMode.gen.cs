@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,7 @@ namespace SharpVk.Khronos
     /// <summary>
     /// Presentation mode supported for a surface.
     /// </summary>
-    public enum PresentMode
+    public enum PresentMode 
     {
         /// <summary>
         /// The presentation engine does not wait for a vertical blanking
@@ -88,5 +88,10 @@ namespace SharpVk.Khronos
         /// 
         /// </summary>
         SharedContinuousRefresh = 1000111001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        FifoLatestReadyKhr = 1000361000, 
     }
 }

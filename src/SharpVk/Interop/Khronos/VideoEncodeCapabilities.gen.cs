@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -56,16 +56,26 @@ namespace SharpVk.Interop.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public byte RateControlLayerCount; 
+        public uint MaxRateControlLayers; 
         
         /// <summary>
         /// 
         /// </summary>
-        public byte QualityLevelCount; 
+        public ulong MaxBitrate; 
         
         /// <summary>
         /// 
         /// </summary>
-        public SharpVk.Extent2D InputImageDataFillAlignment; 
+        public uint MaxQualityLevels; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public SharpVk.Extent2D EncodeInputPictureGranularity; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public SharpVk.Khronos.VideoEncodeFeedbackFlags SupportedEncodeFeedbackFlags; 
     }
 }

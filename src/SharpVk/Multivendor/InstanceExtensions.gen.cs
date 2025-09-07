@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -310,7 +310,7 @@ namespace SharpVk.Multivendor
         }
         
         /// <summary>
-        /// Create a headless Surface object
+        /// 
         /// </summary>
         /// <param name="extendedHandle">
         /// The Instance handle to extend.
@@ -319,8 +319,6 @@ namespace SharpVk.Multivendor
         /// Reserved for future use
         /// </param>
         /// <param name="allocator">
-        /// The allocator used for host memory allocated for the surface object
-        /// when there is no more specific allocator available.
         /// </param>
         public static unsafe SharpVk.Khronos.Surface CreateHeadlessSurface(this SharpVk.Instance extendedHandle, SharpVk.Multivendor.HeadlessSurfaceCreateFlags? flags = default(SharpVk.Multivendor.HeadlessSurfaceCreateFlags?), SharpVk.AllocationCallbacks? allocator = default(SharpVk.AllocationCallbacks?))
         {

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,7 @@ namespace SharpVk
     /// 
     /// </summary>
     [System.Flags]
-    public enum RenderingFlags
+    public enum RenderingFlags 
     {
         /// <summary>
         /// 
@@ -53,6 +53,36 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        Reserved9 = 1 << 9, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         EnableLegacyDithering = 1 << 3, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ContentsInline = 1 << 4, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PerLayerFragmentDensity = 1 << 5, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved6 = 1 << 6, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved7 = 1 << 7, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved8 = 1 << 8, 
     }
 }

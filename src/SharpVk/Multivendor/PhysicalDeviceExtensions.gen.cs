@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -102,7 +102,7 @@ namespace SharpVk.Multivendor
         }
         
         /// <summary>
-        /// Query surface capabilities.
+        /// 
         /// </summary>
         /// <param name="extendedHandle">
         /// The PhysicalDevice handle to extend.
@@ -151,50 +151,6 @@ namespace SharpVk.Multivendor
                 SharpVk.Interop.Multivendor.VkPhysicalDeviceGetMultisamplePropertiesDelegate commandDelegate = commandCache.Cache.vkGetPhysicalDeviceMultisamplePropertiesEXT;
                 commandDelegate(extendedHandle.handle, samples, &marshalledMultisampleProperties);
                 result = SharpVk.Multivendor.MultisampleProperties.MarshalFrom(&marshalledMultisampleProperties);
-                return result;
-            }
-            finally
-            {
-                Interop.HeapUtil.FreeAll();
-            }
-        }
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="extendedHandle">
-        /// The PhysicalDevice handle to extend.
-        /// </param>
-        public static unsafe SharpVk.Multivendor.TimeDomain[] GetCalibrateableTimeDomains(this SharpVk.PhysicalDevice extendedHandle)
-        {
-            try
-            {
-                SharpVk.Multivendor.TimeDomain[] result = default(SharpVk.Multivendor.TimeDomain[]);
-                uint marshalledTimeDomainCount = default(uint);
-                CommandCache commandCache = default(CommandCache);
-                SharpVk.Multivendor.TimeDomain* marshalledTimeDomains = default(SharpVk.Multivendor.TimeDomain*);
-                commandCache = extendedHandle.commandCache;
-                SharpVk.Interop.Multivendor.VkPhysicalDeviceGetCalibrateableTimeDomainsDelegate commandDelegate = commandCache.Cache.vkGetPhysicalDeviceCalibrateableTimeDomainsEXT;
-                Result methodResult = commandDelegate(extendedHandle.handle, &marshalledTimeDomainCount, marshalledTimeDomains);
-                if (SharpVkException.IsError(methodResult))
-                {
-                    throw SharpVkException.Create(methodResult);
-                }
-                marshalledTimeDomains = (SharpVk.Multivendor.TimeDomain*)(Interop.HeapUtil.Allocate<SharpVk.Multivendor.TimeDomain>((uint)(marshalledTimeDomainCount)));
-                commandDelegate(extendedHandle.handle, &marshalledTimeDomainCount, marshalledTimeDomains);
-                if (marshalledTimeDomains != null)
-                {
-                    var fieldPointer = new SharpVk.Multivendor.TimeDomain[(uint)(marshalledTimeDomainCount)];
-                    for(int index = 0; index < (uint)(marshalledTimeDomainCount); index++)
-                    {
-                        fieldPointer[index] = marshalledTimeDomains[index];
-                    }
-                    result = fieldPointer;
-                }
-                else
-                {
-                    result = null;
-                }
                 return result;
             }
             finally

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -34,17 +34,17 @@ namespace SharpVk.Interop
     public unsafe partial struct BufferDeviceAddressInfo
     {
         /// <summary>
-        /// The type of this structure.
+        /// 
         /// </summary>
         public SharpVk.StructureType SType; 
         
         /// <summary>
-        /// Null or an extension-specific structure.
+        /// 
         /// </summary>
         public void* Next; 
         
         /// <summary>
-        /// The buffer whose address is being queried.
+        /// 
         /// </summary>
         public SharpVk.Interop.Buffer Buffer; 
     }

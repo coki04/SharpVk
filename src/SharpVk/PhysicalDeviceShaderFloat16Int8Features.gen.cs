@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,15 +28,13 @@ using System.Runtime.InteropServices;
 namespace SharpVk
 {
     /// <summary>
-    /// Describes features supported by VK_KHR_shader_float16_int8
+    /// 
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public partial struct PhysicalDeviceShaderFloat16Int8Features
     {
         /// <summary>
-        /// Indicates whether 16-bit floats (halfs) are supported in shader
-        /// code. This also indicates whether shader modules can declare the
-        /// Float16 capability.
+        /// 
         /// </summary>
         public bool ShaderFloat16
         {
@@ -45,9 +43,7 @@ namespace SharpVk
         }
         
         /// <summary>
-        /// Indicates whether 8-bit integers (signed and unsigned) are
-        /// supported in shader code. This also indicates whether shader
-        /// modules can declare the Int8 capability.
+        /// 
         /// </summary>
         public bool ShaderInt8
         {

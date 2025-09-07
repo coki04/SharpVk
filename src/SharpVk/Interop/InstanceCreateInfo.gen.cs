@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -33,6 +33,94 @@ namespace SharpVk.Interop
     [StructLayout(LayoutKind.Sequential)]
     public unsafe partial struct InstanceCreateInfo
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        public InstanceCreateInfo(ArrayProxy<string>? enabledLayerNames, ArrayProxy<string>? enabledExtensionNames, SharpVk.InstanceCreateFlags? flags = default(SharpVk.InstanceCreateFlags?), SharpVk.ApplicationInfo? applicationInfo = default(SharpVk.ApplicationInfo?), SharpVk.Multivendor.DebugReportCallbackCreateInfo? debugReportCallbackCreateInfoExt = null, SharpVk.Multivendor.ValidationFlags? validationFlagsExt = null, SharpVk.Multivendor.ValidationFeatures? validationFeaturesExt = null, SharpVk.Multivendor.LayerSettingsCreateInfo? layerSettingsCreateInfoExt = null, SharpVk.Multivendor.DebugUtilsMessengerCreateInfo? debugUtilsMessengerCreateInfoExt = null, SharpVk.Multivendor.ExportMetalObjectCreateInfo? exportMetalObjectCreateInfoExt = null, SharpVk.Lunarg.DirectDriverLoadingList? directDriverLoadingListLunarg = null)
+        {
+            void* vkInstanceCreateInfoNextPointer = default(void*);
+            if (debugReportCallbackCreateInfoExt != null)
+            {
+                SharpVk.Interop.Multivendor.DebugReportCallbackCreateInfo* extensionPointer = default(SharpVk.Interop.Multivendor.DebugReportCallbackCreateInfo*);
+                extensionPointer = (SharpVk.Interop.Multivendor.DebugReportCallbackCreateInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.DebugReportCallbackCreateInfo>());
+                debugReportCallbackCreateInfoExt.Value.MarshalTo(extensionPointer);
+                extensionPointer->Next = vkInstanceCreateInfoNextPointer;
+                vkInstanceCreateInfoNextPointer = extensionPointer;
+            }
+            if (validationFlagsExt != null)
+            {
+                SharpVk.Interop.Multivendor.ValidationFlags* extensionPointer = default(SharpVk.Interop.Multivendor.ValidationFlags*);
+                extensionPointer = (SharpVk.Interop.Multivendor.ValidationFlags*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.ValidationFlags>());
+                validationFlagsExt.Value.MarshalTo(extensionPointer);
+                extensionPointer->Next = vkInstanceCreateInfoNextPointer;
+                vkInstanceCreateInfoNextPointer = extensionPointer;
+            }
+            if (validationFeaturesExt != null)
+            {
+                SharpVk.Interop.Multivendor.ValidationFeatures* extensionPointer = default(SharpVk.Interop.Multivendor.ValidationFeatures*);
+                extensionPointer = (SharpVk.Interop.Multivendor.ValidationFeatures*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.ValidationFeatures>());
+                validationFeaturesExt.Value.MarshalTo(extensionPointer);
+                extensionPointer->Next = vkInstanceCreateInfoNextPointer;
+                vkInstanceCreateInfoNextPointer = extensionPointer;
+            }
+            if (layerSettingsCreateInfoExt != null)
+            {
+                SharpVk.Interop.Multivendor.LayerSettingsCreateInfo* extensionPointer = default(SharpVk.Interop.Multivendor.LayerSettingsCreateInfo*);
+                extensionPointer = (SharpVk.Interop.Multivendor.LayerSettingsCreateInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.LayerSettingsCreateInfo>());
+                layerSettingsCreateInfoExt.Value.MarshalTo(extensionPointer);
+                extensionPointer->Next = vkInstanceCreateInfoNextPointer;
+                vkInstanceCreateInfoNextPointer = extensionPointer;
+            }
+            if (debugUtilsMessengerCreateInfoExt != null)
+            {
+                SharpVk.Interop.Multivendor.DebugUtilsMessengerCreateInfo* extensionPointer = default(SharpVk.Interop.Multivendor.DebugUtilsMessengerCreateInfo*);
+                extensionPointer = (SharpVk.Interop.Multivendor.DebugUtilsMessengerCreateInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.DebugUtilsMessengerCreateInfo>());
+                debugUtilsMessengerCreateInfoExt.Value.MarshalTo(extensionPointer);
+                extensionPointer->Next = vkInstanceCreateInfoNextPointer;
+                vkInstanceCreateInfoNextPointer = extensionPointer;
+            }
+            if (exportMetalObjectCreateInfoExt != null)
+            {
+                SharpVk.Interop.Multivendor.ExportMetalObjectCreateInfo* extensionPointer = default(SharpVk.Interop.Multivendor.ExportMetalObjectCreateInfo*);
+                extensionPointer = (SharpVk.Interop.Multivendor.ExportMetalObjectCreateInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.ExportMetalObjectCreateInfo>());
+                exportMetalObjectCreateInfoExt.Value.MarshalTo(extensionPointer);
+                extensionPointer->Next = vkInstanceCreateInfoNextPointer;
+                vkInstanceCreateInfoNextPointer = extensionPointer;
+            }
+            if (directDriverLoadingListLunarg != null)
+            {
+                SharpVk.Interop.Lunarg.DirectDriverLoadingList* extensionPointer = default(SharpVk.Interop.Lunarg.DirectDriverLoadingList*);
+                extensionPointer = (SharpVk.Interop.Lunarg.DirectDriverLoadingList*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Lunarg.DirectDriverLoadingList>());
+                directDriverLoadingListLunarg.Value.MarshalTo(extensionPointer);
+                extensionPointer->Next = vkInstanceCreateInfoNextPointer;
+                vkInstanceCreateInfoNextPointer = extensionPointer;
+            }
+            this = new SharpVk.Interop.InstanceCreateInfo();
+            this.SType = StructureType.InstanceCreateInfo;
+            this.Next = vkInstanceCreateInfoNextPointer;
+            if (flags != null)
+            {
+                this.Flags = flags.Value;
+            }
+            else
+            {
+                this.Flags = default(SharpVk.InstanceCreateFlags);
+            }
+            if (applicationInfo != null)
+            {
+                this.ApplicationInfo = (SharpVk.Interop.ApplicationInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.ApplicationInfo>());
+                applicationInfo.Value.MarshalTo(this.ApplicationInfo);
+            }
+            else
+            {
+                this.ApplicationInfo = default(SharpVk.Interop.ApplicationInfo*);
+            }
+            this.EnabledLayerCount = (uint)(Interop.HeapUtil.GetLength(enabledLayerNames));
+            this.EnabledLayerNames = Interop.HeapUtil.MarshalTo(enabledLayerNames);
+            this.EnabledExtensionCount = (uint)(Interop.HeapUtil.GetLength(enabledExtensionNames));
+            this.EnabledExtensionNames = Interop.HeapUtil.MarshalTo(enabledExtensionNames);
+        }
+        
         /// <summary>
         /// The type of this structure.
         /// </summary>

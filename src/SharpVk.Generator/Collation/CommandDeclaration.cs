@@ -8,7 +8,7 @@ namespace SharpVk.Generator.Collation
         public string Name;
         public string Verb;
         public string ExtensionNamespace;
-        public string Extension;
+        public List<string> Extensions;
         public string HandleTypeName;
         public int HandleParamsCount;
         public string ReturnType;

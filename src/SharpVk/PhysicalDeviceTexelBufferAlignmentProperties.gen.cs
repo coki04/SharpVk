@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,15 +28,13 @@ using System.Runtime.InteropServices;
 namespace SharpVk
 {
     /// <summary>
-    /// Structure describing the texel buffer alignment requirements supported
-    /// by an implementation.
+    /// 
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public partial struct PhysicalDeviceTexelBufferAlignmentProperties
     {
         /// <summary>
-        /// A byte alignment that is sufficient for a storage texel buffer of
-        /// any format.
+        /// 
         /// </summary>
         public ulong StorageTexelBufferOffsetAlignmentBytes
         {
@@ -45,8 +43,7 @@ namespace SharpVk
         }
         
         /// <summary>
-        /// Indicates whether single texel alignment is sufficient for a
-        /// storage texel buffer of any format.
+        /// 
         /// </summary>
         public bool StorageTexelBufferOffsetSingleTexelAlignment
         {
@@ -55,8 +52,7 @@ namespace SharpVk
         }
         
         /// <summary>
-        /// A byte alignment that is sufficient for a uniform texel buffer of
-        /// any format.
+        /// 
         /// </summary>
         public ulong UniformTexelBufferOffsetAlignmentBytes
         {
@@ -65,8 +61,7 @@ namespace SharpVk
         }
         
         /// <summary>
-        /// Indicates whether single texel alignment is sufficient for a
-        /// uniform texel buffer of any format.
+        /// 
         /// </summary>
         public bool UniformTexelBufferOffsetSingleTexelAlignment
         {

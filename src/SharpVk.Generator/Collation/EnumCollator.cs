@@ -57,6 +57,7 @@ namespace SharpVk.Generator.Collation
                 {
                     VkName = enumeration.VkName,
                     Name = name,
+                    Bitwidth = enumeration.Bitwidth,
                     Extension = extension,
                     Fields = this.DeclareFields(enumeration, false, enumLookup)
                 });
@@ -83,6 +84,7 @@ namespace SharpVk.Generator.Collation
                 {
                     VkName = enumeration?.VkName ?? bitmaskType.VkName,
                     Name = name,
+                    Bitwidth = enumeration?.Bitwidth ?? 32,
                     Extension = extension,
                     IsFlags = true,
                     Fields = this.DeclareFields(enumeration, true, enumLookup)

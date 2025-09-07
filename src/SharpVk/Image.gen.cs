@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -38,7 +38,10 @@ namespace SharpVk
         
         internal readonly SharpVk.Device parent; 
         
-        internal Image(SharpVk.Device parent, SharpVk.Interop.Image handle)
+        /// <summary>
+        /// 
+        /// </summary>
+        public Image(SharpVk.Device parent, SharpVk.Interop.Image handle)
         {
             this.handle = handle;
             this.parent = parent;
@@ -176,6 +179,31 @@ namespace SharpVk
                 SharpVk.Interop.VkImageGetSubresourceLayoutDelegate commandDelegate = commandCache.Cache.vkGetImageSubresourceLayout;
                 commandDelegate(this.parent.handle, this.handle, marshalledSubresource, &marshalledLayout);
                 result = marshalledLayout;
+                return result;
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="subresource">
+        /// </param>
+        public unsafe SharpVk.SubresourceLayout2 GetSubresourceLayout2(SharpVk.ImageSubresource2 subresource)
+        {
+            try
+            {
+                SharpVk.SubresourceLayout2 result = default(SharpVk.SubresourceLayout2);
+                SharpVk.Interop.ImageSubresource2* marshalledSubresource = default(SharpVk.Interop.ImageSubresource2*);
+                SharpVk.Interop.SubresourceLayout2 marshalledLayout = default(SharpVk.Interop.SubresourceLayout2);
+                marshalledSubresource = (SharpVk.Interop.ImageSubresource2*)(Interop.HeapUtil.Allocate<SharpVk.Interop.ImageSubresource2>());
+                subresource.MarshalTo(marshalledSubresource);
+                SharpVk.Interop.VkImageGetSubresourceLayout2Delegate commandDelegate = commandCache.Cache.vkGetImageSubresourceLayout2;
+                commandDelegate(this.parent.handle, this.handle, marshalledSubresource, &marshalledLayout);
+                result = SharpVk.SubresourceLayout2.MarshalFrom(&marshalledLayout);
                 return result;
             }
             finally

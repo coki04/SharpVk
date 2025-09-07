@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -91,6 +91,8 @@ namespace SharpVk
                     return new FragmentedPoolException();
                 case Result.ErrorUnknown:
                     return new UnknownException();
+                case Result.ErrorValidationFailedVersion:
+                    return new ValidationFailedVersionException();
                 case Result.ErrorOutOfPoolMemoryVersion:
                     return new OutOfPoolMemoryVersionException();
                 case Result.ErrorInvalidExternalHandleVersion:
@@ -99,6 +101,12 @@ namespace SharpVk
                     return new FragmentationVersionException();
                 case Result.ErrorInvalidOpaqueCaptureAddressVersion:
                     return new InvalidOpaqueCaptureAddressVersionException();
+                case Result.ErrorNotPermittedVersion:
+                    return new NotPermittedVersionException();
+                case Result.ErrorInvalidPipelineCacheData:
+                    return new InvalidPipelineCacheDataException();
+                case Result.ErrorNoPipelineMatch:
+                    return new NoPipelineMatchException();
                 case Result.ErrorSurfaceLost:
                     return new SurfaceLostException();
                 case Result.ErrorNativeWindowInUse:
@@ -107,8 +115,6 @@ namespace SharpVk
                     return new OutOfDateException();
                 case Result.ErrorIncompatibleDisplay:
                     return new IncompatibleDisplayException();
-                case Result.ErrorValidationFailed:
-                    return new ValidationFailedException();
                 case Result.ErrorInvalidShader:
                     return new InvalidShaderException();
                 case Result.ErrorImageUsageNotSupported:
@@ -125,12 +131,14 @@ namespace SharpVk
                     return new VideoStdVersionNotSupportedException();
                 case Result.ErrorInvalidDrmFormatModifierPlaneLayout:
                     return new InvalidDrmFormatModifierPlaneLayoutException();
-                case Result.ErrorNotPermittedKhr:
-                    return new NotPermittedKhrException();
                 case Result.ErrorFullScreenExclusiveModeLost:
                     return new FullScreenExclusiveModeLostException();
+                case Result.ErrorInvalidVideoStdParameters:
+                    return new InvalidVideoStdParametersException();
                 case Result.ErrorCompressionExhausted:
                     return new CompressionExhaustedException();
+                case Result.ErrorNotEnoughSpace:
+                    return new NotEnoughSpaceException();
             }
             return new UnknownSharpVkException(resultCode);
         }
@@ -389,6 +397,23 @@ namespace SharpVk
     /// <summary>
     /// 
     /// </summary>
+    public class ValidationFailedVersionException
+        : SharpVkException
+    {
+        internal ValidationFailedVersionException()
+            : base("")
+        {
+        }
+        
+        /// <summary>
+        /// The Vulkan result code represented by this exception.
+        /// </summary>
+        public override Result ResultCode => Result.ErrorValidationFailedVersion;
+    }
+    
+    /// <summary>
+    /// 
+    /// </summary>
     public class OutOfPoolMemoryVersionException
         : SharpVkException
     {
@@ -457,6 +482,57 @@ namespace SharpVk
     /// <summary>
     /// 
     /// </summary>
+    public class NotPermittedVersionException
+        : SharpVkException
+    {
+        internal NotPermittedVersionException()
+            : base("")
+        {
+        }
+        
+        /// <summary>
+        /// The Vulkan result code represented by this exception.
+        /// </summary>
+        public override Result ResultCode => Result.ErrorNotPermittedVersion;
+    }
+    
+    /// <summary>
+    /// 
+    /// </summary>
+    public class InvalidPipelineCacheDataException
+        : SharpVkException
+    {
+        internal InvalidPipelineCacheDataException()
+            : base("")
+        {
+        }
+        
+        /// <summary>
+        /// The Vulkan result code represented by this exception.
+        /// </summary>
+        public override Result ResultCode => Result.ErrorInvalidPipelineCacheData;
+    }
+    
+    /// <summary>
+    /// 
+    /// </summary>
+    public class NoPipelineMatchException
+        : SharpVkException
+    {
+        internal NoPipelineMatchException()
+            : base("")
+        {
+        }
+        
+        /// <summary>
+        /// The Vulkan result code represented by this exception.
+        /// </summary>
+        public override Result ResultCode => Result.ErrorNoPipelineMatch;
+    }
+    
+    /// <summary>
+    /// 
+    /// </summary>
     public class SurfaceLostException
         : SharpVkException
     {
@@ -520,23 +596,6 @@ namespace SharpVk
         /// The Vulkan result code represented by this exception.
         /// </summary>
         public override Result ResultCode => Result.ErrorIncompatibleDisplay;
-    }
-    
-    /// <summary>
-    /// 
-    /// </summary>
-    public class ValidationFailedException
-        : SharpVkException
-    {
-        internal ValidationFailedException()
-            : base("")
-        {
-        }
-        
-        /// <summary>
-        /// The Vulkan result code represented by this exception.
-        /// </summary>
-        public override Result ResultCode => Result.ErrorValidationFailed;
     }
     
     /// <summary>
@@ -678,23 +737,6 @@ namespace SharpVk
     /// <summary>
     /// 
     /// </summary>
-    public class NotPermittedKhrException
-        : SharpVkException
-    {
-        internal NotPermittedKhrException()
-            : base("")
-        {
-        }
-        
-        /// <summary>
-        /// The Vulkan result code represented by this exception.
-        /// </summary>
-        public override Result ResultCode => Result.ErrorNotPermittedKhr;
-    }
-    
-    /// <summary>
-    /// 
-    /// </summary>
     public class FullScreenExclusiveModeLostException
         : SharpVkException
     {
@@ -712,6 +754,23 @@ namespace SharpVk
     /// <summary>
     /// 
     /// </summary>
+    public class InvalidVideoStdParametersException
+        : SharpVkException
+    {
+        internal InvalidVideoStdParametersException()
+            : base("")
+        {
+        }
+        
+        /// <summary>
+        /// The Vulkan result code represented by this exception.
+        /// </summary>
+        public override Result ResultCode => Result.ErrorInvalidVideoStdParameters;
+    }
+    
+    /// <summary>
+    /// 
+    /// </summary>
     public class CompressionExhaustedException
         : SharpVkException
     {
@@ -724,5 +783,22 @@ namespace SharpVk
         /// The Vulkan result code represented by this exception.
         /// </summary>
         public override Result ResultCode => Result.ErrorCompressionExhausted;
+    }
+    
+    /// <summary>
+    /// 
+    /// </summary>
+    public class NotEnoughSpaceException
+        : SharpVkException
+    {
+        internal NotEnoughSpaceException()
+            : base("")
+        {
+        }
+        
+        /// <summary>
+        /// The Vulkan result code represented by this exception.
+        /// </summary>
+        public override Result ResultCode => Result.ErrorNotEnoughSpace;
     }
 }

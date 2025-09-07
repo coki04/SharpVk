@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -54,7 +54,7 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public byte RateControlLayerCount
+        public uint MaxRateControlLayers
         {
             get;
             set;
@@ -63,7 +63,7 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public byte QualityLevelCount
+        public ulong MaxBitrate
         {
             get;
             set;
@@ -72,7 +72,25 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public SharpVk.Extent2D InputImageDataFillAlignment
+        public uint MaxQualityLevels
+        {
+            get;
+            set;
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public SharpVk.Extent2D EncodeInputPictureGranularity
+        {
+            get;
+            set;
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public SharpVk.Khronos.VideoEncodeFeedbackFlags SupportedEncodeFeedbackFlags
         {
             get;
             set;
@@ -88,9 +106,11 @@ namespace SharpVk.Khronos
             VideoEncodeCapabilities result = default(VideoEncodeCapabilities);
             result.Flags = pointer->Flags;
             result.RateControlModes = pointer->RateControlModes;
-            result.RateControlLayerCount = pointer->RateControlLayerCount;
-            result.QualityLevelCount = pointer->QualityLevelCount;
-            result.InputImageDataFillAlignment = pointer->InputImageDataFillAlignment;
+            result.MaxRateControlLayers = pointer->MaxRateControlLayers;
+            result.MaxBitrate = pointer->MaxBitrate;
+            result.MaxQualityLevels = pointer->MaxQualityLevels;
+            result.EncodeInputPictureGranularity = pointer->EncodeInputPictureGranularity;
+            result.SupportedEncodeFeedbackFlags = pointer->SupportedEncodeFeedbackFlags;
             return result;
         }
     }

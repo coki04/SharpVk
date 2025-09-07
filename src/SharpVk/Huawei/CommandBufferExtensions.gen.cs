@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -70,6 +70,58 @@ namespace SharpVk.Huawei
                 commandCache = extendedHandle.commandCache;
                 SharpVk.Interop.Huawei.VkCommandBufferBindInvocationMaskDelegate commandDelegate = commandCache.Cache.vkCmdBindInvocationMaskHUAWEI;
                 commandDelegate(extendedHandle.handle, imageView?.handle ?? default(SharpVk.Interop.ImageView), imageLayout);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The CommandBuffer handle to extend.
+        /// </param>
+        /// <param name="groupCountX">
+        /// </param>
+        /// <param name="groupCountY">
+        /// </param>
+        /// <param name="groupCountZ">
+        /// </param>
+        public static unsafe void DrawCluster(this SharpVk.CommandBuffer extendedHandle, uint groupCountX, uint groupCountY, uint groupCountZ)
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                commandCache = extendedHandle.commandCache;
+                SharpVk.Interop.Huawei.VkCommandBufferDrawClusterDelegate commandDelegate = commandCache.Cache.vkCmdDrawClusterHUAWEI;
+                commandDelegate(extendedHandle.handle, groupCountX, groupCountY, groupCountZ);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The CommandBuffer handle to extend.
+        /// </param>
+        /// <param name="buffer">
+        /// </param>
+        /// <param name="offset">
+        /// </param>
+        public static unsafe void DrawClusterIndirect(this SharpVk.CommandBuffer extendedHandle, SharpVk.Buffer buffer, ulong offset)
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                commandCache = extendedHandle.commandCache;
+                SharpVk.Interop.Huawei.VkCommandBufferDrawClusterIndirectDelegate commandDelegate = commandCache.Cache.vkCmdDrawClusterIndirectHUAWEI;
+                commandDelegate(extendedHandle.handle, buffer?.handle ?? default(SharpVk.Interop.Buffer), offset);
             }
             finally
             {

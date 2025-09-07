@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -37,7 +37,10 @@ namespace SharpVk.Khronos
         
         internal readonly SharpVk.Khronos.Display parent; 
         
-        internal DisplayMode(SharpVk.Khronos.Display parent, SharpVk.Interop.Khronos.DisplayMode handle)
+        /// <summary>
+        /// 
+        /// </summary>
+        public DisplayMode(SharpVk.Khronos.Display parent, SharpVk.Interop.Khronos.DisplayMode handle)
         {
             this.handle = handle;
             this.parent = parent;
@@ -50,7 +53,7 @@ namespace SharpVk.Khronos
         public SharpVk.Interop.Khronos.DisplayMode RawHandle => this.handle;
         
         /// <summary>
-        /// Query capabilities of a mode and plane combination.
+        /// 
         /// </summary>
         /// <param name="planeIndex">
         /// </param>

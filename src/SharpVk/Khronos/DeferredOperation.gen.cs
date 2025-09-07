@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -38,7 +38,10 @@ namespace SharpVk.Khronos
         
         internal readonly SharpVk.Device parent; 
         
-        internal DeferredOperation(SharpVk.Device parent, SharpVk.Interop.Khronos.DeferredOperation handle)
+        /// <summary>
+        /// 
+        /// </summary>
+        public DeferredOperation(SharpVk.Device parent, SharpVk.Interop.Khronos.DeferredOperation handle)
         {
             this.handle = handle;
             this.parent = parent;

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -49,78 +49,6 @@ namespace SharpVk.Khronos
         /// 
         /// </summary>
         [FieldOffset(0)]
-        public SharpVk.Khronos.AccelerationStructureGeometryInstancesData Instances;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="pointer">
-        /// </param>
-        internal unsafe void MarshalTo(SharpVk.Interop.Khronos.AccelerationStructureGeometryData* pointer, SharpVk.Khronos.GeometryType GeometryType)
-        {
-            switch (GeometryType)
-            {
-                case GeometryType.Triangles:
-                    this.Triangles.MarshalTo(&pointer->Triangles);
-                    break;
-                case GeometryType.Aabbs:
-                    this.Aabbs.MarshalTo(&pointer->Aabbs);
-                    break;
-                case GeometryType.Instances:
-                    this.Instances.MarshalTo(&pointer->Instances);
-                    break;
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="pointer">
-        /// </param>
-        internal static unsafe AccelerationStructureGeometryData MarshalFrom(SharpVk.Interop.Khronos.AccelerationStructureGeometryData* pointer, SharpVk.Khronos.GeometryType GeometryType)
-        {
-            AccelerationStructureGeometryData result = default(AccelerationStructureGeometryData);
-            switch (GeometryType)
-            {
-                case GeometryType.Triangles:
-                    //this.Triangles.MarshalFrom((SharpVk.Interop.Khronos.AccelerationStructureGeometryTrianglesData*)pointer->Triangles);
-                    break;
-                case GeometryType.Aabbs:
-                    //this.Aabbs.MarshalFrom((SharpVk.Interop.Khronos.AccelerationStructureGeometryAabbsData*)pointer->Aabbs);
-                    break;
-                case GeometryType.Instances:
-                    //this.Instances.MarshalFrom((SharpVk.Interop.Khronos.AccelerationStructureGeometryInstancesData*)pointer->Instances);
-                    break;
-            }
-            return result;
-        }
-    }
-}
-
-namespace SharpVk.Interop.Khronos
-{
-    /// <summary>
-    /// 
-    /// </summary>
-    [StructLayout(LayoutKind.Explicit)]
-    public unsafe partial struct AccelerationStructureGeometryData
-    {
-        /// <summary>
-        /// 
-        /// </summary>
-        [FieldOffset(0)]
-        public SharpVk.Interop.Khronos.AccelerationStructureGeometryTrianglesData Triangles;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [FieldOffset(0)]
-        public SharpVk.Interop.Khronos.AccelerationStructureGeometryAabbsData Aabbs;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [FieldOffset(0)]
-        public SharpVk.Interop.Khronos.AccelerationStructureGeometryInstancesData Instances;
+        public SharpVk.Khronos.AccelerationStructureGeometryInstancesData Instances; 
     }
 }

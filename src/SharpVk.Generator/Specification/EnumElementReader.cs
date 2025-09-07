@@ -26,6 +26,9 @@ namespace SharpVk.Generator.Specification
             {
                 string name = vkEnum.Attribute("name").Value;
                 string type = vkEnum.Attribute("type")?.Value;
+                int bitwidth = 32;
+                if (vkEnum.Attribute("bitwidth") != null)
+                    bitwidth = int.Parse(vkEnum.Attribute("bitwidth")?.Value);
 
                 string extension = null;
                 string[] nameParts = name == "API Constants"
@@ -36,6 +39,7 @@ namespace SharpVk.Generator.Specification
                 {
                     VkName = name,
                     Type = type,
+                    Bitwidth = bitwidth,
                     NameParts = nameParts,
                     ExtensionNamespace = extension
                 };

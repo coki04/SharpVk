@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,11 +28,281 @@ namespace SharpVk
     /// 
     /// </summary>
     [System.Flags]
-    public enum AccessFlags2
+    public enum AccessFlags2 : long
     {
         /// <summary>
         /// 
         /// </summary>
         None = 0, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        IndirectCommandRead = 1 << 0, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        IndexRead = 1 << 1, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        VertexAttributeRead = 1 << 2, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        UniformRead = 1 << 3, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        InputAttachmentRead = 1 << 4, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ShaderRead = 1 << 5, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ShaderWrite = 1 << 6, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ColorAttachmentRead = 1 << 7, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ColorAttachmentWrite = 1 << 8, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DepthStencilAttachmentRead = 1 << 9, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DepthStencilAttachmentWrite = 1 << 10, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        TransferRead = 1 << 11, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        TransferWrite = 1 << 12, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        HostRead = 1 << 13, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        HostWrite = 1 << 14, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        MemoryRead = 1 << 15, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        MemoryWrite = 1 << 16, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ShaderSampledRead = 1 << 32, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ShaderStorageRead = 1 << 33, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ShaderStorageWrite = 1 << 34, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        VideoDecodeRead = 1 << 35, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        VideoDecodeWrite = 1 << 36, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved57 = 1 << 57, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved58 = 1 << 58, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved59 = 1 << 59, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved46 = 1 << 46, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        VideoEncodeRead = 1 << 37, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        VideoEncodeWrite = 1 << 38, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ShaderTileAttachmentRead = 1 << 51, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ShaderTileAttachmentWrite = 1 << 52, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        TransformFeedbackWrite = 1 << 25, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        TransformFeedbackCounterRead = 1 << 26, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        TransformFeedbackCounterWrite = 1 << 27, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ConditionalRenderingRead = 1 << 20, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        CommandPreprocessRead = 1 << 17, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        CommandPreprocessWrite = 1 << 18, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        FragmentShadingRateAttachmentRead = 1 << 23, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        AccelerationStructureRead = 1 << 21, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        AccelerationStructureWrite = 1 << 22, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        FragmentDensityMapRead = 1 << 24, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ColorAttachmentReadNoncoherent = 1 << 19, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DescriptorBufferRead = 1 << 41, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        InvocationMaskRead = 1 << 39, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ShaderBindingTableRead = 1 << 40, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        MicromapRead = 1 << 44, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        MicromapWrite = 1 << 45, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved49 = 1 << 49, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved50 = 1 << 50, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        OpticalFlowRead = 1 << 42, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        OpticalFlowWrite = 1 << 43, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DataGraphRead = 1 << 47, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DataGraphWrite = 1 << 48, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved55 = 1 << 55, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved56 = 1 << 56, 
     }
 }

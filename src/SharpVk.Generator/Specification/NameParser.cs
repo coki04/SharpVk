@@ -34,6 +34,8 @@ namespace SharpVk.Generator.Specification
                                                                     .Or(Parse.String("RandR"))
                                                                     .Or(Parse.String("SMPTE2086"))
                                                                     .Or(Parse.String("_id"))
+                                                                    .Or(Parse.String("64bit"))
+                                                                    .Or(Parse.String("State3"))
                                                                     .Text();
 
         private static readonly Parser<string> alphanumericPair = from head in Parse.Letter
@@ -43,8 +45,8 @@ namespace SharpVk.Generator.Specification
         private static readonly Parser<IEnumerable<string>> alphanumericSequence = alphanumericPair.AtLeastOnce();
 
         private static readonly Parser<IEnumerable<string>> nameParts = from first in firstPart
-                                                                        from parts in numberPart
-                                                                                        .Or(keywordPart)
+                                                                        from parts in keywordPart
+                                                                                        .Or(numberPart)
                                                                                         .Or(namePart)
                                                                                         .Or(dimensionPart)
                                                                                         .Many()

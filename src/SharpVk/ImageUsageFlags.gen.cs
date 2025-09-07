@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,7 @@ namespace SharpVk
     /// Bitmask specifying intended usage of an image.
     /// </summary>
     [System.Flags]
-    public enum ImageUsageFlags
+    public enum ImageUsageFlags 
     {
         /// <summary>
         /// 
@@ -94,6 +94,11 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        HostTransfer = 1 << 22, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         VideoDecodeDestination = 1 << 10, 
         
         /// <summary>
@@ -109,27 +114,12 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        Reserved16 = 1 << 16, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        Reserved17 = 1 << 17, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
         FragmentDensityMap = 1 << 9, 
         
         /// <summary>
         /// 
         /// </summary>
         FragmentShadingRateAttachment = 1 << 8, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        Reserved22 = 1 << 22, 
         
         /// <summary>
         /// 
@@ -165,5 +155,35 @@ namespace SharpVk
         /// 
         /// </summary>
         SampleBlockMatch = 1 << 21, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved24 = 1 << 24, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        TensorAliasing = 1 << 23, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved28 = 1 << 28, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        TileMemory = 1 << 27, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        VideoEncodeQuantizationDeltaMap = 1 << 25, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        VideoEncodeEmphasisMap = 1 << 26, 
     }
 }

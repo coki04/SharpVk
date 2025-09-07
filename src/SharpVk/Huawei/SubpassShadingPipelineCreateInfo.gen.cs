@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -62,19 +62,6 @@ namespace SharpVk.Huawei
             pointer->Next = null;
             pointer->RenderPass = this.RenderPass?.handle ?? default(SharpVk.Interop.RenderPass);
             pointer->Subpass = this.Subpass;
-        }
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="pointer">
-        /// </param>
-        internal static unsafe SubpassShadingPipelineCreateInfo MarshalFrom(SharpVk.Interop.Huawei.SubpassShadingPipelineCreateInfo* pointer)
-        {
-            SubpassShadingPipelineCreateInfo result = default(SubpassShadingPipelineCreateInfo);
-            result.RenderPass = new SharpVk.RenderPass(default(SharpVk.Device), pointer->RenderPass);
-            result.Subpass = pointer->Subpass;
-            return result;
         }
     }
 }

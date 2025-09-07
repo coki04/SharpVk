@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,16 +28,13 @@ using System.Runtime.InteropServices;
 namespace SharpVk
 {
     /// <summary>
-    /// Structure specifying parameters of images that will be used with a
-    /// framebuffer
+    /// 
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public partial struct FramebufferAttachmentsCreateInfo
     {
         /// <summary>
-        /// An array of FramebufferAttachmentImageInfo instances, each of which
-        /// describes a number of parameters of the corresponding attachment in
-        /// a render pass instance.
+        /// 
         /// </summary>
         public SharpVk.FramebufferAttachmentImageInfo[] AttachmentImageInfos
         {

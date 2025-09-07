@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,7 @@ namespace SharpVk
     /// Bits specifying additional parameters of a sampler.
     /// </summary>
     [System.Flags]
-    public enum SamplerCreateFlags
+    public enum SamplerCreateFlags 
     {
         /// <summary>
         /// 
@@ -51,7 +51,7 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        Reserved3 = 1 << 3, 
+        DescriptorBufferCaptureReplay = 1 << 3, 
         
         /// <summary>
         /// 

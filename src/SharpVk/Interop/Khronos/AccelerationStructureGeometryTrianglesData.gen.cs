@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2022
+// Copyright (c) Andrew Armstrong/FacticiusVir 2025
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -30,61 +30,52 @@ namespace SharpVk.Interop.Khronos
     /// <summary>
     /// 
     /// </summary>
-    [StructLayout(LayoutKind.Explicit)]
+    [StructLayout(LayoutKind.Sequential)]
     public unsafe partial struct AccelerationStructureGeometryTrianglesData
     {
         /// <summary>
         /// 
         /// </summary>
-        [FieldOffset(0)]
-        public SharpVk.StructureType SType;
-
+        public SharpVk.StructureType SType; 
+        
         /// <summary>
         /// 
         /// </summary>
-        [FieldOffset(8)]
-        public void* Next;
-
+        public void* Next; 
+        
         /// <summary>
         /// 
         /// </summary>
-        [FieldOffset(16)]
-        public SharpVk.Format VertexFormat;
-
+        public SharpVk.Format VertexFormat; 
+        
         /// <summary>
         /// 
         /// </summary>
-        [FieldOffset(24)]
-        public IntPtr VertexData;
-
+        public IntPtr VertexData; 
+        
         /// <summary>
         /// 
         /// </summary>
-        [FieldOffset(32)]
-        public ulong VertexStride;
-
+        public ulong VertexStride; 
+        
         /// <summary>
         /// 
         /// </summary>
-        [FieldOffset(40)]
-        public uint MaxVertex;
-
+        public uint MaxVertex; 
+        
         /// <summary>
         /// 
         /// </summary>
-        [FieldOffset(44)]
-        public SharpVk.IndexType IndexType;
-
+        public SharpVk.IndexType IndexType; 
+        
         /// <summary>
         /// 
         /// </summary>
-        [FieldOffset(48)]
-        public IntPtr IndexData;
-
+        public IntPtr IndexData; 
+        
         /// <summary>
         /// 
         /// </summary>
-        [FieldOffset(56)]
         public IntPtr TransformData; 
     }
 }
