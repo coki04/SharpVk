@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -148,17 +148,12 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        Reserved57 = 1 << 57, 
+        SamplerHeapRead = 1 << 57, 
         
         /// <summary>
         /// 
         /// </summary>
-        Reserved58 = 1 << 58, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        Reserved59 = 1 << 59, 
+        ResourceHeapRead = 1 << 58, 
         
         /// <summary>
         /// 
@@ -174,6 +169,16 @@ namespace SharpVk
         /// 
         /// </summary>
         VideoEncodeWrite = 1 << 38, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved53 = 1 << 53, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved54 = 1 << 54, 
         
         /// <summary>
         /// 
@@ -268,16 +273,6 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        Reserved49 = 1 << 49, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        Reserved50 = 1 << 50, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
         OpticalFlowRead = 1 << 42, 
         
         /// <summary>
@@ -298,11 +293,51 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        Reserved55 = 1 << 55, 
+        MemoryDecompressionRead = 1 << 55, 
         
         /// <summary>
         /// 
         /// </summary>
-        Reserved56 = 1 << 56, 
+        MemoryDecompressionWrite = 1 << 56, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved62 = 1 << 62, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved63 = 1 << 63, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved60 = 1 << 60, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved61 = 1 << 61, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved28 = 1 << 28, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved29 = 1 << 29, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved49 = 1 << 49, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved50 = 1 << 50, 
     }
 }

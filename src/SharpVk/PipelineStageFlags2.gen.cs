@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -168,6 +168,11 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        Reserved50 = 1 << 50, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         TransformFeedback = 1 << 24, 
         
         /// <summary>
@@ -238,11 +243,6 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        Reserved43 = 1 << 43, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
         OpticalFlow = 1 << 29, 
         
         /// <summary>
@@ -258,11 +258,36 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        Reserved46 = 1 << 46, 
+        CopyIndirect = 1 << 46, 
         
         /// <summary>
         /// 
         /// </summary>
-        Reserved45 = 1 << 45, 
+        MemoryDecompression = 1 << 45, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved49 = 1 << 49, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved47 = 1 << 47, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved31 = 1 << 31, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved43 = 1 << 43, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved48 = 1 << 48, 
     }
 }

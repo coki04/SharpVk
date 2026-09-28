@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using static SharpVk.Emit.AccessModifier;
 using static SharpVk.Emit.ExpressionBuilder;
+using System.IO;
 
 namespace SharpVk.Generator.Emission
 {
@@ -29,7 +30,7 @@ namespace SharpVk.Generator.Emission
 
                 if (@enum.Namespace?.Any() ?? false)
                 {
-                    path = string.Join("\\", @enum.Namespace);
+                    path = string.Join(Path.DirectorySeparatorChar, @enum.Namespace);
                     @namespace += "." + string.Join(".", @enum.Namespace);
                 }
 

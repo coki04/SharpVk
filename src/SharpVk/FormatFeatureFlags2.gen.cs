@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -213,6 +213,11 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        BlockMatchingSxd = 1 << 44, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         AccelerationStructureRadiusBuffer = 1 << 51, 
         
         /// <summary>
@@ -239,11 +244,6 @@ namespace SharpVk
         /// 
         /// </summary>
         BoxFilterSampled = 1 << 37, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        Reserved47 = 1 << 47, 
         
         /// <summary>
         /// 
@@ -283,7 +283,7 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        Reserved59 = 1 << 59, 
+        CopyImageIndirectDestination = 1 << 59, 
         
         /// <summary>
         /// 
@@ -298,36 +298,51 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        Reserved52 = 1 << 52, 
+        SampledImageFilterLinear2d = 1 << 45, 
         
         /// <summary>
         /// 
         /// </summary>
-        Reserved53 = 1 << 53, 
+        DepthCopyOnComputeQueue = 1 << 52, 
         
         /// <summary>
         /// 
         /// </summary>
-        Reserved54 = 1 << 54, 
+        DepthCopyOnTransferQueue = 1 << 53, 
         
         /// <summary>
         /// 
         /// </summary>
-        Reserved55 = 1 << 55, 
+        StencilCopyOnComputeQueue = 1 << 54, 
         
         /// <summary>
         /// 
         /// </summary>
-        Reserved56 = 1 << 56, 
+        StencilCopyOnTransferQueue = 1 << 55, 
         
         /// <summary>
         /// 
         /// </summary>
-        Reserved57 = 1 << 57, 
+        DataGraphOpticalFlowImage = 1 << 56, 
         
         /// <summary>
         /// 
         /// </summary>
-        Reserved58 = 1 << 58, 
+        DataGraphOpticalFlowVector = 1 << 57, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DataGraphOpticalFlowCost = 1 << 58, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved47 = 1 << 47, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved61 = 1 << 61, 
     }
 }

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -76,7 +76,7 @@ namespace SharpVk
         /// </param>
         internal unsafe void MarshalTo(SharpVk.Interop.PhysicalDeviceHostImageCopyProperties* pointer)
         {
-            pointer->SType = StructureType.PhysicalDeviceHostImageCopyPropertiesVersion;
+            pointer->SType = StructureType.PhysicalDeviceHostImageCopyPropertiesBase;
             pointer->Next = null;
             pointer->CopySourceLayoutCount = (uint)(Interop.HeapUtil.GetLength(this.CopySourceLayouts));
             if (this.CopySourceLayouts != null)
@@ -106,7 +106,7 @@ namespace SharpVk
             {
                 pointer->CopyDestinationLayouts = null;
             }
-            Interop.HeapUtil.MarshalTo(this.OptimalTilingLayoutUUID, Constants.UuidSize, pointer->OptimalTilingLayoutUUID);
+            Interop.HeapUtil.MarshalTo(this.OptimalTilingLayoutUUID, checked((int)Constants.UuidSize), pointer->OptimalTilingLayoutUUID);
             pointer->IdenticalMemoryTypeRequirements = this.IdenticalMemoryTypeRequirements;
         }
         
@@ -144,7 +144,7 @@ namespace SharpVk
             {
                 result.CopyDestinationLayouts = null;
             }
-            result.OptimalTilingLayoutUUID = new Guid(Interop.HeapUtil.MarshalFrom(pointer->OptimalTilingLayoutUUID, Constants.UuidSize));
+            result.OptimalTilingLayoutUUID = new Guid(Interop.HeapUtil.MarshalFrom(pointer->OptimalTilingLayoutUUID, checked((int)Constants.UuidSize)));
             result.IdenticalMemoryTypeRequirements = pointer->IdenticalMemoryTypeRequirements;
             return result;
         }

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -61,6 +61,6 @@ namespace SharpVk.Interop.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public fixed byte Uuid[Constants.UuidSize]; 
+        public fixed byte Uuid[checked((int)Constants.UuidSize)]; 
     }
 }

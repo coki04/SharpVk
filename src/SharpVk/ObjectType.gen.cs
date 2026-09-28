@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -162,17 +162,17 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        SamplerYcbcrConversionVersion = 1000156000, 
+        DescriptorUpdateTemplateCompute = 1000085000, 
         
         /// <summary>
         /// 
         /// </summary>
-        DescriptorUpdateTemplateVersion = 1000085000, 
+        SamplerYcbcrConversionCompute = 1000156000, 
         
         /// <summary>
         /// 
         /// </summary>
-        PrivateDataSlotVersion = 1000295000, 
+        PrivateDataSlotBase = 1000295000, 
         
         /// <summary>
         /// 
@@ -223,6 +223,11 @@ namespace SharpVk
         /// 
         /// </summary>
         DebugUtilsMessenger = 1000128000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        GpaSession = 1000133000, 
         
         /// <summary>
         /// 
@@ -323,5 +328,10 @@ namespace SharpVk
         /// 
         /// </summary>
         IndirectExecutionSet = 1000572001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ShaderInstrumentation = 1000607000, 
     }
 }

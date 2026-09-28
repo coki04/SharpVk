@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -36,12 +36,12 @@ namespace SharpVk.Khronos
         
         internal readonly CommandCache commandCache; 
         
-        internal readonly SharpVk.Khronos.VideoSession parent; 
+        internal readonly SharpVk.Device parent; 
         
         /// <summary>
         /// 
         /// </summary>
-        public VideoSessionParameters(SharpVk.Khronos.VideoSession parent, SharpVk.Interop.Khronos.VideoSessionParameters handle)
+        public VideoSessionParameters(SharpVk.Device parent, SharpVk.Interop.Khronos.VideoSessionParameters handle)
         {
             this.handle = handle;
             this.parent = parent;
@@ -113,7 +113,7 @@ namespace SharpVk.Khronos
                 marshalledUpdateInfo->Next = vkVideoSessionParametersUpdateInfoKHRNextPointer;
                 marshalledUpdateInfo->UpdateSequenceCount = updateSequenceCount;
                 SharpVk.Interop.Khronos.VkVideoSessionParametersKHRUpdateDelegate commandDelegate = commandCache.Cache.vkUpdateVideoSessionParametersKHR;
-                Result methodResult = commandDelegate(default(Device).handle, this.handle, marshalledUpdateInfo);
+                Result methodResult = commandDelegate(this.parent.handle, this.handle, marshalledUpdateInfo);
                 if (SharpVkException.IsError(methodResult))
                 {
                     throw SharpVkException.Create(methodResult);
@@ -145,7 +145,7 @@ namespace SharpVk.Khronos
                     marshalledAllocator = default(SharpVk.Interop.AllocationCallbacks*);
                 }
                 SharpVk.Interop.Khronos.VkVideoSessionParametersKHRDestroyDelegate commandDelegate = commandCache.Cache.vkDestroyVideoSessionParametersKHR;
-                commandDelegate(default(Device).handle, this.handle, marshalledAllocator);
+                commandDelegate(this.parent.handle, this.handle, marshalledAllocator);
             }
             finally
             {

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -85,7 +85,7 @@ namespace SharpVk
         /// </param>
         internal unsafe void MarshalTo(SharpVk.Interop.ImageCopy2* pointer)
         {
-            pointer->SType = StructureType.ImageCopy2Version;
+            pointer->SType = StructureType.ImageCopy2Base;
             pointer->Next = null;
             pointer->SourceSubresource = this.SourceSubresource;
             pointer->SourceOffset = this.SourceOffset;

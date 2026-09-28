@@ -12,6 +12,11 @@ namespace SharpVk.Generator.Specification
         private readonly IVkXmlCache xmlCache;
         private readonly NameParser nameParser;
 
+        private string[] skippedCommands =
+        {
+            "vkGetLatencyTimingsLegacyNV" //Undocumented. Can't marshal.
+        };
+
         public CommandElementReader(IVkXmlCache xmlCache, NameParser nameParser)
         {
             this.xmlCache = xmlCache;
@@ -33,6 +38,9 @@ namespace SharpVk.Generator.Specification
                 {
                     string name = vkCommand.Element("proto").Element("name").Value;
                     string type = vkCommand.Element("proto").Element("type").Value;
+
+                    if (skippedCommands.Contains(name))
+                        continue;
 
                     string[] nameParts = this.nameParser.GetNameParts(name, out string extension);
 
@@ -56,6 +64,15 @@ namespace SharpVk.Generator.Specification
                         SuccessCodes = successCodes
                     };
 
+                    //TODO: Coki04 Delete
+                    if (name.Contains("SwapchainTimingProperties") ||
+                        name.Contains("SwapchainTimeDomainProperties") ||
+                        name.Contains("QueueFamilyDataGraphProperties") ||
+                        name.Contains("QueueFamilyDataGraphEngineOperationProperties") ||
+                        name.Contains("QueueFamilyDataGraphOpticalFlowImageFormats") ||
+                        name.Contains("GpaDeviceClockInfo"))
+                        continue;
+
                     newCommands.Add(name, newCommand);
 
                     foreach (var vkParam in vkCommand.Elements("param"))
@@ -75,13 +92,6 @@ namespace SharpVk.Generator.Specification
                         var pointerType = PointerTypeUtil.GetFrom(typeNodes);
 
                         var lenField = vkParam.Attribute("len");
-
-                        //Spec is wrong to declare this param as an array.
-                        if (newCommand.VkName == "vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI" &&
-                            paramName == "pMaxWorkgroupSize")
-                        {
-                            lenField = null;
-                        }
 
                         var dimensions = lenField != null
                                             ? SimpleParser.ParsedLenField(lenField.Value)

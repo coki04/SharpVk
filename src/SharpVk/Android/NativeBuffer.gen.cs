@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -85,7 +85,7 @@ namespace SharpVk.Android
         /// </param>
         internal unsafe void MarshalTo(SharpVk.Interop.Android.NativeBuffer* pointer)
         {
-            pointer->SType = StructureType.NativeBuffer;
+            pointer->SType = StructureType.NativeBufferAndroid;
             pointer->Next = null;
             pointer->Handle = this.Handle.ToPointer();
             pointer->Stride = this.Stride;

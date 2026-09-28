@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -36,7 +36,7 @@ namespace SharpVk.Arm
         /// <summary>
         /// 
         /// </summary>
-        public SharpVk.Khronos.PipelineCreateFlags2? Flags
+        public SharpVk.PipelineCreateFlags2? Flags
         {
             get;
             set;
@@ -75,7 +75,7 @@ namespace SharpVk.Arm
             }
             else
             {
-                pointer->Flags = default(SharpVk.Khronos.PipelineCreateFlags2);
+                pointer->Flags = default(SharpVk.PipelineCreateFlags2);
             }
             pointer->Layout = this.Layout?.handle ?? default(SharpVk.Interop.PipelineLayout);
             pointer->ResourceInfoCount = (uint)(Interop.HeapUtil.GetLength(this.ResourceInfos));

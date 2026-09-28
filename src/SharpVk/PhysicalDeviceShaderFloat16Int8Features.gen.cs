@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -58,7 +58,7 @@ namespace SharpVk
         /// </param>
         internal unsafe void MarshalTo(SharpVk.Interop.PhysicalDeviceShaderFloat16Int8Features* pointer)
         {
-            pointer->SType = StructureType.PhysicalDeviceShaderFloat16Int8FeaturesVersion;
+            pointer->SType = StructureType.PhysicalDeviceShaderFloat16Int8FeaturesCompute;
             pointer->Next = null;
             pointer->ShaderFloat16 = this.ShaderFloat16;
             pointer->ShaderInt8 = this.ShaderInt8;

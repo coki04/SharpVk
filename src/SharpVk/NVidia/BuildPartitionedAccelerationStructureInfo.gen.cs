@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -45,7 +45,7 @@ namespace SharpVk.NVidia
         /// <summary>
         /// 
         /// </summary>
-        public ulong SourceAccelerationStructureData
+        public ulong? SourceAccelerationStructureData
         {
             get;
             set;
@@ -97,7 +97,14 @@ namespace SharpVk.NVidia
             pointer->SType = StructureType.BuildPartitionedAccelerationStructureInfo;
             pointer->Next = null;
             this.Input.MarshalTo(&pointer->Input);
-            pointer->SourceAccelerationStructureData = this.SourceAccelerationStructureData;
+            if (this.SourceAccelerationStructureData != null)
+            {
+                pointer->SourceAccelerationStructureData = this.SourceAccelerationStructureData.Value;
+            }
+            else
+            {
+                pointer->SourceAccelerationStructureData = default(ulong);
+            }
             pointer->DestinationAccelerationStructureData = this.DestinationAccelerationStructureData;
             pointer->ScratchData = this.ScratchData;
             pointer->SourceInfos = this.SourceInfos;

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -33,5 +33,15 @@ namespace SharpVk.Arm
         /// 
         /// </summary>
         Transient = 0, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        OpticalFlowCache = 1000631001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        NeuralAcceleratorStatistics = 1000676000, 
     }
 }

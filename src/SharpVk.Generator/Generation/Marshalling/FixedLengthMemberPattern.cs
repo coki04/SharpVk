@@ -45,7 +45,7 @@ namespace SharpVk.Generator.Generation.Marshalling
                     {
                         var constant = this.constantsLookup[source.Type.FixedLength.Value];
 
-                        length = $"Constants.{constant.Name}";
+                        length = $"checked((int)Constants.{constant.Name})";
                     }
 
                     info.InteropFullType = interopType;

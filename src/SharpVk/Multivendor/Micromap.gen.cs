@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -30,7 +30,6 @@ namespace SharpVk.Multivendor
     /// 
     /// </summary>
     public partial class Micromap
-        : IDisposable
     {
         internal readonly SharpVk.Interop.Multivendor.Micromap handle; 
         
@@ -52,42 +51,5 @@ namespace SharpVk.Multivendor
         /// The raw handle for this instance.
         /// </summary>
         public SharpVk.Interop.Multivendor.Micromap RawHandle => this.handle;
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="allocator">
-        /// </param>
-        public unsafe void Destroy(SharpVk.AllocationCallbacks? allocator = default(SharpVk.AllocationCallbacks?))
-        {
-            try
-            {
-                SharpVk.Interop.AllocationCallbacks* marshalledAllocator = default(SharpVk.Interop.AllocationCallbacks*);
-                if (allocator != null)
-                {
-                    marshalledAllocator = (SharpVk.Interop.AllocationCallbacks*)(Interop.HeapUtil.Allocate<SharpVk.Interop.AllocationCallbacks>());
-                    allocator.Value.MarshalTo(marshalledAllocator);
-                }
-                else
-                {
-                    marshalledAllocator = default(SharpVk.Interop.AllocationCallbacks*);
-                }
-                SharpVk.Interop.Multivendor.VkMicromapEXTDestroyDelegate commandDelegate = commandCache.Cache.vkDestroyMicromapEXT;
-                commandDelegate(this.parent.handle, this.handle, marshalledAllocator);
-            }
-            finally
-            {
-                Interop.HeapUtil.FreeAll();
-            }
-        }
-        
-        /// <summary>
-        /// Destroys the handles and releases any unmanaged resources
-        /// associated with it.
-        /// </summary>
-        public void Dispose()
-        {
-            this.Destroy();
-        }
     }
 }

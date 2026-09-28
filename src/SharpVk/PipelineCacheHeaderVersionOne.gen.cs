@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -89,7 +89,7 @@ namespace SharpVk
             pointer->HeaderVersion = this.HeaderVersion;
             pointer->VendorID = this.VendorID;
             pointer->DeviceID = this.DeviceID;
-            Interop.HeapUtil.MarshalTo(this.PipelineCacheUUID, Constants.UuidSize, pointer->PipelineCacheUUID);
+            Interop.HeapUtil.MarshalTo(this.PipelineCacheUUID, checked((int)Constants.UuidSize), pointer->PipelineCacheUUID);
         }
         
         /// <summary>
@@ -104,7 +104,7 @@ namespace SharpVk
             result.HeaderVersion = pointer->HeaderVersion;
             result.VendorID = pointer->VendorID;
             result.DeviceID = pointer->DeviceID;
-            result.PipelineCacheUUID = new Guid(Interop.HeapUtil.MarshalFrom(pointer->PipelineCacheUUID, Constants.UuidSize));
+            result.PipelineCacheUUID = new Guid(Interop.HeapUtil.MarshalFrom(pointer->PipelineCacheUUID, checked((int)Constants.UuidSize)));
             return result;
         }
     }

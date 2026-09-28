@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -38,7 +38,7 @@ namespace SharpVk.Interop
         /// ppEnabledLayerNames array passed in the InstanceCreateInfo
         /// structure to enable this layer for an instance.
         /// </summary>
-        public fixed byte LayerName[Constants.MaxExtensionNameSize]; 
+        public fixed byte LayerName[checked((int)Constants.MaxExtensionNameSize)]; 
         
         /// <summary>
         /// The Vulkan version the layer was written to, encoded as described
@@ -56,6 +56,6 @@ namespace SharpVk.Interop
         /// A string providing additional details that can be used by the
         /// application to identify the layer.
         /// </summary>
-        public fixed byte Description[Constants.MaxDescriptionSize]; 
+        public fixed byte Description[checked((int)Constants.MaxDescriptionSize)]; 
     }
 }

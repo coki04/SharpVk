@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -277,187 +277,137 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceSubgroupProperties = 1000094000, 
+        BindBufferMemoryInfoBase = 1000157000, 
         
         /// <summary>
         /// 
         /// </summary>
-        BindBufferMemoryInfoVersion = 1000157000, 
+        BindImageMemoryInfoBase = 1000157001, 
         
         /// <summary>
         /// 
         /// </summary>
-        BindImageMemoryInfoVersion = 1000157001, 
+        MemoryDedicatedRequirementsBase = 1000127000, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDevice16bitStorageFeaturesVersion = 1000083000, 
+        MemoryDedicatedAllocateInfoBase = 1000127001, 
         
         /// <summary>
         /// 
         /// </summary>
-        MemoryDedicatedRequirementsVersion = 1000127000, 
+        MemoryAllocateFlagsInfoBase = 1000060000, 
         
         /// <summary>
         /// 
         /// </summary>
-        MemoryDedicatedAllocateInfoVersion = 1000127001, 
+        DeviceGroupCommandBufferBeginInfoBase = 1000060004, 
         
         /// <summary>
         /// 
         /// </summary>
-        MemoryAllocateFlagsInfoVersion = 1000060000, 
+        DeviceGroupSubmitInfoBase = 1000060005, 
         
         /// <summary>
         /// 
         /// </summary>
-        DeviceGroupRenderPassBeginInfoVersion = 1000060003, 
+        DeviceGroupBindSparseInfoBase = 1000060006, 
         
         /// <summary>
         /// 
         /// </summary>
-        DeviceGroupCommandBufferBeginInfoVersion = 1000060004, 
+        BindBufferMemoryDeviceGroupInfoBase = 1000060013, 
         
         /// <summary>
         /// 
         /// </summary>
-        DeviceGroupSubmitInfoVersion = 1000060005, 
+        BindImageMemoryDeviceGroupInfoBase = 1000060014, 
         
         /// <summary>
         /// 
         /// </summary>
-        DeviceGroupBindSparseInfoVersion = 1000060006, 
+        PhysicalDeviceGroupPropertiesBase = 1000070000, 
         
         /// <summary>
         /// 
         /// </summary>
-        BindBufferMemoryDeviceGroupInfoVersion = 1000060013, 
+        DeviceGroupDeviceCreateInfoBase = 1000070001, 
         
         /// <summary>
         /// 
         /// </summary>
-        BindImageMemoryDeviceGroupInfoVersion = 1000060014, 
+        BufferMemoryRequirementsInfo2Base = 1000146000, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceGroupPropertiesVersion = 1000070000, 
+        ImageMemoryRequirementsInfo2Base = 1000146001, 
         
         /// <summary>
         /// 
         /// </summary>
-        DeviceGroupDeviceCreateInfoVersion = 1000070001, 
+        ImageSparseMemoryRequirementsInfo2Base = 1000146002, 
         
         /// <summary>
         /// 
         /// </summary>
-        BufferMemoryRequirementsInfo2Version = 1000146000, 
+        MemoryRequirements2Base = 1000146003, 
         
         /// <summary>
         /// 
         /// </summary>
-        ImageMemoryRequirementsInfo2Version = 1000146001, 
+        SparseImageMemoryRequirements2Base = 1000146004, 
         
         /// <summary>
         /// 
         /// </summary>
-        ImageSparseMemoryRequirementsInfo2Version = 1000146002, 
+        PhysicalDeviceFeatures2Base = 1000059000, 
         
         /// <summary>
         /// 
         /// </summary>
-        MemoryRequirements2Version = 1000146003, 
+        PhysicalDeviceProperties2Base = 1000059001, 
         
         /// <summary>
         /// 
         /// </summary>
-        SparseImageMemoryRequirements2Version = 1000146004, 
+        FormatProperties2Base = 1000059002, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceFeatures2Version = 1000059000, 
+        ImageFormatProperties2Base = 1000059003, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceProperties2Version = 1000059001, 
+        PhysicalDeviceImageFormatInfo2Base = 1000059004, 
         
         /// <summary>
         /// 
         /// </summary>
-        FormatProperties2Version = 1000059002, 
+        QueueFamilyProperties2Base = 1000059005, 
         
         /// <summary>
         /// 
         /// </summary>
-        ImageFormatProperties2Version = 1000059003, 
+        PhysicalDeviceMemoryProperties2Base = 1000059006, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceImageFormatInfo2Version = 1000059004, 
+        SparseImageFormatProperties2Base = 1000059007, 
         
         /// <summary>
         /// 
         /// </summary>
-        QueueFamilyProperties2Version = 1000059005, 
+        PhysicalDeviceSparseImageFormatInfo2Base = 1000059008, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceMemoryProperties2Version = 1000059006, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        SparseImageFormatProperties2Version = 1000059007, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        PhysicalDeviceSparseImageFormatInfo2Version = 1000059008, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        PhysicalDevicePointClippingPropertiesVersion = 1000117000, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        RenderPassInputAttachmentAspectCreateInfoVersion = 1000117001, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        ImageViewUsageCreateInfoVersion = 1000117002, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        PipelineTessellationDomainOriginStateCreateInfoVersion = 1000117003, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        RenderPassMultiviewCreateInfoVersion = 1000053000, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        PhysicalDeviceMultiviewFeaturesVersion = 1000053001, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        PhysicalDeviceMultiviewPropertiesVersion = 1000053002, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        PhysicalDeviceVariablePointersFeaturesVersion = 1000120000, 
+        ImageViewUsageCreateInfoBase = 1000117002, 
         
         /// <summary>
         /// 
@@ -482,122 +432,177 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        SamplerYcbcrConversionCreateInfoVersion = 1000156000, 
+        PhysicalDeviceExternalImageFormatInfoBase = 1000071000, 
         
         /// <summary>
         /// 
         /// </summary>
-        SamplerYcbcrConversionInfoVersion = 1000156001, 
+        ExternalImageFormatPropertiesBase = 1000071001, 
         
         /// <summary>
         /// 
         /// </summary>
-        BindImagePlaneMemoryInfoVersion = 1000156002, 
+        PhysicalDeviceExternalBufferInfoBase = 1000071002, 
         
         /// <summary>
         /// 
         /// </summary>
-        ImagePlaneMemoryRequirementsInfoVersion = 1000156003, 
+        ExternalBufferPropertiesBase = 1000071003, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceSamplerYcbcrConversionFeaturesVersion = 1000156004, 
+        PhysicalDeviceIdPropertiesBase = 1000071004, 
         
         /// <summary>
         /// 
         /// </summary>
-        SamplerYcbcrConversionImageFormatPropertiesVersion = 1000156005, 
+        ExternalMemoryBufferCreateInfoBase = 1000072000, 
         
         /// <summary>
         /// 
         /// </summary>
-        DescriptorUpdateTemplateCreateInfoVersion = 1000085000, 
+        ExternalMemoryImageCreateInfoBase = 1000072001, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceExternalImageFormatInfoVersion = 1000071000, 
+        ExportMemoryAllocateInfoBase = 1000072002, 
         
         /// <summary>
         /// 
         /// </summary>
-        ExternalImageFormatPropertiesVersion = 1000071001, 
+        PhysicalDeviceExternalFenceInfoBase = 1000112000, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceExternalBufferInfoVersion = 1000071002, 
+        ExternalFencePropertiesBase = 1000112001, 
         
         /// <summary>
         /// 
         /// </summary>
-        ExternalBufferPropertiesVersion = 1000071003, 
+        ExportFenceCreateInfoBase = 1000113000, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceIdPropertiesVersion = 1000071004, 
+        ExportSemaphoreCreateInfoBase = 1000077000, 
         
         /// <summary>
         /// 
         /// </summary>
-        ExternalMemoryBufferCreateInfoVersion = 1000072000, 
+        PhysicalDeviceExternalSemaphoreInfoBase = 1000076000, 
         
         /// <summary>
         /// 
         /// </summary>
-        ExternalMemoryImageCreateInfoVersion = 1000072001, 
+        ExternalSemaphorePropertiesBase = 1000076001, 
         
         /// <summary>
         /// 
         /// </summary>
-        ExportMemoryAllocateInfoVersion = 1000072002, 
+        PhysicalDeviceSubgroupProperties = 1000094000, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceExternalFenceInfoVersion = 1000112000, 
+        PhysicalDevice16bitStorageFeaturesCompute = 1000083000, 
         
         /// <summary>
         /// 
         /// </summary>
-        ExternalFencePropertiesVersion = 1000112001, 
+        PhysicalDeviceVariablePointersFeaturesCompute = 1000120000, 
         
         /// <summary>
         /// 
         /// </summary>
-        ExportFenceCreateInfoVersion = 1000113000, 
+        DescriptorUpdateTemplateCreateInfoCompute = 1000085000, 
         
         /// <summary>
         /// 
         /// </summary>
-        ExportSemaphoreCreateInfoVersion = 1000077000, 
+        PhysicalDeviceMaintenance3PropertiesCompute = 1000168000, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceExternalSemaphoreInfoVersion = 1000076000, 
+        DescriptorSetLayoutSupportCompute = 1000168001, 
         
         /// <summary>
         /// 
         /// </summary>
-        ExternalSemaphorePropertiesVersion = 1000076001, 
+        SamplerYcbcrConversionCreateInfoCompute = 1000156000, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceMaintenance3PropertiesVersion = 1000168000, 
+        SamplerYcbcrConversionInfoCompute = 1000156001, 
         
         /// <summary>
         /// 
         /// </summary>
-        DescriptorSetLayoutSupportVersion = 1000168001, 
+        BindImagePlaneMemoryInfoCompute = 1000156002, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ImagePlaneMemoryRequirementsInfoCompute = 1000156003, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceSamplerYcbcrConversionFeaturesCompute = 1000156004, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        SamplerYcbcrConversionImageFormatPropertiesCompute = 1000156005, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DeviceGroupRenderPassBeginInfoGraphics = 1000060003, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDevicePointClippingPropertiesGraphics = 1000117000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        RenderPassInputAttachmentAspectCreateInfoGraphics = 1000117001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PipelineTessellationDomainOriginStateCreateInfoGraphics = 1000117003, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        RenderPassMultiviewCreateInfoGraphics = 1000053000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceMultiviewFeaturesGraphics = 1000053001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceMultiviewPropertiesGraphics = 1000053002, 
         
         /// <summary>
         /// 
         /// </summary>
         PhysicalDeviceShaderDrawParametersFeatures = 1000063000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceDriverPropertiesBase = 1000196000, 
         
         /// <summary>
         /// 
@@ -622,232 +627,227 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        ImageFormatListCreateInfoVersion = 1000147000, 
+        ImageFormatListCreateInfoBase = 1000147000, 
         
         /// <summary>
         /// 
         /// </summary>
-        AttachmentDescription2Version = 1000109000, 
+        PhysicalDeviceVulkanMemoryModelFeaturesBase = 1000211000, 
         
         /// <summary>
         /// 
         /// </summary>
-        AttachmentReference2Version = 1000109001, 
+        PhysicalDeviceHostQueryResetFeaturesBase = 1000261000, 
         
         /// <summary>
         /// 
         /// </summary>
-        SubpassDescription2Version = 1000109002, 
+        PhysicalDeviceTimelineSemaphoreFeaturesBase = 1000207000, 
         
         /// <summary>
         /// 
         /// </summary>
-        SubpassDependency2Version = 1000109003, 
+        PhysicalDeviceTimelineSemaphorePropertiesBase = 1000207001, 
         
         /// <summary>
         /// 
         /// </summary>
-        RenderPassCreateInfo2Version = 1000109004, 
+        SemaphoreTypeCreateInfoBase = 1000207002, 
         
         /// <summary>
         /// 
         /// </summary>
-        SubpassBeginInfoVersion = 1000109005, 
+        TimelineSemaphoreSubmitInfoBase = 1000207003, 
         
         /// <summary>
         /// 
         /// </summary>
-        SubpassEndInfoVersion = 1000109006, 
+        SemaphoreWaitInfoBase = 1000207004, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDevice8bitStorageFeaturesVersion = 1000177000, 
+        SemaphoreSignalInfoBase = 1000207005, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceDriverPropertiesVersion = 1000196000, 
+        PhysicalDeviceBufferDeviceAddressFeaturesBase = 1000257000, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceShaderAtomicInt64FeaturesVersion = 1000180000, 
+        BufferDeviceAddressInfoBase = 1000244001, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceShaderFloat16Int8FeaturesVersion = 1000082000, 
+        BufferOpaqueCaptureAddressCreateInfoBase = 1000257002, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceFloatControlsPropertiesVersion = 1000197000, 
+        MemoryOpaqueCaptureAddressAllocateInfoBase = 1000257003, 
         
         /// <summary>
         /// 
         /// </summary>
-        DescriptorSetLayoutBindingFlagsCreateInfoVersion = 1000161000, 
+        DeviceMemoryOpaqueCaptureAddressInfoBase = 1000257004, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceDescriptorIndexingFeaturesVersion = 1000161001, 
+        PhysicalDevice8bitStorageFeaturesCompute = 1000177000, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceDescriptorIndexingPropertiesVersion = 1000161002, 
+        PhysicalDeviceShaderAtomicInt64FeaturesCompute = 1000180000, 
         
         /// <summary>
         /// 
         /// </summary>
-        DescriptorSetVariableDescriptorCountAllocateInfoVersion = 1000161003, 
+        PhysicalDeviceShaderFloat16Int8FeaturesCompute = 1000082000, 
         
         /// <summary>
         /// 
         /// </summary>
-        DescriptorSetVariableDescriptorCountLayoutSupportVersion = 1000161004, 
+        PhysicalDeviceFloatControlsPropertiesCompute = 1000197000, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceDepthStencilResolvePropertiesVersion = 1000199000, 
+        DescriptorSetLayoutBindingFlagsCreateInfoCompute = 1000161000, 
         
         /// <summary>
         /// 
         /// </summary>
-        SubpassDescriptionDepthStencilResolveVersion = 1000199001, 
+        PhysicalDeviceDescriptorIndexingFeaturesCompute = 1000161001, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceScalarBlockLayoutFeaturesVersion = 1000221000, 
+        PhysicalDeviceDescriptorIndexingPropertiesCompute = 1000161002, 
         
         /// <summary>
         /// 
         /// </summary>
-        ImageStencilUsageCreateInfoVersion = 1000246000, 
+        DescriptorSetVariableDescriptorCountAllocateInfoCompute = 1000161003, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceSamplerFilterMinmaxPropertiesVersion = 1000130000, 
+        DescriptorSetVariableDescriptorCountLayoutSupportCompute = 1000161004, 
         
         /// <summary>
         /// 
         /// </summary>
-        SamplerReductionModeCreateInfoVersion = 1000130001, 
+        PhysicalDeviceScalarBlockLayoutFeaturesCompute = 1000221000, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceVulkanMemoryModelFeaturesVersion = 1000211000, 
+        PhysicalDeviceSamplerFilterMinmaxPropertiesCompute = 1000130000, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceImagelessFramebufferFeaturesVersion = 1000108000, 
+        SamplerReductionModeCreateInfoCompute = 1000130001, 
         
         /// <summary>
         /// 
         /// </summary>
-        FramebufferAttachmentsCreateInfoVersion = 1000108001, 
+        PhysicalDeviceUniformBufferStandardLayoutFeaturesCompute = 1000253000, 
         
         /// <summary>
         /// 
         /// </summary>
-        FramebufferAttachmentImageInfoVersion = 1000108002, 
+        PhysicalDeviceShaderSubgroupExtendedTypesFeaturesCompute = 1000175000, 
         
         /// <summary>
         /// 
         /// </summary>
-        RenderPassAttachmentBeginInfoVersion = 1000108003, 
+        AttachmentDescription2Graphics = 1000109000, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceUniformBufferStandardLayoutFeaturesVersion = 1000253000, 
+        AttachmentReference2Graphics = 1000109001, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceShaderSubgroupExtendedTypesFeaturesVersion = 1000175000, 
+        SubpassDescription2Graphics = 1000109002, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceSeparateDepthStencilLayoutsFeaturesVersion = 1000241000, 
+        SubpassDependency2Graphics = 1000109003, 
         
         /// <summary>
         /// 
         /// </summary>
-        AttachmentReferenceStencilLayoutVersion = 1000241001, 
+        RenderPassCreateInfo2Graphics = 1000109004, 
         
         /// <summary>
         /// 
         /// </summary>
-        AttachmentDescriptionStencilLayoutVersion = 1000241002, 
+        SubpassBeginInfoGraphics = 1000109005, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceHostQueryResetFeaturesVersion = 1000261000, 
+        SubpassEndInfoGraphics = 1000109006, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceTimelineSemaphoreFeaturesVersion = 1000207000, 
+        PhysicalDeviceDepthStencilResolvePropertiesGraphics = 1000199000, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceTimelineSemaphorePropertiesVersion = 1000207001, 
+        SubpassDescriptionDepthStencilResolveGraphics = 1000199001, 
         
         /// <summary>
         /// 
         /// </summary>
-        SemaphoreTypeCreateInfoVersion = 1000207002, 
+        ImageStencilUsageCreateInfoGraphics = 1000246000, 
         
         /// <summary>
         /// 
         /// </summary>
-        TimelineSemaphoreSubmitInfoVersion = 1000207003, 
+        PhysicalDeviceImagelessFramebufferFeaturesGraphics = 1000108000, 
         
         /// <summary>
         /// 
         /// </summary>
-        SemaphoreWaitInfoVersion = 1000207004, 
+        FramebufferAttachmentsCreateInfoGraphics = 1000108001, 
         
         /// <summary>
         /// 
         /// </summary>
-        SemaphoreSignalInfoVersion = 1000207005, 
+        FramebufferAttachmentImageInfoGraphics = 1000108002, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceBufferDeviceAddressFeaturesVersion = 1000257000, 
+        RenderPassAttachmentBeginInfoGraphics = 1000108003, 
         
         /// <summary>
         /// 
         /// </summary>
-        BufferDeviceAddressInfoVersion = 1000244001, 
+        PhysicalDeviceSeparateDepthStencilLayoutsFeaturesGraphics = 1000241000, 
         
         /// <summary>
         /// 
         /// </summary>
-        BufferOpaqueCaptureAddressCreateInfoVersion = 1000257002, 
+        AttachmentReferenceStencilLayoutGraphics = 1000241001, 
         
         /// <summary>
         /// 
         /// </summary>
-        MemoryOpaqueCaptureAddressAllocateInfoVersion = 1000257003, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        DeviceMemoryOpaqueCaptureAddressInfoVersion = 1000257004, 
+        AttachmentDescriptionStencilLayoutGraphics = 1000241002, 
         
         /// <summary>
         /// 
@@ -862,252 +862,252 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        PipelineCreationFeedbackCreateInfoVersion = 1000192000, 
+        PhysicalDeviceToolPropertiesBase = 1000245000, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceShaderTerminateInvocationFeaturesVersion = 1000215000, 
+        PhysicalDevicePrivateDataFeaturesBase = 1000295000, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceToolPropertiesVersion = 1000245000, 
+        DevicePrivateDataCreateInfoBase = 1000295001, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceShaderDemoteToHelperInvocationFeaturesVersion = 1000276000, 
+        PrivateDataSlotCreateInfoBase = 1000295002, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDevicePrivateDataFeaturesVersion = 1000295000, 
+        MemoryBarrier2Base = 1000314000, 
         
         /// <summary>
         /// 
         /// </summary>
-        DevicePrivateDataCreateInfoVersion = 1000295001, 
+        BufferMemoryBarrier2Base = 1000314001, 
         
         /// <summary>
         /// 
         /// </summary>
-        PrivateDataSlotCreateInfoVersion = 1000295002, 
+        ImageMemoryBarrier2Base = 1000314002, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDevicePipelineCreationCacheControlFeaturesVersion = 1000297000, 
+        DependencyInfoBase = 1000314003, 
         
         /// <summary>
         /// 
         /// </summary>
-        MemoryBarrier2Version = 1000314000, 
+        SubmitInfo2Base = 1000314004, 
         
         /// <summary>
         /// 
         /// </summary>
-        BufferMemoryBarrier2Version = 1000314001, 
+        SemaphoreSubmitInfoBase = 1000314005, 
         
         /// <summary>
         /// 
         /// </summary>
-        ImageMemoryBarrier2Version = 1000314002, 
+        CommandBufferSubmitInfoBase = 1000314006, 
         
         /// <summary>
         /// 
         /// </summary>
-        DependencyInfoVersion = 1000314003, 
+        PhysicalDeviceSynchronization2FeaturesBase = 1000314007, 
         
         /// <summary>
         /// 
         /// </summary>
-        SubmitInfo2Version = 1000314004, 
+        CopyBufferInfo2Base = 1000337000, 
         
         /// <summary>
         /// 
         /// </summary>
-        SemaphoreSubmitInfoVersion = 1000314005, 
+        CopyImageInfo2Base = 1000337001, 
         
         /// <summary>
         /// 
         /// </summary>
-        CommandBufferSubmitInfoVersion = 1000314006, 
+        CopyBufferToImageInfo2Base = 1000337002, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceSynchronization2FeaturesVersion = 1000314007, 
+        CopyImageToBufferInfo2Base = 1000337003, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceZeroInitializeWorkgroupMemoryFeaturesVersion = 1000325000, 
+        BufferCopy2Base = 1000337006, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceImageRobustnessFeaturesVersion = 1000335000, 
+        ImageCopy2Base = 1000337007, 
         
         /// <summary>
         /// 
         /// </summary>
-        CopyBufferInfo2Version = 1000337000, 
+        BufferImageCopy2Base = 1000337009, 
         
         /// <summary>
         /// 
         /// </summary>
-        CopyImageInfo2Version = 1000337001, 
+        PhysicalDeviceTextureCompressionAstcHdrFeaturesBase = 1000066000, 
         
         /// <summary>
         /// 
         /// </summary>
-        CopyBufferToImageInfo2Version = 1000337002, 
+        FormatProperties3Base = 1000360000, 
         
         /// <summary>
         /// 
         /// </summary>
-        CopyImageToBufferInfo2Version = 1000337003, 
+        PhysicalDeviceMaintenance4FeaturesBase = 1000413000, 
         
         /// <summary>
         /// 
         /// </summary>
-        BlitImageInfo2Version = 1000337004, 
+        PhysicalDeviceMaintenance4PropertiesBase = 1000413001, 
         
         /// <summary>
         /// 
         /// </summary>
-        ResolveImageInfo2Version = 1000337005, 
+        DeviceBufferMemoryRequirementsBase = 1000413002, 
         
         /// <summary>
         /// 
         /// </summary>
-        BufferCopy2Version = 1000337006, 
+        DeviceImageMemoryRequirementsBase = 1000413003, 
         
         /// <summary>
         /// 
         /// </summary>
-        ImageCopy2Version = 1000337007, 
+        PipelineCreationFeedbackCreateInfoCompute = 1000192000, 
         
         /// <summary>
         /// 
         /// </summary>
-        ImageBlit2Version = 1000337008, 
+        PhysicalDeviceShaderTerminateInvocationFeaturesCompute = 1000215000, 
         
         /// <summary>
         /// 
         /// </summary>
-        BufferImageCopy2Version = 1000337009, 
+        PhysicalDeviceShaderDemoteToHelperInvocationFeaturesCompute = 1000276000, 
         
         /// <summary>
         /// 
         /// </summary>
-        ImageResolve2Version = 1000337010, 
+        PhysicalDevicePipelineCreationCacheControlFeaturesCompute = 1000297000, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceSubgroupSizeControlPropertiesVersion = 1000225000, 
+        PhysicalDeviceZeroInitializeWorkgroupMemoryFeaturesCompute = 1000325000, 
         
         /// <summary>
         /// 
         /// </summary>
-        PipelineShaderStageRequiredSubgroupSizeCreateInfoVersion = 1000225001, 
+        PhysicalDeviceImageRobustnessFeaturesCompute = 1000335000, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceSubgroupSizeControlFeaturesVersion = 1000225002, 
+        PhysicalDeviceSubgroupSizeControlPropertiesCompute = 1000225000, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceInlineUniformBlockFeaturesVersion = 1000138000, 
+        PipelineShaderStageRequiredSubgroupSizeCreateInfoCompute = 1000225001, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceInlineUniformBlockPropertiesVersion = 1000138001, 
+        PhysicalDeviceSubgroupSizeControlFeaturesCompute = 1000225002, 
         
         /// <summary>
         /// 
         /// </summary>
-        WriteDescriptorSetInlineUniformBlockVersion = 1000138002, 
+        PhysicalDeviceInlineUniformBlockFeaturesCompute = 1000138000, 
         
         /// <summary>
         /// 
         /// </summary>
-        DescriptorPoolInlineUniformBlockCreateInfoVersion = 1000138003, 
+        PhysicalDeviceInlineUniformBlockPropertiesCompute = 1000138001, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceTextureCompressionAstcHdrFeaturesVersion = 1000066000, 
+        WriteDescriptorSetInlineUniformBlockCompute = 1000138002, 
         
         /// <summary>
         /// 
         /// </summary>
-        RenderingInfoVersion = 1000044000, 
+        DescriptorPoolInlineUniformBlockCreateInfoCompute = 1000138003, 
         
         /// <summary>
         /// 
         /// </summary>
-        RenderingAttachmentInfoVersion = 1000044001, 
+        PhysicalDeviceShaderIntegerDotProductFeaturesCompute = 1000280000, 
         
         /// <summary>
         /// 
         /// </summary>
-        PipelineRenderingCreateInfoVersion = 1000044002, 
+        PhysicalDeviceShaderIntegerDotProductPropertiesCompute = 1000280001, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceDynamicRenderingFeaturesVersion = 1000044003, 
+        PhysicalDeviceTexelBufferAlignmentPropertiesCompute = 1000281001, 
         
         /// <summary>
         /// 
         /// </summary>
-        CommandBufferInheritanceRenderingInfoVersion = 1000044004, 
+        BlitImageInfo2Graphics = 1000337004, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceShaderIntegerDotProductFeaturesVersion = 1000280000, 
+        ResolveImageInfo2Graphics = 1000337005, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceShaderIntegerDotProductPropertiesVersion = 1000280001, 
+        ImageBlit2Graphics = 1000337008, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceTexelBufferAlignmentPropertiesVersion = 1000281001, 
+        ImageResolve2Graphics = 1000337010, 
         
         /// <summary>
         /// 
         /// </summary>
-        FormatProperties3Version = 1000360000, 
+        RenderingInfoGraphics = 1000044000, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceMaintenance4FeaturesVersion = 1000413000, 
+        RenderingAttachmentInfoGraphics = 1000044001, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceMaintenance4PropertiesVersion = 1000413001, 
+        PipelineRenderingCreateInfoGraphics = 1000044002, 
         
         /// <summary>
         /// 
         /// </summary>
-        DeviceBufferMemoryRequirementsVersion = 1000413002, 
+        PhysicalDeviceDynamicRenderingFeaturesGraphics = 1000044003, 
         
         /// <summary>
         /// 
         /// </summary>
-        DeviceImageMemoryRequirementsVersion = 1000413003, 
+        CommandBufferInheritanceRenderingInfoGraphics = 1000044004, 
         
         /// <summary>
         /// 
@@ -1122,242 +1122,242 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        DeviceQueueGlobalPriorityCreateInfoVersion = 1000174000, 
+        DeviceQueueGlobalPriorityCreateInfoBase = 1000174000, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceGlobalPriorityQueryFeaturesVersion = 1000388000, 
+        PhysicalDeviceGlobalPriorityQueryFeaturesBase = 1000388000, 
         
         /// <summary>
         /// 
         /// </summary>
-        QueueFamilyGlobalPriorityPropertiesVersion = 1000388001, 
+        QueueFamilyGlobalPriorityPropertiesBase = 1000388001, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceShaderSubgroupRotateFeaturesVersion = 1000416000, 
+        PhysicalDeviceIndexTypeUint8FeaturesBase = 1000265000, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceShaderFloatControls2FeaturesVersion = 1000528000, 
+        MemoryMapInfoBase = 1000271000, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceShaderExpectAssumeFeaturesVersion = 1000544000, 
+        MemoryUnmapInfoBase = 1000271001, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceLineRasterizationFeaturesVersion = 1000259000, 
+        PhysicalDeviceMaintenance5FeaturesBase = 1000470000, 
         
         /// <summary>
         /// 
         /// </summary>
-        PipelineRasterizationLineStateCreateInfoVersion = 1000259001, 
+        PhysicalDeviceMaintenance5PropertiesBase = 1000470001, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceLineRasterizationPropertiesVersion = 1000259002, 
+        DeviceImageSubresourceInfoBase = 1000470004, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceVertexAttributeDivisorPropertiesVersion = 1000525000, 
+        SubresourceLayout2Base = 1000338002, 
         
         /// <summary>
         /// 
         /// </summary>
-        PipelineVertexInputDivisorStateCreateInfoVersion = 1000190001, 
+        ImageSubresource2Base = 1000338003, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceVertexAttributeDivisorFeaturesVersion = 1000190002, 
+        BufferUsageFlags2CreateInfoBase = 1000470006, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceIndexTypeUint8FeaturesVersion = 1000265000, 
+        PhysicalDeviceMaintenance6FeaturesBase = 1000545000, 
         
         /// <summary>
         /// 
         /// </summary>
-        MemoryMapInfoVersion = 1000271000, 
+        PhysicalDeviceMaintenance6PropertiesBase = 1000545001, 
         
         /// <summary>
         /// 
         /// </summary>
-        MemoryUnmapInfoVersion = 1000271001, 
+        BindMemoryStatusBase = 1000545002, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceMaintenance5FeaturesVersion = 1000470000, 
+        PhysicalDeviceHostImageCopyFeaturesBase = 1000270000, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceMaintenance5PropertiesVersion = 1000470001, 
+        PhysicalDeviceHostImageCopyPropertiesBase = 1000270001, 
         
         /// <summary>
         /// 
         /// </summary>
-        RenderingAreaInfoVersion = 1000470003, 
+        MemoryToImageCopyBase = 1000270002, 
         
         /// <summary>
         /// 
         /// </summary>
-        DeviceImageSubresourceInfoVersion = 1000470004, 
+        ImageToMemoryCopyBase = 1000270003, 
         
         /// <summary>
         /// 
         /// </summary>
-        SubresourceLayout2Version = 1000338002, 
+        CopyImageToMemoryInfoBase = 1000270004, 
         
         /// <summary>
         /// 
         /// </summary>
-        ImageSubresource2Version = 1000338003, 
+        CopyMemoryToImageInfoBase = 1000270005, 
         
         /// <summary>
         /// 
         /// </summary>
-        PipelineCreateFlags2CreateInfoVersion = 1000470005, 
+        HostImageLayoutTransitionInfoBase = 1000270006, 
         
         /// <summary>
         /// 
         /// </summary>
-        BufferUsageFlags2CreateInfoVersion = 1000470006, 
+        CopyImageToImageInfoBase = 1000270007, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDevicePushDescriptorPropertiesVersion = 1000080000, 
+        SubresourceHostMemcpySizeBase = 1000270008, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceDynamicRenderingLocalReadFeaturesVersion = 1000232000, 
+        HostImageCopyDevicePerformanceQueryBase = 1000270009, 
         
         /// <summary>
         /// 
         /// </summary>
-        RenderingAttachmentLocationInfoVersion = 1000232001, 
+        PhysicalDeviceShaderSubgroupRotateFeaturesCompute = 1000416000, 
         
         /// <summary>
         /// 
         /// </summary>
-        RenderingInputAttachmentIndexInfoVersion = 1000232002, 
+        PhysicalDeviceShaderFloatControls2FeaturesCompute = 1000528000, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceMaintenance6FeaturesVersion = 1000545000, 
+        PhysicalDeviceShaderExpectAssumeFeaturesCompute = 1000544000, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceMaintenance6PropertiesVersion = 1000545001, 
+        PipelineCreateFlags2CreateInfoCompute = 1000470005, 
         
         /// <summary>
         /// 
         /// </summary>
-        BindMemoryStatusVersion = 1000545002, 
+        PhysicalDevicePushDescriptorPropertiesCompute = 1000080000, 
         
         /// <summary>
         /// 
         /// </summary>
-        BindDescriptorSetsInfoVersion = 1000545003, 
+        BindDescriptorSetsInfoCompute = 1000545003, 
         
         /// <summary>
         /// 
         /// </summary>
-        PushConstantsInfoVersion = 1000545004, 
+        PushConstantsInfoCompute = 1000545004, 
         
         /// <summary>
         /// 
         /// </summary>
-        PushDescriptorSetInfoVersion = 1000545005, 
+        PushDescriptorSetInfoCompute = 1000545005, 
         
         /// <summary>
         /// 
         /// </summary>
-        PushDescriptorSetWithTemplateInfoVersion = 1000545006, 
+        PushDescriptorSetWithTemplateInfoCompute = 1000545006, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDevicePipelineProtectedAccessFeaturesVersion = 1000466000, 
+        PhysicalDevicePipelineProtectedAccessFeaturesCompute = 1000466000, 
         
         /// <summary>
         /// 
         /// </summary>
-        PipelineRobustnessCreateInfoVersion = 1000068000, 
+        PipelineRobustnessCreateInfoCompute = 1000068000, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDevicePipelineRobustnessFeaturesVersion = 1000068001, 
+        PhysicalDevicePipelineRobustnessFeaturesCompute = 1000068001, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDevicePipelineRobustnessPropertiesVersion = 1000068002, 
+        PhysicalDevicePipelineRobustnessPropertiesCompute = 1000068002, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceHostImageCopyFeaturesVersion = 1000270000, 
+        PhysicalDeviceLineRasterizationFeaturesGraphics = 1000259000, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceHostImageCopyPropertiesVersion = 1000270001, 
+        PipelineRasterizationLineStateCreateInfoGraphics = 1000259001, 
         
         /// <summary>
         /// 
         /// </summary>
-        MemoryToImageCopyVersion = 1000270002, 
+        PhysicalDeviceLineRasterizationPropertiesGraphics = 1000259002, 
         
         /// <summary>
         /// 
         /// </summary>
-        ImageToMemoryCopyVersion = 1000270003, 
+        PhysicalDeviceVertexAttributeDivisorPropertiesGraphics = 1000525000, 
         
         /// <summary>
         /// 
         /// </summary>
-        CopyImageToMemoryInfoVersion = 1000270004, 
+        PipelineVertexInputDivisorStateCreateInfoGraphics = 1000190001, 
         
         /// <summary>
         /// 
         /// </summary>
-        CopyMemoryToImageInfoVersion = 1000270005, 
+        PhysicalDeviceVertexAttributeDivisorFeaturesGraphics = 1000190002, 
         
         /// <summary>
         /// 
         /// </summary>
-        HostImageLayoutTransitionInfoVersion = 1000270006, 
+        RenderingAreaInfoGraphics = 1000470003, 
         
         /// <summary>
         /// 
         /// </summary>
-        CopyImageToImageInfoVersion = 1000270007, 
+        PhysicalDeviceDynamicRenderingLocalReadFeaturesGraphics = 1000232000, 
         
         /// <summary>
         /// 
         /// </summary>
-        SubresourceHostMemcpySizeVersion = 1000270008, 
+        RenderingAttachmentLocationInfoGraphics = 1000232001, 
         
         /// <summary>
         /// 
         /// </summary>
-        HostImageCopyDevicePerformanceQueryVersion = 1000270009, 
+        RenderingInputAttachmentIndexInfoGraphics = 1000232002, 
         
         /// <summary>
         /// 
@@ -1487,17 +1487,17 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        NativeBuffer = 1000010000, 
+        NativeBufferAndroid = 1000010000, 
         
         /// <summary>
         /// 
         /// </summary>
-        SwapchainImageCreateInfo = 1000010001, 
+        SwapchainImageCreateInfoAndroid = 1000010001, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDevicePresentationProperties = 1000010002, 
+        PhysicalDevicePresentationPropertiesAndroid = 1000010002, 
         
         /// <summary>
         /// 
@@ -2157,12 +2157,12 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        PerformanceCounter = 1000116005, 
+        PerformanceCounterKhr = 1000116005, 
         
         /// <summary>
         /// 
         /// </summary>
-        PerformanceCounterDescription = 1000116006, 
+        PerformanceCounterDescriptionKhr = 1000116006, 
         
         /// <summary>
         /// 
@@ -2282,6 +2282,41 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        PhysicalDeviceGpaFeatures = 1000133000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceGpaProperties = 1000133001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        GpaSampleBeginInfo = 1000133002, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        GpaSessionCreateInfo = 1000133003, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        GpaDeviceClockModeInfo = 1000133004, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceGpaProperties2 = 1000133005, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        GpaDeviceGetClockInfo = 1000133006, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         PhysicalDeviceShaderEnqueueFeatures = 1000134000, 
         
         /// <summary>
@@ -2303,6 +2338,81 @@ namespace SharpVk
         /// 
         /// </summary>
         PipelineShaderStageNodeCreateInfo = 1000134004, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        TexelBufferDescriptorInfo = 1000135000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ImageDescriptorInfo = 1000135001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ResourceDescriptorInfo = 1000135002, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        BindHeapInfo = 1000135003, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PushDataInfo = 1000135004, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DescriptorSetAndBindingMapping = 1000135005, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ShaderDescriptorSetAndBindingMappingInfo = 1000135006, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        OpaqueCaptureDataCreateInfo = 1000135007, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceDescriptorHeapProperties = 1000135008, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceDescriptorHeapFeatures = 1000135009, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        CommandBufferInheritanceDescriptorHeapInfo = 1000135010, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        SamplerCustomBorderColorIndexCreateInfo = 1000135011, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        IndirectCommandsLayoutPushDataToken = 1000135012, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        SubsampledImageFormatProperties = 1000135013, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceDescriptorHeapTensorProperties = 1000135014, 
         
         /// <summary>
         /// 
@@ -2627,6 +2737,16 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        PhysicalDeviceCooperativeMatrixConversionFeatures = 1000172000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceElapsedTimerQueryFeatures = 1000173000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         ImportMemoryHostPointerInfo = 1000178000, 
         
         /// <summary>
@@ -2747,6 +2867,56 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        PhysicalDevicePresentTimingFeatures = 1000208000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        SwapchainTimingProperties = 1000208001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        SwapchainTimeDomainProperties = 1000208002, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PresentTimingsInfo = 1000208003, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PresentTimingInfo = 1000208004, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PastPresentationTimingInfo = 1000208005, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PastPresentationTimingProperties = 1000208006, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PastPresentationTiming = 1000208007, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PresentTimingSurfaceCapabilities = 1000208008, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        SwapchainCalibratedTimestampInfo = 1000208009, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         PhysicalDeviceShaderIntegerFunctions2Features = 1000209000, 
         
         /// <summary>
@@ -2863,6 +3033,26 @@ namespace SharpVk
         /// 
         /// </summary>
         PhysicalDeviceCoherentMemoryFeatures = 1000229000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceShaderConstantDataFeatures = 1000231000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceShaderAbortFeatures = 1000233000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DeviceFaultShaderAbortMessageInfo = 1000233001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceShaderAbortProperties = 1000233002, 
         
         /// <summary>
         /// 
@@ -3167,6 +3357,11 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        PhysicalDeviceTextureCompressionAstc3dFeatures = 1000288000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         PipelineLibraryCreateInfo = 1000290000, 
         
         /// <summary>
@@ -3258,6 +3453,46 @@ namespace SharpVk
         /// 
         /// </summary>
         DeviceDiagnosticsConfigCreateInfo = 1000300001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PerfHintInfo = 1000302000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceQueuePerfHintFeatures = 1000302001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceQueuePerfHintProperties = 1000302002, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceImageProcessing3Features = 1000303000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceShaderMultipleWaitQueuesFeatures = 1000304000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceShaderMultipleWaitQueuesProperties = 1000304001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceShaderSplitBarrierFeatures = 1000305000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceShaderSplitBarrierProperties = 1000305001, 
         
         /// <summary>
         /// 
@@ -3452,6 +3687,86 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        DeviceMemoryCopy = 1000318000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        CopyDeviceMemoryInfo = 1000318001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DeviceMemoryImageCopy = 1000318002, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        CopyDeviceMemoryImageInfo = 1000318003, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        MemoryRangeBarriersInfo = 1000318004, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        MemoryRangeBarrier = 1000318005, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceDeviceAddressCommandsFeatures = 1000318006, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        BindIndexBuffer3Info = 1000318007, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        BindVertexBuffer3Info = 1000318008, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DrawIndirect2Info = 1000318009, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DrawIndirectCount2Info = 1000318010, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DispatchIndirect2Info = 1000318011, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ConditionalRenderingBeginInfo2 = 1000318012, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        BindTransformFeedbackBuffer2Info = 1000318013, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        MemoryMarkerInfo = 1000318014, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        AccelerationStructureCreateInfo2 = 1000318015, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         PhysicalDeviceGraphicsPipelineLibraryFeatures = 1000320000, 
         
         /// <summary>
@@ -3577,7 +3892,7 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceFaultFeatures = 1000341000, 
+        PhysicalDeviceFaultFeaturesExt = 1000341000, 
         
         /// <summary>
         /// 
@@ -3587,7 +3902,7 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        DeviceFaultInfo = 1000341002, 
+        DeviceFaultInfoExt = 1000341002, 
         
         /// <summary>
         /// 
@@ -3887,6 +4202,26 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        PhysicalDeviceVideoEncodeRgbConversionFeatures = 1000390000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        VideoEncodeRgbConversionCapabilities = 1000390001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        VideoEncodeProfileRgbConversionInfo = 1000390002, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        VideoEncodeSessionRgbConversionCreateInfo = 1000390003, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         PhysicalDeviceImageViewMinLodFeatures = 1000391000, 
         
         /// <summary>
@@ -3947,12 +4282,12 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceOpacityMicromapFeatures = 1000396005, 
+        PhysicalDeviceOpacityMicromapFeaturesExt = 1000396005, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceOpacityMicromapProperties = 1000396006, 
+        PhysicalDeviceOpacityMicromapPropertiesExt = 1000396006, 
         
         /// <summary>
         /// 
@@ -3967,7 +4302,7 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        AccelerationStructureTrianglesOpacityMicromap = 1000396009, 
+        AccelerationStructureTrianglesOpacityMicromapExt = 1000396009, 
         
         /// <summary>
         /// 
@@ -4037,6 +4372,16 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        DispatchParameters = 1000417003, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceSchedulingControlsDispatchParametersProperties = 1000417004, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         PhysicalDeviceImageSlicedViewOf3dFeatures = 1000418000, 
         
         /// <summary>
@@ -4092,22 +4437,7 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceCopyMemoryIndirectFeatures = 1000426000, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        PhysicalDeviceCopyMemoryIndirectProperties = 1000426001, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        PhysicalDeviceMemoryDecompressionFeatures = 1000427000, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        PhysicalDeviceMemoryDecompressionProperties = 1000427001, 
+        PhysicalDeviceCopyMemoryIndirectFeaturesNv = 1000426000, 
         
         /// <summary>
         /// 
@@ -4183,6 +4513,36 @@ namespace SharpVk
         /// 
         /// </summary>
         PhysicalDeviceNestedCommandBufferProperties = 1000451001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        NativeBufferUsage = 1000452000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        NativeBufferProperties = 1000452001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        NativeBufferFormatProperties = 1000452002, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ImportNativeBufferInfo = 1000452003, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        MemoryGetNativeBufferInfo = 1000452004, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ExternalFormatOhos = 1000452005, 
         
         /// <summary>
         /// 
@@ -4647,12 +5007,12 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceRayTracingInvocationReorderFeatures = 1000490000, 
+        PhysicalDeviceRayTracingInvocationReorderFeaturesNv = 1000490000, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceRayTracingInvocationReorderProperties = 1000490001, 
+        PhysicalDeviceRayTracingInvocationReorderPropertiesNv = 1000490001, 
         
         /// <summary>
         /// 
@@ -4722,12 +5082,12 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDevicePipelineLibraryGroupHandlesFeatures = 1000498000, 
+        PhysicalDeviceDynamicRenderingUnusedAttachmentsFeatures = 1000499000, 
         
         /// <summary>
         /// 
         /// </summary>
-        PhysicalDeviceDynamicRenderingUnusedAttachmentsFeatures = 1000499000, 
+        PhysicalDeviceInternallySynchronizedQueuesFeatures = 1000504000, 
         
         /// <summary>
         /// 
@@ -4888,6 +5248,11 @@ namespace SharpVk
         /// 
         /// </summary>
         DataGraphPipelineConstantTensorSemiStructuredSparsityInfo = 1000507015, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        QueueFamilyDataGraphTosaProperties = 1000508000, 
         
         /// <summary>
         /// 
@@ -5162,6 +5527,41 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        PhysicalDeviceCopyMemoryIndirectFeaturesKhr = 1000549000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceCopyMemoryIndirectPropertiesKhr = 1000426001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        CopyMemoryIndirectInfo = 1000549002, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        CopyMemoryToImageIndirectInfo = 1000549003, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceMemoryDecompressionFeaturesExt = 1000427000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceMemoryDecompressionPropertiesExt = 1000427001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DecompressMemoryInfo = 1000550002, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         DisplaySurfaceStereoCreateInfo = 1000551000, 
         
         /// <summary>
@@ -5317,6 +5717,16 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        TensorExplicitTilingFormatProperties = 1000565000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        TensorRollingBackingCreateInfo = 1000565001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         PhysicalDeviceShaderFloat8Features = 1000567000, 
         
         /// <summary>
@@ -5467,6 +5877,26 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        PhysicalDeviceFaultFeaturesKhr = 1000573000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceFaultProperties = 1000573001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DeviceFaultInfoKhr = 1000573002, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DeviceFaultDebugInfo = 1000573003, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         PhysicalDeviceMaintenance8Features = 1000574000, 
         
         /// <summary>
@@ -5488,6 +5918,36 @@ namespace SharpVk
         /// 
         /// </summary>
         ImageAlignmentControlCreateInfo = 1000575002, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceShaderFmaFeatures = 1000579000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PushConstantBankInfo = 1000580000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDevicePushConstantBankFeatures = 1000580001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDevicePushConstantBankProperties = 1000580002, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceRayTracingInvocationReorderFeaturesExt = 1000581000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceRayTracingInvocationReorderPropertiesExt = 1000581001, 
         
         /// <summary>
         /// 
@@ -5542,6 +6002,21 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        NativeBufferOhos = 1000453001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        SwapchainImageCreateInfoOhos = 1000453002, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDevicePresentationPropertiesOhos = 1000453003, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         PhysicalDeviceHdrVividFeatures = 1000590000, 
         
         /// <summary>
@@ -5572,6 +6047,21 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        PhysicalDeviceVideoEncodeFeedback2Features = 1000598000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        VideoEncodeFeedback2Capabilities = 1000598001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        QueryPoolVideoEncodePerPartitionFeedbackCreateInfo = 1000598002, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         ImportMemoryMetalHandleInfo = 1000602000, 
         
         /// <summary>
@@ -5588,6 +6078,51 @@ namespace SharpVk
         /// 
         /// </summary>
         PhysicalDeviceDepthClampZeroOneFeaturesKhr = 1000421000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDevicePerformanceCountersByRegionFeatures = 1000605000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDevicePerformanceCountersByRegionProperties = 1000605001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PerformanceCounterArm = 1000605002, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PerformanceCounterDescriptionArm = 1000605003, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        RenderPassPerformanceCountersByRegionBeginInfo = 1000605004, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceShaderInstrumentationFeatures = 1000607000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceShaderInstrumentationProperties = 1000607001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ShaderInstrumentationCreateInfo = 1000607002, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ShaderInstrumentationMetricDescription = 1000607003, 
         
         /// <summary>
         /// 
@@ -5637,6 +6172,16 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        PhysicalDeviceMultisampledRenderToSwapchainFeatures = 1000616000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        SwapchainFlagsSurfaceCapabilities = 1000616001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         PhysicalDeviceFragmentDensityMapOffsetFeaturesExt = 1000425000, 
         
         /// <summary>
@@ -5652,11 +6197,6 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        RenderingEndInfo = 1000619003, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
         PhysicalDeviceZeroInitializeDeviceMemoryFeatures = 1000620000, 
         
         /// <summary>
@@ -5667,6 +6207,306 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        PhysicalDeviceOpacityMicromapFeaturesKhr = 1000623000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceOpacityMicromapPropertiesKhr = 1000623001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        AccelerationStructureGeometryMicromapData = 1000623002, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        AccelerationStructureTrianglesOpacityMicromapKhr = 1000623003, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceShader64BitIndexingFeatures = 1000627000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceCustomResolveFeatures = 1000628000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        BeginCustomResolveInfo = 1000628001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        CustomResolveCreateInfo = 1000628002, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceDataGraphModelFeatures = 1000629000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DataGraphPipelineBuiltinModelCreateInfo = 1000629001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceMaintenance10Features = 1000630000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceMaintenance10Properties = 1000630001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        RenderingAttachmentFlagsInfo = 1000630002, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        RenderingEndInfoKhr = 1000619003, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ResolveImageModeInfo = 1000630004, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceDataGraphOpticalFlowFeatures = 1000631000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        QueueFamilyDataGraphOpticalFlowProperties = 1000631001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DataGraphOpticalFlowImageFormatInfo = 1000631003, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DataGraphOpticalFlowImageFormatProperties = 1000631004, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DataGraphPipelineOpticalFlowDispatchInfo = 1000631005, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DataGraphPipelineOpticalFlowCreateInfo = 1000631002, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DataGraphPipelineResourceInfoImageLayout = 1000631006, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DataGraphPipelineSingleNodeCreateInfo = 1000631007, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DataGraphPipelineSingleNodeConnection = 1000631008, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceShaderLongVectorFeatures = 1000635000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceShaderLongVectorProperties = 1000635001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         PhysicalDevicePipelineCacheIncrementalModeFeatures = 1000637000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceShaderUniformBufferUnsizedArrayFeatures = 1000642000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ComputeOccupancyPriorityParameters = 1000645000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceComputeOccupancyPriorityFeatures = 1000645001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDevicePipelineLibraryGroupHandlesFeaturesKhr = 1000498000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceMaintenance11Features = 1000657000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        QueueFamilyOptimalImageTransferGranularityProperties = 1000657001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceCooperativeMatrixMaintenance1Features = 1000659000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceCooperativeMatrixInfo2 = 1000659001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        CooperativeMatrixProperties2 = 1000659002, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceShaderSubgroupPartitionedFeatures = 1000662000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        UbmSurfaceCreateInfo = 1000664000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        FormatProperties4 = 1000668000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ImageCreateFlags2CreateInfo = 1000668001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ImageUsageFlags2CreateInfo = 1000668002, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ImageViewUsage2CreateInfo = 1000668003, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceExtendedFlagsFeatures = 1000668004, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ImageStencilUsage2CreateInfo = 1000668005, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        SharedPresentSurfaceCapabilities2 = 1000668006, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceShaderOcpMicroscalingTypesFeatures = 1000672000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceShaderMixedFloatDotProductFeatures = 1000673000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceThrottleHintFeatures = 1000674000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ThrottleHintSubmitInfo = 1000674001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DataGraphPipelineNeuralStatisticsCreateInfo = 1000676000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        DataGraphPipelineSessionNeuralStatisticsCreateInfo = 1000676001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeatures = 1000676002, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDevicePrimitiveRestartIndexFeatures = 1000678000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceImageTilingControlFeatures = 1000687000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ImageTilingControlCreateInfo = 1000687001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceCooperativeMatrixDecodeVectorFeatures = 1000689000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDevicePrivateDataBaseHandleFeatures = 1000707000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceInfoProperties = 1000708000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceBufferDeviceAddressAllocationAlignmentFeatures = 1000709000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        PhysicalDeviceBufferDeviceAddressAllocationAlignmentProperties = 1000709001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        BufferDeviceAddressAlignmentAllocateInfo = 1000709002, 
     }
 }

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -50,7 +50,7 @@ namespace SharpVk.Multivendor
         internal static unsafe ShaderModuleIdentifier MarshalFrom(SharpVk.Interop.Multivendor.ShaderModuleIdentifier* pointer)
         {
             ShaderModuleIdentifier result = default(ShaderModuleIdentifier);
-            result.Identifier = Interop.HeapUtil.MarshalFrom(pointer->Identifier, Constants.MaxShaderModuleIdentifierSize);
+            result.Identifier = Interop.HeapUtil.MarshalFrom(pointer->Identifier, checked((int)Constants.MaxShaderModuleIdentifierSize));
             return result;
         }
     }

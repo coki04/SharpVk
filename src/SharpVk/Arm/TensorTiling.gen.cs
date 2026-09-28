@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -38,5 +38,30 @@ namespace SharpVk.Arm
         /// 
         /// </summary>
         Linear = 1, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Brick16Wide = 1000565000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Brick8Wide = 1000565001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Brick4Wide = 1000565002, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        BlockUInterleaved = 1000565003, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        BlockUInterleaved64k = 1000565004, 
     }
 }

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -82,10 +82,10 @@ namespace SharpVk
         internal static unsafe LayerProperties MarshalFrom(SharpVk.Interop.LayerProperties* pointer)
         {
             LayerProperties result = default(LayerProperties);
-            result.LayerName = Interop.HeapUtil.MarshalStringFrom(pointer->LayerName, Constants.MaxExtensionNameSize, true);
+            result.LayerName = Interop.HeapUtil.MarshalStringFrom(pointer->LayerName, checked((int)Constants.MaxExtensionNameSize), true);
             result.SpecVersion = (Version)(pointer->SpecVersion);
             result.ImplementationVersion = (Version)(pointer->ImplementationVersion);
-            result.Description = Interop.HeapUtil.MarshalStringFrom(pointer->Description, Constants.MaxDescriptionSize, true);
+            result.Description = Interop.HeapUtil.MarshalStringFrom(pointer->Description, checked((int)Constants.MaxDescriptionSize), true);
             return result;
         }
     }

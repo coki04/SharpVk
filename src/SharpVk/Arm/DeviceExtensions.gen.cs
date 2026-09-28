@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -37,6 +37,111 @@ namespace SharpVk.Arm
         /// <param name="extendedHandle">
         /// The Device handle to extend.
         /// </param>
+        /// <param name="tensors">
+        /// </param>
+        public static unsafe SharpVk.Multivendor.HostAddressRange[] GetTensorOpaqueCaptureData(this SharpVk.Device extendedHandle, ArrayProxy<SharpVk.Arm.Tensor>? tensors)
+        {
+            try
+            {
+                SharpVk.Multivendor.HostAddressRange[] result = default(SharpVk.Multivendor.HostAddressRange[]);
+                CommandCache commandCache = default(CommandCache);
+                uint marshalledTensorCount = default(uint);
+                SharpVk.Interop.Arm.Tensor* marshalledTensors = default(SharpVk.Interop.Arm.Tensor*);
+                SharpVk.Interop.Multivendor.HostAddressRange* marshalledDatas = default(SharpVk.Interop.Multivendor.HostAddressRange*);
+                commandCache = extendedHandle.commandCache;
+                marshalledTensorCount = (uint)(Interop.HeapUtil.GetLength(tensors));
+                if (tensors.IsNull())
+                {
+                    marshalledTensors = null;
+                }
+                else
+                {
+                    if (tensors.Value.Contents == ProxyContents.Single)
+                    {
+                        marshalledTensors = (SharpVk.Interop.Arm.Tensor*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Arm.Tensor>());
+                        *(SharpVk.Interop.Arm.Tensor*)(marshalledTensors) = tensors.Value.GetSingleValue()?.handle ?? default(SharpVk.Interop.Arm.Tensor);
+                    }
+                    else
+                    {
+                        var fieldPointer = (SharpVk.Interop.Arm.Tensor*)(Interop.HeapUtil.AllocateAndClear<SharpVk.Interop.Arm.Tensor>(Interop.HeapUtil.GetLength(tensors.Value)).ToPointer());
+                        for(int index = 0; index < (uint)(Interop.HeapUtil.GetLength(tensors.Value)); index++)
+                        {
+                            fieldPointer[index] = tensors.Value[index]?.handle ?? default(SharpVk.Interop.Arm.Tensor);
+                        }
+                        marshalledTensors = fieldPointer;
+                    }
+                }
+                marshalledDatas = (SharpVk.Interop.Multivendor.HostAddressRange*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.HostAddressRange>(marshalledTensorCount));
+                SharpVk.Interop.Arm.VkDeviceGetTensorOpaqueCaptureDataDelegate commandDelegate = commandCache.Cache.vkGetTensorOpaqueCaptureDataARM;
+                Result methodResult = commandDelegate(extendedHandle.handle, marshalledTensorCount, marshalledTensors, marshalledDatas);
+                if (SharpVkException.IsError(methodResult))
+                {
+                    throw SharpVkException.Create(methodResult);
+                }
+                if (marshalledDatas != null)
+                {
+                    var fieldPointer = new SharpVk.Multivendor.HostAddressRange[(uint)(marshalledTensorCount)];
+                    for(int index = 0; index < (uint)(marshalledTensorCount); index++)
+                    {
+                        fieldPointer[index] = SharpVk.Multivendor.HostAddressRange.MarshalFrom(&marshalledDatas[index]);
+                    }
+                    result = fieldPointer;
+                }
+                else
+                {
+                    result = null;
+                }
+                return result;
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The Device handle to extend.
+        /// </param>
+        /// <param name="tensors">
+        /// </param>
+        public static unsafe SharpVk.Multivendor.HostAddressRange GetTensorOpaqueCaptureData(this SharpVk.Device extendedHandle, SharpVk.Arm.Tensor tensors)
+        {
+            try
+            {
+                SharpVk.Multivendor.HostAddressRange result = default(SharpVk.Multivendor.HostAddressRange);
+                CommandCache commandCache = default(CommandCache);
+                uint marshalledTensorCount = default(uint);
+                SharpVk.Interop.Arm.Tensor* marshalledTensors = default(SharpVk.Interop.Arm.Tensor*);
+                SharpVk.Interop.Multivendor.HostAddressRange* marshalledDatas = default(SharpVk.Interop.Multivendor.HostAddressRange*);
+                commandCache = extendedHandle.commandCache;
+                marshalledTensorCount = 1;
+                marshalledTensors = (SharpVk.Interop.Arm.Tensor*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Arm.Tensor>());
+                *marshalledTensors = tensors.handle;
+                marshalledDatas = (SharpVk.Interop.Multivendor.HostAddressRange*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.HostAddressRange>(1));
+                SharpVk.Interop.Arm.VkDeviceGetTensorOpaqueCaptureDataDelegate commandDelegate = commandCache.Cache.vkGetTensorOpaqueCaptureDataARM;
+                Result methodResult = commandDelegate(extendedHandle.handle, marshalledTensorCount, marshalledTensors, marshalledDatas);
+                if (SharpVkException.IsError(methodResult))
+                {
+                    throw SharpVkException.Create(methodResult);
+                }
+                result = SharpVk.Multivendor.HostAddressRange.MarshalFrom(marshalledDatas);
+                return result;
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The Device handle to extend.
+        /// </param>
         /// <param name="flags">
         /// </param>
         /// <param name="description">
@@ -48,12 +153,18 @@ namespace SharpVk.Arm
         /// <param name="opaqueCaptureDescriptorDataCreateInfoExt">
         /// Extension struct
         /// </param>
+        /// <param name="tensorRollingBackingCreateInfoArm">
+        /// Extension struct
+        /// </param>
         /// <param name="externalMemoryTensorCreateInfoArm">
+        /// Extension struct
+        /// </param>
+        /// <param name="opaqueCaptureDataCreateInfoExt">
         /// Extension struct
         /// </param>
         /// <param name="allocator">
         /// </param>
-        public static unsafe SharpVk.Arm.Tensor CreateTensor(this SharpVk.Device extendedHandle, SharpVk.Arm.TensorDescription description, SharpVk.SharingMode sharingMode, ArrayProxy<uint>? queueFamilyIndices, SharpVk.Arm.TensorCreateFlags? flags = default(SharpVk.Arm.TensorCreateFlags?), SharpVk.Multivendor.OpaqueCaptureDescriptorDataCreateInfo? opaqueCaptureDescriptorDataCreateInfoExt = null, SharpVk.Arm.ExternalMemoryTensorCreateInfo? externalMemoryTensorCreateInfoArm = null, SharpVk.AllocationCallbacks? allocator = default(SharpVk.AllocationCallbacks?))
+        public static unsafe SharpVk.Arm.Tensor CreateTensor(this SharpVk.Device extendedHandle, SharpVk.Arm.TensorDescription description, SharpVk.SharingMode sharingMode, ArrayProxy<uint>? queueFamilyIndices, SharpVk.Arm.TensorCreateFlags? flags = default(SharpVk.Arm.TensorCreateFlags?), SharpVk.Multivendor.OpaqueCaptureDescriptorDataCreateInfo? opaqueCaptureDescriptorDataCreateInfoExt = null, SharpVk.Arm.TensorRollingBackingCreateInfo? tensorRollingBackingCreateInfoArm = null, SharpVk.Arm.ExternalMemoryTensorCreateInfo? externalMemoryTensorCreateInfoArm = null, SharpVk.Multivendor.OpaqueCaptureDataCreateInfo? opaqueCaptureDataCreateInfoExt = null, SharpVk.AllocationCallbacks? allocator = default(SharpVk.AllocationCallbacks?))
         {
             try
             {
@@ -71,11 +182,27 @@ namespace SharpVk.Arm
                     extensionPointer->Next = vkTensorCreateInfoARMNextPointer;
                     vkTensorCreateInfoARMNextPointer = extensionPointer;
                 }
+                if (tensorRollingBackingCreateInfoArm != null)
+                {
+                    SharpVk.Interop.Arm.TensorRollingBackingCreateInfo* extensionPointer = default(SharpVk.Interop.Arm.TensorRollingBackingCreateInfo*);
+                    extensionPointer = (SharpVk.Interop.Arm.TensorRollingBackingCreateInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Arm.TensorRollingBackingCreateInfo>());
+                    tensorRollingBackingCreateInfoArm.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkTensorCreateInfoARMNextPointer;
+                    vkTensorCreateInfoARMNextPointer = extensionPointer;
+                }
                 if (externalMemoryTensorCreateInfoArm != null)
                 {
                     SharpVk.Interop.Arm.ExternalMemoryTensorCreateInfo* extensionPointer = default(SharpVk.Interop.Arm.ExternalMemoryTensorCreateInfo*);
                     extensionPointer = (SharpVk.Interop.Arm.ExternalMemoryTensorCreateInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Arm.ExternalMemoryTensorCreateInfo>());
                     externalMemoryTensorCreateInfoArm.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkTensorCreateInfoARMNextPointer;
+                    vkTensorCreateInfoARMNextPointer = extensionPointer;
+                }
+                if (opaqueCaptureDataCreateInfoExt != null)
+                {
+                    SharpVk.Interop.Multivendor.OpaqueCaptureDataCreateInfo* extensionPointer = default(SharpVk.Interop.Multivendor.OpaqueCaptureDataCreateInfo*);
+                    extensionPointer = (SharpVk.Interop.Multivendor.OpaqueCaptureDataCreateInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.OpaqueCaptureDataCreateInfo>());
+                    opaqueCaptureDataCreateInfoExt.Value.MarshalTo(extensionPointer);
                     extensionPointer->Next = vkTensorCreateInfoARMNextPointer;
                     vkTensorCreateInfoARMNextPointer = extensionPointer;
                 }
@@ -492,6 +619,9 @@ namespace SharpVk.Arm
         /// <param name="pipelineCreationFeedbackCreateInfo">
         /// Extension struct
         /// </param>
+        /// <param name="dataGraphPipelineNeuralStatisticsCreateInfoArm">
+        /// Extension struct
+        /// </param>
         /// <param name="dataGraphPipelineCompilerControlCreateInfoArm">
         /// Extension struct
         /// </param>
@@ -504,9 +634,18 @@ namespace SharpVk.Arm
         /// <param name="dataGraphProcessingEngineCreateInfoArm">
         /// Extension struct
         /// </param>
+        /// <param name="dataGraphPipelineBuiltinModelCreateInfoQcom">
+        /// Extension struct
+        /// </param>
+        /// <param name="dataGraphPipelineSingleNodeCreateInfoArm">
+        /// Extension struct
+        /// </param>
+        /// <param name="dataGraphPipelineOpticalFlowCreateInfoArm">
+        /// Extension struct
+        /// </param>
         /// <param name="allocator">
         /// </param>
-        public static unsafe SharpVk.Pipeline CreateDataGraphPipeline(this SharpVk.Device extendedHandle, SharpVk.Khronos.DeferredOperation deferredOperation, SharpVk.PipelineCache pipelineCache, SharpVk.PipelineLayout layout, ArrayProxy<SharpVk.Arm.DataGraphPipelineResourceInfo>? resourceInfos, SharpVk.Khronos.PipelineCreateFlags2? flags = default(SharpVk.Khronos.PipelineCreateFlags2?), SharpVk.ShaderModuleCreateInfo? shaderModuleCreateInfo = null, SharpVk.PipelineCreationFeedbackCreateInfo? pipelineCreationFeedbackCreateInfo = null, SharpVk.Arm.DataGraphPipelineCompilerControlCreateInfo? dataGraphPipelineCompilerControlCreateInfoArm = null, SharpVk.Arm.DataGraphPipelineShaderModuleCreateInfo? dataGraphPipelineShaderModuleCreateInfoArm = null, SharpVk.Arm.DataGraphPipelineIdentifierCreateInfo? dataGraphPipelineIdentifierCreateInfoArm = null, SharpVk.Arm.DataGraphProcessingEngineCreateInfo? dataGraphProcessingEngineCreateInfoArm = null, SharpVk.AllocationCallbacks? allocator = default(SharpVk.AllocationCallbacks?))
+        public static unsafe SharpVk.Pipeline CreateDataGraphPipeline(this SharpVk.Device extendedHandle, SharpVk.Khronos.DeferredOperation deferredOperation, SharpVk.PipelineCache pipelineCache, SharpVk.PipelineLayout layout, ArrayProxy<SharpVk.Arm.DataGraphPipelineResourceInfo>? resourceInfos, SharpVk.PipelineCreateFlags2? flags = default(SharpVk.PipelineCreateFlags2?), SharpVk.ShaderModuleCreateInfo? shaderModuleCreateInfo = null, SharpVk.PipelineCreationFeedbackCreateInfo? pipelineCreationFeedbackCreateInfo = null, SharpVk.Arm.DataGraphPipelineNeuralStatisticsCreateInfo? dataGraphPipelineNeuralStatisticsCreateInfoArm = null, SharpVk.Arm.DataGraphPipelineCompilerControlCreateInfo? dataGraphPipelineCompilerControlCreateInfoArm = null, SharpVk.Arm.DataGraphPipelineShaderModuleCreateInfo? dataGraphPipelineShaderModuleCreateInfoArm = null, SharpVk.Arm.DataGraphPipelineIdentifierCreateInfo? dataGraphPipelineIdentifierCreateInfoArm = null, SharpVk.Arm.DataGraphProcessingEngineCreateInfo? dataGraphProcessingEngineCreateInfoArm = null, SharpVk.Qcom.DataGraphPipelineBuiltinModelCreateInfo? dataGraphPipelineBuiltinModelCreateInfoQcom = null, SharpVk.Arm.DataGraphPipelineSingleNodeCreateInfo? dataGraphPipelineSingleNodeCreateInfoArm = null, SharpVk.Arm.DataGraphPipelineOpticalFlowCreateInfo? dataGraphPipelineOpticalFlowCreateInfoArm = null, SharpVk.AllocationCallbacks? allocator = default(SharpVk.AllocationCallbacks?))
         {
             try
             {
@@ -530,6 +669,14 @@ namespace SharpVk.Arm
                     SharpVk.Interop.PipelineCreationFeedbackCreateInfo* extensionPointer = default(SharpVk.Interop.PipelineCreationFeedbackCreateInfo*);
                     extensionPointer = (SharpVk.Interop.PipelineCreationFeedbackCreateInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.PipelineCreationFeedbackCreateInfo>());
                     pipelineCreationFeedbackCreateInfo.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkDataGraphPipelineCreateInfoARMNextPointer;
+                    vkDataGraphPipelineCreateInfoARMNextPointer = extensionPointer;
+                }
+                if (dataGraphPipelineNeuralStatisticsCreateInfoArm != null)
+                {
+                    SharpVk.Interop.Arm.DataGraphPipelineNeuralStatisticsCreateInfo* extensionPointer = default(SharpVk.Interop.Arm.DataGraphPipelineNeuralStatisticsCreateInfo*);
+                    extensionPointer = (SharpVk.Interop.Arm.DataGraphPipelineNeuralStatisticsCreateInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Arm.DataGraphPipelineNeuralStatisticsCreateInfo>());
+                    dataGraphPipelineNeuralStatisticsCreateInfoArm.Value.MarshalTo(extensionPointer);
                     extensionPointer->Next = vkDataGraphPipelineCreateInfoARMNextPointer;
                     vkDataGraphPipelineCreateInfoARMNextPointer = extensionPointer;
                 }
@@ -565,6 +712,30 @@ namespace SharpVk.Arm
                     extensionPointer->Next = vkDataGraphPipelineCreateInfoARMNextPointer;
                     vkDataGraphPipelineCreateInfoARMNextPointer = extensionPointer;
                 }
+                if (dataGraphPipelineBuiltinModelCreateInfoQcom != null)
+                {
+                    SharpVk.Interop.Qcom.DataGraphPipelineBuiltinModelCreateInfo* extensionPointer = default(SharpVk.Interop.Qcom.DataGraphPipelineBuiltinModelCreateInfo*);
+                    extensionPointer = (SharpVk.Interop.Qcom.DataGraphPipelineBuiltinModelCreateInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Qcom.DataGraphPipelineBuiltinModelCreateInfo>());
+                    dataGraphPipelineBuiltinModelCreateInfoQcom.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkDataGraphPipelineCreateInfoARMNextPointer;
+                    vkDataGraphPipelineCreateInfoARMNextPointer = extensionPointer;
+                }
+                if (dataGraphPipelineSingleNodeCreateInfoArm != null)
+                {
+                    SharpVk.Interop.Arm.DataGraphPipelineSingleNodeCreateInfo* extensionPointer = default(SharpVk.Interop.Arm.DataGraphPipelineSingleNodeCreateInfo*);
+                    extensionPointer = (SharpVk.Interop.Arm.DataGraphPipelineSingleNodeCreateInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Arm.DataGraphPipelineSingleNodeCreateInfo>());
+                    dataGraphPipelineSingleNodeCreateInfoArm.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkDataGraphPipelineCreateInfoARMNextPointer;
+                    vkDataGraphPipelineCreateInfoARMNextPointer = extensionPointer;
+                }
+                if (dataGraphPipelineOpticalFlowCreateInfoArm != null)
+                {
+                    SharpVk.Interop.Arm.DataGraphPipelineOpticalFlowCreateInfo* extensionPointer = default(SharpVk.Interop.Arm.DataGraphPipelineOpticalFlowCreateInfo*);
+                    extensionPointer = (SharpVk.Interop.Arm.DataGraphPipelineOpticalFlowCreateInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Arm.DataGraphPipelineOpticalFlowCreateInfo>());
+                    dataGraphPipelineOpticalFlowCreateInfoArm.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkDataGraphPipelineCreateInfoARMNextPointer;
+                    vkDataGraphPipelineCreateInfoARMNextPointer = extensionPointer;
+                }
                 commandCache = extendedHandle.commandCache;
                 marshalledCreateInfoCount = 1;
                 marshalledCreateInfos = (SharpVk.Interop.Arm.DataGraphPipelineCreateInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Arm.DataGraphPipelineCreateInfo>());
@@ -576,7 +747,7 @@ namespace SharpVk.Arm
                 }
                 else
                 {
-                    marshalledCreateInfos->Flags = default(SharpVk.Khronos.PipelineCreateFlags2);
+                    marshalledCreateInfos->Flags = default(SharpVk.PipelineCreateFlags2);
                 }
                 marshalledCreateInfos->Layout = layout?.handle ?? default(SharpVk.Interop.PipelineLayout);
                 marshalledCreateInfos->ResourceInfoCount = (uint)(Interop.HeapUtil.GetLength(resourceInfos));
@@ -636,9 +807,12 @@ namespace SharpVk.Arm
         /// </param>
         /// <param name="dataGraphPipeline">
         /// </param>
+        /// <param name="dataGraphPipelineSessionNeuralStatisticsCreateInfoArm">
+        /// Extension struct
+        /// </param>
         /// <param name="allocator">
         /// </param>
-        public static unsafe SharpVk.Arm.DataGraphPipelineSession CreateDataGraphPipelineSession(this SharpVk.Device extendedHandle, SharpVk.Pipeline dataGraphPipeline, SharpVk.Arm.DataGraphPipelineSessionCreateFlags? flags = default(SharpVk.Arm.DataGraphPipelineSessionCreateFlags?), SharpVk.AllocationCallbacks? allocator = default(SharpVk.AllocationCallbacks?))
+        public static unsafe SharpVk.Arm.DataGraphPipelineSession CreateDataGraphPipelineSession(this SharpVk.Device extendedHandle, SharpVk.Pipeline dataGraphPipeline, SharpVk.Arm.DataGraphPipelineSessionCreateFlags? flags = default(SharpVk.Arm.DataGraphPipelineSessionCreateFlags?), SharpVk.Arm.DataGraphPipelineSessionNeuralStatisticsCreateInfo? dataGraphPipelineSessionNeuralStatisticsCreateInfoArm = null, SharpVk.AllocationCallbacks? allocator = default(SharpVk.AllocationCallbacks?))
         {
             try
             {
@@ -648,6 +822,14 @@ namespace SharpVk.Arm
                 void* vkDataGraphPipelineSessionCreateInfoARMNextPointer = default(void*);
                 SharpVk.Interop.AllocationCallbacks* marshalledAllocator = default(SharpVk.Interop.AllocationCallbacks*);
                 SharpVk.Interop.Arm.DataGraphPipelineSession marshalledSession = default(SharpVk.Interop.Arm.DataGraphPipelineSession);
+                if (dataGraphPipelineSessionNeuralStatisticsCreateInfoArm != null)
+                {
+                    SharpVk.Interop.Arm.DataGraphPipelineSessionNeuralStatisticsCreateInfo* extensionPointer = default(SharpVk.Interop.Arm.DataGraphPipelineSessionNeuralStatisticsCreateInfo*);
+                    extensionPointer = (SharpVk.Interop.Arm.DataGraphPipelineSessionNeuralStatisticsCreateInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Arm.DataGraphPipelineSessionNeuralStatisticsCreateInfo>());
+                    dataGraphPipelineSessionNeuralStatisticsCreateInfoArm.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkDataGraphPipelineSessionCreateInfoARMNextPointer;
+                    vkDataGraphPipelineSessionCreateInfoARMNextPointer = extensionPointer;
+                }
                 commandCache = extendedHandle.commandCache;
                 marshalledCreateInfo = (SharpVk.Interop.Arm.DataGraphPipelineSessionCreateInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Arm.DataGraphPipelineSessionCreateInfo>());
                 marshalledCreateInfo->SType = StructureType.DataGraphPipelineSessionCreateInfo;
@@ -942,6 +1124,52 @@ namespace SharpVk.Arm
                     throw SharpVkException.Create(methodResult);
                 }
                 result = SharpVk.Arm.DataGraphPipelinePropertyQueryResult.MarshalFrom(marshalledProperties);
+                return result;
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The Device handle to extend.
+        /// </param>
+        /// <param name="allocator">
+        /// </param>
+        public static unsafe SharpVk.Arm.ShaderInstrumentation CreateShaderInstrumentation(this SharpVk.Device extendedHandle, SharpVk.AllocationCallbacks? allocator = default(SharpVk.AllocationCallbacks?))
+        {
+            try
+            {
+                SharpVk.Arm.ShaderInstrumentation result = default(SharpVk.Arm.ShaderInstrumentation);
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.Arm.ShaderInstrumentationCreateInfo* marshalledCreateInfo = default(SharpVk.Interop.Arm.ShaderInstrumentationCreateInfo*);
+                void* vkShaderInstrumentationCreateInfoARMNextPointer = default(void*);
+                SharpVk.Interop.AllocationCallbacks* marshalledAllocator = default(SharpVk.Interop.AllocationCallbacks*);
+                SharpVk.Interop.Arm.ShaderInstrumentation marshalledInstrumentation = default(SharpVk.Interop.Arm.ShaderInstrumentation);
+                commandCache = extendedHandle.commandCache;
+                marshalledCreateInfo = (SharpVk.Interop.Arm.ShaderInstrumentationCreateInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Arm.ShaderInstrumentationCreateInfo>());
+                marshalledCreateInfo->SType = StructureType.ShaderInstrumentationCreateInfo;
+                marshalledCreateInfo->Next = vkShaderInstrumentationCreateInfoARMNextPointer;
+                if (allocator != null)
+                {
+                    marshalledAllocator = (SharpVk.Interop.AllocationCallbacks*)(Interop.HeapUtil.Allocate<SharpVk.Interop.AllocationCallbacks>());
+                    allocator.Value.MarshalTo(marshalledAllocator);
+                }
+                else
+                {
+                    marshalledAllocator = default(SharpVk.Interop.AllocationCallbacks*);
+                }
+                SharpVk.Interop.Arm.VkDeviceCreateShaderInstrumentationDelegate commandDelegate = commandCache.Cache.vkCreateShaderInstrumentationARM;
+                Result methodResult = commandDelegate(extendedHandle.handle, marshalledCreateInfo, marshalledAllocator, &marshalledInstrumentation);
+                if (SharpVkException.IsError(methodResult))
+                {
+                    throw SharpVkException.Create(methodResult);
+                }
+                result = new SharpVk.Arm.ShaderInstrumentation(extendedHandle, marshalledInstrumentation);
                 return result;
             }
             finally

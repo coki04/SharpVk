@@ -42,10 +42,18 @@ namespace SharpVk.Generator.Generation
 
                 List<string> lookupScopes = new List<string>();
                 if (command.Extensions != null)
-                    foreach (var extension in command.Extensions)
-                        lookupScopes.Add(this.extensions[extension].Scope);
+                {
+                    bool lookupInstance = command.Params.Count(x => x.Type.VkName == "VkInstance") > 0 ||
+                                          command.Params.Count(x => x.Type.VkName == "VkPhysicalDevice") > 0;
+                    if (lookupInstance)
+                        lookupScopes.Add("instance");
+                    else
+                        lookupScopes.Add("device");
+                }
                 else
+                {
                     lookupScopes.Add("");
+                }
 
                 services.AddSingleton(new DelegateDefinition
                 {

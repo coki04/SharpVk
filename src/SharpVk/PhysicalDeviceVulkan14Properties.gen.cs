@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -293,7 +293,7 @@ namespace SharpVk
             {
                 result.CopyDestinationLayouts = null;
             }
-            result.OptimalTilingLayoutUUID = new Guid(Interop.HeapUtil.MarshalFrom(pointer->OptimalTilingLayoutUUID, Constants.UuidSize));
+            result.OptimalTilingLayoutUUID = new Guid(Interop.HeapUtil.MarshalFrom(pointer->OptimalTilingLayoutUUID, checked((int)Constants.UuidSize)));
             result.IdenticalMemoryTypeRequirements = pointer->IdenticalMemoryTypeRequirements;
             return result;
         }

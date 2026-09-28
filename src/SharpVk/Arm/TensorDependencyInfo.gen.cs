@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -36,16 +36,7 @@ namespace SharpVk.Arm
         /// <summary>
         /// 
         /// </summary>
-        public uint TensorMemoryBarrierCount
-        {
-            get;
-            set;
-        }
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        public SharpVk.Arm.TensorMemoryBarrier TensorMemoryBarriers
+        public SharpVk.Arm.TensorMemoryBarrier[] TensorMemoryBarriers
         {
             get;
             set;
@@ -60,9 +51,20 @@ namespace SharpVk.Arm
         {
             pointer->SType = StructureType.TensorDependencyInfo;
             pointer->Next = null;
-            pointer->TensorMemoryBarrierCount = this.TensorMemoryBarrierCount;
-            pointer->TensorMemoryBarriers = (SharpVk.Interop.Arm.TensorMemoryBarrier*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Arm.TensorMemoryBarrier>());
-            this.TensorMemoryBarriers.MarshalTo(pointer->TensorMemoryBarriers);
+            pointer->TensorMemoryBarrierCount = (uint)(Interop.HeapUtil.GetLength(this.TensorMemoryBarriers));
+            if (this.TensorMemoryBarriers != null)
+            {
+                var fieldPointer = (SharpVk.Interop.Arm.TensorMemoryBarrier*)(Interop.HeapUtil.AllocateAndClear<SharpVk.Interop.Arm.TensorMemoryBarrier>(this.TensorMemoryBarriers.Length).ToPointer());
+                for(int index = 0; index < (uint)(this.TensorMemoryBarriers.Length); index++)
+                {
+                    this.TensorMemoryBarriers[index].MarshalTo(&fieldPointer[index]);
+                }
+                pointer->TensorMemoryBarriers = fieldPointer;
+            }
+            else
+            {
+                pointer->TensorMemoryBarriers = null;
+            }
         }
     }
 }

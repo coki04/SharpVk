@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -162,7 +162,7 @@ namespace SharpVk.NVidia
         /// <summary>
         /// 
         /// </summary>
-        public ulong GeometryIndexAndFlagsBuffer
+        public ulong? GeometryIndexAndFlagsBuffer
         {
             get;
             set;
@@ -171,7 +171,7 @@ namespace SharpVk.NVidia
         /// <summary>
         /// 
         /// </summary>
-        public ulong OpacityMicromapArray
+        public ulong? OpacityMicromapArray
         {
             get;
             set;
@@ -180,7 +180,7 @@ namespace SharpVk.NVidia
         /// <summary>
         /// 
         /// </summary>
-        public ulong OpacityMicromapIndexBuffer
+        public ulong? OpacityMicromapIndexBuffer
         {
             get;
             set;
@@ -241,9 +241,30 @@ namespace SharpVk.NVidia
             pointer->OpacityMicromapIndexBufferStride = this.OpacityMicromapIndexBufferStride;
             pointer->IndexBuffer = this.IndexBuffer;
             pointer->VertexBuffer = this.VertexBuffer;
-            pointer->GeometryIndexAndFlagsBuffer = this.GeometryIndexAndFlagsBuffer;
-            pointer->OpacityMicromapArray = this.OpacityMicromapArray;
-            pointer->OpacityMicromapIndexBuffer = this.OpacityMicromapIndexBuffer;
+            if (this.GeometryIndexAndFlagsBuffer != null)
+            {
+                pointer->GeometryIndexAndFlagsBuffer = this.GeometryIndexAndFlagsBuffer.Value;
+            }
+            else
+            {
+                pointer->GeometryIndexAndFlagsBuffer = default(ulong);
+            }
+            if (this.OpacityMicromapArray != null)
+            {
+                pointer->OpacityMicromapArray = this.OpacityMicromapArray.Value;
+            }
+            else
+            {
+                pointer->OpacityMicromapArray = default(ulong);
+            }
+            if (this.OpacityMicromapIndexBuffer != null)
+            {
+                pointer->OpacityMicromapIndexBuffer = this.OpacityMicromapIndexBuffer.Value;
+            }
+            else
+            {
+                pointer->OpacityMicromapIndexBuffer = default(ulong);
+            }
         }
     }
 }

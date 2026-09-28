@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -45,7 +45,7 @@ namespace SharpVk.Multivendor
         /// <summary>
         /// 
         /// </summary>
-        public SharpVk.Multivendor.DeviceFaultAddressInfo? AddressInfos
+        public SharpVk.Khronos.DeviceFaultAddressInfo? AddressInfos
         {
             get;
             set;
@@ -54,7 +54,7 @@ namespace SharpVk.Multivendor
         /// <summary>
         /// 
         /// </summary>
-        public SharpVk.Multivendor.DeviceFaultVendorInfo? VendorInfos
+        public SharpVk.Khronos.DeviceFaultVendorInfo? VendorInfos
         {
             get;
             set;
@@ -77,7 +77,7 @@ namespace SharpVk.Multivendor
         internal static unsafe DeviceFaultInfo MarshalFrom(SharpVk.Interop.Multivendor.DeviceFaultInfo* pointer)
         {
             DeviceFaultInfo result = default(DeviceFaultInfo);
-            result.Description = Interop.HeapUtil.MarshalStringFrom(pointer->Description, Constants.MaxDescriptionSize, true);
+            result.Description = Interop.HeapUtil.MarshalStringFrom(pointer->Description, checked((int)Constants.MaxDescriptionSize), true);
             if (pointer->AddressInfos != null)
             {
                 result.AddressInfos = *pointer->AddressInfos;
@@ -88,7 +88,7 @@ namespace SharpVk.Multivendor
             }
             if (pointer->VendorInfos != null)
             {
-                result.VendorInfos = SharpVk.Multivendor.DeviceFaultVendorInfo.MarshalFrom(pointer->VendorInfos);
+                result.VendorInfos = SharpVk.Khronos.DeviceFaultVendorInfo.MarshalFrom(pointer->VendorInfos);
             }
             else
             {

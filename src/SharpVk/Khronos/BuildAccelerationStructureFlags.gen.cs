@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -68,16 +68,6 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
-        AllowOpacityMicromapUpdateExt = 1 << 6, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        AllowDisableOpacityMicromapsExt = 1 << 7, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
         AllowOpacityMicromapDataUpdateExt = 1 << 8, 
         
         /// <summary>
@@ -94,5 +84,35 @@ namespace SharpVk.Khronos
         /// 
         /// </summary>
         AllowClusterOpacityMicromaps = 1 << 12, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        AllowOpacityMicromapUpdateKhr = 1 << 6, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        AllowDisableOpacityMicromapsKhr = 1 << 7, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        MicromapLossy = 1 << 10, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved15 = 1 << 15, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved14 = 1 << 14, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved13 = 1 << 13, 
     }
 }

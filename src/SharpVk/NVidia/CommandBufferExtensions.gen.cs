@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -706,158 +706,6 @@ namespace SharpVk.NVidia
         /// <param name="extendedHandle">
         /// The CommandBuffer handle to extend.
         /// </param>
-        /// <param name="copyBufferAddress">
-        /// </param>
-        /// <param name="copyCount">
-        /// </param>
-        /// <param name="stride">
-        /// </param>
-        public static unsafe void CopyMemoryIndirect(this SharpVk.CommandBuffer extendedHandle, ulong copyBufferAddress, uint copyCount, uint stride)
-        {
-            try
-            {
-                CommandCache commandCache = default(CommandCache);
-                commandCache = extendedHandle.commandCache;
-                SharpVk.Interop.NVidia.VkCommandBufferCopyMemoryIndirectDelegate commandDelegate = commandCache.Cache.vkCmdCopyMemoryIndirectNV;
-                commandDelegate(extendedHandle.handle, copyBufferAddress, copyCount, stride);
-            }
-            finally
-            {
-                Interop.HeapUtil.FreeAll();
-            }
-        }
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="extendedHandle">
-        /// The CommandBuffer handle to extend.
-        /// </param>
-        /// <param name="copyBufferAddress">
-        /// </param>
-        /// <param name="stride">
-        /// </param>
-        /// <param name="destinationImage">
-        /// </param>
-        /// <param name="destinationImageLayout">
-        /// </param>
-        /// <param name="imageSubresources">
-        /// </param>
-        public static unsafe void CopyMemoryToImageIndirect(this SharpVk.CommandBuffer extendedHandle, ulong copyBufferAddress, uint stride, SharpVk.Image destinationImage, SharpVk.ImageLayout destinationImageLayout, ArrayProxy<SharpVk.ImageSubresourceLayers>? imageSubresources)
-        {
-            try
-            {
-                CommandCache commandCache = default(CommandCache);
-                SharpVk.ImageSubresourceLayers* marshalledImageSubresources = default(SharpVk.ImageSubresourceLayers*);
-                commandCache = extendedHandle.commandCache;
-                if (imageSubresources.IsNull())
-                {
-                    marshalledImageSubresources = null;
-                }
-                else
-                {
-                    if (imageSubresources.Value.Contents == ProxyContents.Single)
-                    {
-                        marshalledImageSubresources = (SharpVk.ImageSubresourceLayers*)(Interop.HeapUtil.Allocate<SharpVk.ImageSubresourceLayers>());
-                        *(SharpVk.ImageSubresourceLayers*)(marshalledImageSubresources) = imageSubresources.Value.GetSingleValue();
-                    }
-                    else
-                    {
-                        var fieldPointer = (SharpVk.ImageSubresourceLayers*)(Interop.HeapUtil.AllocateAndClear<SharpVk.ImageSubresourceLayers>(Interop.HeapUtil.GetLength(imageSubresources.Value)).ToPointer());
-                        for(int index = 0; index < (uint)(Interop.HeapUtil.GetLength(imageSubresources.Value)); index++)
-                        {
-                            fieldPointer[index] = imageSubresources.Value[index];
-                        }
-                        marshalledImageSubresources = fieldPointer;
-                    }
-                }
-                SharpVk.Interop.NVidia.VkCommandBufferCopyMemoryToImageIndirectDelegate commandDelegate = commandCache.Cache.vkCmdCopyMemoryToImageIndirectNV;
-                commandDelegate(extendedHandle.handle, copyBufferAddress, (uint)(Interop.HeapUtil.GetLength(imageSubresources)), stride, destinationImage?.handle ?? default(SharpVk.Interop.Image), destinationImageLayout, marshalledImageSubresources);
-            }
-            finally
-            {
-                Interop.HeapUtil.FreeAll();
-            }
-        }
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="extendedHandle">
-        /// The CommandBuffer handle to extend.
-        /// </param>
-        /// <param name="decompressMemoryRegions">
-        /// </param>
-        public static unsafe void DecompressMemory(this SharpVk.CommandBuffer extendedHandle, ArrayProxy<SharpVk.NVidia.DecompressMemoryRegion>? decompressMemoryRegions)
-        {
-            try
-            {
-                CommandCache commandCache = default(CommandCache);
-                SharpVk.NVidia.DecompressMemoryRegion* marshalledDecompressMemoryRegions = default(SharpVk.NVidia.DecompressMemoryRegion*);
-                commandCache = extendedHandle.commandCache;
-                if (decompressMemoryRegions.IsNull())
-                {
-                    marshalledDecompressMemoryRegions = null;
-                }
-                else
-                {
-                    if (decompressMemoryRegions.Value.Contents == ProxyContents.Single)
-                    {
-                        marshalledDecompressMemoryRegions = (SharpVk.NVidia.DecompressMemoryRegion*)(Interop.HeapUtil.Allocate<SharpVk.NVidia.DecompressMemoryRegion>());
-                        *(SharpVk.NVidia.DecompressMemoryRegion*)(marshalledDecompressMemoryRegions) = decompressMemoryRegions.Value.GetSingleValue();
-                    }
-                    else
-                    {
-                        var fieldPointer = (SharpVk.NVidia.DecompressMemoryRegion*)(Interop.HeapUtil.AllocateAndClear<SharpVk.NVidia.DecompressMemoryRegion>(Interop.HeapUtil.GetLength(decompressMemoryRegions.Value)).ToPointer());
-                        for(int index = 0; index < (uint)(Interop.HeapUtil.GetLength(decompressMemoryRegions.Value)); index++)
-                        {
-                            fieldPointer[index] = decompressMemoryRegions.Value[index];
-                        }
-                        marshalledDecompressMemoryRegions = fieldPointer;
-                    }
-                }
-                SharpVk.Interop.NVidia.VkCommandBufferDecompressMemoryDelegate commandDelegate = commandCache.Cache.vkCmdDecompressMemoryNV;
-                commandDelegate(extendedHandle.handle, (uint)(Interop.HeapUtil.GetLength(decompressMemoryRegions)), marshalledDecompressMemoryRegions);
-            }
-            finally
-            {
-                Interop.HeapUtil.FreeAll();
-            }
-        }
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="extendedHandle">
-        /// The CommandBuffer handle to extend.
-        /// </param>
-        /// <param name="indirectCommandsAddress">
-        /// </param>
-        /// <param name="indirectCommandsCountAddress">
-        /// </param>
-        /// <param name="stride">
-        /// </param>
-        public static unsafe void DecompressMemoryIndirectCount(this SharpVk.CommandBuffer extendedHandle, ulong indirectCommandsAddress, ulong indirectCommandsCountAddress, uint stride)
-        {
-            try
-            {
-                CommandCache commandCache = default(CommandCache);
-                commandCache = extendedHandle.commandCache;
-                SharpVk.Interop.NVidia.VkCommandBufferDecompressMemoryIndirectCountDelegate commandDelegate = commandCache.Cache.vkCmdDecompressMemoryIndirectCountNV;
-                commandDelegate(extendedHandle.handle, indirectCommandsAddress, indirectCommandsCountAddress, stride);
-            }
-            finally
-            {
-                Interop.HeapUtil.FreeAll();
-            }
-        }
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="extendedHandle">
-        /// The CommandBuffer handle to extend.
-        /// </param>
         /// <param name="pipelineBindPoint">
         /// </param>
         /// <param name="pipeline">
@@ -1271,6 +1119,32 @@ namespace SharpVk.NVidia
                 buildInfo.MarshalTo(marshalledBuildInfo);
                 SharpVk.Interop.NVidia.VkCommandBufferBuildPartitionedAccelerationStructuresDelegate commandDelegate = commandCache.Cache.vkCmdBuildPartitionedAccelerationStructuresNV;
                 commandDelegate(extendedHandle.handle, marshalledBuildInfo);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The CommandBuffer handle to extend.
+        /// </param>
+        /// <param name="parameters">
+        /// </param>
+        public static unsafe void SetComputeOccupancyPriority(this SharpVk.CommandBuffer extendedHandle, SharpVk.NVidia.ComputeOccupancyPriorityParameters parameters)
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.NVidia.ComputeOccupancyPriorityParameters* marshalledParameters = default(SharpVk.Interop.NVidia.ComputeOccupancyPriorityParameters*);
+                commandCache = extendedHandle.commandCache;
+                marshalledParameters = (SharpVk.Interop.NVidia.ComputeOccupancyPriorityParameters*)(Interop.HeapUtil.Allocate<SharpVk.Interop.NVidia.ComputeOccupancyPriorityParameters>());
+                parameters.MarshalTo(marshalledParameters);
+                SharpVk.Interop.NVidia.VkCommandBufferSetComputeOccupancyPriorityDelegate commandDelegate = commandCache.Cache.vkCmdSetComputeOccupancyPriorityNV;
+                commandDelegate(extendedHandle.handle, marshalledParameters);
             }
             finally
             {

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -48,17 +48,17 @@ namespace SharpVk.Multivendor
         /// <summary>
         /// 
         /// </summary>
-        Reserved10 = 1 << 10, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        Reserved11 = 1 << 11, 
+        DescriptorHeap = 1 << 10, 
         
         /// <summary>
         /// 
         /// </summary>
         Reserved16 = 1 << 16, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        InstrumentShader = 1 << 11, 
         
         /// <summary>
         /// 
@@ -108,21 +108,16 @@ namespace SharpVk.Multivendor
         /// <summary>
         /// 
         /// </summary>
-        Reserved12 = 1 << 12, 
+        OpacityMicromapDisallowMixedSpecialIndex = 1 << 12, 
         
         /// <summary>
         /// 
         /// </summary>
-        Reserved13 = 1 << 13, 
+        ShaderCreate64BitIndexing = 1 << 15, 
         
         /// <summary>
         /// 
         /// </summary>
-        Reserved14 = 1 << 14, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        Reserved15 = 1 << 15, 
+        IndependentSets = 1 << 18, 
     }
 }

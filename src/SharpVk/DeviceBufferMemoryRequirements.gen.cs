@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -49,7 +49,7 @@ namespace SharpVk
         /// </param>
         internal unsafe void MarshalTo(SharpVk.Interop.DeviceBufferMemoryRequirements* pointer)
         {
-            pointer->SType = StructureType.DeviceBufferMemoryRequirementsVersion;
+            pointer->SType = StructureType.DeviceBufferMemoryRequirementsBase;
             pointer->Next = null;
             pointer->CreateInfo = (SharpVk.Interop.BufferCreateInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.BufferCreateInfo>());
             this.CreateInfo.MarshalTo(pointer->CreateInfo);

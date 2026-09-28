@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -601,6 +601,84 @@ namespace SharpVk.Multivendor
         /// <param name="extendedHandle">
         /// The CommandBuffer handle to extend.
         /// </param>
+        /// <param name="bindInfo">
+        /// </param>
+        public static unsafe void BindSamplerHeap(this SharpVk.CommandBuffer extendedHandle, SharpVk.Multivendor.BindHeapInfo bindInfo)
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.Multivendor.BindHeapInfo* marshalledBindInfo = default(SharpVk.Interop.Multivendor.BindHeapInfo*);
+                commandCache = extendedHandle.commandCache;
+                marshalledBindInfo = (SharpVk.Interop.Multivendor.BindHeapInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.BindHeapInfo>());
+                bindInfo.MarshalTo(marshalledBindInfo);
+                SharpVk.Interop.Multivendor.VkCommandBufferBindSamplerHeapDelegate commandDelegate = commandCache.Cache.vkCmdBindSamplerHeapEXT;
+                commandDelegate(extendedHandle.handle, marshalledBindInfo);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The CommandBuffer handle to extend.
+        /// </param>
+        /// <param name="bindInfo">
+        /// </param>
+        public static unsafe void BindResourceHeap(this SharpVk.CommandBuffer extendedHandle, SharpVk.Multivendor.BindHeapInfo bindInfo)
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.Multivendor.BindHeapInfo* marshalledBindInfo = default(SharpVk.Interop.Multivendor.BindHeapInfo*);
+                commandCache = extendedHandle.commandCache;
+                marshalledBindInfo = (SharpVk.Interop.Multivendor.BindHeapInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.BindHeapInfo>());
+                bindInfo.MarshalTo(marshalledBindInfo);
+                SharpVk.Interop.Multivendor.VkCommandBufferBindResourceHeapDelegate commandDelegate = commandCache.Cache.vkCmdBindResourceHeapEXT;
+                commandDelegate(extendedHandle.handle, marshalledBindInfo);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The CommandBuffer handle to extend.
+        /// </param>
+        /// <param name="pushDataInfo">
+        /// </param>
+        public static unsafe void PushData(this SharpVk.CommandBuffer extendedHandle, SharpVk.Multivendor.PushDataInfo pushDataInfo)
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.Multivendor.PushDataInfo* marshalledPushDataInfo = default(SharpVk.Interop.Multivendor.PushDataInfo*);
+                commandCache = extendedHandle.commandCache;
+                marshalledPushDataInfo = (SharpVk.Interop.Multivendor.PushDataInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.PushDataInfo>());
+                pushDataInfo.MarshalTo(marshalledPushDataInfo);
+                SharpVk.Interop.Multivendor.VkCommandBufferPushDataDelegate commandDelegate = commandCache.Cache.vkCmdPushDataEXT;
+                commandDelegate(extendedHandle.handle, marshalledPushDataInfo);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The CommandBuffer handle to extend.
+        /// </param>
         /// <param name="sampleLocationsInfo">
         /// </param>
         public static unsafe void SetSampleLocations(this SharpVk.CommandBuffer extendedHandle, SharpVk.Multivendor.SampleLocationsInfo sampleLocationsInfo)
@@ -787,6 +865,282 @@ namespace SharpVk.Multivendor
                 commandCache = extendedHandle.commandCache;
                 SharpVk.Interop.Multivendor.VkCommandBufferBindDescriptorBufferEmbeddedSamplersDelegate commandDelegate = commandCache.Cache.vkCmdBindDescriptorBufferEmbeddedSamplersEXT;
                 commandDelegate(extendedHandle.handle, pipelineBindPoint, layout?.handle ?? default(SharpVk.Interop.PipelineLayout), set);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The CommandBuffer handle to extend.
+        /// </param>
+        /// <param name="addressRange">
+        /// </param>
+        /// <param name="addressFlags">
+        /// </param>
+        /// <param name="flags">
+        /// </param>
+        public static unsafe void BeginConditionalRendering2(this SharpVk.CommandBuffer extendedHandle, SharpVk.Khronos.DeviceAddressRange addressRange, SharpVk.Khronos.AddressCommandFlags? addressFlags = default(SharpVk.Khronos.AddressCommandFlags?), SharpVk.Multivendor.ConditionalRenderingFlags? flags = default(SharpVk.Multivendor.ConditionalRenderingFlags?))
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.Multivendor.ConditionalRenderingBeginInfo2* marshalledConditionalRenderingBegin = default(SharpVk.Interop.Multivendor.ConditionalRenderingBeginInfo2*);
+                void* vkConditionalRenderingBeginInfo2EXTNextPointer = default(void*);
+                commandCache = extendedHandle.commandCache;
+                marshalledConditionalRenderingBegin = (SharpVk.Interop.Multivendor.ConditionalRenderingBeginInfo2*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.ConditionalRenderingBeginInfo2>());
+                marshalledConditionalRenderingBegin->SType = StructureType.ConditionalRenderingBeginInfo2;
+                marshalledConditionalRenderingBegin->Next = vkConditionalRenderingBeginInfo2EXTNextPointer;
+                marshalledConditionalRenderingBegin->AddressRange = addressRange;
+                if (addressFlags != null)
+                {
+                    marshalledConditionalRenderingBegin->AddressFlags = addressFlags.Value;
+                }
+                else
+                {
+                    marshalledConditionalRenderingBegin->AddressFlags = default(SharpVk.Khronos.AddressCommandFlags);
+                }
+                if (flags != null)
+                {
+                    marshalledConditionalRenderingBegin->Flags = flags.Value;
+                }
+                else
+                {
+                    marshalledConditionalRenderingBegin->Flags = default(SharpVk.Multivendor.ConditionalRenderingFlags);
+                }
+                SharpVk.Interop.Multivendor.VkCommandBufferBeginConditionalRendering2Delegate commandDelegate = commandCache.Cache.vkCmdBeginConditionalRendering2EXT;
+                commandDelegate(extendedHandle.handle, marshalledConditionalRenderingBegin);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The CommandBuffer handle to extend.
+        /// </param>
+        /// <param name="firstBinding">
+        /// </param>
+        /// <param name="bindingInfos">
+        /// </param>
+        public static unsafe void BindTransformFeedbackBuffers2(this SharpVk.CommandBuffer extendedHandle, uint firstBinding, ArrayProxy<SharpVk.Multivendor.BindTransformFeedbackBuffer2Info>? bindingInfos = null)
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.Multivendor.BindTransformFeedbackBuffer2Info* marshalledBindingInfos = default(SharpVk.Interop.Multivendor.BindTransformFeedbackBuffer2Info*);
+                commandCache = extendedHandle.commandCache;
+                if (bindingInfos.IsNull())
+                {
+                    marshalledBindingInfos = null;
+                }
+                else
+                {
+                    if (bindingInfos.Value.Contents == ProxyContents.Single)
+                    {
+                        marshalledBindingInfos = (SharpVk.Interop.Multivendor.BindTransformFeedbackBuffer2Info*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.BindTransformFeedbackBuffer2Info>());
+                        bindingInfos.Value.GetSingleValue().MarshalTo(&*(SharpVk.Interop.Multivendor.BindTransformFeedbackBuffer2Info*)(marshalledBindingInfos));
+                    }
+                    else
+                    {
+                        var fieldPointer = (SharpVk.Interop.Multivendor.BindTransformFeedbackBuffer2Info*)(Interop.HeapUtil.AllocateAndClear<SharpVk.Interop.Multivendor.BindTransformFeedbackBuffer2Info>(Interop.HeapUtil.GetLength(bindingInfos.Value)).ToPointer());
+                        for(int index = 0; index < (uint)(Interop.HeapUtil.GetLength(bindingInfos.Value)); index++)
+                        {
+                            bindingInfos.Value[index].MarshalTo(&fieldPointer[index]);
+                        }
+                        marshalledBindingInfos = fieldPointer;
+                    }
+                }
+                SharpVk.Interop.Multivendor.VkCommandBufferBindTransformFeedbackBuffers2Delegate commandDelegate = commandCache.Cache.vkCmdBindTransformFeedbackBuffers2EXT;
+                commandDelegate(extendedHandle.handle, firstBinding, (uint)(Interop.HeapUtil.GetLength(bindingInfos)), marshalledBindingInfos);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The CommandBuffer handle to extend.
+        /// </param>
+        /// <param name="firstCounterRange">
+        /// </param>
+        /// <param name="counterInfos">
+        /// </param>
+        public static unsafe void BeginTransformFeedback2(this SharpVk.CommandBuffer extendedHandle, uint firstCounterRange, ArrayProxy<SharpVk.Multivendor.BindTransformFeedbackBuffer2Info>? counterInfos = null)
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.Multivendor.BindTransformFeedbackBuffer2Info* marshalledCounterInfos = default(SharpVk.Interop.Multivendor.BindTransformFeedbackBuffer2Info*);
+                commandCache = extendedHandle.commandCache;
+                if (counterInfos.IsNull())
+                {
+                    marshalledCounterInfos = null;
+                }
+                else
+                {
+                    if (counterInfos.Value.Contents == ProxyContents.Single)
+                    {
+                        marshalledCounterInfos = (SharpVk.Interop.Multivendor.BindTransformFeedbackBuffer2Info*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.BindTransformFeedbackBuffer2Info>());
+                        counterInfos.Value.GetSingleValue().MarshalTo(&*(SharpVk.Interop.Multivendor.BindTransformFeedbackBuffer2Info*)(marshalledCounterInfos));
+                    }
+                    else
+                    {
+                        var fieldPointer = (SharpVk.Interop.Multivendor.BindTransformFeedbackBuffer2Info*)(Interop.HeapUtil.AllocateAndClear<SharpVk.Interop.Multivendor.BindTransformFeedbackBuffer2Info>(Interop.HeapUtil.GetLength(counterInfos.Value)).ToPointer());
+                        for(int index = 0; index < (uint)(Interop.HeapUtil.GetLength(counterInfos.Value)); index++)
+                        {
+                            counterInfos.Value[index].MarshalTo(&fieldPointer[index]);
+                        }
+                        marshalledCounterInfos = fieldPointer;
+                    }
+                }
+                SharpVk.Interop.Multivendor.VkCommandBufferBeginTransformFeedback2Delegate commandDelegate = commandCache.Cache.vkCmdBeginTransformFeedback2EXT;
+                commandDelegate(extendedHandle.handle, firstCounterRange, (uint)(Interop.HeapUtil.GetLength(counterInfos)), marshalledCounterInfos);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The CommandBuffer handle to extend.
+        /// </param>
+        /// <param name="firstCounterRange">
+        /// </param>
+        /// <param name="counterInfos">
+        /// </param>
+        public static unsafe void EndTransformFeedback2(this SharpVk.CommandBuffer extendedHandle, uint firstCounterRange, ArrayProxy<SharpVk.Multivendor.BindTransformFeedbackBuffer2Info>? counterInfos = null)
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.Multivendor.BindTransformFeedbackBuffer2Info* marshalledCounterInfos = default(SharpVk.Interop.Multivendor.BindTransformFeedbackBuffer2Info*);
+                commandCache = extendedHandle.commandCache;
+                if (counterInfos.IsNull())
+                {
+                    marshalledCounterInfos = null;
+                }
+                else
+                {
+                    if (counterInfos.Value.Contents == ProxyContents.Single)
+                    {
+                        marshalledCounterInfos = (SharpVk.Interop.Multivendor.BindTransformFeedbackBuffer2Info*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.BindTransformFeedbackBuffer2Info>());
+                        counterInfos.Value.GetSingleValue().MarshalTo(&*(SharpVk.Interop.Multivendor.BindTransformFeedbackBuffer2Info*)(marshalledCounterInfos));
+                    }
+                    else
+                    {
+                        var fieldPointer = (SharpVk.Interop.Multivendor.BindTransformFeedbackBuffer2Info*)(Interop.HeapUtil.AllocateAndClear<SharpVk.Interop.Multivendor.BindTransformFeedbackBuffer2Info>(Interop.HeapUtil.GetLength(counterInfos.Value)).ToPointer());
+                        for(int index = 0; index < (uint)(Interop.HeapUtil.GetLength(counterInfos.Value)); index++)
+                        {
+                            counterInfos.Value[index].MarshalTo(&fieldPointer[index]);
+                        }
+                        marshalledCounterInfos = fieldPointer;
+                    }
+                }
+                SharpVk.Interop.Multivendor.VkCommandBufferEndTransformFeedback2Delegate commandDelegate = commandCache.Cache.vkCmdEndTransformFeedback2EXT;
+                commandDelegate(extendedHandle.handle, firstCounterRange, (uint)(Interop.HeapUtil.GetLength(counterInfos)), marshalledCounterInfos);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The CommandBuffer handle to extend.
+        /// </param>
+        /// <param name="instanceCount">
+        /// </param>
+        /// <param name="firstInstance">
+        /// </param>
+        /// <param name="counterInfo">
+        /// </param>
+        /// <param name="counterOffset">
+        /// </param>
+        /// <param name="vertexStride">
+        /// </param>
+        public static unsafe void DrawIndirectByteCount2(this SharpVk.CommandBuffer extendedHandle, uint instanceCount, uint firstInstance, SharpVk.Multivendor.BindTransformFeedbackBuffer2Info counterInfo, uint counterOffset, uint vertexStride)
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.Multivendor.BindTransformFeedbackBuffer2Info* marshalledCounterInfo = default(SharpVk.Interop.Multivendor.BindTransformFeedbackBuffer2Info*);
+                commandCache = extendedHandle.commandCache;
+                marshalledCounterInfo = (SharpVk.Interop.Multivendor.BindTransformFeedbackBuffer2Info*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.BindTransformFeedbackBuffer2Info>());
+                counterInfo.MarshalTo(marshalledCounterInfo);
+                SharpVk.Interop.Multivendor.VkCommandBufferDrawIndirectByteCount2Delegate commandDelegate = commandCache.Cache.vkCmdDrawIndirectByteCount2EXT;
+                commandDelegate(extendedHandle.handle, instanceCount, firstInstance, marshalledCounterInfo, counterOffset, vertexStride);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The CommandBuffer handle to extend.
+        /// </param>
+        /// <param name="info">
+        /// </param>
+        public static unsafe void DrawMeshTasksIndirect2(this SharpVk.CommandBuffer extendedHandle, SharpVk.Khronos.DrawIndirect2Info info)
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.Khronos.DrawIndirect2Info* marshalledInfo = default(SharpVk.Interop.Khronos.DrawIndirect2Info*);
+                commandCache = extendedHandle.commandCache;
+                marshalledInfo = (SharpVk.Interop.Khronos.DrawIndirect2Info*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.DrawIndirect2Info>());
+                info.MarshalTo(marshalledInfo);
+                SharpVk.Interop.Multivendor.VkCommandBufferDrawMeshTasksIndirect2Delegate commandDelegate = commandCache.Cache.vkCmdDrawMeshTasksIndirect2EXT;
+                commandDelegate(extendedHandle.handle, marshalledInfo);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The CommandBuffer handle to extend.
+        /// </param>
+        /// <param name="info">
+        /// </param>
+        public static unsafe void DrawMeshTasksIndirectCount2(this SharpVk.CommandBuffer extendedHandle, SharpVk.Khronos.DrawIndirectCount2Info info)
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.Khronos.DrawIndirectCount2Info* marshalledInfo = default(SharpVk.Interop.Khronos.DrawIndirectCount2Info*);
+                commandCache = extendedHandle.commandCache;
+                marshalledInfo = (SharpVk.Interop.Khronos.DrawIndirectCount2Info*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.DrawIndirectCount2Info>());
+                info.MarshalTo(marshalledInfo);
+                SharpVk.Interop.Multivendor.VkCommandBufferDrawMeshTasksIndirectCount2Delegate commandDelegate = commandCache.Cache.vkCmdDrawMeshTasksIndirectCount2EXT;
+                commandDelegate(extendedHandle.handle, marshalledInfo);
             }
             finally
             {
@@ -1117,180 +1471,6 @@ namespace SharpVk.Multivendor
         /// <param name="extendedHandle">
         /// The CommandBuffer handle to extend.
         /// </param>
-        /// <param name="infos">
-        /// </param>
-        public static unsafe void BuildMicromaps(this SharpVk.CommandBuffer extendedHandle, ArrayProxy<SharpVk.Multivendor.MicromapBuildInfo>? infos)
-        {
-            try
-            {
-                CommandCache commandCache = default(CommandCache);
-                SharpVk.Interop.Multivendor.MicromapBuildInfo* marshalledInfos = default(SharpVk.Interop.Multivendor.MicromapBuildInfo*);
-                commandCache = extendedHandle.commandCache;
-                if (infos.IsNull())
-                {
-                    marshalledInfos = null;
-                }
-                else
-                {
-                    if (infos.Value.Contents == ProxyContents.Single)
-                    {
-                        marshalledInfos = (SharpVk.Interop.Multivendor.MicromapBuildInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.MicromapBuildInfo>());
-                        infos.Value.GetSingleValue().MarshalTo(&*(SharpVk.Interop.Multivendor.MicromapBuildInfo*)(marshalledInfos));
-                    }
-                    else
-                    {
-                        var fieldPointer = (SharpVk.Interop.Multivendor.MicromapBuildInfo*)(Interop.HeapUtil.AllocateAndClear<SharpVk.Interop.Multivendor.MicromapBuildInfo>(Interop.HeapUtil.GetLength(infos.Value)).ToPointer());
-                        for(int index = 0; index < (uint)(Interop.HeapUtil.GetLength(infos.Value)); index++)
-                        {
-                            infos.Value[index].MarshalTo(&fieldPointer[index]);
-                        }
-                        marshalledInfos = fieldPointer;
-                    }
-                }
-                SharpVk.Interop.Multivendor.VkCommandBufferBuildMicromapsDelegate commandDelegate = commandCache.Cache.vkCmdBuildMicromapsEXT;
-                commandDelegate(extendedHandle.handle, (uint)(Interop.HeapUtil.GetLength(infos)), marshalledInfos);
-            }
-            finally
-            {
-                Interop.HeapUtil.FreeAll();
-            }
-        }
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="extendedHandle">
-        /// The CommandBuffer handle to extend.
-        /// </param>
-        /// <param name="info">
-        /// </param>
-        public static unsafe void CopyMicromap(this SharpVk.CommandBuffer extendedHandle, SharpVk.Multivendor.CopyMicromapInfo info)
-        {
-            try
-            {
-                CommandCache commandCache = default(CommandCache);
-                SharpVk.Interop.Multivendor.CopyMicromapInfo* marshalledInfo = default(SharpVk.Interop.Multivendor.CopyMicromapInfo*);
-                commandCache = extendedHandle.commandCache;
-                marshalledInfo = (SharpVk.Interop.Multivendor.CopyMicromapInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.CopyMicromapInfo>());
-                info.MarshalTo(marshalledInfo);
-                SharpVk.Interop.Multivendor.VkCommandBufferCopyMicromapDelegate commandDelegate = commandCache.Cache.vkCmdCopyMicromapEXT;
-                commandDelegate(extendedHandle.handle, marshalledInfo);
-            }
-            finally
-            {
-                Interop.HeapUtil.FreeAll();
-            }
-        }
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="extendedHandle">
-        /// The CommandBuffer handle to extend.
-        /// </param>
-        /// <param name="info">
-        /// </param>
-        public static unsafe void CopyMicromapToMemory(this SharpVk.CommandBuffer extendedHandle, SharpVk.Multivendor.CopyMicromapToMemoryInfo info)
-        {
-            try
-            {
-                CommandCache commandCache = default(CommandCache);
-                SharpVk.Interop.Multivendor.CopyMicromapToMemoryInfo* marshalledInfo = default(SharpVk.Interop.Multivendor.CopyMicromapToMemoryInfo*);
-                commandCache = extendedHandle.commandCache;
-                marshalledInfo = (SharpVk.Interop.Multivendor.CopyMicromapToMemoryInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.CopyMicromapToMemoryInfo>());
-                info.MarshalTo(marshalledInfo);
-                SharpVk.Interop.Multivendor.VkCommandBufferCopyMicromapToMemoryDelegate commandDelegate = commandCache.Cache.vkCmdCopyMicromapToMemoryEXT;
-                commandDelegate(extendedHandle.handle, marshalledInfo);
-            }
-            finally
-            {
-                Interop.HeapUtil.FreeAll();
-            }
-        }
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="extendedHandle">
-        /// The CommandBuffer handle to extend.
-        /// </param>
-        /// <param name="info">
-        /// </param>
-        public static unsafe void CopyMemoryToMicromap(this SharpVk.CommandBuffer extendedHandle, SharpVk.Multivendor.CopyMemoryToMicromapInfo info)
-        {
-            try
-            {
-                CommandCache commandCache = default(CommandCache);
-                SharpVk.Interop.Multivendor.CopyMemoryToMicromapInfo* marshalledInfo = default(SharpVk.Interop.Multivendor.CopyMemoryToMicromapInfo*);
-                commandCache = extendedHandle.commandCache;
-                marshalledInfo = (SharpVk.Interop.Multivendor.CopyMemoryToMicromapInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.CopyMemoryToMicromapInfo>());
-                info.MarshalTo(marshalledInfo);
-                SharpVk.Interop.Multivendor.VkCommandBufferCopyMemoryToMicromapDelegate commandDelegate = commandCache.Cache.vkCmdCopyMemoryToMicromapEXT;
-                commandDelegate(extendedHandle.handle, marshalledInfo);
-            }
-            finally
-            {
-                Interop.HeapUtil.FreeAll();
-            }
-        }
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="extendedHandle">
-        /// The CommandBuffer handle to extend.
-        /// </param>
-        /// <param name="micromaps">
-        /// </param>
-        /// <param name="queryType">
-        /// </param>
-        /// <param name="queryPool">
-        /// </param>
-        /// <param name="firstQuery">
-        /// </param>
-        public static unsafe void WriteMicromapsProperties(this SharpVk.CommandBuffer extendedHandle, ArrayProxy<SharpVk.Multivendor.Micromap>? micromaps, SharpVk.QueryType queryType, SharpVk.QueryPool queryPool, uint firstQuery)
-        {
-            try
-            {
-                CommandCache commandCache = default(CommandCache);
-                SharpVk.Interop.Multivendor.Micromap* marshalledMicromaps = default(SharpVk.Interop.Multivendor.Micromap*);
-                commandCache = extendedHandle.commandCache;
-                if (micromaps.IsNull())
-                {
-                    marshalledMicromaps = null;
-                }
-                else
-                {
-                    if (micromaps.Value.Contents == ProxyContents.Single)
-                    {
-                        marshalledMicromaps = (SharpVk.Interop.Multivendor.Micromap*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.Micromap>());
-                        *(SharpVk.Interop.Multivendor.Micromap*)(marshalledMicromaps) = micromaps.Value.GetSingleValue()?.handle ?? default(SharpVk.Interop.Multivendor.Micromap);
-                    }
-                    else
-                    {
-                        var fieldPointer = (SharpVk.Interop.Multivendor.Micromap*)(Interop.HeapUtil.AllocateAndClear<SharpVk.Interop.Multivendor.Micromap>(Interop.HeapUtil.GetLength(micromaps.Value)).ToPointer());
-                        for(int index = 0; index < (uint)(Interop.HeapUtil.GetLength(micromaps.Value)); index++)
-                        {
-                            fieldPointer[index] = micromaps.Value[index]?.handle ?? default(SharpVk.Interop.Multivendor.Micromap);
-                        }
-                        marshalledMicromaps = fieldPointer;
-                    }
-                }
-                SharpVk.Interop.Multivendor.VkCommandBufferWriteMicromapsPropertiesDelegate commandDelegate = commandCache.Cache.vkCmdWriteMicromapsPropertiesEXT;
-                commandDelegate(extendedHandle.handle, (uint)(Interop.HeapUtil.GetLength(micromaps)), marshalledMicromaps, queryType, queryPool?.handle ?? default(SharpVk.Interop.QueryPool), firstQuery);
-            }
-            finally
-            {
-                Interop.HeapUtil.FreeAll();
-            }
-        }
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="extendedHandle">
-        /// The CommandBuffer handle to extend.
-        /// </param>
         /// <param name="depthClampEnable">
         /// </param>
         public static unsafe void SetDepthClampEnable(this SharpVk.CommandBuffer extendedHandle, bool depthClampEnable)
@@ -1364,7 +1544,7 @@ namespace SharpVk.Multivendor
         /// </param>
         /// <param name="sampleMask">
         /// </param>
-        public static unsafe void SetSampleMask(this SharpVk.CommandBuffer extendedHandle, SharpVk.SampleCountFlags samples, ArrayProxy<SampleMask>? sampleMask)
+        public static unsafe void SetSampleMask(this SharpVk.CommandBuffer extendedHandle, SharpVk.SampleCountFlags samples, ArrayProxy<SampleMask>? sampleMask = null)
         {
             try
             {
@@ -2076,6 +2256,63 @@ namespace SharpVk.Multivendor
         /// <param name="extendedHandle">
         /// The CommandBuffer handle to extend.
         /// </param>
+        /// <param name="decompressMemoryInfo">
+        /// </param>
+        public static unsafe void DecompressMemory(this SharpVk.CommandBuffer extendedHandle, SharpVk.Multivendor.DecompressMemoryInfo decompressMemoryInfo)
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.Multivendor.DecompressMemoryInfo* marshalledDecompressMemoryInfo = default(SharpVk.Interop.Multivendor.DecompressMemoryInfo*);
+                commandCache = extendedHandle.commandCache;
+                marshalledDecompressMemoryInfo = (SharpVk.Interop.Multivendor.DecompressMemoryInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.DecompressMemoryInfo>());
+                decompressMemoryInfo.MarshalTo(marshalledDecompressMemoryInfo);
+                SharpVk.Interop.Multivendor.VkCommandBufferDecompressMemoryDelegate commandDelegate = commandCache.Cache.vkCmdDecompressMemoryEXT;
+                commandDelegate(extendedHandle.handle, marshalledDecompressMemoryInfo);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The CommandBuffer handle to extend.
+        /// </param>
+        /// <param name="decompressionMethod">
+        /// </param>
+        /// <param name="indirectCommandsAddress">
+        /// </param>
+        /// <param name="indirectCommandsCountAddress">
+        /// </param>
+        /// <param name="maxDecompressionCount">
+        /// </param>
+        /// <param name="stride">
+        /// </param>
+        public static unsafe void DecompressMemoryIndirectCount(this SharpVk.CommandBuffer extendedHandle, SharpVk.Multivendor.MemoryDecompressionMethodFlags decompressionMethod, ulong indirectCommandsAddress, ulong indirectCommandsCountAddress, uint maxDecompressionCount, uint stride)
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                commandCache = extendedHandle.commandCache;
+                SharpVk.Interop.Multivendor.VkCommandBufferDecompressMemoryIndirectCountDelegate commandDelegate = commandCache.Cache.vkCmdDecompressMemoryIndirectCountEXT;
+                commandDelegate(extendedHandle.handle, decompressionMethod, indirectCommandsAddress, indirectCommandsCountAddress, maxDecompressionCount, stride);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The CommandBuffer handle to extend.
+        /// </param>
         /// <param name="generatedCommandsInfo">
         /// </param>
         /// <param name="stateCommandBuffer">
@@ -2132,30 +2369,58 @@ namespace SharpVk.Multivendor
         /// <param name="extendedHandle">
         /// The CommandBuffer handle to extend.
         /// </param>
-        /// <param name="renderPassFragmentDensityMapOffsetEndInfoExt">
-        /// Extension struct
+        /// <param name="beginCustomResolveInfo">
         /// </param>
-        public static unsafe void EndRendering2(this SharpVk.CommandBuffer extendedHandle, SharpVk.Multivendor.RenderPassFragmentDensityMapOffsetEndInfo? renderPassFragmentDensityMapOffsetEndInfoExt = null)
+        public static unsafe void BeginCustomResolve(this SharpVk.CommandBuffer extendedHandle, SharpVk.Multivendor.BeginCustomResolveInfo? beginCustomResolveInfo = default(SharpVk.Multivendor.BeginCustomResolveInfo?))
         {
             try
             {
                 CommandCache commandCache = default(CommandCache);
-                SharpVk.Interop.Multivendor.RenderingEndInfo* marshalledRenderingEndInfo = default(SharpVk.Interop.Multivendor.RenderingEndInfo*);
-                void* vkRenderingEndInfoEXTNextPointer = default(void*);
-                if (renderPassFragmentDensityMapOffsetEndInfoExt != null)
-                {
-                    SharpVk.Interop.Multivendor.RenderPassFragmentDensityMapOffsetEndInfo* extensionPointer = default(SharpVk.Interop.Multivendor.RenderPassFragmentDensityMapOffsetEndInfo*);
-                    extensionPointer = (SharpVk.Interop.Multivendor.RenderPassFragmentDensityMapOffsetEndInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.RenderPassFragmentDensityMapOffsetEndInfo>());
-                    renderPassFragmentDensityMapOffsetEndInfoExt.Value.MarshalTo(extensionPointer);
-                    extensionPointer->Next = vkRenderingEndInfoEXTNextPointer;
-                    vkRenderingEndInfoEXTNextPointer = extensionPointer;
-                }
+                SharpVk.Interop.Multivendor.BeginCustomResolveInfo* marshalledBeginCustomResolveInfo = default(SharpVk.Interop.Multivendor.BeginCustomResolveInfo*);
                 commandCache = extendedHandle.commandCache;
-                marshalledRenderingEndInfo = (SharpVk.Interop.Multivendor.RenderingEndInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.RenderingEndInfo>());
-                marshalledRenderingEndInfo->SType = StructureType.RenderingEndInfo;
-                marshalledRenderingEndInfo->Next = vkRenderingEndInfoEXTNextPointer;
-                SharpVk.Interop.Multivendor.VkCommandBufferEndRendering2Delegate commandDelegate = commandCache.Cache.vkCmdEndRendering2EXT;
-                commandDelegate(extendedHandle.handle, marshalledRenderingEndInfo);
+                if (beginCustomResolveInfo != null)
+                {
+                    marshalledBeginCustomResolveInfo = (SharpVk.Interop.Multivendor.BeginCustomResolveInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.BeginCustomResolveInfo>());
+                    beginCustomResolveInfo.Value.MarshalTo(marshalledBeginCustomResolveInfo);
+                }
+                else
+                {
+                    marshalledBeginCustomResolveInfo = default(SharpVk.Interop.Multivendor.BeginCustomResolveInfo*);
+                }
+                SharpVk.Interop.Multivendor.VkCommandBufferBeginCustomResolveDelegate commandDelegate = commandCache.Cache.vkCmdBeginCustomResolveEXT;
+                commandDelegate(extendedHandle.handle, marshalledBeginCustomResolveInfo);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The CommandBuffer handle to extend.
+        /// </param>
+        /// <param name="primitiveRestartIndex">
+        /// </param>
+        public static unsafe void SetPrimitiveRestartIndex(this SharpVk.CommandBuffer extendedHandle, uint? primitiveRestartIndex = default(uint?))
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                uint marshalledPrimitiveRestartIndex = default(uint);
+                commandCache = extendedHandle.commandCache;
+                if (primitiveRestartIndex != null)
+                {
+                    marshalledPrimitiveRestartIndex = primitiveRestartIndex.Value;
+                }
+                else
+                {
+                    marshalledPrimitiveRestartIndex = default(uint);
+                }
+                SharpVk.Interop.Multivendor.VkCommandBufferSetPrimitiveRestartIndexDelegate commandDelegate = commandCache.Cache.vkCmdSetPrimitiveRestartIndexEXT;
+                commandDelegate(extendedHandle.handle, marshalledPrimitiveRestartIndex);
             }
             finally
             {

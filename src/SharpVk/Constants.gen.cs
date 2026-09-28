@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -193,5 +193,35 @@ namespace SharpVk
         /// 
         /// </summary>
         public const int MaxPhysicalDeviceDataGraphOperationSetNameSize = 128; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint DataGraphModelToolchainVersionLength = 3; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const float ComputeOccupancyPriorityLow = 0.25f; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const float ComputeOccupancyPriorityNormal = 0.50f; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const float ComputeOccupancyPriorityHigh = 0.75f; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const int MaxDataGraphTosaNameSize = 128; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const int MaxTensorCreateInfoRollingBackingWrapCount = 4; 
     }
 }

@@ -23,7 +23,15 @@ namespace SharpVk.Generator.Specification.Rules
                 return false;
             }
 
-            string returnType = ((XText)typeXml.Nodes().First()).Value.Split(' ')[1];
+            bool isProto = ! (typeXml.Nodes().First() is XText);
+            string returnType = typeXml.Nodes().First() switch
+            {
+                //Regular case. The type is directly specified.
+                XText text => text.Value.Split(' ')[1],
+                //Proto case. The type name is specified inside <proto> node.
+                XElement elem => ((XText)((XElement)elem.Nodes().First()).Nodes().First()).Value,
+                _ => null,
+            };
 
             if (returnType.EndsWith("*"))
             {
@@ -36,27 +44,52 @@ namespace SharpVk.Generator.Specification.Rules
             
             type.NameParts = this.nameParser.ParseFunctionPointer(type.VkName, out type.ExtensionNamespace);
 
-            var functionTail = typeXml.Element("name").NodesAfterSelf();
-
-            foreach (var typeElement in functionTail.Where(x => x.NodeType == XmlNodeType.Element).Cast<XElement>())
+            if (!isProto)
             {
-                string pre = ((XText)typeElement.PreviousNode).Value.Split(',').Last().Trim('(', ')', ';').TrimStart();
-                string post = ((XText)typeElement.NextNode).Value.Split(',').First().Trim('(', ')', ';').TrimEnd();
+                var functionTail = typeXml.Element("name").NodesAfterSelf();
 
-                string paramName = new string(post.Reverse().TakeWhile(char.IsLetterOrDigit).Reverse().ToArray());
-                string typeString = pre + "@" + (post.Substring(0, post.Length - paramName.Length).Trim());
-                string paramType = typeElement.Value;
-                PointerType pointerType = PointerTypeUtil.Map(typeString);
-                
-                var paramNameParts = this.nameParser.GetNameParts(paramName, out string paramExtension);
-
-                type.Members.Add(new MemberElement
+                foreach (var typeElement in functionTail.Where(x => x.NodeType == XmlNodeType.Element).Cast<XElement>())
                 {
-                    VkName = paramName,
-                    Type = paramType,
-                    PointerType = pointerType,
-                    NameParts = paramNameParts
-                });
+                    string pre = ((XText)typeElement.PreviousNode).Value.Split(',').Last().Trim('(', ')', ';').TrimStart();
+                    string post = ((XText)typeElement.NextNode).Value.Split(',').First().Trim('(', ')', ';').TrimEnd();
+
+                    string paramName = new string(post.Reverse().TakeWhile(char.IsLetterOrDigit).Reverse().ToArray());
+                    string typeString = pre + "@" + (post.Substring(0, post.Length - paramName.Length).Trim());
+                    string paramType = typeElement.Value;
+                    PointerType pointerType = PointerTypeUtil.Map(typeString);
+                    
+                    var paramNameParts = this.nameParser.GetNameParts(paramName, out string paramExtension);
+
+                    type.Members.Add(new MemberElement
+                    {
+                        VkName = paramName,
+                        Type = paramType,
+                        PointerType = pointerType,
+                        NameParts = paramNameParts
+                    });
+                }
+            }
+            else
+            {
+                foreach (var typeElement in typeXml.Nodes().Where(x => x.NodeType == XmlNodeType.Element && ((XElement)x).Name == "param").Cast<XElement>())
+                {
+                    string paramName = ((XElement)typeElement.Nodes().Single(x => x.NodeType == XmlNodeType.Element && ((XElement)x).Name == "name")).Value;
+                    string typeString = ((XElement)typeElement.Nodes().Single(x => x.NodeType == XmlNodeType.Element && ((XElement)x).Name == "type")).Value;
+                    string pointerTypeString = string.Join(" ", typeElement.Value.Split(' ').Where(s => !string.IsNullOrWhiteSpace(s))).Replace(typeString, "@");
+                    pointerTypeString = pointerTypeString.Substring(0, pointerTypeString.Length - paramName.Length).TrimEnd();
+                    string paramType = typeElement.Value;
+                    PointerType pointerType = PointerTypeUtil.Map(pointerTypeString);
+                    
+                    var paramNameParts = this.nameParser.GetNameParts(paramName, out string paramExtension);
+
+                    type.Members.Add(new MemberElement
+                    {
+                        VkName = paramName,
+                        Type = typeString,
+                        PointerType = pointerType,
+                        NameParts = paramNameParts
+                    });
+                }
             }
 
             return true;

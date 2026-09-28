@@ -108,6 +108,12 @@ namespace SharpVk.Generator.Collation
             {"NvSciSyncFence", "IntPtr" },
             {"NvSciBufAttrList", "IntPtr" },
             {"NvSciBufObj", "IntPtr" },
+
+            {"ubm_device", "IntPtr" },
+            {"ubm_surface", "IntPtr" },
+
+            {"OH_NativeBuffer", "IntPtr" },
+            {"OHBufferHandle", "IntPtr" },
         };
 
         private static readonly string[] digitsSuffix = new[] { "flags", "flag", "type", "bits", "bit" };

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -77,8 +77,8 @@ namespace SharpVk.Khronos
         internal static unsafe PipelineExecutableInternalRepresentation MarshalFrom(SharpVk.Interop.Khronos.PipelineExecutableInternalRepresentation* pointer)
         {
             PipelineExecutableInternalRepresentation result = default(PipelineExecutableInternalRepresentation);
-            result.Name = Interop.HeapUtil.MarshalStringFrom(pointer->Name, Constants.MaxDescriptionSize, true);
-            result.Description = Interop.HeapUtil.MarshalStringFrom(pointer->Description, Constants.MaxDescriptionSize, true);
+            result.Name = Interop.HeapUtil.MarshalStringFrom(pointer->Name, checked((int)Constants.MaxDescriptionSize), true);
+            result.Description = Interop.HeapUtil.MarshalStringFrom(pointer->Description, checked((int)Constants.MaxDescriptionSize), true);
             result.IsText = pointer->IsText;
             if (pointer->Data != null)
             {

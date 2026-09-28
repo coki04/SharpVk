@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -58,7 +58,7 @@ namespace SharpVk
         /// </param>
         internal unsafe void MarshalTo(SharpVk.Interop.PhysicalDeviceVariablePointersFeatures* pointer)
         {
-            pointer->SType = StructureType.PhysicalDeviceVariablePointersFeaturesVersion;
+            pointer->SType = StructureType.PhysicalDeviceVariablePointersFeaturesCompute;
             pointer->Next = null;
             pointer->VariablePointersStorageBuffer = this.VariablePointersStorageBuffer;
             pointer->VariablePointers = this.VariablePointers;

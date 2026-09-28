@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -69,7 +69,7 @@ namespace SharpVk
         {
             pointer->SType = StructureType.PipelineOfflineCreateInfo;
             pointer->Next = null;
-            Interop.HeapUtil.MarshalTo(this.PipelineIdentifier, Constants.UuidSize, pointer->PipelineIdentifier);
+            Interop.HeapUtil.MarshalTo(this.PipelineIdentifier, checked((int)Constants.UuidSize), pointer->PipelineIdentifier);
             pointer->MatchControl = this.MatchControl;
             pointer->PoolEntrySize = this.PoolEntrySize;
         }

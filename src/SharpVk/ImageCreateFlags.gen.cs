@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -117,17 +117,17 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        DescriptorHeapCaptureReplay = 1 << 16, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         SampleLocationsCompatibleDepth = 1 << 12, 
         
         /// <summary>
         /// 
         /// </summary>
         Subsampled = 1 << 14, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        DescriptorBufferCaptureReplay = 1 << 16, 
         
         /// <summary>
         /// 
@@ -148,5 +148,15 @@ namespace SharpVk
         /// 
         /// </summary>
         FragmentDensityMapOffset = 1 << 15, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        AliasSingleLayerDescriptor = 1 << 22, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved19 = 1 << 19, 
     }
 }

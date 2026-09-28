@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -132,6 +132,11 @@ namespace SharpVk.Multivendor
         /// <summary>
         /// 
         /// </summary>
+        public const string DescriptorHeap = "VK_EXT_descriptor_heap"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public const string ShaderStencilExport = "VK_EXT_shader_stencil_export"; 
         
         /// <summary>
@@ -168,6 +173,11 @@ namespace SharpVk.Multivendor
         /// 
         /// </summary>
         public const string ExternalMemoryHost = "VK_EXT_external_memory_host"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string PresentTiming = "VK_EXT_present_timing"; 
         
         /// <summary>
         /// 
@@ -272,6 +282,16 @@ namespace SharpVk.Multivendor
         /// <summary>
         /// 
         /// </summary>
+        public const string TextureCompressionAstc3d = "VK_EXT_texture_compression_astc_3d"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string ShaderSplitBarrier = "VK_EXT_shader_split_barrier"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public const string MetalObjects = "VK_EXT_metal_objects"; 
         
         /// <summary>
@@ -303,11 +323,6 @@ namespace SharpVk.Multivendor
         /// 
         /// </summary>
         public const string AttachmentFeedbackLoopLayout = "VK_EXT_attachment_feedback_loop_layout"; 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        public const string DeviceFault = "VK_EXT_device_fault"; 
         
         /// <summary>
         /// 
@@ -392,11 +407,6 @@ namespace SharpVk.Multivendor
         /// <summary>
         /// 
         /// </summary>
-        public const string OpacityMicromap = "VK_EXT_opacity_micromap"; 
-        
-        /// <summary>
-        /// 
-        /// </summary>
         public const string BorderColorSwizzle = "VK_EXT_border_color_swizzle"; 
         
         /// <summary>
@@ -477,17 +487,17 @@ namespace SharpVk.Multivendor
         /// <summary>
         /// 
         /// </summary>
-        public const string PipelineLibraryGroupHandles = "VK_EXT_pipeline_library_group_handles"; 
-        
-        /// <summary>
-        /// 
-        /// </summary>
         public const string DynamicRenderingUnusedAttachments = "VK_EXT_dynamic_rendering_unused_attachments"; 
         
         /// <summary>
         /// 
         /// </summary>
         public const string AttachmentFeedbackLoopDynamicState = "VK_EXT_attachment_feedback_loop_dynamic_state"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string MemoryDecompression = "VK_EXT_memory_decompression"; 
         
         /// <summary>
         /// 
@@ -507,6 +517,11 @@ namespace SharpVk.Multivendor
         /// <summary>
         /// 
         /// </summary>
+        public const string RayTracingInvocationReorder = "VK_EXT_ray_tracing_invocation_reorder"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public const string DepthClampControl = "VK_EXT_depth_clamp_control"; 
         
         /// <summary>
@@ -517,11 +532,61 @@ namespace SharpVk.Multivendor
         /// <summary>
         /// 
         /// </summary>
+        public const string MultisampledRenderToSwapchain = "VK_EXT_multisampled_render_to_swapchain"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public const string FragmentDensityMapOffset = "VK_EXT_fragment_density_map_offset"; 
         
         /// <summary>
         /// 
         /// </summary>
         public const string ZeroInitializeDeviceMemory = "VK_EXT_zero_initialize_device_memory"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string Shader64bitIndexing = "VK_EXT_shader_64bit_indexing"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string CustomResolve = "VK_EXT_custom_resolve"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string ShaderLongVector = "VK_EXT_shader_long_vector"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string ShaderUniformBufferUnsizedArray = "VK_EXT_shader_uniform_buffer_unsized_array"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string CooperativeMatrixMaintenance1 = "VK_EXT_cooperative_matrix_maintenance1"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string ShaderSubgroupPartitioned = "VK_EXT_shader_subgroup_partitioned"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string ShaderOcpMicroscalingTypes = "VK_EXT_shader_ocp_microscaling_types"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string PrimitiveRestartIndex = "VK_EXT_primitive_restart_index"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string ImageTilingControl = "VK_EXT_image_tiling_control"; 
     }
 }

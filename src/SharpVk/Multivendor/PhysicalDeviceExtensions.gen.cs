@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -125,6 +125,29 @@ namespace SharpVk.Multivendor
                 }
                 result = SharpVk.Multivendor.SurfaceCapabilities2.MarshalFrom(&marshalledSurfaceCapabilities);
                 return result;
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The PhysicalDevice handle to extend.
+        /// </param>
+        /// <param name="descriptorType">
+        /// </param>
+        public static unsafe void GetDescriptorSize(this SharpVk.PhysicalDevice extendedHandle, SharpVk.DescriptorType descriptorType)
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                commandCache = extendedHandle.commandCache;
+                SharpVk.Interop.Multivendor.VkPhysicalDeviceGetDescriptorSizeDelegate commandDelegate = commandCache.Cache.vkGetPhysicalDeviceDescriptorSizeEXT;
+                commandDelegate(extendedHandle.handle, descriptorType);
             }
             finally
             {
@@ -294,6 +317,55 @@ namespace SharpVk.Multivendor
                 *marshalledDfb = dfb;
                 SharpVk.Interop.Multivendor.VkPhysicalDeviceGetDirectFBPresentationSupportDelegate commandDelegate = commandCache.Cache.vkGetPhysicalDeviceDirectFBPresentationSupportEXT;
                 commandDelegate(extendedHandle.handle, queueFamilyIndex, marshalledDfb);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The PhysicalDevice handle to extend.
+        /// </param>
+        /// <param name="cooperativeMatrixInfo">
+        /// </param>
+        public static unsafe SharpVk.Multivendor.CooperativeMatrixProperties2[] GetCooperativeMatrixProperties2(this SharpVk.PhysicalDevice extendedHandle, SharpVk.Multivendor.PhysicalDeviceCooperativeMatrixInfo2 cooperativeMatrixInfo)
+        {
+            try
+            {
+                SharpVk.Multivendor.CooperativeMatrixProperties2[] result = default(SharpVk.Multivendor.CooperativeMatrixProperties2[]);
+                uint marshalledPropertyCount = default(uint);
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.Multivendor.PhysicalDeviceCooperativeMatrixInfo2* marshalledCooperativeMatrixInfo = default(SharpVk.Interop.Multivendor.PhysicalDeviceCooperativeMatrixInfo2*);
+                SharpVk.Interop.Multivendor.CooperativeMatrixProperties2* marshalledProperties = default(SharpVk.Interop.Multivendor.CooperativeMatrixProperties2*);
+                commandCache = extendedHandle.commandCache;
+                marshalledCooperativeMatrixInfo = (SharpVk.Interop.Multivendor.PhysicalDeviceCooperativeMatrixInfo2*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.PhysicalDeviceCooperativeMatrixInfo2>());
+                cooperativeMatrixInfo.MarshalTo(marshalledCooperativeMatrixInfo);
+                SharpVk.Interop.Multivendor.VkPhysicalDeviceGetCooperativeMatrixProperties2Delegate commandDelegate = commandCache.Cache.vkGetPhysicalDeviceCooperativeMatrixProperties2EXT;
+                Result methodResult = commandDelegate(extendedHandle.handle, marshalledCooperativeMatrixInfo, &marshalledPropertyCount, marshalledProperties);
+                if (SharpVkException.IsError(methodResult))
+                {
+                    throw SharpVkException.Create(methodResult);
+                }
+                marshalledProperties = (SharpVk.Interop.Multivendor.CooperativeMatrixProperties2*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.CooperativeMatrixProperties2>((uint)(marshalledPropertyCount)));
+                commandDelegate(extendedHandle.handle, marshalledCooperativeMatrixInfo, &marshalledPropertyCount, marshalledProperties);
+                if (marshalledProperties != null)
+                {
+                    var fieldPointer = new SharpVk.Multivendor.CooperativeMatrixProperties2[(uint)(marshalledPropertyCount)];
+                    for(int index = 0; index < (uint)(marshalledPropertyCount); index++)
+                    {
+                        fieldPointer[index] = SharpVk.Multivendor.CooperativeMatrixProperties2.MarshalFrom(&marshalledProperties[index]);
+                    }
+                    result = fieldPointer;
+                }
+                else
+                {
+                    result = null;
+                }
+                return result;
             }
             finally
             {

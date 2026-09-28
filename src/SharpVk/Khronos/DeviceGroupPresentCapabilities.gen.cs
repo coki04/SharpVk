@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -59,7 +59,7 @@ namespace SharpVk.Khronos
         internal static unsafe DeviceGroupPresentCapabilities MarshalFrom(SharpVk.Interop.Khronos.DeviceGroupPresentCapabilities* pointer)
         {
             DeviceGroupPresentCapabilities result = default(DeviceGroupPresentCapabilities);
-            result.PresentMask = Interop.HeapUtil.MarshalFrom(pointer->PresentMask, Constants.MaxDeviceGroupSize);
+            result.PresentMask = Interop.HeapUtil.MarshalFrom(pointer->PresentMask, checked((int)Constants.MaxDeviceGroupSize));
             result.Modes = pointer->Modes;
             return result;
         }

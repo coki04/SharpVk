@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -46,12 +46,12 @@ namespace SharpVk.Interop
         /// <summary>
         /// 
         /// </summary>
-        public fixed byte Name[Constants.MaxExtensionNameSize]; 
+        public fixed byte Name[checked((int)Constants.MaxExtensionNameSize)]; 
         
         /// <summary>
         /// 
         /// </summary>
-        public fixed byte Version[Constants.MaxExtensionNameSize]; 
+        public fixed byte Version[checked((int)Constants.MaxExtensionNameSize)]; 
         
         /// <summary>
         /// 
@@ -61,11 +61,11 @@ namespace SharpVk.Interop
         /// <summary>
         /// 
         /// </summary>
-        public fixed byte Description[Constants.MaxDescriptionSize]; 
+        public fixed byte Description[checked((int)Constants.MaxDescriptionSize)]; 
         
         /// <summary>
         /// 
         /// </summary>
-        public fixed byte Layer[Constants.MaxExtensionNameSize]; 
+        public fixed byte Layer[checked((int)Constants.MaxExtensionNameSize)]; 
     }
 }

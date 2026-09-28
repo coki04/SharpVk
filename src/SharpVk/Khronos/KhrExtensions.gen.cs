@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -207,6 +207,16 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
+        public const string ShaderConstantData = "VK_KHR_shader_constant_data"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string ShaderAbort = "VK_KHR_shader_abort"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public const string ShaderQuadControl = "VK_KHR_shader_quad_control"; 
         
         /// <summary>
@@ -243,6 +253,11 @@ namespace SharpVk.Khronos
         /// 
         /// </summary>
         public const string VideoEncodeQueue = "VK_KHR_video_encode_queue"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string DeviceAddressCommands = "VK_KHR_device_address_commands"; 
         
         /// <summary>
         /// 
@@ -312,6 +327,11 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
+        public const string InternallySynchronizedQueues = "VK_KHR_internally_synchronized_queues"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public const string CooperativeMatrix = "VK_KHR_cooperative_matrix"; 
         
         /// <summary>
@@ -352,6 +372,11 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
+        public const string CopyMemoryIndirect = "VK_KHR_copy_memory_indirect"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public const string VideoEncodeIntraRefresh = "VK_KHR_video_encode_intra_refresh"; 
         
         /// <summary>
@@ -372,7 +397,17 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
+        public const string DeviceFault = "VK_KHR_device_fault"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public const string Maintenance8 = "VK_KHR_maintenance8"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string ShaderFma = "VK_KHR_shader_fma"; 
         
         /// <summary>
         /// 
@@ -383,6 +418,11 @@ namespace SharpVk.Khronos
         /// 
         /// </summary>
         public const string VideoMaintenance2 = "VK_KHR_video_maintenance2"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string VideoEncodeFeedback2 = "VK_KHR_video_encode_feedback2"; 
         
         /// <summary>
         /// 
@@ -398,5 +438,30 @@ namespace SharpVk.Khronos
         /// 
         /// </summary>
         public const string PresentModeFifoLatestReady = "VK_KHR_present_mode_fifo_latest_ready"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string OpacityMicromap = "VK_KHR_opacity_micromap"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string Maintenance10 = "VK_KHR_maintenance10"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string PipelineLibraryGroupHandles = "VK_KHR_pipeline_library_group_handles"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string Maintenance11 = "VK_KHR_maintenance11"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string ExtendedFlags = "VK_KHR_extended_flags"; 
     }
 }

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -86,9 +86,9 @@ namespace SharpVk
         internal static unsafe PhysicalDeviceIDProperties MarshalFrom(SharpVk.Interop.PhysicalDeviceIDProperties* pointer)
         {
             PhysicalDeviceIDProperties result = default(PhysicalDeviceIDProperties);
-            result.DeviceUUID = new Guid(Interop.HeapUtil.MarshalFrom(pointer->DeviceUUID, Constants.UuidSize));
-            result.DriverUUID = new Guid(Interop.HeapUtil.MarshalFrom(pointer->DriverUUID, Constants.UuidSize));
-            result.DeviceLUID = new Guid(Interop.HeapUtil.MarshalFrom(pointer->DeviceLUID, Constants.LuidSize));
+            result.DeviceUUID = new Guid(Interop.HeapUtil.MarshalFrom(pointer->DeviceUUID, checked((int)Constants.UuidSize)));
+            result.DriverUUID = new Guid(Interop.HeapUtil.MarshalFrom(pointer->DriverUUID, checked((int)Constants.UuidSize)));
+            result.DeviceLUID = new Guid(Interop.HeapUtil.MarshalFrom(pointer->DeviceLUID, checked((int)Constants.LuidSize)));
             result.DeviceNodeMask = pointer->DeviceNodeMask;
             result.DeviceLUIDValid = pointer->DeviceLUIDValid;
             return result;

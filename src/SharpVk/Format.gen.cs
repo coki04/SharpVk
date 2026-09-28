@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -1371,282 +1371,282 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        G8B8G8R8422UNormVersion = 1000156000, 
+        G8B8G8R8422UNormBase = 1000156000, 
         
         /// <summary>
         /// 
         /// </summary>
-        B8G8R8G8422UNormVersion = 1000156001, 
+        B8G8R8G8422UNormBase = 1000156001, 
         
         /// <summary>
         /// 
         /// </summary>
-        G8B8R83plane420UNormVersion = 1000156002, 
+        G8B8R83plane420UNormBase = 1000156002, 
         
         /// <summary>
         /// 
         /// </summary>
-        G8B8R82plane420UNormVersion = 1000156003, 
+        G8B8R82plane420UNormBase = 1000156003, 
         
         /// <summary>
         /// 
         /// </summary>
-        G8B8R83plane422UNormVersion = 1000156004, 
+        G8B8R83plane422UNormBase = 1000156004, 
         
         /// <summary>
         /// 
         /// </summary>
-        G8B8R82plane422UNormVersion = 1000156005, 
+        G8B8R82plane422UNormBase = 1000156005, 
         
         /// <summary>
         /// 
         /// </summary>
-        G8B8R83plane444UNormVersion = 1000156006, 
+        G8B8R83plane444UNormBase = 1000156006, 
         
         /// <summary>
         /// 
         /// </summary>
-        R10X6UNormPack16Version = 1000156007, 
+        R10X6UNormPack16Base = 1000156007, 
         
         /// <summary>
         /// 
         /// </summary>
-        R10X6G10X6UNorm2Pack16Version = 1000156008, 
+        R10X6G10X6UNorm2Pack16Base = 1000156008, 
         
         /// <summary>
         /// 
         /// </summary>
-        R10X6G10X6B10X6A10X6UNorm4Pack16Version = 1000156009, 
+        R10X6G10X6B10X6A10X6UNorm4Pack16Base = 1000156009, 
         
         /// <summary>
         /// 
         /// </summary>
-        G10X6B10X6G10X6R10X6422UNorm4Pack16Version = 1000156010, 
+        G10X6B10X6G10X6R10X6422UNorm4Pack16Base = 1000156010, 
         
         /// <summary>
         /// 
         /// </summary>
-        B10X6G10X6R10X6G10X6422UNorm4Pack16Version = 1000156011, 
+        B10X6G10X6R10X6G10X6422UNorm4Pack16Base = 1000156011, 
         
         /// <summary>
         /// 
         /// </summary>
-        G10X6B10X6R10X63plane420UNorm3Pack16Version = 1000156012, 
+        G10X6B10X6R10X63plane420UNorm3Pack16Base = 1000156012, 
         
         /// <summary>
         /// 
         /// </summary>
-        G10X6B10X6R10X62plane420UNorm3Pack16Version = 1000156013, 
+        G10X6B10X6R10X62plane420UNorm3Pack16Base = 1000156013, 
         
         /// <summary>
         /// 
         /// </summary>
-        G10X6B10X6R10X63plane422UNorm3Pack16Version = 1000156014, 
+        G10X6B10X6R10X63plane422UNorm3Pack16Base = 1000156014, 
         
         /// <summary>
         /// 
         /// </summary>
-        G10X6B10X6R10X62plane422UNorm3Pack16Version = 1000156015, 
+        G10X6B10X6R10X62plane422UNorm3Pack16Base = 1000156015, 
         
         /// <summary>
         /// 
         /// </summary>
-        G10X6B10X6R10X63plane444UNorm3Pack16Version = 1000156016, 
+        G10X6B10X6R10X63plane444UNorm3Pack16Base = 1000156016, 
         
         /// <summary>
         /// 
         /// </summary>
-        R12X4UNormPack16Version = 1000156017, 
+        R12X4UNormPack16Base = 1000156017, 
         
         /// <summary>
         /// 
         /// </summary>
-        R12X4G12X4UNorm2Pack16Version = 1000156018, 
+        R12X4G12X4UNorm2Pack16Base = 1000156018, 
         
         /// <summary>
         /// 
         /// </summary>
-        R12X4G12X4B12X4A12X4UNorm4Pack16Version = 1000156019, 
+        R12X4G12X4B12X4A12X4UNorm4Pack16Base = 1000156019, 
         
         /// <summary>
         /// 
         /// </summary>
-        G12X4B12X4G12X4R12X4422UNorm4Pack16Version = 1000156020, 
+        G12X4B12X4G12X4R12X4422UNorm4Pack16Base = 1000156020, 
         
         /// <summary>
         /// 
         /// </summary>
-        B12X4G12X4R12X4G12X4422UNorm4Pack16Version = 1000156021, 
+        B12X4G12X4R12X4G12X4422UNorm4Pack16Base = 1000156021, 
         
         /// <summary>
         /// 
         /// </summary>
-        G12X4B12X4R12X43plane420UNorm3Pack16Version = 1000156022, 
+        G12X4B12X4R12X43plane420UNorm3Pack16Base = 1000156022, 
         
         /// <summary>
         /// 
         /// </summary>
-        G12X4B12X4R12X42plane420UNorm3Pack16Version = 1000156023, 
+        G12X4B12X4R12X42plane420UNorm3Pack16Base = 1000156023, 
         
         /// <summary>
         /// 
         /// </summary>
-        G12X4B12X4R12X43plane422UNorm3Pack16Version = 1000156024, 
+        G12X4B12X4R12X43plane422UNorm3Pack16Base = 1000156024, 
         
         /// <summary>
         /// 
         /// </summary>
-        G12X4B12X4R12X42plane422UNorm3Pack16Version = 1000156025, 
+        G12X4B12X4R12X42plane422UNorm3Pack16Base = 1000156025, 
         
         /// <summary>
         /// 
         /// </summary>
-        G12X4B12X4R12X43plane444UNorm3Pack16Version = 1000156026, 
+        G12X4B12X4R12X43plane444UNorm3Pack16Base = 1000156026, 
         
         /// <summary>
         /// 
         /// </summary>
-        G16B16G16R16422UNormVersion = 1000156027, 
+        G16B16G16R16422UNormBase = 1000156027, 
         
         /// <summary>
         /// 
         /// </summary>
-        B16G16R16G16422UNormVersion = 1000156028, 
+        B16G16R16G16422UNormBase = 1000156028, 
         
         /// <summary>
         /// 
         /// </summary>
-        G16B16R163plane420UNormVersion = 1000156029, 
+        G16B16R163plane420UNormBase = 1000156029, 
         
         /// <summary>
         /// 
         /// </summary>
-        G16B16R162plane420UNormVersion = 1000156030, 
+        G16B16R162plane420UNormBase = 1000156030, 
         
         /// <summary>
         /// 
         /// </summary>
-        G16B16R163plane422UNormVersion = 1000156031, 
+        G16B16R163plane422UNormBase = 1000156031, 
         
         /// <summary>
         /// 
         /// </summary>
-        G16B16R162plane422UNormVersion = 1000156032, 
+        G16B16R162plane422UNormBase = 1000156032, 
         
         /// <summary>
         /// 
         /// </summary>
-        G16B16R163plane444UNormVersion = 1000156033, 
+        G16B16R163plane444UNormBase = 1000156033, 
         
         /// <summary>
         /// 
         /// </summary>
-        G8B8R82plane444UNormVersion = 1000330000, 
+        G8B8R82plane444UNormBase = 1000330000, 
         
         /// <summary>
         /// 
         /// </summary>
-        G10X6B10X6R10X62plane444UNorm3Pack16Version = 1000330001, 
+        G10X6B10X6R10X62plane444UNorm3Pack16Base = 1000330001, 
         
         /// <summary>
         /// 
         /// </summary>
-        G12X4B12X4R12X42plane444UNorm3Pack16Version = 1000330002, 
+        G12X4B12X4R12X42plane444UNorm3Pack16Base = 1000330002, 
         
         /// <summary>
         /// 
         /// </summary>
-        G16B16R162plane444UNormVersion = 1000330003, 
+        G16B16R162plane444UNormBase = 1000330003, 
         
         /// <summary>
         /// 
         /// </summary>
-        A4R4G4B4UNormPack16Version = 1000340000, 
+        A4R4G4B4UNormPack16Base = 1000340000, 
         
         /// <summary>
         /// 
         /// </summary>
-        A4B4G4R4UNormPack16Version = 1000340001, 
+        A4B4G4R4UNormPack16Base = 1000340001, 
         
         /// <summary>
         /// 
         /// </summary>
-        Astc4x4SFloatBlockVersion = 1000066000, 
+        Astc4x4SFloatBlockBase = 1000066000, 
         
         /// <summary>
         /// 
         /// </summary>
-        Astc5x4SFloatBlockVersion = 1000066001, 
+        Astc5x4SFloatBlockBase = 1000066001, 
         
         /// <summary>
         /// 
         /// </summary>
-        Astc5x5SFloatBlockVersion = 1000066002, 
+        Astc5x5SFloatBlockBase = 1000066002, 
         
         /// <summary>
         /// 
         /// </summary>
-        Astc6x5SFloatBlockVersion = 1000066003, 
+        Astc6x5SFloatBlockBase = 1000066003, 
         
         /// <summary>
         /// 
         /// </summary>
-        Astc6x6SFloatBlockVersion = 1000066004, 
+        Astc6x6SFloatBlockBase = 1000066004, 
         
         /// <summary>
         /// 
         /// </summary>
-        Astc8x5SFloatBlockVersion = 1000066005, 
+        Astc8x5SFloatBlockBase = 1000066005, 
         
         /// <summary>
         /// 
         /// </summary>
-        Astc8x6SFloatBlockVersion = 1000066006, 
+        Astc8x6SFloatBlockBase = 1000066006, 
         
         /// <summary>
         /// 
         /// </summary>
-        Astc8x8SFloatBlockVersion = 1000066007, 
+        Astc8x8SFloatBlockBase = 1000066007, 
         
         /// <summary>
         /// 
         /// </summary>
-        Astc10x5SFloatBlockVersion = 1000066008, 
+        Astc10x5SFloatBlockBase = 1000066008, 
         
         /// <summary>
         /// 
         /// </summary>
-        Astc10x6SFloatBlockVersion = 1000066009, 
+        Astc10x6SFloatBlockBase = 1000066009, 
         
         /// <summary>
         /// 
         /// </summary>
-        Astc10x8SFloatBlockVersion = 1000066010, 
+        Astc10x8SFloatBlockBase = 1000066010, 
         
         /// <summary>
         /// 
         /// </summary>
-        Astc10x10SFloatBlockVersion = 1000066011, 
+        Astc10x10SFloatBlockBase = 1000066011, 
         
         /// <summary>
         /// 
         /// </summary>
-        Astc12x10SFloatBlockVersion = 1000066012, 
+        Astc12x10SFloatBlockBase = 1000066012, 
         
         /// <summary>
         /// 
         /// </summary>
-        Astc12x12SFloatBlockVersion = 1000066013, 
+        Astc12x12SFloatBlockBase = 1000066013, 
         
         /// <summary>
         /// 
         /// </summary>
-        A1B5G5R5UNormPack16Version = 1000470000, 
+        A1B5G5R5UNormPack16Base = 1000470000, 
         
         /// <summary>
         /// 
         /// </summary>
-        A8UNormVersion = 1000470001, 
+        A8UNormBase = 1000470001, 
         
         /// <summary>
         /// 
@@ -1842,6 +1842,21 @@ namespace SharpVk
         /// 
         /// </summary>
         R8Bool = 1000460000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        R16SFloatFpencodingBfloat16 = 1000460001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        R8SFloatFpencodingFloat8e4m3 = 1000460002, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        R8SFloatFpencodingFloat8e5m2 = 1000460003, 
         
         /// <summary>
         /// 

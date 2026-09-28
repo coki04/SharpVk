@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -48,16 +48,6 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        FragmentRegion = 1 << 2, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        ShaderResolve = 1 << 3, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
         TileShadingApron = 1 << 8, 
         
         /// <summary>
@@ -79,5 +69,15 @@ namespace SharpVk
         /// 
         /// </summary>
         EnableLegacyDithering = 1 << 7, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        FragmentRegion = 1 << 2, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        CustomResolve = 1 << 3, 
     }
 }

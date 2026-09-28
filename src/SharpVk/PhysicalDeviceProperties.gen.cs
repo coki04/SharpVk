@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -134,8 +134,8 @@ namespace SharpVk
             result.VendorID = pointer->VendorID;
             result.DeviceID = pointer->DeviceID;
             result.DeviceType = pointer->DeviceType;
-            result.DeviceName = Interop.HeapUtil.MarshalStringFrom(pointer->DeviceName, Constants.MaxPhysicalDeviceNameSize, true);
-            result.PipelineCacheUUID = new Guid(Interop.HeapUtil.MarshalFrom(pointer->PipelineCacheUUID, Constants.UuidSize));
+            result.DeviceName = Interop.HeapUtil.MarshalStringFrom(pointer->DeviceName, checked((int)Constants.MaxPhysicalDeviceNameSize), true);
+            result.PipelineCacheUUID = new Guid(Interop.HeapUtil.MarshalFrom(pointer->PipelineCacheUUID, checked((int)Constants.UuidSize)));
             result.Limits = SharpVk.PhysicalDeviceLimits.MarshalFrom(&pointer->Limits);
             result.SparseProperties = SharpVk.PhysicalDeviceSparseProperties.MarshalFrom(&pointer->SparseProperties);
             return result;

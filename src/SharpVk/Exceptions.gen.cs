@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -91,18 +91,18 @@ namespace SharpVk
                     return new FragmentedPoolException();
                 case Result.ErrorUnknown:
                     return new UnknownException();
-                case Result.ErrorValidationFailedVersion:
-                    return new ValidationFailedVersionException();
-                case Result.ErrorOutOfPoolMemoryVersion:
-                    return new OutOfPoolMemoryVersionException();
-                case Result.ErrorInvalidExternalHandleVersion:
-                    return new InvalidExternalHandleVersionException();
-                case Result.ErrorFragmentationVersion:
-                    return new FragmentationVersionException();
-                case Result.ErrorInvalidOpaqueCaptureAddressVersion:
-                    return new InvalidOpaqueCaptureAddressVersionException();
-                case Result.ErrorNotPermittedVersion:
-                    return new NotPermittedVersionException();
+                case Result.ErrorValidationFailedBase:
+                    return new ValidationFailedBaseException();
+                case Result.ErrorOutOfPoolMemoryBase:
+                    return new OutOfPoolMemoryBaseException();
+                case Result.ErrorInvalidExternalHandleBase:
+                    return new InvalidExternalHandleBaseException();
+                case Result.ErrorInvalidOpaqueCaptureAddressBase:
+                    return new InvalidOpaqueCaptureAddressBaseException();
+                case Result.ErrorFragmentationCompute:
+                    return new FragmentationComputeException();
+                case Result.ErrorNotPermittedBase:
+                    return new NotPermittedBaseException();
                 case Result.ErrorInvalidPipelineCacheData:
                     return new InvalidPipelineCacheDataException();
                 case Result.ErrorNoPipelineMatch:
@@ -131,6 +131,8 @@ namespace SharpVk
                     return new VideoStdVersionNotSupportedException();
                 case Result.ErrorInvalidDrmFormatModifierPlaneLayout:
                     return new InvalidDrmFormatModifierPlaneLayoutException();
+                case Result.ErrorPresentTimingQueueFull:
+                    return new PresentTimingQueueFullException();
                 case Result.ErrorFullScreenExclusiveModeLost:
                     return new FullScreenExclusiveModeLostException();
                 case Result.ErrorInvalidVideoStdParameters:
@@ -397,10 +399,10 @@ namespace SharpVk
     /// <summary>
     /// 
     /// </summary>
-    public class ValidationFailedVersionException
+    public class ValidationFailedBaseException
         : SharpVkException
     {
-        internal ValidationFailedVersionException()
+        internal ValidationFailedBaseException()
             : base("")
         {
         }
@@ -408,16 +410,16 @@ namespace SharpVk
         /// <summary>
         /// The Vulkan result code represented by this exception.
         /// </summary>
-        public override Result ResultCode => Result.ErrorValidationFailedVersion;
+        public override Result ResultCode => Result.ErrorValidationFailedBase;
     }
     
     /// <summary>
     /// 
     /// </summary>
-    public class OutOfPoolMemoryVersionException
+    public class OutOfPoolMemoryBaseException
         : SharpVkException
     {
-        internal OutOfPoolMemoryVersionException()
+        internal OutOfPoolMemoryBaseException()
             : base("")
         {
         }
@@ -425,16 +427,16 @@ namespace SharpVk
         /// <summary>
         /// The Vulkan result code represented by this exception.
         /// </summary>
-        public override Result ResultCode => Result.ErrorOutOfPoolMemoryVersion;
+        public override Result ResultCode => Result.ErrorOutOfPoolMemoryBase;
     }
     
     /// <summary>
     /// 
     /// </summary>
-    public class InvalidExternalHandleVersionException
+    public class InvalidExternalHandleBaseException
         : SharpVkException
     {
-        internal InvalidExternalHandleVersionException()
+        internal InvalidExternalHandleBaseException()
             : base("")
         {
         }
@@ -442,16 +444,16 @@ namespace SharpVk
         /// <summary>
         /// The Vulkan result code represented by this exception.
         /// </summary>
-        public override Result ResultCode => Result.ErrorInvalidExternalHandleVersion;
+        public override Result ResultCode => Result.ErrorInvalidExternalHandleBase;
     }
     
     /// <summary>
     /// 
     /// </summary>
-    public class FragmentationVersionException
+    public class InvalidOpaqueCaptureAddressBaseException
         : SharpVkException
     {
-        internal FragmentationVersionException()
+        internal InvalidOpaqueCaptureAddressBaseException()
             : base("")
         {
         }
@@ -459,16 +461,16 @@ namespace SharpVk
         /// <summary>
         /// The Vulkan result code represented by this exception.
         /// </summary>
-        public override Result ResultCode => Result.ErrorFragmentationVersion;
+        public override Result ResultCode => Result.ErrorInvalidOpaqueCaptureAddressBase;
     }
     
     /// <summary>
     /// 
     /// </summary>
-    public class InvalidOpaqueCaptureAddressVersionException
+    public class FragmentationComputeException
         : SharpVkException
     {
-        internal InvalidOpaqueCaptureAddressVersionException()
+        internal FragmentationComputeException()
             : base("")
         {
         }
@@ -476,16 +478,16 @@ namespace SharpVk
         /// <summary>
         /// The Vulkan result code represented by this exception.
         /// </summary>
-        public override Result ResultCode => Result.ErrorInvalidOpaqueCaptureAddressVersion;
+        public override Result ResultCode => Result.ErrorFragmentationCompute;
     }
     
     /// <summary>
     /// 
     /// </summary>
-    public class NotPermittedVersionException
+    public class NotPermittedBaseException
         : SharpVkException
     {
-        internal NotPermittedVersionException()
+        internal NotPermittedBaseException()
             : base("")
         {
         }
@@ -493,7 +495,7 @@ namespace SharpVk
         /// <summary>
         /// The Vulkan result code represented by this exception.
         /// </summary>
-        public override Result ResultCode => Result.ErrorNotPermittedVersion;
+        public override Result ResultCode => Result.ErrorNotPermittedBase;
     }
     
     /// <summary>
@@ -732,6 +734,23 @@ namespace SharpVk
         /// The Vulkan result code represented by this exception.
         /// </summary>
         public override Result ResultCode => Result.ErrorInvalidDrmFormatModifierPlaneLayout;
+    }
+    
+    /// <summary>
+    /// 
+    /// </summary>
+    public class PresentTimingQueueFullException
+        : SharpVkException
+    {
+        internal PresentTimingQueueFullException()
+            : base("")
+        {
+        }
+        
+        /// <summary>
+        /// The Vulkan result code represented by this exception.
+        /// </summary>
+        public override Result ResultCode => Result.ErrorPresentTimingQueueFull;
     }
     
     /// <summary>

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -122,11 +122,6 @@ namespace SharpVk.NVidia
         /// <summary>
         /// 
         /// </summary>
-        public const string ShaderSubgroupPartitioned = "VK_NV_shader_subgroup_partitioned"; 
-        
-        /// <summary>
-        /// 
-        /// </summary>
         public const string MeshShader = "VK_NV_mesh_shader"; 
         
         /// <summary>
@@ -217,16 +212,6 @@ namespace SharpVk.NVidia
         /// <summary>
         /// 
         /// </summary>
-        public const string CopyMemoryIndirect = "VK_NV_copy_memory_indirect"; 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        public const string MemoryDecompression = "VK_NV_memory_decompression"; 
-        
-        /// <summary>
-        /// 
-        /// </summary>
         public const string DeviceGeneratedCommandsCompute = "VK_NV_device_generated_commands_compute"; 
         
         /// <summary>
@@ -243,11 +228,6 @@ namespace SharpVk.NVidia
         /// 
         /// </summary>
         public const string OpticalFlow = "VK_NV_optical_flow"; 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        public const string RayTracingInvocationReorder = "VK_NV_ray_tracing_invocation_reorder"; 
         
         /// <summary>
         /// 
@@ -317,11 +297,31 @@ namespace SharpVk.NVidia
         /// <summary>
         /// 
         /// </summary>
+        public const string PushConstantBank = "VK_NV_push_constant_bank"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public const string CooperativeMatrix2 = "VK_NV_cooperative_matrix2"; 
         
         /// <summary>
         /// 
         /// </summary>
         public const string PresentMetering = "VK_NV_present_metering"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string ComputeOccupancyPriority = "VK_NV_compute_occupancy_priority"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string CooperativeMatrixDecodeVector = "VK_NV_cooperative_matrix_decode_vector"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string PrivateDataBaseHandle = "VK_NV_private_data_base_handle"; 
     }
 }

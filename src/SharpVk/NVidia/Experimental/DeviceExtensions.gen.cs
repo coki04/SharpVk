@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -211,6 +211,33 @@ namespace SharpVk.NVidia.Experimental
                 info.MarshalTo(marshalledInfo);
                 SharpVk.Interop.NVidia.Experimental.VkDeviceGetImageViewHandle64Delegate commandDelegate = commandCache.Cache.vkGetImageViewHandle64NVX;
                 result = commandDelegate(extendedHandle.handle, marshalledInfo);
+                return result;
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The Device handle to extend.
+        /// </param>
+        /// <param name="imageViewIndex">
+        /// </param>
+        /// <param name="samplerIndex">
+        /// </param>
+        public static unsafe ulong GetCombinedImageSamplerIndex(this SharpVk.Device extendedHandle, ulong imageViewIndex, ulong samplerIndex)
+        {
+            try
+            {
+                ulong result = default(ulong);
+                CommandCache commandCache = default(CommandCache);
+                commandCache = extendedHandle.commandCache;
+                SharpVk.Interop.NVidia.Experimental.VkDeviceGetCombinedImageSamplerIndexDelegate commandDelegate = commandCache.Cache.vkGetDeviceCombinedImageSamplerIndexNVX;
+                result = commandDelegate(extendedHandle.handle, imageViewIndex, samplerIndex);
                 return result;
             }
             finally

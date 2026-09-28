@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -54,6 +54,35 @@ namespace SharpVk.Multivendor
                     throw SharpVkException.Create(methodResult);
                 }
                 result = marshalledCounterValue;
+                return result;
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The Swapchain handle to extend.
+        /// </param>
+        /// <param name="size">
+        /// </param>
+        public static unsafe Result SetPresentTimingQueueSize(this SharpVk.Khronos.Swapchain extendedHandle, uint size)
+        {
+            try
+            {
+                Result result = default(Result);
+                CommandCache commandCache = default(CommandCache);
+                commandCache = extendedHandle.commandCache;
+                SharpVk.Interop.Multivendor.VkSwapchainKHRSetPresentTimingQueueSizeDelegate commandDelegate = commandCache.Cache.vkSetSwapchainPresentTimingQueueSizeEXT;
+                result = commandDelegate(extendedHandle.parent.handle, extendedHandle.handle, size);
+                if (SharpVkException.IsError(result))
+                {
+                    throw SharpVkException.Create(result);
+                }
                 return result;
             }
             finally

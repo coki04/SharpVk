@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -37,6 +37,32 @@ namespace SharpVk.Arm
         /// <param name="extendedHandle">
         /// The CommandBuffer handle to extend.
         /// </param>
+        /// <param name="dispatchParameters">
+        /// </param>
+        public static unsafe void SetDispatchParameters(this SharpVk.CommandBuffer extendedHandle, SharpVk.Arm.DispatchParameters dispatchParameters)
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.Arm.DispatchParameters* marshalledDispatchParameters = default(SharpVk.Interop.Arm.DispatchParameters*);
+                commandCache = extendedHandle.commandCache;
+                marshalledDispatchParameters = (SharpVk.Interop.Arm.DispatchParameters*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Arm.DispatchParameters>());
+                dispatchParameters.MarshalTo(marshalledDispatchParameters);
+                SharpVk.Interop.Arm.VkCommandBufferSetDispatchParametersDelegate commandDelegate = commandCache.Cache.vkCmdSetDispatchParametersARM;
+                commandDelegate(extendedHandle.handle, marshalledDispatchParameters);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The CommandBuffer handle to extend.
+        /// </param>
         /// <param name="copyTensorInfo">
         /// </param>
         public static unsafe void CopyTensor(this SharpVk.CommandBuffer extendedHandle, SharpVk.Arm.CopyTensorInfo copyTensorInfo)
@@ -67,13 +93,24 @@ namespace SharpVk.Arm
         /// </param>
         /// <param name="flags">
         /// </param>
-        public static unsafe void DispatchDataGraph(this SharpVk.CommandBuffer extendedHandle, SharpVk.Arm.DataGraphPipelineSession session, SharpVk.Arm.DataGraphPipelineDispatchFlags? flags = default(SharpVk.Arm.DataGraphPipelineDispatchFlags?))
+        /// <param name="dataGraphPipelineOpticalFlowDispatchInfoArm">
+        /// Extension struct
+        /// </param>
+        public static unsafe void DispatchDataGraph(this SharpVk.CommandBuffer extendedHandle, SharpVk.Arm.DataGraphPipelineSession session, SharpVk.Arm.DataGraphPipelineDispatchFlags? flags = default(SharpVk.Arm.DataGraphPipelineDispatchFlags?), SharpVk.Arm.DataGraphPipelineOpticalFlowDispatchInfo? dataGraphPipelineOpticalFlowDispatchInfoArm = null)
         {
             try
             {
                 CommandCache commandCache = default(CommandCache);
                 SharpVk.Interop.Arm.DataGraphPipelineDispatchInfo* marshalledInfo = default(SharpVk.Interop.Arm.DataGraphPipelineDispatchInfo*);
                 void* vkDataGraphPipelineDispatchInfoARMNextPointer = default(void*);
+                if (dataGraphPipelineOpticalFlowDispatchInfoArm != null)
+                {
+                    SharpVk.Interop.Arm.DataGraphPipelineOpticalFlowDispatchInfo* extensionPointer = default(SharpVk.Interop.Arm.DataGraphPipelineOpticalFlowDispatchInfo*);
+                    extensionPointer = (SharpVk.Interop.Arm.DataGraphPipelineOpticalFlowDispatchInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Arm.DataGraphPipelineOpticalFlowDispatchInfo>());
+                    dataGraphPipelineOpticalFlowDispatchInfoArm.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkDataGraphPipelineDispatchInfoARMNextPointer;
+                    vkDataGraphPipelineDispatchInfoARMNextPointer = extensionPointer;
+                }
                 commandCache = extendedHandle.commandCache;
                 marshalledInfo = (SharpVk.Interop.Arm.DataGraphPipelineDispatchInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Arm.DataGraphPipelineDispatchInfo>());
                 marshalledInfo->SType = StructureType.DataGraphPipelineDispatchInfo;
@@ -88,6 +125,50 @@ namespace SharpVk.Arm
                 }
                 SharpVk.Interop.Arm.VkCommandBufferDispatchDataGraphDelegate commandDelegate = commandCache.Cache.vkCmdDispatchDataGraphARM;
                 commandDelegate(extendedHandle.handle, session?.handle ?? default(SharpVk.Interop.Arm.DataGraphPipelineSession), marshalledInfo);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The CommandBuffer handle to extend.
+        /// </param>
+        /// <param name="instrumentation">
+        /// </param>
+        public static unsafe void BeginShaderInstrumentation(this SharpVk.CommandBuffer extendedHandle, SharpVk.Arm.ShaderInstrumentation instrumentation)
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                commandCache = extendedHandle.commandCache;
+                SharpVk.Interop.Arm.VkCommandBufferBeginShaderInstrumentationDelegate commandDelegate = commandCache.Cache.vkCmdBeginShaderInstrumentationARM;
+                commandDelegate(extendedHandle.handle, instrumentation?.handle ?? default(SharpVk.Interop.Arm.ShaderInstrumentation));
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The CommandBuffer handle to extend.
+        /// </param>
+        public static unsafe void EndShaderInstrumentation(this SharpVk.CommandBuffer extendedHandle)
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                commandCache = extendedHandle.commandCache;
+                SharpVk.Interop.Arm.VkCommandBufferEndShaderInstrumentationDelegate commandDelegate = commandCache.Cache.vkCmdEndShaderInstrumentationARM;
+                commandDelegate(extendedHandle.handle);
             }
             finally
             {

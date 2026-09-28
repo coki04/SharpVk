@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -67,7 +67,7 @@ namespace SharpVk
         /// </param>
         internal unsafe void MarshalTo(SharpVk.Interop.RenderingInputAttachmentIndexInfo* pointer)
         {
-            pointer->SType = StructureType.RenderingInputAttachmentIndexInfoVersion;
+            pointer->SType = StructureType.RenderingInputAttachmentIndexInfoGraphics;
             pointer->Next = null;
             pointer->ColorAttachmentCount = (uint)(Interop.HeapUtil.GetLength(this.ColorAttachmentInputIndices));
             if (this.ColorAttachmentInputIndices != null)

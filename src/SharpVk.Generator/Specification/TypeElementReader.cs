@@ -27,7 +27,7 @@ namespace SharpVk.Generator.Specification
         {
             foreach (var vkType in this.xmlCache.GetVkXml().Element("registry").Element("types").Elements("type"))
             {
-                string name = vkType.Attribute("name")?.Value ?? vkType.Element("name").Value;
+                string name = vkType.Attribute("name")?.Value ?? vkType.Element("name")?.Value ?? vkType.Element("proto")?.Element("name")?.Value;
                 Enum.TryParse(vkType.Attribute("category")?.Value, out TypeCategory category);
                 string requires = vkType.Attribute("requires")?.Value;
                 if (requires == null)

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -104,6 +104,29 @@ namespace SharpVk.NVidia
                     result = null;
                 }
                 return result;
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The Queue handle to extend.
+        /// </param>
+        /// <param name="queueType">
+        /// </param>
+        public static unsafe void NotifyOutOfBandLegacy(this SharpVk.Queue extendedHandle, uint queueType)
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                commandCache = extendedHandle.commandCache;
+                SharpVk.Interop.NVidia.VkQueueNotifyOutOfBandLegacyDelegate commandDelegate = commandCache.Cache.vkQueueNotifyOutOfBandLegacyNV;
+                commandDelegate(extendedHandle.handle, queueType);
             }
             finally
             {

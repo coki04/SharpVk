@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -108,5 +108,30 @@ namespace SharpVk.Khronos
         /// 
         /// </summary>
         Float8E5M2 = 1000491003, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Float6E2M3 = 1000672000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Float6E3M2 = 1000672001, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Float4E2M1 = 1000672002, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Float8UnsignedE8M0 = 1000672003, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Mxint8 = 1000672004, 
     }
 }

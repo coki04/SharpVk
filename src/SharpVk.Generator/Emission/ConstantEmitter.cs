@@ -2,6 +2,7 @@
 using SharpVk.Generator.Generation;
 using SharpVk.Generator.Pipeline;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using static SharpVk.Emit.AccessModifier;
 using static SharpVk.Emit.ExpressionBuilder;
@@ -29,7 +30,7 @@ namespace SharpVk.Generator.Emission
             {
                 var constantGroups = constantNamespace.GroupBy(x => x.ConstantGroup);
 
-                var subfolder = string.Join("\\", constantNamespace.First().Namespace);
+                var subfolder = string.Join(Path.DirectorySeparatorChar, constantNamespace.First().Namespace);
 
                 if (string.IsNullOrWhiteSpace(subfolder))
                 {

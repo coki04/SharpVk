@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -76,7 +76,7 @@ namespace SharpVk
         /// </param>
         internal unsafe void MarshalTo(SharpVk.Interop.PipelineRenderingCreateInfo* pointer)
         {
-            pointer->SType = StructureType.PipelineRenderingCreateInfoVersion;
+            pointer->SType = StructureType.PipelineRenderingCreateInfoGraphics;
             pointer->Next = null;
             pointer->ViewMask = this.ViewMask;
             pointer->ColorAttachmentCount = (uint)(Interop.HeapUtil.GetLength(this.ColorAttachmentFormats));

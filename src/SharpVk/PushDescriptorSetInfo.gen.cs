@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -76,7 +76,7 @@ namespace SharpVk
         /// </param>
         internal unsafe void MarshalTo(SharpVk.Interop.PushDescriptorSetInfo* pointer)
         {
-            pointer->SType = StructureType.PushDescriptorSetInfoVersion;
+            pointer->SType = StructureType.PushDescriptorSetInfoCompute;
             pointer->Next = null;
             pointer->StageFlags = this.StageFlags;
             pointer->Layout = this.Layout?.handle ?? default(SharpVk.Interop.PipelineLayout);

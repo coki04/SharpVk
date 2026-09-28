@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -49,21 +49,9 @@ namespace SharpVk
         /// </param>
         internal unsafe void MarshalTo(SharpVk.Interop.PipelineShaderStageRequiredSubgroupSizeCreateInfo* pointer)
         {
-            pointer->SType = StructureType.PipelineShaderStageRequiredSubgroupSizeCreateInfoVersion;
+            pointer->SType = StructureType.PipelineShaderStageRequiredSubgroupSizeCreateInfoCompute;
             pointer->Next = null;
             pointer->RequiredSubgroupSize = this.RequiredSubgroupSize;
-        }
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="pointer">
-        /// </param>
-        internal static unsafe PipelineShaderStageRequiredSubgroupSizeCreateInfo MarshalFrom(SharpVk.Interop.PipelineShaderStageRequiredSubgroupSizeCreateInfo* pointer)
-        {
-            PipelineShaderStageRequiredSubgroupSizeCreateInfo result = default(PipelineShaderStageRequiredSubgroupSizeCreateInfo);
-            result.RequiredSubgroupSize = pointer->RequiredSubgroupSize;
-            return result;
         }
     }
 }

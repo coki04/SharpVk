@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -32,11 +32,26 @@ namespace SharpVk.Valve
         /// <summary>
         /// 
         /// </summary>
+        public const string VideoEncodeRgbConversion = "VK_VALVE_video_encode_rgb_conversion"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public const string DescriptorSetHostMapping = "VK_VALVE_descriptor_set_host_mapping"; 
         
         /// <summary>
         /// 
         /// </summary>
         public const string FragmentDensityMapLayered = "VK_VALVE_fragment_density_map_layered"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string ShaderMixedFloatDotProduct = "VK_VALVE_shader_mixed_float_dot_product"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string BufferDeviceAddressAllocationAlignment = "VK_VALVE_buffer_device_address_allocation_alignment"; 
     }
 }

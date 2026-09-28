@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -103,7 +103,7 @@ namespace SharpVk
         /// </param>
         internal unsafe void MarshalTo(SharpVk.Interop.PipelineCacheSafetyCriticalIndexEntry* pointer)
         {
-            Interop.HeapUtil.MarshalTo(this.PipelineIdentifier, Constants.UuidSize, pointer->PipelineIdentifier);
+            Interop.HeapUtil.MarshalTo(this.PipelineIdentifier, checked((int)Constants.UuidSize), pointer->PipelineIdentifier);
             pointer->PipelineMemorySize = this.PipelineMemorySize;
             pointer->JsonSize = this.JsonSize;
             pointer->JsonOffset = this.JsonOffset;
@@ -120,7 +120,7 @@ namespace SharpVk
         internal static unsafe PipelineCacheSafetyCriticalIndexEntry MarshalFrom(SharpVk.Interop.PipelineCacheSafetyCriticalIndexEntry* pointer)
         {
             PipelineCacheSafetyCriticalIndexEntry result = default(PipelineCacheSafetyCriticalIndexEntry);
-            result.PipelineIdentifier = Interop.HeapUtil.MarshalFrom(pointer->PipelineIdentifier, Constants.UuidSize);
+            result.PipelineIdentifier = Interop.HeapUtil.MarshalFrom(pointer->PipelineIdentifier, checked((int)Constants.UuidSize));
             result.PipelineMemorySize = pointer->PipelineMemorySize;
             result.JsonSize = pointer->JsonSize;
             result.JsonOffset = pointer->JsonOffset;

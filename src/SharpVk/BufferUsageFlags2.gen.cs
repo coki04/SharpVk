@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -93,7 +93,17 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        Reserved28 = 1 << 28, 
+        DescriptorHeap = 1 << 28, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        MicromapBuildInputReadOnly = 1 << 23, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        MicromapStorage = 1 << 24, 
         
         /// <summary>
         /// 
@@ -163,16 +173,6 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        MicromapBuildInputReadOnly = 1 << 23, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        MicromapStorage = 1 << 24, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
         CompressedDataDgf1 = 1 << 33, 
         
         /// <summary>
@@ -193,11 +193,36 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        Reserved32 = 1 << 32, 
+        MemoryDecompression = 1 << 32, 
         
         /// <summary>
         /// 
         /// </summary>
         PreprocessBuffer = 1 << 31, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved18 = 1 << 18, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved30 = 1 << 30, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved35 = 1 << 35, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved36 = 1 << 36, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved37 = 1 << 37, 
     }
 }

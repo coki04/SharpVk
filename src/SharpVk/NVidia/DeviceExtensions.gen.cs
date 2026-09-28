@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -661,6 +661,104 @@ namespace SharpVk.NVidia
                 }
                 result = new SharpVk.NVidia.CudaFunction(extendedHandle, marshalledFunction);
                 return result;
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The Device handle to extend.
+        /// </param>
+        /// <param name="lowLatencyMode">
+        /// </param>
+        /// <param name="lowLatencyBoost">
+        /// </param>
+        /// <param name="minimumIntervalUs">
+        /// </param>
+        public static unsafe void SetLatencySleepModeLegacy(this SharpVk.Device extendedHandle, bool lowLatencyMode, bool lowLatencyBoost, uint minimumIntervalUs)
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                commandCache = extendedHandle.commandCache;
+                SharpVk.Interop.NVidia.VkDeviceSetLatencySleepModeLegacyDelegate commandDelegate = commandCache.Cache.vkSetLatencySleepModeLegacyNV;
+                commandDelegate(extendedHandle.handle, lowLatencyMode, lowLatencyBoost, minimumIntervalUs);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The Device handle to extend.
+        /// </param>
+        /// <param name="frameID">
+        /// </param>
+        /// <param name="marker">
+        /// </param>
+        public static unsafe void SetLatencyMarkerLegacy(this SharpVk.Device extendedHandle, ulong frameID, uint marker)
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                commandCache = extendedHandle.commandCache;
+                SharpVk.Interop.NVidia.VkDeviceSetLatencyMarkerLegacyDelegate commandDelegate = commandCache.Cache.vkSetLatencyMarkerLegacyNV;
+                commandDelegate(extendedHandle.handle, frameID, marker);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The Device handle to extend.
+        /// </param>
+        public static unsafe bool GetSleepStatusLegacy(this SharpVk.Device extendedHandle)
+        {
+            try
+            {
+                bool result = default(bool);
+                CommandCache commandCache = default(CommandCache);
+                Bool32 marshalledLowLatencyMode = default(Bool32);
+                commandCache = extendedHandle.commandCache;
+                SharpVk.Interop.NVidia.VkDeviceGetSleepStatusLegacyDelegate commandDelegate = commandCache.Cache.vkGetSleepStatusLegacyNV;
+                commandDelegate(extendedHandle.handle, &marshalledLowLatencyMode);
+                result = marshalledLowLatencyMode;
+                return result;
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The Device handle to extend.
+        /// </param>
+        public static unsafe void ShutdownLatencyDeviceLegacy(this SharpVk.Device extendedHandle)
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                commandCache = extendedHandle.commandCache;
+                SharpVk.Interop.NVidia.VkDeviceShutdownLatencyDeviceLegacyDelegate commandDelegate = commandCache.Cache.vkShutdownLatencyDeviceLegacyNV;
+                commandDelegate(extendedHandle.handle);
             }
             finally
             {

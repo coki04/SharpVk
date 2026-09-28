@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -49,19 +49,6 @@ namespace SharpVk.Arm
         {
             get;
             set;
-        }
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="pointer">
-        /// </param>
-        internal unsafe void MarshalTo(SharpVk.Interop.Arm.QueueFamilyDataGraphProperties* pointer)
-        {
-            pointer->SType = StructureType.QueueFamilyDataGraphProperties;
-            pointer->Next = null;
-            this.Engine.MarshalTo(&pointer->Engine);
-            this.Operation.MarshalTo(&pointer->Operation);
         }
         
         /// <summary>

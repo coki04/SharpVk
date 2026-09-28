@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -36,7 +36,7 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        public SharpVk.PrivateDataSlotCreateFlags Flags
+        public SharpVk.PrivateDataSlotCreateFlags? Flags
         {
             get;
             set;
@@ -49,9 +49,16 @@ namespace SharpVk
         /// </param>
         internal unsafe void MarshalTo(SharpVk.Interop.PrivateDataSlotCreateInfo* pointer)
         {
-            pointer->SType = StructureType.PrivateDataSlotCreateInfoVersion;
+            pointer->SType = StructureType.PrivateDataSlotCreateInfoBase;
             pointer->Next = null;
-            pointer->Flags = this.Flags;
+            if (this.Flags != null)
+            {
+                pointer->Flags = this.Flags.Value;
+            }
+            else
+            {
+                pointer->Flags = default(SharpVk.PrivateDataSlotCreateFlags);
+            }
         }
     }
 }

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -80,7 +80,7 @@ namespace SharpVk.Multivendor
         {
             RenderPassSubpassFeedbackInfo result = default(RenderPassSubpassFeedbackInfo);
             result.SubpassMergeStatus = pointer->SubpassMergeStatus;
-            result.Description = Interop.HeapUtil.MarshalStringFrom(pointer->Description, Constants.MaxDescriptionSize, true);
+            result.Description = Interop.HeapUtil.MarshalStringFrom(pointer->Description, checked((int)Constants.MaxDescriptionSize), true);
             result.PostMergeIndex = pointer->PostMergeIndex;
             return result;
         }

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -112,7 +112,7 @@ namespace SharpVk
         /// </param>
         internal unsafe void MarshalTo(SharpVk.Interop.RenderingAttachmentInfo* pointer)
         {
-            pointer->SType = StructureType.RenderingAttachmentInfoVersion;
+            pointer->SType = StructureType.RenderingAttachmentInfoGraphics;
             pointer->Next = null;
             pointer->ImageView = this.ImageView?.handle ?? default(SharpVk.Interop.ImageView);
             pointer->ImageLayout = this.ImageLayout;

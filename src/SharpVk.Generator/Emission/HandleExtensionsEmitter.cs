@@ -3,6 +3,7 @@ using SharpVk.Generator.Generation;
 using SharpVk.Generator.Pipeline;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 
 using static SharpVk.Emit.AccessModifier;
 using static SharpVk.Emit.ExpressionBuilder;
@@ -27,7 +28,7 @@ namespace SharpVk.Generator.Emission
         {
             foreach (var handleExtension in this.handleExtensions)
             {
-                string path = string.Join("\\", handleExtension.Namespace);
+                string path = string.Join(Path.DirectorySeparatorChar, handleExtension.Namespace);
                 string @namespace = string.Join(".", handleExtension.Namespace.Prepend("SharpVk"));
 
                 this.builderFactory.Generate(handleExtension.Name, path, fileBuilder =>

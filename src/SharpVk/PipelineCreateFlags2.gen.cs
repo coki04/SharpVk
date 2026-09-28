@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -93,12 +93,7 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        PipelineCreate36 = 1 << 36, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        PipelineCreate39 = 1 << 39, 
+        DescriptorHeap = 1 << 36, 
         
         /// <summary>
         /// 
@@ -203,11 +198,6 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        RayTracingOpacityMicromap = 1 << 24, 
-        
-        /// <summary>
-        /// 
-        /// </summary>
         ColorAttachmentFeedbackLoop = 1 << 25, 
         
         /// <summary>
@@ -233,6 +223,11 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        InstrumentShaders = 1 << 39, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         CaptureData = 1 << 31, 
         
         /// <summary>
@@ -253,21 +248,36 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        Reserved41 = 1 << 41, 
+        RayTracingOpacityMicromap = 1 << 24, 
         
         /// <summary>
         /// 
         /// </summary>
-        Reserved42 = 1 << 42, 
+        OpacityMicromapDisallowMixedSpecialIndex = 1 << 41, 
         
         /// <summary>
         /// 
         /// </summary>
-        Reserved43 = 1 << 43, 
+        PipelineCreate64BitIndexing = 1 << 43, 
         
         /// <summary>
         /// 
         /// </summary>
         Reserved45 = 1 << 45, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved47 = 1 << 47, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved48 = 1 << 48, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved42 = 1 << 42, 
     }
 }

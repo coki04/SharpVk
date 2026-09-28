@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -32,7 +32,12 @@ namespace SharpVk.Qcom
         /// <summary>
         /// 
         /// </summary>
-        public const string RenderPassShaderResolve = "VK_QCOM_render_pass_shader_resolve"; 
+        public const string CooperativeMatrixConversion = "VK_QCOM_cooperative_matrix_conversion"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string ElapsedTimerQuery = "VK_QCOM_elapsed_timer_query"; 
         
         /// <summary>
         /// 
@@ -43,6 +48,21 @@ namespace SharpVk.Qcom
         /// 
         /// </summary>
         public const string RenderPassStoreOps = "VK_QCOM_render_pass_store_ops"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string QueuePerfHint = "VK_QCOM_queue_perf_hint"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string ImageProcessing3 = "VK_QCOM_image_processing3"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string ShaderMultipleWaitQueues = "VK_QCOM_shader_multiple_wait_queues"; 
         
         /// <summary>
         /// 
@@ -98,5 +118,10 @@ namespace SharpVk.Qcom
         /// 
         /// </summary>
         public const string TileMemoryHeap = "VK_QCOM_tile_memory_heap"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string DataGraphModel = "VK_QCOM_data_graph_model"; 
     }
 }

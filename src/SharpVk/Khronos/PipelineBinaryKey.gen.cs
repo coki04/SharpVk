@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -36,15 +36,6 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public uint KeySize
-        {
-            get;
-            set;
-        }
-        
-        /// <summary>
-        /// 
-        /// </summary>
         public byte[] Key
         {
             get;
@@ -60,8 +51,8 @@ namespace SharpVk.Khronos
         {
             pointer->SType = StructureType.PipelineBinaryKey;
             pointer->Next = null;
-            pointer->KeySize = this.KeySize;
-            Interop.HeapUtil.MarshalTo(this.Key, Constants.MaxPipelineBinaryKeySize, pointer->Key);
+            pointer->KeySize = (uint)(Interop.HeapUtil.GetLength(this.Key));
+            Interop.HeapUtil.MarshalTo(this.Key, checked((int)Constants.MaxPipelineBinaryKeySize), pointer->Key);
         }
         
         /// <summary>
@@ -72,8 +63,7 @@ namespace SharpVk.Khronos
         internal static unsafe PipelineBinaryKey MarshalFrom(SharpVk.Interop.Khronos.PipelineBinaryKey* pointer)
         {
             PipelineBinaryKey result = default(PipelineBinaryKey);
-            result.KeySize = pointer->KeySize;
-            result.Key = Interop.HeapUtil.MarshalFrom(pointer->Key, Constants.MaxPipelineBinaryKeySize);
+            result.Key = Interop.HeapUtil.MarshalFrom(pointer->Key, checked((int)Constants.MaxPipelineBinaryKeySize));
             return result;
         }
     }

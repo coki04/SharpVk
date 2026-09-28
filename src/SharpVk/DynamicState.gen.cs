@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -119,82 +119,82 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        CullModeVersion = 1000267000, 
+        CullModeGraphics = 1000267000, 
         
         /// <summary>
         /// 
         /// </summary>
-        FrontFaceVersion = 1000267001, 
+        FrontFaceGraphics = 1000267001, 
         
         /// <summary>
         /// 
         /// </summary>
-        PrimitiveTopologyVersion = 1000267002, 
+        PrimitiveTopologyGraphics = 1000267002, 
         
         /// <summary>
         /// 
         /// </summary>
-        ViewportWithCountVersion = 1000267003, 
+        ViewportWithCountGraphics = 1000267003, 
         
         /// <summary>
         /// 
         /// </summary>
-        ScissorWithCountVersion = 1000267004, 
+        ScissorWithCountGraphics = 1000267004, 
         
         /// <summary>
         /// 
         /// </summary>
-        VertexInputBindingStrideVersion = 1000267005, 
+        VertexInputBindingStrideGraphics = 1000267005, 
         
         /// <summary>
         /// 
         /// </summary>
-        DepthTestEnableVersion = 1000267006, 
+        DepthTestEnableGraphics = 1000267006, 
         
         /// <summary>
         /// 
         /// </summary>
-        DepthWriteEnableVersion = 1000267007, 
+        DepthWriteEnableGraphics = 1000267007, 
         
         /// <summary>
         /// 
         /// </summary>
-        DepthCompareOpVersion = 1000267008, 
+        DepthCompareOpGraphics = 1000267008, 
         
         /// <summary>
         /// 
         /// </summary>
-        DepthBoundsTestEnableVersion = 1000267009, 
+        DepthBoundsTestEnableGraphics = 1000267009, 
         
         /// <summary>
         /// 
         /// </summary>
-        StencilTestEnableVersion = 1000267010, 
+        StencilTestEnableGraphics = 1000267010, 
         
         /// <summary>
         /// 
         /// </summary>
-        StencilOpVersion = 1000267011, 
+        StencilOpGraphics = 1000267011, 
         
         /// <summary>
         /// 
         /// </summary>
-        RasterizerDiscardEnableVersion = 1000377001, 
+        RasterizerDiscardEnableGraphics = 1000377001, 
         
         /// <summary>
         /// 
         /// </summary>
-        DepthBiasEnableVersion = 1000377002, 
+        DepthBiasEnableGraphics = 1000377002, 
         
         /// <summary>
         /// 
         /// </summary>
-        PrimitiveRestartEnableVersion = 1000377004, 
+        PrimitiveRestartEnableGraphics = 1000377004, 
         
         /// <summary>
         /// 
         /// </summary>
-        LineStippleVersion = 1000259000, 
+        LineStippleGraphics = 1000259000, 
         
         /// <summary>
         /// 

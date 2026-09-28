@@ -2,6 +2,7 @@
 using SharpVk.Generator.Pipeline;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 
 using static SharpVk.Emit.AccessModifier;
 using static SharpVk.Emit.TypeModifier;
@@ -29,7 +30,7 @@ namespace SharpVk.Generator.Emission
 
                 if (@delegate.Namespace?.Any() ?? false)
                 {
-                    path = string.Join("\\", @delegate.Namespace);
+                    path = string.Join(Path.DirectorySeparatorChar, @delegate.Namespace);
                     @namespace += "." + string.Join(".", @delegate.Namespace);
                 }
 

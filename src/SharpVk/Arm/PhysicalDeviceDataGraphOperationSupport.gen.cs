@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -80,7 +80,7 @@ namespace SharpVk.Arm
         {
             PhysicalDeviceDataGraphOperationSupport result = default(PhysicalDeviceDataGraphOperationSupport);
             result.OperationType = pointer->OperationType;
-            result.Name = Interop.HeapUtil.MarshalStringFrom(pointer->Name, Constants.MaxPhysicalDeviceDataGraphOperationSetNameSize, true);
+            result.Name = Interop.HeapUtil.MarshalStringFrom(pointer->Name, checked((int)Constants.MaxPhysicalDeviceDataGraphOperationSetNameSize), true);
             result.Version = (Version)(pointer->Version);
             return result;
         }

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -64,13 +64,13 @@ namespace SharpVk.Interop
         /// <summary>
         /// A string containing the name of the device.
         /// </summary>
-        public fixed byte DeviceName[Constants.MaxPhysicalDeviceNameSize]; 
+        public fixed byte DeviceName[checked((int)Constants.MaxPhysicalDeviceNameSize)]; 
         
         /// <summary>
         /// An array of size VK_UUID_SIZE, containing 8-bit values that
         /// represent a universally unique identifier for the device.
         /// </summary>
-        public fixed byte PipelineCacheUUID[Constants.UuidSize]; 
+        public fixed byte PipelineCacheUUID[checked((int)Constants.UuidSize)]; 
         
         /// <summary>
         /// The PhysicalDeviceLimits structure which specifies device-specific

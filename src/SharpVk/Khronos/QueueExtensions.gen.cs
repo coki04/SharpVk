@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -60,6 +60,9 @@ namespace SharpVk.Khronos
         /// <param name="presentId2Khr">
         /// Extension struct
         /// </param>
+        /// <param name="presentTimingsInfoExt">
+        /// Extension struct
+        /// </param>
         /// <param name="presentTimesInfoGoogle">
         /// Extension struct
         /// </param>
@@ -81,7 +84,7 @@ namespace SharpVk.Khronos
         /// <param name="frameBoundaryTensorsArm">
         /// Extension struct
         /// </param>
-        public static unsafe Result Present(this SharpVk.Queue extendedHandle, ArrayProxy<SharpVk.Semaphore>? waitSemaphores, ArrayProxy<SharpVk.Khronos.Swapchain>? swapchains, ArrayProxy<uint>? imageIndices, ArrayProxy<SharpVk.Result>? results = null, SharpVk.Khronos.DisplayPresentInfo? displayPresentInfoKhr = null, SharpVk.Khronos.PresentRegions? presentRegionsKhr = null, SharpVk.Khronos.DeviceGroupPresentInfo? deviceGroupPresentInfoKhr = null, SharpVk.Khronos.PresentId? presentIdKhr = null, SharpVk.Khronos.PresentId2? presentId2Khr = null, SharpVk.Google.PresentTimesInfo? presentTimesInfoGoogle = null, SharpVk.Ggp.PresentFrameToken? presentFrameTokenGgp = null, SharpVk.Multivendor.FrameBoundary? frameBoundaryExt = null, SharpVk.Khronos.SwapchainPresentFenceInfo? swapchainPresentFenceInfoKhr = null, SharpVk.Khronos.SwapchainPresentModeInfo? swapchainPresentModeInfoKhr = null, SharpVk.NVidia.SetPresentConfig? setPresentConfigNv = null, SharpVk.Arm.FrameBoundaryTensors? frameBoundaryTensorsArm = null)
+        public static unsafe Result Present(this SharpVk.Queue extendedHandle, ArrayProxy<SharpVk.Semaphore>? waitSemaphores, ArrayProxy<SharpVk.Khronos.Swapchain>? swapchains, ArrayProxy<uint>? imageIndices, ArrayProxy<SharpVk.Result>? results = null, SharpVk.Khronos.DisplayPresentInfo? displayPresentInfoKhr = null, SharpVk.Khronos.PresentRegions? presentRegionsKhr = null, SharpVk.Khronos.DeviceGroupPresentInfo? deviceGroupPresentInfoKhr = null, SharpVk.Khronos.PresentId? presentIdKhr = null, SharpVk.Khronos.PresentId2? presentId2Khr = null, SharpVk.Multivendor.PresentTimingsInfo? presentTimingsInfoExt = null, SharpVk.Google.PresentTimesInfo? presentTimesInfoGoogle = null, SharpVk.Ggp.PresentFrameToken? presentFrameTokenGgp = null, SharpVk.Multivendor.FrameBoundary? frameBoundaryExt = null, SharpVk.Khronos.SwapchainPresentFenceInfo? swapchainPresentFenceInfoKhr = null, SharpVk.Khronos.SwapchainPresentModeInfo? swapchainPresentModeInfoKhr = null, SharpVk.NVidia.SetPresentConfig? setPresentConfigNv = null, SharpVk.Arm.FrameBoundaryTensors? frameBoundaryTensorsArm = null)
         {
             try
             {
@@ -126,6 +129,14 @@ namespace SharpVk.Khronos
                     SharpVk.Interop.Khronos.PresentId2* extensionPointer = default(SharpVk.Interop.Khronos.PresentId2*);
                     extensionPointer = (SharpVk.Interop.Khronos.PresentId2*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.PresentId2>());
                     presentId2Khr.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkPresentInfoKHRNextPointer;
+                    vkPresentInfoKHRNextPointer = extensionPointer;
+                }
+                if (presentTimingsInfoExt != null)
+                {
+                    SharpVk.Interop.Multivendor.PresentTimingsInfo* extensionPointer = default(SharpVk.Interop.Multivendor.PresentTimingsInfo*);
+                    extensionPointer = (SharpVk.Interop.Multivendor.PresentTimingsInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.PresentTimingsInfo>());
+                    presentTimingsInfoExt.Value.MarshalTo(extensionPointer);
                     extensionPointer->Next = vkPresentInfoKHRNextPointer;
                     vkPresentInfoKHRNextPointer = extensionPointer;
                 }

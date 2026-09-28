@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -83,6 +83,11 @@ namespace SharpVk.Amd
         /// 
         /// </summary>
         public const string GpuShaderInt16 = "VK_AMD_gpu_shader_int16"; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string GpaInterface = "VK_AMD_gpa_interface"; 
         
         /// <summary>
         /// 

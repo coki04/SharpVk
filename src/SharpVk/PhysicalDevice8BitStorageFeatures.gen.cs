@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -67,7 +67,7 @@ namespace SharpVk
         /// </param>
         internal unsafe void MarshalTo(SharpVk.Interop.PhysicalDevice8BitStorageFeatures* pointer)
         {
-            pointer->SType = StructureType.PhysicalDevice8bitStorageFeaturesVersion;
+            pointer->SType = StructureType.PhysicalDevice8bitStorageFeaturesCompute;
             pointer->Next = null;
             pointer->StorageBuffer8BitAccess = this.StorageBuffer8BitAccess;
             pointer->UniformAndStorageBuffer8BitAccess = this.UniformAndStorageBuffer8BitAccess;

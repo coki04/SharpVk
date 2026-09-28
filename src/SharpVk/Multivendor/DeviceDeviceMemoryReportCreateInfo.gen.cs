@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -54,7 +54,7 @@ namespace SharpVk.Multivendor
         /// <summary>
         /// 
         /// </summary>
-        public IntPtr UserData
+        public IntPtr? UserData
         {
             get;
             set;
@@ -71,7 +71,14 @@ namespace SharpVk.Multivendor
             pointer->Next = null;
             pointer->Flags = this.Flags;
             pointer->UserCallback = System.Runtime.InteropServices.Marshal.GetFunctionPointerForDelegate(this.UserCallback);
-            pointer->UserData = this.UserData.ToPointer();
+            if (this.UserData != null)
+            {
+                pointer->UserData = this.UserData.Value.ToPointer();
+            }
+            else
+            {
+                pointer->UserData = default(void*);
+            }
         }
     }
 }

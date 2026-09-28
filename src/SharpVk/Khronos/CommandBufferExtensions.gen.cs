@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -966,6 +966,462 @@ namespace SharpVk.Khronos
         /// <param name="extendedHandle">
         /// The CommandBuffer handle to extend.
         /// </param>
+        /// <param name="info">
+        /// </param>
+        public static unsafe void BindIndexBuffer3(this SharpVk.CommandBuffer extendedHandle, SharpVk.Khronos.BindIndexBuffer3Info info)
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.Khronos.BindIndexBuffer3Info* marshalledInfo = default(SharpVk.Interop.Khronos.BindIndexBuffer3Info*);
+                commandCache = extendedHandle.commandCache;
+                marshalledInfo = (SharpVk.Interop.Khronos.BindIndexBuffer3Info*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.BindIndexBuffer3Info>());
+                info.MarshalTo(marshalledInfo);
+                SharpVk.Interop.Khronos.VkCommandBufferBindIndexBuffer3Delegate commandDelegate = commandCache.Cache.vkCmdBindIndexBuffer3KHR;
+                commandDelegate(extendedHandle.handle, marshalledInfo);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The CommandBuffer handle to extend.
+        /// </param>
+        /// <param name="firstBinding">
+        /// </param>
+        /// <param name="bindingInfos">
+        /// </param>
+        public static unsafe void BindVertexBuffers3(this SharpVk.CommandBuffer extendedHandle, uint firstBinding, ArrayProxy<SharpVk.Khronos.BindVertexBuffer3Info>? bindingInfos)
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.Khronos.BindVertexBuffer3Info* marshalledBindingInfos = default(SharpVk.Interop.Khronos.BindVertexBuffer3Info*);
+                commandCache = extendedHandle.commandCache;
+                if (bindingInfos.IsNull())
+                {
+                    marshalledBindingInfos = null;
+                }
+                else
+                {
+                    if (bindingInfos.Value.Contents == ProxyContents.Single)
+                    {
+                        marshalledBindingInfos = (SharpVk.Interop.Khronos.BindVertexBuffer3Info*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.BindVertexBuffer3Info>());
+                        bindingInfos.Value.GetSingleValue().MarshalTo(&*(SharpVk.Interop.Khronos.BindVertexBuffer3Info*)(marshalledBindingInfos));
+                    }
+                    else
+                    {
+                        var fieldPointer = (SharpVk.Interop.Khronos.BindVertexBuffer3Info*)(Interop.HeapUtil.AllocateAndClear<SharpVk.Interop.Khronos.BindVertexBuffer3Info>(Interop.HeapUtil.GetLength(bindingInfos.Value)).ToPointer());
+                        for(int index = 0; index < (uint)(Interop.HeapUtil.GetLength(bindingInfos.Value)); index++)
+                        {
+                            bindingInfos.Value[index].MarshalTo(&fieldPointer[index]);
+                        }
+                        marshalledBindingInfos = fieldPointer;
+                    }
+                }
+                SharpVk.Interop.Khronos.VkCommandBufferBindVertexBuffers3Delegate commandDelegate = commandCache.Cache.vkCmdBindVertexBuffers3KHR;
+                commandDelegate(extendedHandle.handle, firstBinding, (uint)(Interop.HeapUtil.GetLength(bindingInfos)), marshalledBindingInfos);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The CommandBuffer handle to extend.
+        /// </param>
+        /// <param name="info">
+        /// </param>
+        public static unsafe void DrawIndirect2(this SharpVk.CommandBuffer extendedHandle, SharpVk.Khronos.DrawIndirect2Info info)
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.Khronos.DrawIndirect2Info* marshalledInfo = default(SharpVk.Interop.Khronos.DrawIndirect2Info*);
+                commandCache = extendedHandle.commandCache;
+                marshalledInfo = (SharpVk.Interop.Khronos.DrawIndirect2Info*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.DrawIndirect2Info>());
+                info.MarshalTo(marshalledInfo);
+                SharpVk.Interop.Khronos.VkCommandBufferDrawIndirect2Delegate commandDelegate = commandCache.Cache.vkCmdDrawIndirect2KHR;
+                commandDelegate(extendedHandle.handle, marshalledInfo);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The CommandBuffer handle to extend.
+        /// </param>
+        /// <param name="info">
+        /// </param>
+        public static unsafe void DrawIndexedIndirect2(this SharpVk.CommandBuffer extendedHandle, SharpVk.Khronos.DrawIndirect2Info info)
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.Khronos.DrawIndirect2Info* marshalledInfo = default(SharpVk.Interop.Khronos.DrawIndirect2Info*);
+                commandCache = extendedHandle.commandCache;
+                marshalledInfo = (SharpVk.Interop.Khronos.DrawIndirect2Info*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.DrawIndirect2Info>());
+                info.MarshalTo(marshalledInfo);
+                SharpVk.Interop.Khronos.VkCommandBufferDrawIndexedIndirect2Delegate commandDelegate = commandCache.Cache.vkCmdDrawIndexedIndirect2KHR;
+                commandDelegate(extendedHandle.handle, marshalledInfo);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The CommandBuffer handle to extend.
+        /// </param>
+        /// <param name="info">
+        /// </param>
+        public static unsafe void DispatchIndirect2(this SharpVk.CommandBuffer extendedHandle, SharpVk.Khronos.DispatchIndirect2Info info)
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.Khronos.DispatchIndirect2Info* marshalledInfo = default(SharpVk.Interop.Khronos.DispatchIndirect2Info*);
+                commandCache = extendedHandle.commandCache;
+                marshalledInfo = (SharpVk.Interop.Khronos.DispatchIndirect2Info*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.DispatchIndirect2Info>());
+                info.MarshalTo(marshalledInfo);
+                SharpVk.Interop.Khronos.VkCommandBufferDispatchIndirect2Delegate commandDelegate = commandCache.Cache.vkCmdDispatchIndirect2KHR;
+                commandDelegate(extendedHandle.handle, marshalledInfo);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The CommandBuffer handle to extend.
+        /// </param>
+        /// <param name="copyMemoryInfo">
+        /// </param>
+        public static unsafe void CopyMemory(this SharpVk.CommandBuffer extendedHandle, SharpVk.Khronos.CopyDeviceMemoryInfo? copyMemoryInfo = default(SharpVk.Khronos.CopyDeviceMemoryInfo?))
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.Khronos.CopyDeviceMemoryInfo* marshalledCopyMemoryInfo = default(SharpVk.Interop.Khronos.CopyDeviceMemoryInfo*);
+                commandCache = extendedHandle.commandCache;
+                if (copyMemoryInfo != null)
+                {
+                    marshalledCopyMemoryInfo = (SharpVk.Interop.Khronos.CopyDeviceMemoryInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.CopyDeviceMemoryInfo>());
+                    copyMemoryInfo.Value.MarshalTo(marshalledCopyMemoryInfo);
+                }
+                else
+                {
+                    marshalledCopyMemoryInfo = default(SharpVk.Interop.Khronos.CopyDeviceMemoryInfo*);
+                }
+                SharpVk.Interop.Khronos.VkCommandBufferCopyMemoryDelegate commandDelegate = commandCache.Cache.vkCmdCopyMemoryKHR;
+                commandDelegate(extendedHandle.handle, marshalledCopyMemoryInfo);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The CommandBuffer handle to extend.
+        /// </param>
+        /// <param name="copyMemoryInfo">
+        /// </param>
+        public static unsafe void CopyMemoryToImage(this SharpVk.CommandBuffer extendedHandle, SharpVk.Khronos.CopyDeviceMemoryImageInfo? copyMemoryInfo = default(SharpVk.Khronos.CopyDeviceMemoryImageInfo?))
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.Khronos.CopyDeviceMemoryImageInfo* marshalledCopyMemoryInfo = default(SharpVk.Interop.Khronos.CopyDeviceMemoryImageInfo*);
+                commandCache = extendedHandle.commandCache;
+                if (copyMemoryInfo != null)
+                {
+                    marshalledCopyMemoryInfo = (SharpVk.Interop.Khronos.CopyDeviceMemoryImageInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.CopyDeviceMemoryImageInfo>());
+                    copyMemoryInfo.Value.MarshalTo(marshalledCopyMemoryInfo);
+                }
+                else
+                {
+                    marshalledCopyMemoryInfo = default(SharpVk.Interop.Khronos.CopyDeviceMemoryImageInfo*);
+                }
+                SharpVk.Interop.Khronos.VkCommandBufferCopyMemoryToImageDelegate commandDelegate = commandCache.Cache.vkCmdCopyMemoryToImageKHR;
+                commandDelegate(extendedHandle.handle, marshalledCopyMemoryInfo);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The CommandBuffer handle to extend.
+        /// </param>
+        /// <param name="copyMemoryInfo">
+        /// </param>
+        public static unsafe void CopyImageToMemory(this SharpVk.CommandBuffer extendedHandle, SharpVk.Khronos.CopyDeviceMemoryImageInfo? copyMemoryInfo = default(SharpVk.Khronos.CopyDeviceMemoryImageInfo?))
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.Khronos.CopyDeviceMemoryImageInfo* marshalledCopyMemoryInfo = default(SharpVk.Interop.Khronos.CopyDeviceMemoryImageInfo*);
+                commandCache = extendedHandle.commandCache;
+                if (copyMemoryInfo != null)
+                {
+                    marshalledCopyMemoryInfo = (SharpVk.Interop.Khronos.CopyDeviceMemoryImageInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.CopyDeviceMemoryImageInfo>());
+                    copyMemoryInfo.Value.MarshalTo(marshalledCopyMemoryInfo);
+                }
+                else
+                {
+                    marshalledCopyMemoryInfo = default(SharpVk.Interop.Khronos.CopyDeviceMemoryImageInfo*);
+                }
+                SharpVk.Interop.Khronos.VkCommandBufferCopyImageToMemoryDelegate commandDelegate = commandCache.Cache.vkCmdCopyImageToMemoryKHR;
+                commandDelegate(extendedHandle.handle, marshalledCopyMemoryInfo);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The CommandBuffer handle to extend.
+        /// </param>
+        /// <param name="destinationRange">
+        /// </param>
+        /// <param name="destinationFlags">
+        /// </param>
+        /// <param name="data">
+        /// </param>
+        public static unsafe void UpdateMemory(this SharpVk.CommandBuffer extendedHandle, SharpVk.Khronos.DeviceAddressRange destinationRange, ArrayProxy<byte>? data, SharpVk.Khronos.AddressCommandFlags? destinationFlags = default(SharpVk.Khronos.AddressCommandFlags?))
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Khronos.DeviceAddressRange* marshalledDestinationRange = default(SharpVk.Khronos.DeviceAddressRange*);
+                SharpVk.Khronos.AddressCommandFlags marshalledDestinationFlags = default(SharpVk.Khronos.AddressCommandFlags);
+                byte* marshalledData = default(byte*);
+                commandCache = extendedHandle.commandCache;
+                marshalledDestinationRange = (SharpVk.Khronos.DeviceAddressRange*)(Interop.HeapUtil.Allocate<SharpVk.Khronos.DeviceAddressRange>());
+                *marshalledDestinationRange = destinationRange;
+                if (destinationFlags != null)
+                {
+                    marshalledDestinationFlags = destinationFlags.Value;
+                }
+                else
+                {
+                    marshalledDestinationFlags = default(SharpVk.Khronos.AddressCommandFlags);
+                }
+                if (data.IsNull())
+                {
+                    marshalledData = null;
+                }
+                else
+                {
+                    if (data.Value.Contents == ProxyContents.Single)
+                    {
+                        marshalledData = (byte*)(Interop.HeapUtil.Allocate<byte>());
+                        *(byte*)(marshalledData) = data.Value.GetSingleValue();
+                    }
+                    else
+                    {
+                        var fieldPointer = (byte*)(Interop.HeapUtil.AllocateAndClear<byte>(Interop.HeapUtil.GetLength(data.Value)).ToPointer());
+                        for(int index = 0; index < (uint)(Interop.HeapUtil.GetLength(data.Value)); index++)
+                        {
+                            fieldPointer[index] = data.Value[index];
+                        }
+                        marshalledData = fieldPointer;
+                    }
+                }
+                SharpVk.Interop.Khronos.VkCommandBufferUpdateMemoryDelegate commandDelegate = commandCache.Cache.vkCmdUpdateMemoryKHR;
+                commandDelegate(extendedHandle.handle, marshalledDestinationRange, marshalledDestinationFlags, (ulong)(Interop.HeapUtil.GetLength(data)), marshalledData);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The CommandBuffer handle to extend.
+        /// </param>
+        /// <param name="destinationRange">
+        /// </param>
+        /// <param name="destinationFlags">
+        /// </param>
+        /// <param name="data">
+        /// </param>
+        public static unsafe void FillMemory(this SharpVk.CommandBuffer extendedHandle, SharpVk.Khronos.DeviceAddressRange destinationRange, uint data, SharpVk.Khronos.AddressCommandFlags? destinationFlags = default(SharpVk.Khronos.AddressCommandFlags?))
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Khronos.DeviceAddressRange* marshalledDestinationRange = default(SharpVk.Khronos.DeviceAddressRange*);
+                SharpVk.Khronos.AddressCommandFlags marshalledDestinationFlags = default(SharpVk.Khronos.AddressCommandFlags);
+                commandCache = extendedHandle.commandCache;
+                marshalledDestinationRange = (SharpVk.Khronos.DeviceAddressRange*)(Interop.HeapUtil.Allocate<SharpVk.Khronos.DeviceAddressRange>());
+                *marshalledDestinationRange = destinationRange;
+                if (destinationFlags != null)
+                {
+                    marshalledDestinationFlags = destinationFlags.Value;
+                }
+                else
+                {
+                    marshalledDestinationFlags = default(SharpVk.Khronos.AddressCommandFlags);
+                }
+                SharpVk.Interop.Khronos.VkCommandBufferFillMemoryDelegate commandDelegate = commandCache.Cache.vkCmdFillMemoryKHR;
+                commandDelegate(extendedHandle.handle, marshalledDestinationRange, marshalledDestinationFlags, data);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The CommandBuffer handle to extend.
+        /// </param>
+        /// <param name="queryPool">
+        /// </param>
+        /// <param name="firstQuery">
+        /// </param>
+        /// <param name="queryCount">
+        /// </param>
+        /// <param name="destinationRange">
+        /// </param>
+        /// <param name="destinationFlags">
+        /// </param>
+        /// <param name="queryResultFlags">
+        /// </param>
+        public static unsafe void CopyQueryPoolResultsToMemory(this SharpVk.CommandBuffer extendedHandle, SharpVk.QueryPool queryPool, uint firstQuery, uint queryCount, SharpVk.Khronos.StridedDeviceAddressRange destinationRange, SharpVk.Khronos.AddressCommandFlags? destinationFlags = default(SharpVk.Khronos.AddressCommandFlags?), SharpVk.QueryResultFlags? queryResultFlags = default(SharpVk.QueryResultFlags?))
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Khronos.StridedDeviceAddressRange* marshalledDestinationRange = default(SharpVk.Khronos.StridedDeviceAddressRange*);
+                SharpVk.Khronos.AddressCommandFlags marshalledDestinationFlags = default(SharpVk.Khronos.AddressCommandFlags);
+                SharpVk.QueryResultFlags marshalledQueryResultFlags = default(SharpVk.QueryResultFlags);
+                commandCache = extendedHandle.commandCache;
+                marshalledDestinationRange = (SharpVk.Khronos.StridedDeviceAddressRange*)(Interop.HeapUtil.Allocate<SharpVk.Khronos.StridedDeviceAddressRange>());
+                *marshalledDestinationRange = destinationRange;
+                if (destinationFlags != null)
+                {
+                    marshalledDestinationFlags = destinationFlags.Value;
+                }
+                else
+                {
+                    marshalledDestinationFlags = default(SharpVk.Khronos.AddressCommandFlags);
+                }
+                if (queryResultFlags != null)
+                {
+                    marshalledQueryResultFlags = queryResultFlags.Value;
+                }
+                else
+                {
+                    marshalledQueryResultFlags = default(SharpVk.QueryResultFlags);
+                }
+                SharpVk.Interop.Khronos.VkCommandBufferCopyQueryPoolResultsToMemoryDelegate commandDelegate = commandCache.Cache.vkCmdCopyQueryPoolResultsToMemoryKHR;
+                commandDelegate(extendedHandle.handle, queryPool?.handle ?? default(SharpVk.Interop.QueryPool), firstQuery, queryCount, marshalledDestinationRange, marshalledDestinationFlags, marshalledQueryResultFlags);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The CommandBuffer handle to extend.
+        /// </param>
+        /// <param name="info">
+        /// </param>
+        public static unsafe void DrawIndirectCount2(this SharpVk.CommandBuffer extendedHandle, SharpVk.Khronos.DrawIndirectCount2Info info)
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.Khronos.DrawIndirectCount2Info* marshalledInfo = default(SharpVk.Interop.Khronos.DrawIndirectCount2Info*);
+                commandCache = extendedHandle.commandCache;
+                marshalledInfo = (SharpVk.Interop.Khronos.DrawIndirectCount2Info*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.DrawIndirectCount2Info>());
+                info.MarshalTo(marshalledInfo);
+                SharpVk.Interop.Khronos.VkCommandBufferDrawIndirectCount2Delegate commandDelegate = commandCache.Cache.vkCmdDrawIndirectCount2KHR;
+                commandDelegate(extendedHandle.handle, marshalledInfo);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The CommandBuffer handle to extend.
+        /// </param>
+        /// <param name="info">
+        /// </param>
+        public static unsafe void DrawIndexedIndirectCount2(this SharpVk.CommandBuffer extendedHandle, SharpVk.Khronos.DrawIndirectCount2Info info)
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.Khronos.DrawIndirectCount2Info* marshalledInfo = default(SharpVk.Interop.Khronos.DrawIndirectCount2Info*);
+                commandCache = extendedHandle.commandCache;
+                marshalledInfo = (SharpVk.Interop.Khronos.DrawIndirectCount2Info*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.DrawIndirectCount2Info>());
+                info.MarshalTo(marshalledInfo);
+                SharpVk.Interop.Khronos.VkCommandBufferDrawIndexedIndirectCount2Delegate commandDelegate = commandCache.Cache.vkCmdDrawIndexedIndirectCount2KHR;
+                commandDelegate(extendedHandle.handle, marshalledInfo);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The CommandBuffer handle to extend.
+        /// </param>
         /// <param name="indirectDeviceAddress">
         /// </param>
         public static unsafe void TraceRaysIndirect2(this SharpVk.CommandBuffer extendedHandle, ulong indirectDeviceAddress)
@@ -976,6 +1432,95 @@ namespace SharpVk.Khronos
                 commandCache = extendedHandle.commandCache;
                 SharpVk.Interop.Khronos.VkCommandBufferTraceRaysIndirect2Delegate commandDelegate = commandCache.Cache.vkCmdTraceRaysIndirect2KHR;
                 commandDelegate(extendedHandle.handle, indirectDeviceAddress);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The CommandBuffer handle to extend.
+        /// </param>
+        /// <param name="copyMemoryIndirectInfo">
+        /// </param>
+        public static unsafe void CopyMemoryIndirect(this SharpVk.CommandBuffer extendedHandle, SharpVk.Khronos.CopyMemoryIndirectInfo copyMemoryIndirectInfo)
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.Khronos.CopyMemoryIndirectInfo* marshalledCopyMemoryIndirectInfo = default(SharpVk.Interop.Khronos.CopyMemoryIndirectInfo*);
+                commandCache = extendedHandle.commandCache;
+                marshalledCopyMemoryIndirectInfo = (SharpVk.Interop.Khronos.CopyMemoryIndirectInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.CopyMemoryIndirectInfo>());
+                copyMemoryIndirectInfo.MarshalTo(marshalledCopyMemoryIndirectInfo);
+                SharpVk.Interop.Khronos.VkCommandBufferCopyMemoryIndirectDelegate commandDelegate = commandCache.Cache.vkCmdCopyMemoryIndirectKHR;
+                commandDelegate(extendedHandle.handle, marshalledCopyMemoryIndirectInfo);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The CommandBuffer handle to extend.
+        /// </param>
+        /// <param name="copyMemoryToImageIndirectInfo">
+        /// </param>
+        public static unsafe void CopyMemoryToImageIndirect(this SharpVk.CommandBuffer extendedHandle, SharpVk.Khronos.CopyMemoryToImageIndirectInfo copyMemoryToImageIndirectInfo)
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.Khronos.CopyMemoryToImageIndirectInfo* marshalledCopyMemoryToImageIndirectInfo = default(SharpVk.Interop.Khronos.CopyMemoryToImageIndirectInfo*);
+                commandCache = extendedHandle.commandCache;
+                marshalledCopyMemoryToImageIndirectInfo = (SharpVk.Interop.Khronos.CopyMemoryToImageIndirectInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.CopyMemoryToImageIndirectInfo>());
+                copyMemoryToImageIndirectInfo.MarshalTo(marshalledCopyMemoryToImageIndirectInfo);
+                SharpVk.Interop.Khronos.VkCommandBufferCopyMemoryToImageIndirectDelegate commandDelegate = commandCache.Cache.vkCmdCopyMemoryToImageIndirectKHR;
+                commandDelegate(extendedHandle.handle, marshalledCopyMemoryToImageIndirectInfo);
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The CommandBuffer handle to extend.
+        /// </param>
+        /// <param name="renderPassFragmentDensityMapOffsetEndInfoExt">
+        /// Extension struct
+        /// </param>
+        public static unsafe void EndRendering2(this SharpVk.CommandBuffer extendedHandle, SharpVk.Multivendor.RenderPassFragmentDensityMapOffsetEndInfo? renderPassFragmentDensityMapOffsetEndInfoExt = null)
+        {
+            try
+            {
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.Khronos.RenderingEndInfo* marshalledRenderingEndInfo = default(SharpVk.Interop.Khronos.RenderingEndInfo*);
+                void* vkRenderingEndInfoKHRNextPointer = default(void*);
+                if (renderPassFragmentDensityMapOffsetEndInfoExt != null)
+                {
+                    SharpVk.Interop.Multivendor.RenderPassFragmentDensityMapOffsetEndInfo* extensionPointer = default(SharpVk.Interop.Multivendor.RenderPassFragmentDensityMapOffsetEndInfo*);
+                    extensionPointer = (SharpVk.Interop.Multivendor.RenderPassFragmentDensityMapOffsetEndInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Multivendor.RenderPassFragmentDensityMapOffsetEndInfo>());
+                    renderPassFragmentDensityMapOffsetEndInfoExt.Value.MarshalTo(extensionPointer);
+                    extensionPointer->Next = vkRenderingEndInfoKHRNextPointer;
+                    vkRenderingEndInfoKHRNextPointer = extensionPointer;
+                }
+                commandCache = extendedHandle.commandCache;
+                marshalledRenderingEndInfo = (SharpVk.Interop.Khronos.RenderingEndInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Khronos.RenderingEndInfo>());
+                marshalledRenderingEndInfo->SType = StructureType.RenderingEndInfoKhr;
+                marshalledRenderingEndInfo->Next = vkRenderingEndInfoKHRNextPointer;
+                SharpVk.Interop.Khronos.VkCommandBufferEndRendering2Delegate commandDelegate = commandCache.Cache.vkCmdEndRendering2KHR;
+                commandDelegate(extendedHandle.handle, marshalledRenderingEndInfo);
             }
             finally
             {

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -45,7 +45,7 @@ namespace SharpVk.NVidia
         /// <summary>
         /// 
         /// </summary>
-        public ulong DestinationImplicitData
+        public ulong? DestinationImplicitData
         {
             get;
             set;
@@ -90,7 +90,7 @@ namespace SharpVk.NVidia
         /// <summary>
         /// 
         /// </summary>
-        public ulong SourceInfosCount
+        public ulong? SourceInfosCount
         {
             get;
             set;
@@ -115,12 +115,26 @@ namespace SharpVk.NVidia
             pointer->SType = StructureType.ClusterAccelerationStructureCommandsInfo;
             pointer->Next = null;
             this.Input.MarshalTo(&pointer->Input);
-            pointer->DestinationImplicitData = this.DestinationImplicitData;
+            if (this.DestinationImplicitData != null)
+            {
+                pointer->DestinationImplicitData = this.DestinationImplicitData.Value;
+            }
+            else
+            {
+                pointer->DestinationImplicitData = default(ulong);
+            }
             pointer->ScratchData = this.ScratchData;
             pointer->DestinationAddressesArray = this.DestinationAddressesArray;
             pointer->DestinationSizesArray = this.DestinationSizesArray;
             pointer->SourceInfosArray = this.SourceInfosArray;
-            pointer->SourceInfosCount = this.SourceInfosCount;
+            if (this.SourceInfosCount != null)
+            {
+                pointer->SourceInfosCount = this.SourceInfosCount.Value;
+            }
+            else
+            {
+                pointer->SourceInfosCount = default(ulong);
+            }
             if (this.AddressResolutionFlags != null)
             {
                 pointer->AddressResolutionFlags = this.AddressResolutionFlags.Value;

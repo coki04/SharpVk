@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -510,8 +510,8 @@ namespace SharpVk
         {
             PhysicalDeviceVulkan12Properties result = default(PhysicalDeviceVulkan12Properties);
             result.DriverID = pointer->DriverID;
-            result.DriverName = Interop.HeapUtil.MarshalStringFrom(pointer->DriverName, Constants.MaxDriverNameSize, true);
-            result.DriverInfo = Interop.HeapUtil.MarshalStringFrom(pointer->DriverInfo, Constants.MaxDriverInfoSize, true);
+            result.DriverName = Interop.HeapUtil.MarshalStringFrom(pointer->DriverName, checked((int)Constants.MaxDriverNameSize), true);
+            result.DriverInfo = Interop.HeapUtil.MarshalStringFrom(pointer->DriverInfo, checked((int)Constants.MaxDriverInfoSize), true);
             result.ConformanceVersion = pointer->ConformanceVersion;
             result.DenormBehaviorIndependence = pointer->DenormBehaviorIndependence;
             result.RoundingModeIndependence = pointer->RoundingModeIndependence;

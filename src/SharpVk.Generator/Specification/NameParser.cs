@@ -36,6 +36,7 @@ namespace SharpVk.Generator.Specification
                                                                     .Or(Parse.String("_id"))
                                                                     .Or(Parse.String("64bit"))
                                                                     .Or(Parse.String("State3"))
+                                                                    .Or(Parse.String("U64k"))
                                                                     .Text();
 
         private static readonly Parser<string> alphanumericPair = from head in Parse.Letter
@@ -168,6 +169,11 @@ namespace SharpVk.Generator.Specification
             if (vkName.ToUpper().StartsWith("VK"))
             {
                 vkName = vkName.Substring(2);
+            }
+
+            if (vkName.ToUpper().StartsWith("OH_"))
+            {
+                vkName = vkName.Replace("OH_", "OH");
             }
 
             extension = this.extensions

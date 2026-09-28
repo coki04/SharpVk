@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -127,37 +127,37 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        ErrorValidationFailedVersion = -1000011001, 
+        ErrorValidationFailedBase = -1000011001, 
         
         /// <summary>
         /// 
         /// </summary>
-        ErrorOutOfPoolMemoryVersion = -1000069000, 
+        ErrorOutOfPoolMemoryBase = -1000069000, 
         
         /// <summary>
         /// 
         /// </summary>
-        ErrorInvalidExternalHandleVersion = -1000072003, 
+        ErrorInvalidExternalHandleBase = -1000072003, 
         
         /// <summary>
         /// 
         /// </summary>
-        ErrorFragmentationVersion = -1000161000, 
+        ErrorInvalidOpaqueCaptureAddressBase = -1000257000, 
         
         /// <summary>
         /// 
         /// </summary>
-        ErrorInvalidOpaqueCaptureAddressVersion = -1000257000, 
+        ErrorFragmentationCompute = -1000161000, 
         
         /// <summary>
         /// 
         /// </summary>
-        PipelineCompileRequiredVersion = 1000297000, 
+        PipelineCompileRequiredCompute = 1000297000, 
         
         /// <summary>
         /// 
         /// </summary>
-        ErrorNotPermittedVersion = -1000174001, 
+        ErrorNotPermittedBase = -1000174001, 
         
         /// <summary>
         /// 
@@ -233,6 +233,11 @@ namespace SharpVk
         /// 
         /// </summary>
         ErrorInvalidDrmFormatModifierPlaneLayout = -1000158000, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        ErrorPresentTimingQueueFull = -1000208000, 
         
         /// <summary>
         /// 

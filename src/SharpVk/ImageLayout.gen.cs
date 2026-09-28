@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -114,47 +114,47 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
-        DepthReadOnlyStencilAttachmentOptimalVersion = 1000117000, 
+        DepthReadOnlyStencilAttachmentOptimalGraphics = 1000117000, 
         
         /// <summary>
         /// 
         /// </summary>
-        DepthAttachmentStencilReadOnlyOptimalVersion = 1000117001, 
+        DepthAttachmentStencilReadOnlyOptimalGraphics = 1000117001, 
         
         /// <summary>
         /// 
         /// </summary>
-        DepthAttachmentOptimalVersion = 1000241000, 
+        DepthAttachmentOptimalGraphics = 1000241000, 
         
         /// <summary>
         /// 
         /// </summary>
-        DepthReadOnlyOptimalVersion = 1000241001, 
+        DepthReadOnlyOptimalGraphics = 1000241001, 
         
         /// <summary>
         /// 
         /// </summary>
-        StencilAttachmentOptimalVersion = 1000241002, 
+        StencilAttachmentOptimalGraphics = 1000241002, 
         
         /// <summary>
         /// 
         /// </summary>
-        StencilReadOnlyOptimalVersion = 1000241003, 
+        StencilReadOnlyOptimalGraphics = 1000241003, 
         
         /// <summary>
         /// 
         /// </summary>
-        ReadOnlyOptimalVersion = 1000314000, 
+        ReadOnlyOptimalBase = 1000314000, 
         
         /// <summary>
         /// 
         /// </summary>
-        AttachmentOptimalVersion = 1000314001, 
+        AttachmentOptimalBase = 1000314001, 
         
         /// <summary>
         /// 
         /// </summary>
-        RenderingLocalReadVersion = 1000232000, 
+        RenderingLocalReadGraphics = 1000232000, 
         
         /// <summary>
         /// Must only be used for presenting a presentable image for display. A

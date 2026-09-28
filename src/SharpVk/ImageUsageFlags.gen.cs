@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -185,5 +185,25 @@ namespace SharpVk
         /// 
         /// </summary>
         VideoEncodeEmphasisMap = 1 << 26, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved29 = 1 << 29, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved30 = 1 << 30, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved16 = 1 << 16, 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        Reserved17 = 1 << 17, 
     }
 }

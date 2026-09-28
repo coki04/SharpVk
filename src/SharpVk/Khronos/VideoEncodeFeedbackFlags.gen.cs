@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -53,36 +53,36 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
-        Reserved3 = 1 << 3, 
+        AverageQuantization = 1 << 3, 
         
         /// <summary>
         /// 
         /// </summary>
-        Reserved4 = 1 << 4, 
+        MinQuantization = 1 << 4, 
         
         /// <summary>
         /// 
         /// </summary>
-        Reserved5 = 1 << 5, 
+        MaxQuantization = 1 << 5, 
         
         /// <summary>
         /// 
         /// </summary>
-        Reserved6 = 1 << 6, 
+        IntraPixels = 1 << 6, 
         
         /// <summary>
         /// 
         /// </summary>
-        Reserved7 = 1 << 7, 
+        InterPixels = 1 << 7, 
         
         /// <summary>
         /// 
         /// </summary>
-        Reserved8 = 1 << 8, 
+        SkippedPixels = 1 << 8, 
         
         /// <summary>
         /// 
         /// </summary>
-        Reserved9 = 1 << 9, 
+        PicturePartitionCount = 1 << 9, 
     }
 }

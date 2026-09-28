@@ -144,6 +144,12 @@ namespace SharpVk.Generator.Generation
             {
                 returnParamsCount = Math.Max(1, command.Params.AsEnumerable().Reverse().TakeWhile(IsArray).Count());
             }
+            //TODO: Coki04 Handle multiple return params.
+            if (command.VkName.Contains("SwapchainTimingProperties"))
+            {
+                returnParamsCount = 2;
+                yield return new MethodDefinition();
+            }
 
             bool enumeratePattern = (command.Verb == "enumerate" && lastParamIsArray) || (lastParamIsArray && lastParamLenFieldByRef);
             bool isBatchMethod = (command.Verb == "update" && handleTypeName.Contains("Device") && command.VkName.EndsWith("DescriptorSets")) ||

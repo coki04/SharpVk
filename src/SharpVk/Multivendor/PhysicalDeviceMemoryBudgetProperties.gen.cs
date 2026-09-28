@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -59,8 +59,8 @@ namespace SharpVk.Multivendor
         internal static unsafe PhysicalDeviceMemoryBudgetProperties MarshalFrom(SharpVk.Interop.Multivendor.PhysicalDeviceMemoryBudgetProperties* pointer)
         {
             PhysicalDeviceMemoryBudgetProperties result = default(PhysicalDeviceMemoryBudgetProperties);
-            result.HeapBudget = Interop.HeapUtil.MarshalFrom(pointer->HeapBudget, Constants.MaxMemoryHeaps);
-            result.HeapUsage = Interop.HeapUtil.MarshalFrom(pointer->HeapUsage, Constants.MaxMemoryHeaps);
+            result.HeapBudget = Interop.HeapUtil.MarshalFrom(pointer->HeapBudget, checked((int)Constants.MaxMemoryHeaps));
+            result.HeapUsage = Interop.HeapUtil.MarshalFrom(pointer->HeapUsage, checked((int)Constants.MaxMemoryHeaps));
             return result;
         }
     }

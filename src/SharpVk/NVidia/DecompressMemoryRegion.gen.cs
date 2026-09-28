@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -36,7 +36,7 @@ namespace SharpVk.NVidia
         /// <summary>
         /// 
         /// </summary>
-        public DecompressMemoryRegion(ulong sourceAddress, ulong destinationAddress, ulong compressedSize, ulong decompressedSize, SharpVk.NVidia.MemoryDecompressionMethodFlags decompressionMethod)
+        public DecompressMemoryRegion(ulong sourceAddress, ulong destinationAddress, ulong compressedSize, ulong decompressedSize, SharpVk.Multivendor.MemoryDecompressionMethodFlags decompressionMethod)
         {
             this.SourceAddress = sourceAddress;
             this.DestinationAddress = destinationAddress;
@@ -68,6 +68,6 @@ namespace SharpVk.NVidia
         /// <summary>
         /// 
         /// </summary>
-        public SharpVk.NVidia.MemoryDecompressionMethodFlags DecompressionMethod; 
+        public SharpVk.Multivendor.MemoryDecompressionMethodFlags DecompressionMethod; 
     }
 }

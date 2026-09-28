@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -86,11 +86,11 @@ namespace SharpVk
         internal static unsafe PhysicalDeviceToolProperties MarshalFrom(SharpVk.Interop.PhysicalDeviceToolProperties* pointer)
         {
             PhysicalDeviceToolProperties result = default(PhysicalDeviceToolProperties);
-            result.Name = Interop.HeapUtil.MarshalStringFrom(pointer->Name, Constants.MaxExtensionNameSize, true);
-            result.Version = Interop.HeapUtil.MarshalStringFrom(pointer->Version, Constants.MaxExtensionNameSize, true);
+            result.Name = Interop.HeapUtil.MarshalStringFrom(pointer->Name, checked((int)Constants.MaxExtensionNameSize), true);
+            result.Version = Interop.HeapUtil.MarshalStringFrom(pointer->Version, checked((int)Constants.MaxExtensionNameSize), true);
             result.Purposes = pointer->Purposes;
-            result.Description = Interop.HeapUtil.MarshalStringFrom(pointer->Description, Constants.MaxDescriptionSize, true);
-            result.Layer = Interop.HeapUtil.MarshalStringFrom(pointer->Layer, Constants.MaxExtensionNameSize, true);
+            result.Description = Interop.HeapUtil.MarshalStringFrom(pointer->Description, checked((int)Constants.MaxDescriptionSize), true);
+            result.Layer = Interop.HeapUtil.MarshalStringFrom(pointer->Layer, checked((int)Constants.MaxExtensionNameSize), true);
             return result;
         }
     }

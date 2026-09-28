@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -94,7 +94,7 @@ namespace SharpVk.Khronos
             result.VendorID = pointer->VendorID;
             result.DeviceID = pointer->DeviceID;
             result.LayeredAPI = pointer->LayeredAPI;
-            result.DeviceName = Interop.HeapUtil.MarshalStringFrom(pointer->DeviceName, Constants.MaxPhysicalDeviceNameSize, true);
+            result.DeviceName = Interop.HeapUtil.MarshalStringFrom(pointer->DeviceName, checked((int)Constants.MaxPhysicalDeviceNameSize), true);
             return result;
         }
     }

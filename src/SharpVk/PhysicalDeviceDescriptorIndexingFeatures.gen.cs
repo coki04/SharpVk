@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 // 
-// Copyright (c) Andrew Armstrong/FacticiusVir 2025
+// Copyright (c) Andrew Armstrong/FacticiusVir 2026
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -220,7 +220,7 @@ namespace SharpVk
         /// </param>
         internal unsafe void MarshalTo(SharpVk.Interop.PhysicalDeviceDescriptorIndexingFeatures* pointer)
         {
-            pointer->SType = StructureType.PhysicalDeviceDescriptorIndexingFeaturesVersion;
+            pointer->SType = StructureType.PhysicalDeviceDescriptorIndexingFeaturesCompute;
             pointer->Next = null;
             pointer->ShaderInputAttachmentArrayDynamicIndexing = this.ShaderInputAttachmentArrayDynamicIndexing;
             pointer->ShaderUniformTexelBufferArrayDynamicIndexing = this.ShaderUniformTexelBufferArrayDynamicIndexing;
