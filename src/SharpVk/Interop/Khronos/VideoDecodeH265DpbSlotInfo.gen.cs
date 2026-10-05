@@ -46,6 +46,6 @@ namespace SharpVk.Interop.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public IntPtr* StdReferenceInfo; 
+        public SharpVk.StdVideoDecodeH265ReferenceInfo* StdReferenceInfo; 
     }
 }

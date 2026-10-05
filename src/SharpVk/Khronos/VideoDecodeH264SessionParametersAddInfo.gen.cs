@@ -36,7 +36,7 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public IntPtr[] StdSPSs
+        public SharpVk.StdVideoH264SequenceParameterSet[] StdSPSs
         {
             get;
             set;
@@ -45,7 +45,7 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public IntPtr[] StdPPSs
+        public SharpVk.StdVideoH264PictureParameterSet[] StdPPSs
         {
             get;
             set;
@@ -63,10 +63,10 @@ namespace SharpVk.Khronos
             pointer->StdSPSCount = (uint)(Interop.HeapUtil.GetLength(this.StdSPSs));
             if (this.StdSPSs != null)
             {
-                var fieldPointer = (IntPtr*)(Interop.HeapUtil.AllocateAndClear<IntPtr>(this.StdSPSs.Length).ToPointer());
+                var fieldPointer = (SharpVk.Interop.StdVideoH264SequenceParameterSet*)(Interop.HeapUtil.AllocateAndClear<SharpVk.Interop.StdVideoH264SequenceParameterSet>(this.StdSPSs.Length).ToPointer());
                 for(int index = 0; index < (uint)(this.StdSPSs.Length); index++)
                 {
-                    fieldPointer[index] = this.StdSPSs[index];
+                    this.StdSPSs[index].MarshalTo(&fieldPointer[index]);
                 }
                 pointer->StdSPSs = fieldPointer;
             }
@@ -77,10 +77,10 @@ namespace SharpVk.Khronos
             pointer->StdPPSCount = (uint)(Interop.HeapUtil.GetLength(this.StdPPSs));
             if (this.StdPPSs != null)
             {
-                var fieldPointer = (IntPtr*)(Interop.HeapUtil.AllocateAndClear<IntPtr>(this.StdPPSs.Length).ToPointer());
+                var fieldPointer = (SharpVk.Interop.StdVideoH264PictureParameterSet*)(Interop.HeapUtil.AllocateAndClear<SharpVk.Interop.StdVideoH264PictureParameterSet>(this.StdPPSs.Length).ToPointer());
                 for(int index = 0; index < (uint)(this.StdPPSs.Length); index++)
                 {
-                    fieldPointer[index] = this.StdPPSs[index];
+                    this.StdPPSs[index].MarshalTo(&fieldPointer[index]);
                 }
                 pointer->StdPPSs = fieldPointer;
             }

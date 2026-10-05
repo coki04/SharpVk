@@ -36,7 +36,7 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public IntPtr[] StdVPSs
+        public SharpVk.StdVideoH265VideoParameterSet[] StdVPSs
         {
             get;
             set;
@@ -45,7 +45,7 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public IntPtr[] StdSPSs
+        public SharpVk.StdVideoH265SequenceParameterSet[] StdSPSs
         {
             get;
             set;
@@ -54,7 +54,7 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public IntPtr[] StdPPSs
+        public SharpVk.StdVideoH265PictureParameterSet[] StdPPSs
         {
             get;
             set;
@@ -72,10 +72,10 @@ namespace SharpVk.Khronos
             pointer->StdVPSCount = (uint)(Interop.HeapUtil.GetLength(this.StdVPSs));
             if (this.StdVPSs != null)
             {
-                var fieldPointer = (IntPtr*)(Interop.HeapUtil.AllocateAndClear<IntPtr>(this.StdVPSs.Length).ToPointer());
+                var fieldPointer = (SharpVk.Interop.StdVideoH265VideoParameterSet*)(Interop.HeapUtil.AllocateAndClear<SharpVk.Interop.StdVideoH265VideoParameterSet>(this.StdVPSs.Length).ToPointer());
                 for(int index = 0; index < (uint)(this.StdVPSs.Length); index++)
                 {
-                    fieldPointer[index] = this.StdVPSs[index];
+                    this.StdVPSs[index].MarshalTo(&fieldPointer[index]);
                 }
                 pointer->StdVPSs = fieldPointer;
             }
@@ -86,10 +86,10 @@ namespace SharpVk.Khronos
             pointer->StdSPSCount = (uint)(Interop.HeapUtil.GetLength(this.StdSPSs));
             if (this.StdSPSs != null)
             {
-                var fieldPointer = (IntPtr*)(Interop.HeapUtil.AllocateAndClear<IntPtr>(this.StdSPSs.Length).ToPointer());
+                var fieldPointer = (SharpVk.Interop.StdVideoH265SequenceParameterSet*)(Interop.HeapUtil.AllocateAndClear<SharpVk.Interop.StdVideoH265SequenceParameterSet>(this.StdSPSs.Length).ToPointer());
                 for(int index = 0; index < (uint)(this.StdSPSs.Length); index++)
                 {
-                    fieldPointer[index] = this.StdSPSs[index];
+                    this.StdSPSs[index].MarshalTo(&fieldPointer[index]);
                 }
                 pointer->StdSPSs = fieldPointer;
             }
@@ -100,10 +100,10 @@ namespace SharpVk.Khronos
             pointer->StdPPSCount = (uint)(Interop.HeapUtil.GetLength(this.StdPPSs));
             if (this.StdPPSs != null)
             {
-                var fieldPointer = (IntPtr*)(Interop.HeapUtil.AllocateAndClear<IntPtr>(this.StdPPSs.Length).ToPointer());
+                var fieldPointer = (SharpVk.Interop.StdVideoH265PictureParameterSet*)(Interop.HeapUtil.AllocateAndClear<SharpVk.Interop.StdVideoH265PictureParameterSet>(this.StdPPSs.Length).ToPointer());
                 for(int index = 0; index < (uint)(this.StdPPSs.Length); index++)
                 {
-                    fieldPointer[index] = this.StdPPSs[index];
+                    this.StdPPSs[index].MarshalTo(&fieldPointer[index]);
                 }
                 pointer->StdPPSs = fieldPointer;
             }

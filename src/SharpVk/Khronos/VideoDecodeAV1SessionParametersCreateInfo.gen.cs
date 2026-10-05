@@ -36,7 +36,7 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public IntPtr StdSequenceHeader
+        public SharpVk.StdVideoAV1SequenceHeader StdSequenceHeader
         {
             get;
             set;
@@ -51,8 +51,8 @@ namespace SharpVk.Khronos
         {
             pointer->SType = StructureType.VideoDecodeAv1SessionParametersCreateInfo;
             pointer->Next = null;
-            pointer->StdSequenceHeader = (IntPtr*)(Interop.HeapUtil.Allocate<IntPtr>());
-            *pointer->StdSequenceHeader = this.StdSequenceHeader;
+            pointer->StdSequenceHeader = (SharpVk.Interop.StdVideoAV1SequenceHeader*)(Interop.HeapUtil.Allocate<SharpVk.Interop.StdVideoAV1SequenceHeader>());
+            this.StdSequenceHeader.MarshalTo(pointer->StdSequenceHeader);
         }
     }
 }

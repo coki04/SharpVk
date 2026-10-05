@@ -51,7 +51,7 @@ namespace SharpVk.Interop.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public IntPtr* StdVPSs; 
+        public SharpVk.Interop.StdVideoH265VideoParameterSet* StdVPSs; 
         
         /// <summary>
         /// 
@@ -61,7 +61,7 @@ namespace SharpVk.Interop.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public IntPtr* StdSPSs; 
+        public SharpVk.Interop.StdVideoH265SequenceParameterSet* StdSPSs; 
         
         /// <summary>
         /// 
@@ -71,6 +71,6 @@ namespace SharpVk.Interop.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public IntPtr* StdPPSs; 
+        public SharpVk.Interop.StdVideoH265PictureParameterSet* StdPPSs; 
     }
 }

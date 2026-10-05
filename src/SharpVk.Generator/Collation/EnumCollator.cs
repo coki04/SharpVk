@@ -37,6 +37,7 @@ namespace SharpVk.Generator.Collation
             }
 
             enumTypes.Remove("API Constants");
+            enumTypes.Remove("Video Constants");
 
             this.enumTypes = enumTypes;
             this.bitmaskTypes = bitmaskTypes;
@@ -148,8 +149,9 @@ namespace SharpVk.Generator.Collation
                         Extension = field.ExtensionNamespace,
                         Value = value
                     });
-
-                    enumLookup.Add(field.VkName, new EnumMapping(enumeration.VkName, name));
+                    
+                    //FIXME: Coki04, Perhaps add a namespace to the enums here so they don't collide..
+                    enumLookup.TryAdd(field.VkName, new EnumMapping(enumeration.VkName, name));
                 }
             }
             else

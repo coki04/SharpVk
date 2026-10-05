@@ -13,8 +13,11 @@ namespace SharpVk.Generator.Specification
             services.AddSingleton<NameParser>();
             services.AddSingleton<ITypeExtensionRule, FunctionPointerTypeRule>();
             services.AddSingleton<ITypeExtensionRule, MemberTypeRule>();
+            services.AddSingleton<ITypeExtensionRule, MemberTypeVideoRule>();
             services.AddSingleton<IWorker, TypeElementReader>();
+            services.AddSingleton<IWorker, TypeVideoElementReader>();
             services.AddSingleton<IWorker, EnumElementReader>();
+            services.AddSingleton<IWorker, EnumVideoElementReader>();
             services.AddSingleton<IWorker, CommandElementReader>();
             services.AddSingleton<IWorker, ExtensionSet>();
         }

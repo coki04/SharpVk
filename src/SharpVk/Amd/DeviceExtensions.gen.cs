@@ -116,6 +116,35 @@ namespace SharpVk.Amd
         /// <param name="extendedHandle">
         /// The Device handle to extend.
         /// </param>
+        public static unsafe SharpVk.Amd.GpaDeviceGetClockInfo GetGpaDeviceClockInfo(this SharpVk.Device extendedHandle)
+        {
+            try
+            {
+                SharpVk.Amd.GpaDeviceGetClockInfo result = default(SharpVk.Amd.GpaDeviceGetClockInfo);
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.Amd.GpaDeviceGetClockInfo marshalledInfo = default(SharpVk.Interop.Amd.GpaDeviceGetClockInfo);
+                commandCache = extendedHandle.commandCache;
+                SharpVk.Interop.Amd.VkDeviceGetGpaDeviceClockInfoDelegate commandDelegate = commandCache.Cache.vkGetGpaDeviceClockInfoAMD;
+                Result methodResult = commandDelegate(extendedHandle.handle, &marshalledInfo);
+                if (SharpVkException.IsError(methodResult))
+                {
+                    throw SharpVkException.Create(methodResult);
+                }
+                result = SharpVk.Amd.GpaDeviceGetClockInfo.MarshalFrom(&marshalledInfo);
+                return result;
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The Device handle to extend.
+        /// </param>
         /// <param name="data">
         /// </param>
         public static unsafe void AntiLagUpdate(this SharpVk.Device extendedHandle, SharpVk.Amd.AntiLagData data)

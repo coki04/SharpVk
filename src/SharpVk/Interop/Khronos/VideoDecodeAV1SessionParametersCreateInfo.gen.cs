@@ -46,6 +46,6 @@ namespace SharpVk.Interop.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public IntPtr* StdSequenceHeader; 
+        public SharpVk.Interop.StdVideoAV1SequenceHeader* StdSequenceHeader; 
     }
 }

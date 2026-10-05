@@ -61,7 +61,7 @@ namespace SharpVk.Interop.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public IntPtr* StdPictureInfo; 
+        public SharpVk.Interop.StdVideoEncodeAV1PictureInfo* StdPictureInfo; 
         
         /// <summary>
         /// 

@@ -56,6 +56,19 @@ namespace SharpVk.Arm
         /// </summary>
         /// <param name="pointer">
         /// </param>
+        internal unsafe void MarshalTo(SharpVk.Interop.Arm.QueueFamilyDataGraphProperties* pointer)
+        {
+            pointer->SType = StructureType.QueueFamilyDataGraphProperties;
+            pointer->Next = null;
+            this.Engine.MarshalTo(&pointer->Engine);
+            this.Operation.MarshalTo(&pointer->Operation);
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pointer">
+        /// </param>
         internal static unsafe QueueFamilyDataGraphProperties MarshalFrom(SharpVk.Interop.Arm.QueueFamilyDataGraphProperties* pointer)
         {
             QueueFamilyDataGraphProperties result = default(QueueFamilyDataGraphProperties);

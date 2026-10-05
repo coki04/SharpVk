@@ -36,7 +36,7 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public IntPtr StdReferenceInfo
+        public SharpVk.StdVideoDecodeAV1ReferenceInfo StdReferenceInfo
         {
             get;
             set;
@@ -51,8 +51,8 @@ namespace SharpVk.Khronos
         {
             pointer->SType = StructureType.VideoDecodeAv1DpbSlotInfo;
             pointer->Next = null;
-            pointer->StdReferenceInfo = (IntPtr*)(Interop.HeapUtil.Allocate<IntPtr>());
-            *pointer->StdReferenceInfo = this.StdReferenceInfo;
+            pointer->StdReferenceInfo = (SharpVk.Interop.StdVideoDecodeAV1ReferenceInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.StdVideoDecodeAV1ReferenceInfo>());
+            this.StdReferenceInfo.MarshalTo(pointer->StdReferenceInfo);
         }
     }
 }

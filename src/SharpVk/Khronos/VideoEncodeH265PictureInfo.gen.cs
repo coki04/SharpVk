@@ -45,7 +45,7 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public IntPtr StdPictureInfo
+        public SharpVk.StdVideoEncodeH265PictureInfo StdPictureInfo
         {
             get;
             set;
@@ -74,8 +74,8 @@ namespace SharpVk.Khronos
             {
                 pointer->NaluSliceSegmentEntries = null;
             }
-            pointer->StdPictureInfo = (IntPtr*)(Interop.HeapUtil.Allocate<IntPtr>());
-            *pointer->StdPictureInfo = this.StdPictureInfo;
+            pointer->StdPictureInfo = (SharpVk.Interop.StdVideoEncodeH265PictureInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.StdVideoEncodeH265PictureInfo>());
+            this.StdPictureInfo.MarshalTo(pointer->StdPictureInfo);
         }
     }
 }

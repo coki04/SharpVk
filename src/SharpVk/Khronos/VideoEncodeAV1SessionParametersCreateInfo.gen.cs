@@ -36,7 +36,7 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public IntPtr StdSequenceHeader
+        public SharpVk.StdVideoAV1SequenceHeader StdSequenceHeader
         {
             get;
             set;
@@ -45,7 +45,7 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public IntPtr? StdDecoderModelInfo
+        public SharpVk.StdVideoEncodeAV1DecoderModelInfo? StdDecoderModelInfo
         {
             get;
             set;
@@ -54,7 +54,7 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public IntPtr[] StdOperatingPoints
+        public SharpVk.StdVideoEncodeAV1OperatingPointInfo[] StdOperatingPoints
         {
             get;
             set;
@@ -69,21 +69,21 @@ namespace SharpVk.Khronos
         {
             pointer->SType = StructureType.VideoEncodeAv1SessionParametersCreateInfo;
             pointer->Next = null;
-            pointer->StdSequenceHeader = (IntPtr*)(Interop.HeapUtil.Allocate<IntPtr>());
-            *pointer->StdSequenceHeader = this.StdSequenceHeader;
+            pointer->StdSequenceHeader = (SharpVk.Interop.StdVideoAV1SequenceHeader*)(Interop.HeapUtil.Allocate<SharpVk.Interop.StdVideoAV1SequenceHeader>());
+            this.StdSequenceHeader.MarshalTo(pointer->StdSequenceHeader);
             if (this.StdDecoderModelInfo != null)
             {
-                pointer->StdDecoderModelInfo = (IntPtr*)(Interop.HeapUtil.Allocate<IntPtr>());
+                pointer->StdDecoderModelInfo = (SharpVk.StdVideoEncodeAV1DecoderModelInfo*)(Interop.HeapUtil.Allocate<SharpVk.StdVideoEncodeAV1DecoderModelInfo>());
                 *pointer->StdDecoderModelInfo = this.StdDecoderModelInfo.Value;
             }
             else
             {
-                pointer->StdDecoderModelInfo = default(IntPtr*);
+                pointer->StdDecoderModelInfo = default(SharpVk.StdVideoEncodeAV1DecoderModelInfo*);
             }
             pointer->StdOperatingPointCount = (uint)(Interop.HeapUtil.GetLength(this.StdOperatingPoints));
             if (this.StdOperatingPoints != null)
             {
-                var fieldPointer = (IntPtr*)(Interop.HeapUtil.AllocateAndClear<IntPtr>(this.StdOperatingPoints.Length).ToPointer());
+                var fieldPointer = (SharpVk.StdVideoEncodeAV1OperatingPointInfo*)(Interop.HeapUtil.AllocateAndClear<SharpVk.StdVideoEncodeAV1OperatingPointInfo>(this.StdOperatingPoints.Length).ToPointer());
                 for(int index = 0; index < (uint)(this.StdOperatingPoints.Length); index++)
                 {
                     fieldPointer[index] = this.StdOperatingPoints[index];

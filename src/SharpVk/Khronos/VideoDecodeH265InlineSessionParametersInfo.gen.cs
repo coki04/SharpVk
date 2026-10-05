@@ -36,7 +36,7 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public IntPtr? StdVPS
+        public SharpVk.StdVideoH265VideoParameterSet? StdVPS
         {
             get;
             set;
@@ -45,7 +45,7 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public IntPtr? StdSPS
+        public SharpVk.StdVideoH265SequenceParameterSet? StdSPS
         {
             get;
             set;
@@ -54,7 +54,7 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public IntPtr? StdPPS
+        public SharpVk.StdVideoH265PictureParameterSet? StdPPS
         {
             get;
             set;
@@ -71,30 +71,30 @@ namespace SharpVk.Khronos
             pointer->Next = null;
             if (this.StdVPS != null)
             {
-                pointer->StdVPS = (IntPtr*)(Interop.HeapUtil.Allocate<IntPtr>());
-                *pointer->StdVPS = this.StdVPS.Value;
+                pointer->StdVPS = (SharpVk.Interop.StdVideoH265VideoParameterSet*)(Interop.HeapUtil.Allocate<SharpVk.Interop.StdVideoH265VideoParameterSet>());
+                this.StdVPS.Value.MarshalTo(pointer->StdVPS);
             }
             else
             {
-                pointer->StdVPS = default(IntPtr*);
+                pointer->StdVPS = default(SharpVk.Interop.StdVideoH265VideoParameterSet*);
             }
             if (this.StdSPS != null)
             {
-                pointer->StdSPS = (IntPtr*)(Interop.HeapUtil.Allocate<IntPtr>());
-                *pointer->StdSPS = this.StdSPS.Value;
+                pointer->StdSPS = (SharpVk.Interop.StdVideoH265SequenceParameterSet*)(Interop.HeapUtil.Allocate<SharpVk.Interop.StdVideoH265SequenceParameterSet>());
+                this.StdSPS.Value.MarshalTo(pointer->StdSPS);
             }
             else
             {
-                pointer->StdSPS = default(IntPtr*);
+                pointer->StdSPS = default(SharpVk.Interop.StdVideoH265SequenceParameterSet*);
             }
             if (this.StdPPS != null)
             {
-                pointer->StdPPS = (IntPtr*)(Interop.HeapUtil.Allocate<IntPtr>());
-                *pointer->StdPPS = this.StdPPS.Value;
+                pointer->StdPPS = (SharpVk.Interop.StdVideoH265PictureParameterSet*)(Interop.HeapUtil.Allocate<SharpVk.Interop.StdVideoH265PictureParameterSet>());
+                this.StdPPS.Value.MarshalTo(pointer->StdPPS);
             }
             else
             {
-                pointer->StdPPS = default(IntPtr*);
+                pointer->StdPPS = default(SharpVk.Interop.StdVideoH265PictureParameterSet*);
             }
         }
     }

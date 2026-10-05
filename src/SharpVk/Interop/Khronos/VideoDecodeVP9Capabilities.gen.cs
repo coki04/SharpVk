@@ -46,6 +46,6 @@ namespace SharpVk.Interop.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public int MaxLevel; 
+        public SharpVk.StdVideoVP9Level MaxLevel; 
     }
 }

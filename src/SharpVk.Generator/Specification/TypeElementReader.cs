@@ -38,6 +38,18 @@ namespace SharpVk.Generator.Specification
                 bool.TryParse(vkType.Attribute("returnedonly")?.Value, out bool isReturnedOnly);
                 bool isTypePointer = false;
 
+                //Disregard video types from vk.xml as they are imported from video.xml instead
+                if (requires != null && requires.StartsWith("vk_video/"))
+                    continue;
+
+                //FIXME: Keep an eye on the spec to commit https://github.com/KhronosGroup/Vulkan-Docs/pull/2826
+                //Wrong spec for VkQueueFamilyDataGraphPropertiesARM. It is also used as an input.
+                if (isReturnedOnly && name == "VkQueueFamilyDataGraphPropertiesARM")
+                    isReturnedOnly = false;
+                //Wrong spec for VkGpaDeviceGetClockInfoAMD. It is only used as an output.
+                if (!isReturnedOnly && name == "VkGpaDeviceGetClockInfoAMD")
+                    isReturnedOnly = true;
+
                 if (category == TypeCategory.define && !(vkType.DescendantNodes().First().ToString().Contains("#define")))
                 {
                     category = TypeCategory.basetype;
@@ -73,6 +85,7 @@ namespace SharpVk.Generator.Specification
                     IsReturnedOnly = isReturnedOnly,
                     Type = type,
                     IsTypePointer = isTypePointer,
+                    IsVideoSpec = false,
                     Extends = extends,
                     Alias = alias
                 };

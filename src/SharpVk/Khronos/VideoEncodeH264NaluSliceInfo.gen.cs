@@ -45,7 +45,7 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public IntPtr StdSliceHeader
+        public SharpVk.StdVideoEncodeH264SliceHeader StdSliceHeader
         {
             get;
             set;
@@ -61,8 +61,8 @@ namespace SharpVk.Khronos
             pointer->SType = StructureType.VideoEncodeH264NaluSliceInfo;
             pointer->Next = null;
             pointer->ConstantQp = this.ConstantQp;
-            pointer->StdSliceHeader = (IntPtr*)(Interop.HeapUtil.Allocate<IntPtr>());
-            *pointer->StdSliceHeader = this.StdSliceHeader;
+            pointer->StdSliceHeader = (SharpVk.Interop.StdVideoEncodeH264SliceHeader*)(Interop.HeapUtil.Allocate<SharpVk.Interop.StdVideoEncodeH264SliceHeader>());
+            this.StdSliceHeader.MarshalTo(pointer->StdSliceHeader);
         }
     }
 }

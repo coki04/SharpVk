@@ -11,6 +11,7 @@ namespace SharpVk.Generator.Specification.Elements
         public string Alias;
         public bool IsReturnedOnly;
         public bool IsTypePointer;
+        public bool IsVideoSpec;
         public List<string> Extends;
 
         public List<MemberElement> Members = new List<MemberElement>();

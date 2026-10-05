@@ -228,6 +228,50 @@ namespace SharpVk.Interop
             return newArray;
         }
 
+        internal static sbyte[] MarshalFrom(sbyte* pointer, int length)
+        {
+            var newArray = new sbyte[length];
+
+            // Marshal.Copy doesn't support sbytes for some reason...
+            for (int index = 0; index < length; index++)
+            {
+                newArray[index] = *(pointer + length);
+            }
+
+            return newArray;
+        }
+
+        internal static short[] MarshalFrom(short* pointer, int length)
+        {
+            var newArray = new short[length];
+
+            Marshal.Copy(new IntPtr(pointer), newArray, 0, length);
+
+            return newArray;
+        }
+
+        internal static ushort[] MarshalFrom(ushort* pointer, int length)
+        {
+            var newArray = new ushort[length];
+
+            // Marshal.Copy doesn't support sbytes for some reason...
+            for (int index = 0; index < length; index++)
+            {
+                newArray[index] = *(pointer + length);
+            }
+
+            return newArray;
+        }
+
+        internal static int[] MarshalFrom(int* pointer, int length)
+        {
+            var newArray = new int[length];
+
+            Marshal.Copy(new IntPtr(pointer), newArray, 0, length);
+
+            return newArray;
+        }
+
         internal static uint[] MarshalFrom(uint* pointer, int length)
         {
             var newArray = new uint[length];
@@ -263,9 +307,36 @@ namespace SharpVk.Interop
             return pointer;
         }
 
+        internal static sbyte* MarshalTo(sbyte[] value)
+        {
+            sbyte* pointer = (sbyte*)Allocate<sbyte>(value.Length).ToPointer();
+
+            MarshalTo(value, value.Length, pointer);
+
+            return pointer;
+        }
+
         internal static float* MarshalTo(float[] value)
         {
             float* pointer = (float*)Allocate<float>(value.Length).ToPointer();
+
+            MarshalTo(value, value.Length, pointer);
+
+            return pointer;
+        }
+
+        internal static short* MarshalTo(short[] value)
+        {
+            short* pointer = (short*)Allocate<short>(value.Length).ToPointer();
+
+            MarshalTo(value, value.Length, pointer);
+
+            return pointer;
+        }
+
+        internal static ushort* MarshalTo(ushort[] value)
+        {
+            ushort* pointer = (ushort*)Allocate<ushort>(value.Length).ToPointer();
 
             MarshalTo(value, value.Length, pointer);
 
@@ -306,6 +377,15 @@ namespace SharpVk.Interop
             value.TryWriteBytes(new Span<byte>(pointer, length));
         }
 
+        internal static void MarshalTo(sbyte[] value, int length, sbyte* pointer)
+        {
+            //Marshal.Copy doesn't support sbyte for some reason...
+            for (int index = 0; index < length; index++)
+            {
+                pointer[index] = value[index];
+            }
+        }
+
         internal static void MarshalTo(byte[] value, int length, byte* pointer)
         {
             Marshal.Copy(value, 0, new IntPtr(pointer), length);
@@ -314,6 +394,20 @@ namespace SharpVk.Interop
         internal static void MarshalTo(float[] value, int length, float* pointer)
         {
             Marshal.Copy(value, 0, new IntPtr(pointer), length);
+        }
+
+        internal static void MarshalTo(short[] value, int length, short* pointer)
+        {
+            Marshal.Copy(value, 0, new IntPtr(pointer), length);
+        }
+
+        internal static void MarshalTo(ushort[] value, int length, ushort* pointer)
+        {
+            //Marshal.Copy doesn't support ushorts for some reason...
+            for (int index = 0; index < length; index++)
+            {
+                pointer[index] = value[index];
+            }
         }
 
         internal static void MarshalTo(int[] value, int length, int* pointer)

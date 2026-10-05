@@ -1839,6 +1839,11 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        public readonly Interop.Amd.VkDeviceGetGpaDeviceClockInfoDelegate vkGetGpaDeviceClockInfoAMD; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public readonly Interop.Amd.VkCommandBufferBeginGpaSessionDelegate vkCmdBeginGpaSessionAMD; 
         
         /// <summary>
@@ -2240,6 +2245,16 @@ namespace SharpVk
         /// 
         /// </summary>
         public readonly Interop.Multivendor.VkSwapchainKHRSetPresentTimingQueueSizeDelegate vkSetSwapchainPresentTimingQueueSizeEXT; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public readonly Interop.Multivendor.VkSwapchainKHRGetTimingPropertiesDelegate vkGetSwapchainTimingPropertiesEXT; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public readonly Interop.Multivendor.VkSwapchainKHRGetTimeDomainPropertiesDelegate vkGetSwapchainTimeDomainPropertiesEXT; 
         
         /// <summary>
         /// 
@@ -3329,7 +3344,17 @@ namespace SharpVk
         /// <summary>
         /// 
         /// </summary>
+        public readonly Interop.Arm.VkPhysicalDeviceGetQueueFamilyDataGraphPropertiesDelegate vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public readonly Interop.Arm.VkPhysicalDeviceGetQueueFamilyDataGraphProcessingEnginePropertiesDelegate vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public readonly Interop.Arm.VkPhysicalDeviceGetQueueFamilyDataGraphEngineOperationPropertiesDelegate vkGetPhysicalDeviceQueueFamilyDataGraphEngineOperationPropertiesARM; 
         
         /// <summary>
         /// 
@@ -3535,6 +3560,11 @@ namespace SharpVk
         /// 
         /// </summary>
         public readonly Interop.Khronos.VkCommandBufferEndRendering2Delegate vkCmdEndRendering2KHR; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public readonly Interop.Arm.VkPhysicalDeviceGetQueueFamilyDataGraphOpticalFlowImageFormatsDelegate vkGetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM; 
         
         /// <summary>
         /// 
@@ -3927,6 +3957,7 @@ namespace SharpVk
             this.vkCreateGpaSessionAMD = cache.GetCommandDelegate<Interop.Amd.VkDeviceCreateGpaSessionDelegate>("vkCreateGpaSessionAMD", "device");
             this.vkDestroyGpaSessionAMD = cache.GetCommandDelegate<Interop.Amd.VkGpaSessionAMDDestroyDelegate>("vkDestroyGpaSessionAMD", "device");
             this.vkSetGpaDeviceClockModeAMD = cache.GetCommandDelegate<Interop.Amd.VkDeviceSetGpaDeviceClockModeDelegate>("vkSetGpaDeviceClockModeAMD", "device");
+            this.vkGetGpaDeviceClockInfoAMD = cache.GetCommandDelegate<Interop.Amd.VkDeviceGetGpaDeviceClockInfoDelegate>("vkGetGpaDeviceClockInfoAMD", "device");
             this.vkCmdBeginGpaSessionAMD = cache.GetCommandDelegate<Interop.Amd.VkCommandBufferBeginGpaSessionDelegate>("vkCmdBeginGpaSessionAMD", "device");
             this.vkCmdEndGpaSessionAMD = cache.GetCommandDelegate<Interop.Amd.VkCommandBufferEndGpaSessionDelegate>("vkCmdEndGpaSessionAMD", "device");
             this.vkCmdBeginGpaSampleAMD = cache.GetCommandDelegate<Interop.Amd.VkCommandBufferBeginGpaSampleDelegate>("vkCmdBeginGpaSampleAMD", "device");
@@ -4008,6 +4039,8 @@ namespace SharpVk
             this.vkGetQueueCheckpointDataNV = cache.GetCommandDelegate<Interop.NVidia.VkQueueGetCheckpointDataDelegate>("vkGetQueueCheckpointDataNV", "device");
             this.vkGetQueueCheckpointData2NV = cache.GetCommandDelegate<Interop.NVidia.VkQueueGetCheckpointData2Delegate>("vkGetQueueCheckpointData2NV", "device");
             this.vkSetSwapchainPresentTimingQueueSizeEXT = cache.GetCommandDelegate<Interop.Multivendor.VkSwapchainKHRSetPresentTimingQueueSizeDelegate>("vkSetSwapchainPresentTimingQueueSizeEXT", "device");
+            this.vkGetSwapchainTimingPropertiesEXT = cache.GetCommandDelegate<Interop.Multivendor.VkSwapchainKHRGetTimingPropertiesDelegate>("vkGetSwapchainTimingPropertiesEXT", "device");
+            this.vkGetSwapchainTimeDomainPropertiesEXT = cache.GetCommandDelegate<Interop.Multivendor.VkSwapchainKHRGetTimeDomainPropertiesDelegate>("vkGetSwapchainTimeDomainPropertiesEXT", "device");
             this.vkGetPastPresentationTimingEXT = cache.GetCommandDelegate<Interop.Multivendor.VkDeviceGetPastPresentationTimingDelegate>("vkGetPastPresentationTimingEXT", "device");
             this.vkInitializePerformanceApiINTEL = cache.GetCommandDelegate<Interop.Intel.VkDeviceInitializePerformanceApiDelegate>("vkInitializePerformanceApiINTEL", "device");
             this.vkUninitializePerformanceApiINTEL = cache.GetCommandDelegate<Interop.Intel.VkDeviceUninitializePerformanceApiDelegate>("vkUninitializePerformanceApiINTEL", "device");
@@ -4225,7 +4258,9 @@ namespace SharpVk
             this.vkCmdDispatchDataGraphARM = cache.GetCommandDelegate<Interop.Arm.VkCommandBufferDispatchDataGraphDelegate>("vkCmdDispatchDataGraphARM", "device");
             this.vkGetDataGraphPipelineAvailablePropertiesARM = cache.GetCommandDelegate<Interop.Arm.VkDeviceGetDataGraphPipelineAvailablePropertiesDelegate>("vkGetDataGraphPipelineAvailablePropertiesARM", "device");
             this.vkGetDataGraphPipelinePropertiesARM = cache.GetCommandDelegate<Interop.Arm.VkDeviceGetDataGraphPipelinePropertiesDelegate>("vkGetDataGraphPipelinePropertiesARM", "device");
+            this.vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM = cache.GetCommandDelegate<Interop.Arm.VkPhysicalDeviceGetQueueFamilyDataGraphPropertiesDelegate>("vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM", "instance");
             this.vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM = cache.GetCommandDelegate<Interop.Arm.VkPhysicalDeviceGetQueueFamilyDataGraphProcessingEnginePropertiesDelegate>("vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM", "instance");
+            this.vkGetPhysicalDeviceQueueFamilyDataGraphEngineOperationPropertiesARM = cache.GetCommandDelegate<Interop.Arm.VkPhysicalDeviceGetQueueFamilyDataGraphEngineOperationPropertiesDelegate>("vkGetPhysicalDeviceQueueFamilyDataGraphEngineOperationPropertiesARM", "instance");
             this.vkCmdSetAttachmentFeedbackLoopEnableEXT = cache.GetCommandDelegate<Interop.Multivendor.VkCommandBufferSetAttachmentFeedbackLoopEnableDelegate>("vkCmdSetAttachmentFeedbackLoopEnableEXT", "device");
             this.vkGetScreenBufferPropertiesQNX = cache.GetCommandDelegate<Interop.Qnx.VkDeviceGetScreenBufferPropertiesDelegate>("vkGetScreenBufferPropertiesQNX", "device");
             this.vkGetPhysicalDeviceCalibrateableTimeDomainsKHR = cache.GetCommandDelegate<Interop.Khronos.VkPhysicalDeviceGetCalibrateableTimeDomainsDelegate>("vkGetPhysicalDeviceCalibrateableTimeDomainsKHR", "instance");
@@ -4267,6 +4302,7 @@ namespace SharpVk
             this.vkClearShaderInstrumentationMetricsARM = cache.GetCommandDelegate<Interop.Arm.VkShaderInstrumentationARMClearMetricsDelegate>("vkClearShaderInstrumentationMetricsARM", "device");
             this.vkCmdBeginCustomResolveEXT = cache.GetCommandDelegate<Interop.Multivendor.VkCommandBufferBeginCustomResolveDelegate>("vkCmdBeginCustomResolveEXT", "device");
             this.vkCmdEndRendering2KHR = cache.GetCommandDelegate<Interop.Khronos.VkCommandBufferEndRendering2Delegate>("vkCmdEndRendering2KHR", "device");
+            this.vkGetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM = cache.GetCommandDelegate<Interop.Arm.VkPhysicalDeviceGetQueueFamilyDataGraphOpticalFlowImageFormatsDelegate>("vkGetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM", "instance");
             this.vkCmdSetComputeOccupancyPriorityNV = cache.GetCommandDelegate<Interop.NVidia.VkCommandBufferSetComputeOccupancyPriorityDelegate>("vkCmdSetComputeOccupancyPriorityNV", "device");
             this.vkGetPhysicalDeviceCooperativeMatrixProperties2EXT = cache.GetCommandDelegate<Interop.Multivendor.VkPhysicalDeviceGetCooperativeMatrixProperties2Delegate>("vkGetPhysicalDeviceCooperativeMatrixProperties2EXT", "instance");
             this.vkCreateUbmSurfaceSEC = cache.GetCommandDelegate<Interop.Sec.VkInstanceCreateUbmSurfaceDelegate>("vkCreateUbmSurfaceSEC", "instance");

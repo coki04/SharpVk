@@ -5,5 +5,6 @@ namespace SharpVk.Generator
     public interface IVkXmlCache
     {
         XDocument GetVkXml();
+        XDocument GetVideoXml();
     }
 }

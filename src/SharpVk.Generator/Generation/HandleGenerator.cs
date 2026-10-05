@@ -144,11 +144,12 @@ namespace SharpVk.Generator.Generation
             {
                 returnParamsCount = Math.Max(1, command.Params.AsEnumerable().Reverse().TakeWhile(IsArray).Count());
             }
-            //TODO: Coki04 Handle multiple return params.
-            if (command.VkName.Contains("SwapchainTimingProperties"))
+
+            //Very special case, these are return two parameters.
+            if (command.VkName.Contains("SwapchainTimingProperties") ||
+                command.VkName.Contains("SwapchainTimeDomainProperties"))
             {
                 returnParamsCount = 2;
-                yield return new MethodDefinition();
             }
 
             bool enumeratePattern = (command.Verb == "enumerate" && lastParamIsArray) || (lastParamIsArray && lastParamLenFieldByRef);
@@ -476,11 +477,39 @@ namespace SharpVk.Generator.Generation
                             MemberName = marshalledName
                         });
 
-                        marshalFromActions.AddRange(patternInfo.MarshalFrom.Select(action => action(targetName => Variable("result"), valueName => Variable(GetMarshalledName(valueName)))));
+                        string resultStr = returnParamsCount switch
+                        {
+                            <= 1 => "result",
+                            > 1  => "result.Item" + (parameterIndex - command.Params.Count() + returnParamsCount + 1)
+                        };
+
+                        marshalFromActions.AddRange(patternInfo.MarshalFrom.Select(action => action(targetName => Variable(resultStr), valueName => Variable(GetMarshalledName(valueName)))));
 
                         marshalledValues.Add(AddressOf(Variable(marshalledName)));
 
-                        newMethod.ReturnType = patternInfo.Public.Single().Type;
+                        if (returnParamsCount > 1)
+                        {
+                            //Constructing Tuple for multiple results.
+                            //First return value
+                            if (parameterIndex - command.Params.Count() + returnParamsCount == 0)
+                            {
+                                newMethod.ReturnType = "(" + patternInfo.Public.Single().Type;
+                            }
+                            //Last return value
+                            else if (parameterIndex - command.Params.Count() + returnParamsCount == returnParamsCount - 1)
+                            {
+                                newMethod.ReturnType += ", " + patternInfo.Public.Single().Type + ")";
+                            }
+                            //Intermediate return value
+                            else
+                            {
+                                newMethod.ReturnType += ", " + patternInfo.Public.Single().Type;
+                            }
+                        }
+                        else
+                        {
+                            newMethod.ReturnType = patternInfo.Public.Single().Type;
+                        }
                     }
                 }
                 else

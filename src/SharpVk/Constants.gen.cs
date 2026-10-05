@@ -223,5 +223,315 @@ namespace SharpVk
         /// 
         /// </summary>
         public const int MaxTensorCreateInfoRollingBackingWrapCount = 4; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const int StdVideoH264CpbCntListSize = 32; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoH264ScalingList4x4NumLists = 6; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoH264ScalingList4x4NumElements = 16; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoH264ScalingList8x8NumLists = 6; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoH264ScalingList8x8NumElements = 64; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoH264MaxNumListRef = 32; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoH264MaxChromaPlanes = 2; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoH264NoReferencePicture = 255; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const int StdVideoDecodeH264FieldOrderCountListSize = 2; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const int StdVideoH265CpbCntListSize = 32; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const int StdVideoH265SublayersListSize = 7; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoH265ScalingList4x4NumLists = 6; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoH265ScalingList4x4NumElements = 16; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoH265ScalingList8x8NumLists = 6; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoH265ScalingList8x8NumElements = 64; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoH265ScalingList16x16NumLists = 6; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoH265ScalingList16x16NumElements = 64; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoH265ScalingList32x32NumLists = 2; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoH265ScalingList32x32NumElements = 64; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const int StdVideoH265ChromaQpOffsetListSize = 6; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const int StdVideoH265ChromaQpOffsetTileColsListSize = 19; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const int StdVideoH265ChromaQpOffsetTileRowsListSize = 21; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const int StdVideoH265PredictorPaletteComponentsListSize = 3; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const int StdVideoH265PredictorPaletteCompEntriesListSize = 128; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoH265MaxNumListRef = 15; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoH265MaxChromaPlanes = 2; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoH265MaxShortTermRefPicSets = 64; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const int StdVideoH265MaxDpbSize = 16; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoH265MaxLongTermRefPicsSps = 32; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoH265MaxLongTermPics = 16; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoH265MaxDeltaPoc = 48; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoH265NoReferencePicture = 255; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const int StdVideoDecodeH265RefPicSetListSize = 8; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoVp9NumRefFrames = 8; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoVp9RefsPerFrame = 3; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoVp9MaxRefFrames = 4; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoVp9LoopFilterAdjustments = 2; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoVp9MaxSegments = 8; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoVp9SegLvlMax = 4; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoVp9MaxSegmentationTreeProbs = 7; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoVp9MaxSegmentationPredProb = 3; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoAv1NumRefFrames = 8; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoAv1RefsPerFrame = 7; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoAv1TotalRefsPerFrame = 8; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoAv1MaxTileCols = 64; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoAv1MaxTileRows = 64; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoAv1MaxSegments = 8; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoAv1SegLvlMax = 8; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoAv1PrimaryRefNone = 7; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoAv1SelectIntegerMv = 2; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoAv1SelectScreenContentTools = 2; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoAv1SkipModeFrames = 2; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoAv1MaxLoopFilterStrengths = 4; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoAv1LoopFilterAdjustments = 2; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoAv1MaxCdefFilterStrengths = 8; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoAv1MaxNumPlanes = 3; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoAv1GlobalMotionParams = 6; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoAv1MaxNumYPoints = 14; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoAv1MaxNumCbPoints = 10; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoAv1MaxNumCrPoints = 10; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoAv1MaxNumPosLuma = 24; 
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public const uint StdVideoAv1MaxNumPosChroma = 25; 
     }
 }

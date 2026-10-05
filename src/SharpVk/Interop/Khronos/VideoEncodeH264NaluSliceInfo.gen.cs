@@ -51,6 +51,6 @@ namespace SharpVk.Interop.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public IntPtr* StdSliceHeader; 
+        public SharpVk.Interop.StdVideoEncodeH264SliceHeader* StdSliceHeader; 
     }
 }

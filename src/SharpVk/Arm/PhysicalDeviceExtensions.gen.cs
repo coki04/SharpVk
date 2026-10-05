@@ -67,6 +67,52 @@ namespace SharpVk.Arm
         /// <param name="extendedHandle">
         /// The PhysicalDevice handle to extend.
         /// </param>
+        /// <param name="queueFamilyIndex">
+        /// </param>
+        public static unsafe SharpVk.Arm.QueueFamilyDataGraphProperties[] GetQueueFamilyDataGraphProperties(this SharpVk.PhysicalDevice extendedHandle, uint queueFamilyIndex)
+        {
+            try
+            {
+                SharpVk.Arm.QueueFamilyDataGraphProperties[] result = default(SharpVk.Arm.QueueFamilyDataGraphProperties[]);
+                uint marshalledQueueFamilyDataGraphPropertyCount = default(uint);
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.Arm.QueueFamilyDataGraphProperties* marshalledQueueFamilyDataGraphProperties = default(SharpVk.Interop.Arm.QueueFamilyDataGraphProperties*);
+                commandCache = extendedHandle.commandCache;
+                SharpVk.Interop.Arm.VkPhysicalDeviceGetQueueFamilyDataGraphPropertiesDelegate commandDelegate = commandCache.Cache.vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM;
+                Result methodResult = commandDelegate(extendedHandle.handle, queueFamilyIndex, &marshalledQueueFamilyDataGraphPropertyCount, marshalledQueueFamilyDataGraphProperties);
+                if (SharpVkException.IsError(methodResult))
+                {
+                    throw SharpVkException.Create(methodResult);
+                }
+                marshalledQueueFamilyDataGraphProperties = (SharpVk.Interop.Arm.QueueFamilyDataGraphProperties*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Arm.QueueFamilyDataGraphProperties>((uint)(marshalledQueueFamilyDataGraphPropertyCount)));
+                commandDelegate(extendedHandle.handle, queueFamilyIndex, &marshalledQueueFamilyDataGraphPropertyCount, marshalledQueueFamilyDataGraphProperties);
+                if (marshalledQueueFamilyDataGraphProperties != null)
+                {
+                    var fieldPointer = new SharpVk.Arm.QueueFamilyDataGraphProperties[(uint)(marshalledQueueFamilyDataGraphPropertyCount)];
+                    for(int index = 0; index < (uint)(marshalledQueueFamilyDataGraphPropertyCount); index++)
+                    {
+                        fieldPointer[index] = SharpVk.Arm.QueueFamilyDataGraphProperties.MarshalFrom(&marshalledQueueFamilyDataGraphProperties[index]);
+                    }
+                    result = fieldPointer;
+                }
+                else
+                {
+                    result = null;
+                }
+                return result;
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The PhysicalDevice handle to extend.
+        /// </param>
         /// <param name="queueFamilyDataGraphProcessingEngineInfo">
         /// </param>
         public static unsafe SharpVk.Arm.QueueFamilyDataGraphProcessingEngineProperties GetQueueFamilyDataGraphProcessingEngineProperties(this SharpVk.PhysicalDevice extendedHandle, SharpVk.Arm.PhysicalDeviceQueueFamilyDataGraphProcessingEngineInfo queueFamilyDataGraphProcessingEngineInfo)
@@ -83,6 +129,42 @@ namespace SharpVk.Arm
                 SharpVk.Interop.Arm.VkPhysicalDeviceGetQueueFamilyDataGraphProcessingEnginePropertiesDelegate commandDelegate = commandCache.Cache.vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM;
                 commandDelegate(extendedHandle.handle, marshalledQueueFamilyDataGraphProcessingEngineInfo, &marshalledQueueFamilyDataGraphProcessingEngineProperties);
                 result = SharpVk.Arm.QueueFamilyDataGraphProcessingEngineProperties.MarshalFrom(&marshalledQueueFamilyDataGraphProcessingEngineProperties);
+                return result;
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The PhysicalDevice handle to extend.
+        /// </param>
+        /// <param name="queueFamilyIndex">
+        /// </param>
+        /// <param name="queueFamilyDataGraphProperties">
+        /// </param>
+        public static unsafe SharpVk.BaseOutStructure GetQueueFamilyDataGraphEngineOperationProperties(this SharpVk.PhysicalDevice extendedHandle, uint queueFamilyIndex, SharpVk.Arm.QueueFamilyDataGraphProperties queueFamilyDataGraphProperties)
+        {
+            try
+            {
+                SharpVk.BaseOutStructure result = default(SharpVk.BaseOutStructure);
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.Arm.QueueFamilyDataGraphProperties* marshalledQueueFamilyDataGraphProperties = default(SharpVk.Interop.Arm.QueueFamilyDataGraphProperties*);
+                SharpVk.Interop.BaseOutStructure marshalledProperties = default(SharpVk.Interop.BaseOutStructure);
+                commandCache = extendedHandle.commandCache;
+                marshalledQueueFamilyDataGraphProperties = (SharpVk.Interop.Arm.QueueFamilyDataGraphProperties*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Arm.QueueFamilyDataGraphProperties>());
+                queueFamilyDataGraphProperties.MarshalTo(marshalledQueueFamilyDataGraphProperties);
+                SharpVk.Interop.Arm.VkPhysicalDeviceGetQueueFamilyDataGraphEngineOperationPropertiesDelegate commandDelegate = commandCache.Cache.vkGetPhysicalDeviceQueueFamilyDataGraphEngineOperationPropertiesARM;
+                Result methodResult = commandDelegate(extendedHandle.handle, queueFamilyIndex, marshalledQueueFamilyDataGraphProperties, &marshalledProperties);
+                if (SharpVkException.IsError(methodResult))
+                {
+                    throw SharpVkException.Create(methodResult);
+                }
+                result = SharpVk.BaseOutStructure.MarshalFrom(&marshalledProperties);
                 return result;
             }
             finally
@@ -185,6 +267,62 @@ namespace SharpVk.Arm
                     for(int index = 0; index < (uint)(marshalledDescriptionCount); index++)
                     {
                         fieldPointer[index] = SharpVk.Arm.ShaderInstrumentationMetricDescription.MarshalFrom(&marshalledDescriptions[index]);
+                    }
+                    result = fieldPointer;
+                }
+                else
+                {
+                    result = null;
+                }
+                return result;
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The PhysicalDevice handle to extend.
+        /// </param>
+        /// <param name="queueFamilyIndex">
+        /// </param>
+        /// <param name="queueFamilyDataGraphProperties">
+        /// </param>
+        /// <param name="opticalFlowImageFormatInfo">
+        /// </param>
+        public static unsafe SharpVk.Arm.DataGraphOpticalFlowImageFormatProperties[] GetQueueFamilyDataGraphOpticalFlowImageFormats(this SharpVk.PhysicalDevice extendedHandle, uint queueFamilyIndex, SharpVk.Arm.QueueFamilyDataGraphProperties queueFamilyDataGraphProperties, SharpVk.Arm.DataGraphOpticalFlowImageFormatInfo opticalFlowImageFormatInfo)
+        {
+            try
+            {
+                SharpVk.Arm.DataGraphOpticalFlowImageFormatProperties[] result = default(SharpVk.Arm.DataGraphOpticalFlowImageFormatProperties[]);
+                uint marshalledFormatCount = default(uint);
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.Arm.QueueFamilyDataGraphProperties* marshalledQueueFamilyDataGraphProperties = default(SharpVk.Interop.Arm.QueueFamilyDataGraphProperties*);
+                SharpVk.Interop.Arm.DataGraphOpticalFlowImageFormatInfo* marshalledOpticalFlowImageFormatInfo = default(SharpVk.Interop.Arm.DataGraphOpticalFlowImageFormatInfo*);
+                SharpVk.Interop.Arm.DataGraphOpticalFlowImageFormatProperties* marshalledImageFormatProperties = default(SharpVk.Interop.Arm.DataGraphOpticalFlowImageFormatProperties*);
+                commandCache = extendedHandle.commandCache;
+                marshalledQueueFamilyDataGraphProperties = (SharpVk.Interop.Arm.QueueFamilyDataGraphProperties*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Arm.QueueFamilyDataGraphProperties>());
+                queueFamilyDataGraphProperties.MarshalTo(marshalledQueueFamilyDataGraphProperties);
+                marshalledOpticalFlowImageFormatInfo = (SharpVk.Interop.Arm.DataGraphOpticalFlowImageFormatInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Arm.DataGraphOpticalFlowImageFormatInfo>());
+                opticalFlowImageFormatInfo.MarshalTo(marshalledOpticalFlowImageFormatInfo);
+                SharpVk.Interop.Arm.VkPhysicalDeviceGetQueueFamilyDataGraphOpticalFlowImageFormatsDelegate commandDelegate = commandCache.Cache.vkGetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM;
+                Result methodResult = commandDelegate(extendedHandle.handle, queueFamilyIndex, marshalledQueueFamilyDataGraphProperties, marshalledOpticalFlowImageFormatInfo, &marshalledFormatCount, marshalledImageFormatProperties);
+                if (SharpVkException.IsError(methodResult))
+                {
+                    throw SharpVkException.Create(methodResult);
+                }
+                marshalledImageFormatProperties = (SharpVk.Interop.Arm.DataGraphOpticalFlowImageFormatProperties*)(Interop.HeapUtil.Allocate<SharpVk.Interop.Arm.DataGraphOpticalFlowImageFormatProperties>((uint)(marshalledFormatCount)));
+                commandDelegate(extendedHandle.handle, queueFamilyIndex, marshalledQueueFamilyDataGraphProperties, marshalledOpticalFlowImageFormatInfo, &marshalledFormatCount, marshalledImageFormatProperties);
+                if (marshalledImageFormatProperties != null)
+                {
+                    var fieldPointer = new SharpVk.Arm.DataGraphOpticalFlowImageFormatProperties[(uint)(marshalledFormatCount)];
+                    for(int index = 0; index < (uint)(marshalledFormatCount); index++)
+                    {
+                        fieldPointer[index] = SharpVk.Arm.DataGraphOpticalFlowImageFormatProperties.MarshalFrom(&marshalledImageFormatProperties[index]);
                     }
                     result = fieldPointer;
                 }

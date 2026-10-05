@@ -74,14 +74,14 @@ namespace SharpVk.Amd
         /// </summary>
         /// <param name="pointer">
         /// </param>
-        internal unsafe void MarshalTo(SharpVk.Interop.Amd.GpaDeviceGetClockInfo* pointer)
+        internal static unsafe GpaDeviceGetClockInfo MarshalFrom(SharpVk.Interop.Amd.GpaDeviceGetClockInfo* pointer)
         {
-            pointer->SType = StructureType.GpaDeviceGetClockInfo;
-            pointer->Next = null;
-            pointer->MemoryClockRatioToPeak = this.MemoryClockRatioToPeak;
-            pointer->EngineClockRatioToPeak = this.EngineClockRatioToPeak;
-            pointer->MemoryClockFrequency = this.MemoryClockFrequency;
-            pointer->EngineClockFrequency = this.EngineClockFrequency;
+            GpaDeviceGetClockInfo result = default(GpaDeviceGetClockInfo);
+            result.MemoryClockRatioToPeak = pointer->MemoryClockRatioToPeak;
+            result.EngineClockRatioToPeak = pointer->EngineClockRatioToPeak;
+            result.MemoryClockFrequency = pointer->MemoryClockFrequency;
+            result.EngineClockFrequency = pointer->EngineClockFrequency;
+            return result;
         }
     }
 }

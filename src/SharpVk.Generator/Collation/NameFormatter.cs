@@ -22,6 +22,7 @@ namespace SharpVk.Generator.Collation
             {"int", "int"},
             {"DWORD", "uint"},
             {"int8_t", "sbyte"},
+            {"int16_t", "short"},
             {"int32_t", "int"},
             {"int64_t", "long"},
             {"size_t", "HostSize"},
@@ -59,42 +60,11 @@ namespace SharpVk.Generator.Collation
             {"MTLTexture_id", "IntPtr" },
             {"IOSurfaceRef", "IntPtr" },
 
-            {"StdVideoDecodeH264PictureInfo", "IntPtr" },
-            {"StdVideoDecodeH264ReferenceInfo", "IntPtr" },
-            {"StdVideoH264SequenceParameterSet", "IntPtr" },
-            {"StdVideoH264PictureParameterSet", "IntPtr" },
-            {"StdVideoH264ProfileIdc", "int" },
-            {"StdVideoH264LevelIdc", "int" },
-            {"StdVideoEncodeH264SliceHeader", "IntPtr" },
-            {"StdVideoEncodeH264RefMemMgmtCtrlOperations", "IntPtr" },
-            {"StdVideoEncodeH264ReferenceInfo", "IntPtr" },
-            {"StdVideoEncodeH264PictureInfo", "IntPtr" },
+            {"ubm_device", "IntPtr" },
+            {"ubm_surface", "IntPtr" },
 
-            {"StdVideoH265VideoParameterSet", "IntPtr" },
-            {"StdVideoH265SequenceParameterSet", "IntPtr" },
-            {"StdVideoEncodeH265SliceSegmentHeader", "IntPtr" },
-            {"StdVideoEncodeH265ReferenceModifications", "IntPtr" },
-            {"StdVideoEncodeH265ReferenceInfo", "IntPtr" },
-            {"StdVideoEncodeH265PictureInfo", "IntPtr" },
-            {"StdVideoDecodeH265ReferenceInfo", "IntPtr" },
-            {"StdVideoDecodeH265PictureInfo", "IntPtr" },
-            {"StdVideoH265ProfileIdc", "int" },
-            {"StdVideoH265PictureParameterSet", "IntPtr" },
-            {"StdVideoH265LevelIdc", "int" },
-
-            {"StdVideoVP9Profile", "int" },
-            {"StdVideoVP9Level", "int" },
-            {"StdVideoDecodeVP9PictureInfo", "IntPtr" },
-
-            {"StdVideoAV1Profile", "int" },
-            {"StdVideoAV1Level", "int" },
-            {"StdVideoDecodeAV1ReferenceInfo", "IntPtr" },
-            {"StdVideoDecodeAV1PictureInfo", "IntPtr" },
-            {"StdVideoEncodeAV1ReferenceInfo", "IntPtr" },
-            {"StdVideoEncodeAV1PictureInfo", "IntPtr" },
-            {"StdVideoEncodeAV1OperatingPointInfo", "IntPtr" },
-            {"StdVideoEncodeAV1DecoderModelInfo", "IntPtr" },
-            {"StdVideoAV1SequenceHeader", "IntPtr" },
+            {"OH_NativeBuffer", "IntPtr" },
+            {"OHBufferHandle", "IntPtr" },
 
             {"IDirectFB", "IntPtr" },
             {"IDirectFBSurface", "IntPtr" },
@@ -108,12 +78,6 @@ namespace SharpVk.Generator.Collation
             {"NvSciSyncFence", "IntPtr" },
             {"NvSciBufAttrList", "IntPtr" },
             {"NvSciBufObj", "IntPtr" },
-
-            {"ubm_device", "IntPtr" },
-            {"ubm_surface", "IntPtr" },
-
-            {"OH_NativeBuffer", "IntPtr" },
-            {"OHBufferHandle", "IntPtr" },
         };
 
         private static readonly string[] digitsSuffix = new[] { "flags", "flag", "type", "bits", "bit" };

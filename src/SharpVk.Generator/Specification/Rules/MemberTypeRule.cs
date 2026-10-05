@@ -17,7 +17,7 @@ namespace SharpVk.Generator.Specification.Rules
 
         public bool Apply(XElement typeXml, TypeElement type, IServiceCollection target)
         {
-            if (type.Category == TypeCategory.include || type.Category == TypeCategory.None || type.Category == TypeCategory.define)
+            if (type.IsVideoSpec || type.Category == TypeCategory.include || type.Category == TypeCategory.None || type.Category == TypeCategory.define)
             {
                 return false;
             }

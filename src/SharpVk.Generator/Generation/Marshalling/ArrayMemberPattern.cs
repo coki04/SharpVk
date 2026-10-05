@@ -16,13 +16,16 @@ namespace SharpVk.Generator.Generation.Marshalling
         private readonly NameLookup nameLookup;
         private readonly ParsedExpressionBuilder expressionBuilder;
         private readonly CommentGenerator commentGenerator;
+        private readonly Dictionary<string, ConstantDeclaration> constantsLookup;
 
-        public ArrayMemberPattern(IEnumerable<IMarshalValueRule> marshallingRules, NameLookup nameLookup, ParsedExpressionBuilder expressionBuilder, CommentGenerator commentGenerator)
+        public ArrayMemberPattern(IEnumerable<IMarshalValueRule> marshallingRules, NameLookup nameLookup, ParsedExpressionBuilder expressionBuilder, 
+                                  CommentGenerator commentGenerator, IEnumerable<ConstantDeclaration> constants)
         {
             this.marshallingRules = marshallingRules;
             this.nameLookup = nameLookup;
             this.expressionBuilder = expressionBuilder;
             this.commentGenerator = commentGenerator;
+            this.constantsLookup = constants.ToDictionary(x => x.VkName);
         }
 
         public bool Apply(IEnumerable<ITypedDeclaration> others, ITypedDeclaration source, MemberPatternContext context, MemberPatternInfo info)
@@ -271,7 +274,21 @@ namespace SharpVk.Generator.Generation.Marshalling
 
                                 if (source.Dimensions[0].Value is LenExpressionToken lenToken)
                                 {
-                                    lenValue = getValue => getValue(others.Single(x => x.VkName == lenToken.Value).Name);
+                                    if (others.SingleOrDefault(x => x.VkName == lenToken.Value) != null)
+                                    {
+                                        lenValue = getValue => getValue(others.Single(x => x.VkName == lenToken.Value).Name);
+                                    }
+                                    else if (this.constantsLookup.ContainsKey(lenToken.Value))
+                                    {
+                                        var constant = this.constantsLookup[lenToken.Value];
+
+                                        lenValue = getValue => this.expressionBuilder.Build(
+                                            new LenExpressionLiteral() { Value = constant.Value }, x => others.SingleOrDefault(y => y.VkName == x));
+                                    }
+                                    else
+                                    {
+                                        throw new InvalidProgramException("Token not found");
+                                    }
                                 }
                                 else
                                 {

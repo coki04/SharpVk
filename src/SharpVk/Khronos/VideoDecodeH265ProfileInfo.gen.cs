@@ -36,7 +36,7 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public int StdProfileIdc
+        public SharpVk.StdVideoH265ProfileIdc StdProfileIdc
         {
             get;
             set;

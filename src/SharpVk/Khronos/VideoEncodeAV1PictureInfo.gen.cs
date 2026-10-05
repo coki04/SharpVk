@@ -63,7 +63,7 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public IntPtr StdPictureInfo
+        public SharpVk.StdVideoEncodeAV1PictureInfo StdPictureInfo
         {
             get;
             set;
@@ -108,8 +108,8 @@ namespace SharpVk.Khronos
             pointer->PredictionMode = this.PredictionMode;
             pointer->RateControlGroup = this.RateControlGroup;
             pointer->ConstantQIndex = this.ConstantQIndex;
-            pointer->StdPictureInfo = (IntPtr*)(Interop.HeapUtil.Allocate<IntPtr>());
-            *pointer->StdPictureInfo = this.StdPictureInfo;
+            pointer->StdPictureInfo = (SharpVk.Interop.StdVideoEncodeAV1PictureInfo*)(Interop.HeapUtil.Allocate<SharpVk.Interop.StdVideoEncodeAV1PictureInfo>());
+            this.StdPictureInfo.MarshalTo(pointer->StdPictureInfo);
             Interop.HeapUtil.MarshalTo(this.ReferenceNameSlotIndices, checked((int)Constants.MaxVideoAv1ReferencesPerFrame), pointer->ReferenceNameSlotIndices);
             pointer->PrimaryReferenceCdfOnly = this.PrimaryReferenceCdfOnly;
             pointer->GenerateObuExtensionHeader = this.GenerateObuExtensionHeader;

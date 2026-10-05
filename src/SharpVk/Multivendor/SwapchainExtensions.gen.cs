@@ -92,6 +92,68 @@ namespace SharpVk.Multivendor
         }
         
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The Swapchain handle to extend.
+        /// </param>
+        public static unsafe (SharpVk.Multivendor.SwapchainTimingProperties, ulong) GetTimingProperties(this SharpVk.Khronos.Swapchain extendedHandle)
+        {
+            try
+            {
+                (SharpVk.Multivendor.SwapchainTimingProperties, ulong) result = default((SharpVk.Multivendor.SwapchainTimingProperties, ulong));
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.Multivendor.SwapchainTimingProperties marshalledSwapchainTimingProperties = default(SharpVk.Interop.Multivendor.SwapchainTimingProperties);
+                ulong marshalledSwapchainTimingPropertiesCounter = default(ulong);
+                commandCache = extendedHandle.commandCache;
+                SharpVk.Interop.Multivendor.VkSwapchainKHRGetTimingPropertiesDelegate commandDelegate = commandCache.Cache.vkGetSwapchainTimingPropertiesEXT;
+                Result methodResult = commandDelegate(extendedHandle.parent.handle, extendedHandle.handle, &marshalledSwapchainTimingProperties, &marshalledSwapchainTimingPropertiesCounter);
+                if (SharpVkException.IsError(methodResult))
+                {
+                    throw SharpVkException.Create(methodResult);
+                }
+                result.Item1 = SharpVk.Multivendor.SwapchainTimingProperties.MarshalFrom(&marshalledSwapchainTimingProperties);
+                result.Item2 = marshalledSwapchainTimingPropertiesCounter;
+                return result;
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="extendedHandle">
+        /// The Swapchain handle to extend.
+        /// </param>
+        public static unsafe (SharpVk.Multivendor.SwapchainTimeDomainProperties, ulong) GetTimeDomainProperties(this SharpVk.Khronos.Swapchain extendedHandle)
+        {
+            try
+            {
+                (SharpVk.Multivendor.SwapchainTimeDomainProperties, ulong) result = default((SharpVk.Multivendor.SwapchainTimeDomainProperties, ulong));
+                CommandCache commandCache = default(CommandCache);
+                SharpVk.Interop.Multivendor.SwapchainTimeDomainProperties marshalledSwapchainTimeDomainProperties = default(SharpVk.Interop.Multivendor.SwapchainTimeDomainProperties);
+                ulong marshalledTimeDomainsCounter = default(ulong);
+                commandCache = extendedHandle.commandCache;
+                SharpVk.Interop.Multivendor.VkSwapchainKHRGetTimeDomainPropertiesDelegate commandDelegate = commandCache.Cache.vkGetSwapchainTimeDomainPropertiesEXT;
+                Result methodResult = commandDelegate(extendedHandle.parent.handle, extendedHandle.handle, &marshalledSwapchainTimeDomainProperties, &marshalledTimeDomainsCounter);
+                if (SharpVkException.IsError(methodResult))
+                {
+                    throw SharpVkException.Create(methodResult);
+                }
+                result.Item1 = SharpVk.Multivendor.SwapchainTimeDomainProperties.MarshalFrom(&marshalledSwapchainTimeDomainProperties);
+                result.Item2 = marshalledTimeDomainsCounter;
+                return result;
+            }
+            finally
+            {
+                Interop.HeapUtil.FreeAll();
+            }
+        }
+        
+        /// <summary>
         /// Acquire full-screen exclusive mode for a swapchain
         /// </summary>
         /// <param name="extendedHandle">

@@ -64,15 +64,6 @@ namespace SharpVk.Generator.Specification
                         SuccessCodes = successCodes
                     };
 
-                    //TODO: Coki04 Delete
-                    if (name.Contains("SwapchainTimingProperties") ||
-                        name.Contains("SwapchainTimeDomainProperties") ||
-                        name.Contains("QueueFamilyDataGraphProperties") ||
-                        name.Contains("QueueFamilyDataGraphEngineOperationProperties") ||
-                        name.Contains("QueueFamilyDataGraphOpticalFlowImageFormats") ||
-                        name.Contains("GpaDeviceClockInfo"))
-                        continue;
-
                     newCommands.Add(name, newCommand);
 
                     foreach (var vkParam in vkCommand.Elements("param"))

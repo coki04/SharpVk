@@ -36,7 +36,7 @@ namespace SharpVk.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public int MaxLevel
+        public SharpVk.StdVideoVP9Level MaxLevel
         {
             get;
             set;

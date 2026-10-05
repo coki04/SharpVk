@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
-using System.Net;
 using System.Xml.Linq;
+using System.Net.Http;
 
 namespace SharpVk.Generator
 {
@@ -10,6 +10,7 @@ namespace SharpVk.Generator
     {
         private readonly string tempFilePath;
         private readonly Lazy<XDocument> vkXml;
+        private readonly Lazy<XDocument> videoXml;
 
         public VkXmlCache(string tempFilePath)
         {
@@ -20,14 +21,16 @@ namespace SharpVk.Generator
                 Directory.CreateDirectory(this.tempFilePath);
             }
 
-            this.vkXml = new Lazy<XDocument>(LoadVkXml);
+            this.vkXml = new Lazy<XDocument>(LoadVkXml("vk.xml"));
+            this.videoXml = new Lazy<XDocument>(LoadVkXml("video.xml"));
         }
 
         public XDocument GetVkXml() => this.vkXml.Value;
+        public XDocument GetVideoXml() => this.videoXml.Value;
 
-        private XDocument LoadVkXml()
+        private XDocument LoadVkXml(string xmlName)
         {
-            string tempFile = Path.Combine(this.tempFilePath, "vk.xml");
+            string tempFile = Path.Combine(this.tempFilePath, xmlName);
 
             if (!File.Exists(tempFile) || File.GetLastWriteTimeUtc(tempFile) + TimeSpan.FromDays(1) < DateTime.UtcNow)
             {
@@ -35,10 +38,11 @@ namespace SharpVk.Generator
                 {
                     Directory.CreateDirectory(Path.GetDirectoryName(tempFile));
 
-                    var vkXmlRequest = WebRequest.Create("https://raw.githubusercontent.com/KhronosGroup/Vulkan-Docs/main/xml/vk.xml");
-
-                    using (var vkXmlResponse = vkXmlRequest.GetResponseAsync().Result)
+                    using (var client = new HttpClient())
                     {
+                        var vkXmlRequest = client.GetStreamAsync(string.Format("https://raw.githubusercontent.com/KhronosGroup/Vulkan-Docs/main/xml/{0}", xmlName));
+                        var vkXmlResponse = vkXmlRequest.GetAwaiter().GetResult();
+
                         if (File.Exists(tempFile))
                         {
                             File.Delete(tempFile);
@@ -46,7 +50,7 @@ namespace SharpVk.Generator
 
                         using (var fileStream = File.OpenWrite(tempFile))
                         {
-                            vkXmlResponse.GetResponseStream().CopyTo(fileStream);
+                            vkXmlResponse.CopyTo(fileStream);
                         }
                     }
                 }

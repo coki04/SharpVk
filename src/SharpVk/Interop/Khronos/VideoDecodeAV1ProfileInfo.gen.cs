@@ -46,7 +46,7 @@ namespace SharpVk.Interop.Khronos
         /// <summary>
         /// 
         /// </summary>
-        public int StdProfile; 
+        public SharpVk.StdVideoAV1Profile StdProfile; 
         
         /// <summary>
         /// 
